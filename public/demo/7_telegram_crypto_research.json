@@ -1,0 +1,28 @@
+{
+  "name": "ZK & Layer2 Alpha Group",
+  "type": "public_supergroup",
+  "id": -1001928374,
+  "messages": [
+    {
+      "id": 101,
+      "type": "message",
+      "date": "2024-03-10T14:00:00",
+      "from": "Vitalik Fan",
+      "text": "Did anyone read the latest paper on STARK recursion efficiency benchmarks?"
+    },
+    {
+      "id": 102,
+      "type": "message",
+      "date": "2024-03-10T14:05:00",
+      "from": "You",
+      "text": "I will summarize the zero-knowledge whitepaper and benchmark results by Friday 4pm."
+    },
+    {
+      "id": 103,
+      "type": "message",
+      "date": "2024-03-11T09:30:00",
+      "from": "CryptoWhale",
+      "text": "Looking forward to your summary! The gas optimization math looked tricky."
+    }
+  ]
+}

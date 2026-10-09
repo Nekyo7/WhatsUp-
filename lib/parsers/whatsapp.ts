@@ -1,0 +1,277 @@
+import type { Message, Platform } from "@/types";
+
+export interface ParsedChatResult {
+  chatId: string;
+  title: string;
+  platform: Platform;
+  isGroup: boolean;
+  participants: string[];
+  messages: Message[];
+  firstMessageAt: string;
+  lastMessageAt: string;
+  detectedSelfNameCandidate?: string;
+}
+
+const SYSTEM_PHRASES = [
+  "messages and calls are end-to-end encrypted",
+  "messages to this chat and calls are now secured",
+  "created group",
+  "created this group",
+  "added",
+  "left",
+  "removed",
+  "changed the subject",
+  "changed the group",
+  "changed this group's icon",
+  "security code changed",
+  "you're now an admin",
+  "joined using this group's invite link",
+  "disappearing messages",
+  "started a call",
+  "missed voice call",
+  "missed video call",
+];
+
+const MEDIA_PHRASES = [
+  "<media omitted>",
+  "image omitted",
+  "video omitted",
+  "audio omitted",
+  "sticker omitted",
+  "document omitted",
+  "gif omitted",
+  "contact card omitted",
+  "location:",
+  "this message was deleted",
+  "you deleted this message",
+];
+
+const HINGLISH_KEYWORDS = [
+  "bhai", "yaar", "kya", "haan", "nahi", "kar", "karna", "karega", "kardo",
+  "bhej", "bheja", "dekh", "theek", "accha", "acha", "sahi", "aaj", "kal",
+  "parso", "hoga", "raha", "rahe", "wala", "wali", "matlab", "kuch", "aisa",
+  "samajh", "paise", "kaam", "abhy", "chal", "chalo", "sun", "are", "arre", "bc", "bhaiya"
+];
+
+export function detectLanguage(text: string): "en" | "hinglish" | "hi" | "other" {
+  if (!text) return "en";
+  const lower = text.toLowerCase();
+  // Check for Devanagari Unicode range
+  if (/[\u0900-\u097F]/.test(text)) {
+    return "hi";
+  }
+  const words = lower.split(/\s+/);
+  let hinglishMatches = 0;
+  for (const word of words) {
+    const cleaned = word.replace(/[^a-z]/g, "");
+    if (HINGLISH_KEYWORDS.includes(cleaned)) {
+      hinglishMatches++;
+    }
+  }
+  if (hinglishMatches >= 1 || (words.length > 2 && hinglishMatches / words.length > 0.15)) {
+    return "hinglish";
+  }
+  return "en";
+}
+
+/**
+ * Auto-detects whether date format is DD/MM/YY(YY) or MM/DD/YY(YY)
+ * by examining days > 12 across all candidate date tokens in the export.
+ */
+function detectDateFormat(lines: string[]): "DMY" | "MDY" {
+  let firstOver12 = 0;
+  let secondOver12 = 0;
+
+  const datePattern = /(?:^\[?|\s)(\d{1,2})[./\-](\d{1,2})[./\-](\d{2,4})/;
+
+  for (let i = 0; i < Math.min(lines.length, 500); i++) {
+    const match = lines[i].match(datePattern);
+    if (match) {
+      const num1 = parseInt(match[1], 10);
+      const num2 = parseInt(match[2], 10);
+      if (num1 > 12 && num2 <= 12) {
+        firstOver12++;
+      } else if (num2 > 12 && num1 <= 12) {
+        secondOver12++;
+      }
+    }
+  }
+
+  // Default to DMY (standard in most of world including India/UK) unless MDY has clear signals
+  return secondOver12 > firstOver12 ? "MDY" : "DMY";
+}
+
+/**
+ * Parses timestamp string into standard ISO string
+ */
+function parseWhatsAppTimestamp(
+  datePart: string,
+  timePart: string,
+  dateFormat: "DMY" | "MDY"
+): string | null {
+  try {
+    // Clean date separators
+    const dMatch = datePart.match(/(\d{1,2})[./\-](\d{1,2})[./\-](\d{2,4})/);
+    if (!dMatch) return null;
+
+    let day = parseInt(dMatch[1], 10);
+    let month = parseInt(dMatch[2], 10);
+    let year = parseInt(dMatch[3], 10);
+
+    if (dateFormat === "MDY") {
+      const temp = day;
+      day = month;
+      month = temp;
+    }
+
+    if (year < 100) {
+      year += 2000;
+    }
+
+    // Clean time part (e.g., "3:45:12 PM", "15:45", "03:45 pm", "3:45:12")
+    const tMatch = timePart.trim().match(/(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(am|pm|AM|PM)?/i);
+    if (!tMatch) return null;
+
+    let hours = parseInt(tMatch[1], 10);
+    const minutes = parseInt(tMatch[2], 10);
+    const seconds = tMatch[3] ? parseInt(tMatch[3], 10) : 0;
+    const ampm = tMatch[4]?.toLowerCase();
+
+    if (ampm === "pm" && hours < 12) hours += 12;
+    if (ampm === "am" && hours === 12) hours = 0;
+
+    const d = new Date(Date.UTC(year, month - 1, day, hours, minutes, seconds));
+    if (isNaN(d.getTime())) return null;
+    return d.toISOString();
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Comprehensive WhatsApp txt parser supporting:
+ * - Square brackets format: [15/03/24, 3:45:12 PM] Sender: Message
+ * - Standard dash format: 15/03/2024, 15:45 - Sender: Message
+ * - 12h/24h, seconds optional, unicode invisible chars, multi-line continuations
+ */
+export function parseWhatsAppExport(fileContent: string, fileName: string): ParsedChatResult {
+  const lines = fileContent.replace(/\r\n/g, "\n").replace(/\r/g, "\n").split("\n");
+  const dateFormat = detectDateFormat(lines);
+
+  // Line regex variations:
+  // 1) [15/03/24, 11:42:15 AM] Sender: Text
+  // 2) 15/03/24, 11:42 AM - Sender: Text
+  // 3) 15/03/2024, 11:42 - Sender: Text
+  const linePattern = /^(?:\[?(\d{1,2}[./\-]\d{1,2}[./\-]\d{2,4})[,\s]+(\d{1,2}:\d{2}(?::\d{2})?(?:\s*[AaPp][Mm])?)\]?(?:\s*-\s*|\s+))([^:]+?)(?::\s*(.*)|$)/;
+
+  const messages: Message[] = [];
+  const participantsSet = new Set<string>();
+  const senderCounts: Record<string, number> = {};
+
+  const chatId = "wa_" + Math.random().toString(36).substring(2, 9);
+  let chatTitle = fileName.replace(/\.txt$/i, "").replace(/^WhatsApp Chat with /i, "").trim();
+  if (!chatTitle) chatTitle = "WhatsApp Chat";
+
+  let currentMsg: Message | null = null;
+  let msgIdx = 0;
+
+  for (let i = 0; i < lines.length; i++) {
+    const rawLine = lines[i];
+    // Remove LTR/RTL invisible markers
+    const line = rawLine.replace(/[\u200E\u200F\u202A-\u202E]/g, "").trimEnd();
+    if (!line) continue;
+
+    const match = line.match(linePattern);
+
+    if (match) {
+      // If we had a previous message, commit it
+      if (currentMsg) {
+        messages.push(currentMsg);
+        currentMsg = null;
+      }
+
+      const dateStr = match[1];
+      const timeStr = match[2];
+      const possibleSender = match[3]?.trim();
+      const content = match[4] !== undefined ? match[4].trim() : "";
+
+      const isoTimestamp = parseWhatsAppTimestamp(dateStr, timeStr, dateFormat) || new Date().toISOString();
+
+      // Check if it's a system message (either no colon or sender matches system text)
+      const isSystemNotice =
+        content === "" ||
+        SYSTEM_PHRASES.some((phrase) =>
+          (possibleSender + " " + content).toLowerCase().includes(phrase)
+        );
+
+      if (isSystemNotice) {
+        const fullText = (possibleSender + (content ? ": " + content : "")).trim();
+        currentMsg = {
+          id: `${chatId}_msg_${++msgIdx}`,
+          chatId,
+          sender: "System",
+          timestamp: isoTimestamp,
+          text: fullText,
+          isSystem: true,
+          isMedia: false,
+          lang: "en",
+        };
+      } else {
+        const sender = possibleSender;
+        participantsSet.add(sender);
+        senderCounts[sender] = (senderCounts[sender] || 0) + 1;
+
+        const lowerContent = content.toLowerCase();
+        const isMedia = MEDIA_PHRASES.some((phrase) => lowerContent.includes(phrase));
+
+        currentMsg = {
+          id: `${chatId}_msg_${++msgIdx}`,
+          chatId,
+          sender,
+          timestamp: isoTimestamp,
+          text: content,
+          isSystem: false,
+          isMedia,
+          lang: detectLanguage(content),
+        };
+      }
+    } else {
+      // Continuation of multi-line message
+      if (currentMsg) {
+        currentMsg.text += "\n" + line;
+        // Re-detect language with extended text
+        currentMsg.lang = detectLanguage(currentMsg.text);
+      }
+    }
+  }
+
+  if (currentMsg) {
+    messages.push(currentMsg);
+  }
+
+  const participants = Array.from(participantsSet);
+  const isGroup = participants.length > 2 || chatTitle.toLowerCase().includes("group");
+
+  // Determine likely self candidate (the one with highest message frequency or labelled "You")
+  let detectedSelfNameCandidate = "";
+  if (participants.includes("You")) {
+    detectedSelfNameCandidate = "You";
+  } else if (participants.length > 0) {
+    detectedSelfNameCandidate = Object.entries(senderCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || participants[0];
+  }
+
+  const firstMessageAt = messages[0]?.timestamp || new Date().toISOString();
+  const lastMessageAt = messages[messages.length - 1]?.timestamp || new Date().toISOString();
+
+  return {
+    chatId,
+    title: chatTitle,
+    platform: "whatsapp",
+    isGroup,
+    participants,
+    messages,
+    firstMessageAt,
+    lastMessageAt,
+    detectedSelfNameCandidate,
+  };
+}

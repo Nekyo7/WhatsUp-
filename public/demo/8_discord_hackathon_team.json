@@ -1,0 +1,46 @@
+{
+  "guild": {
+    "id": "987654321",
+    "name": "HackNation 2026"
+  },
+  "channel": {
+    "id": "543210987",
+    "type": "GuildTextChat",
+    "name": "team-whats-up"
+  },
+  "messages": [
+    {
+      "id": "2001",
+      "timestamp": "2024-03-12T18:00:00.000+00:00",
+      "author": {
+        "id": "user_sam",
+        "name": "Sam Backend",
+        "nickname": "Sam (Server Guru)"
+      },
+      "content": "Frontend team, what is the status of the Dexie IndexedDB integration?",
+      "attachments": []
+    },
+    {
+      "id": "2002",
+      "timestamp": "2024-03-12T18:04:10.000+00:00",
+      "author": {
+        "id": "user_you",
+        "name": "You",
+        "nickname": "You"
+      },
+      "content": "I'll push the Next.js API endpoints and database schema by midnight today.",
+      "attachments": []
+    },
+    {
+      "id": "2003",
+      "timestamp": "2024-03-13T10:20:00.000+00:00",
+      "author": {
+        "id": "user_sam",
+        "name": "Sam Backend",
+        "nickname": "Sam (Server Guru)"
+      },
+      "content": "Hey, did you get around to pushing those endpoints? Need them for testing.",
+      "attachments": []
+    }
+  ]
+}

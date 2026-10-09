@@ -1,0 +1,185 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { Settings, Key, Cpu, ShieldCheck, Check, X, Sparkles, AlertCircle } from "lucide-react";
+import type { AIProvider } from "@/lib/llm";
+
+interface AISettingsModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onSettingsSaved?: () => void;
+}
+
+export const AISettingsModal: React.FC<AISettingsModalProps> = ({
+  isOpen,
+  onClose,
+  onSettingsSaved,
+}) => {
+  const [provider, setProvider] = useState<AIProvider>("local");
+  const [apiKey, setApiKey] = useState<string>("");
+  const [isSaved, setIsSaved] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      const storedKey = localStorage.getItem("whatsup_custom_api_key") || "";
+      const storedProvider = (localStorage.getItem("whatsup_custom_provider") || "local") as AIProvider;
+      setApiKey(storedKey);
+      setProvider(storedProvider);
+      setIsSaved(false);
+    }
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  const handleSave = () => {
+    if (provider === "local" || !apiKey.trim()) {
+      localStorage.removeItem("whatsup_custom_api_key");
+      localStorage.setItem("whatsup_custom_provider", "local");
+      setApiKey("");
+      setProvider("local");
+    } else {
+      localStorage.setItem("whatsup_custom_api_key", apiKey.trim());
+      localStorage.setItem("whatsup_custom_provider", provider);
+    }
+
+    setIsSaved(true);
+    onSettingsSaved?.();
+    setTimeout(() => {
+      setIsSaved(false);
+      onClose();
+    }, 1000);
+  };
+
+  const handleClear = () => {
+    localStorage.removeItem("whatsup_custom_api_key");
+    localStorage.setItem("whatsup_custom_provider", "local");
+    setApiKey("");
+    setProvider("local");
+    setIsSaved(true);
+    onSettingsSaved?.();
+    setTimeout(() => {
+      setIsSaved(false);
+      onClose();
+    }, 800);
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 text-left">
+      <div className="w-full max-w-lg bg-[#0E111C] border border-[#232A42] rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-scaleUp">
+        {/* Header */}
+        <div className="p-6 border-b border-[#1E253E] bg-[#111524] flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Settings className="w-5 h-5 text-[#64D2FF]" />
+            <h3 className="text-xl font-bold text-white font-display">
+              AI Intelligence Engine
+            </h3>
+          </div>
+          <button onClick={onClose} className="p-1 text-[#8890A6] hover:text-white rounded-lg">
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Body */}
+        <div className="p-6 space-y-6">
+          {/* Provider Selector */}
+          <div className="space-y-2">
+            <label className="text-xs font-mono uppercase tracking-wider text-[#8A96B4]">
+              Select AI Engine
+            </label>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {[
+                { id: "local", name: "Local AI", desc: "No Key Required" },
+                { id: "gemini", name: "Gemini", desc: "Google AI" },
+                { id: "anthropic", name: "Claude", desc: "Anthropic" },
+                { id: "openai", name: "OpenAI", desc: "GPT-4o" },
+              ].map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setProvider(item.id as AIProvider)}
+                  className={`p-3 rounded-xl border flex flex-col text-left transition-all ${
+                    provider === item.id
+                      ? "bg-[#162238] border-[#64D2FF] text-white shadow-md shadow-[#64D2FF]/20"
+                      : "bg-[#090B12] border-[#1C2135] text-[#7A86A4] hover:text-white hover:border-[#2C3554]"
+                  }`}
+                >
+                  <span className="font-bold text-xs">{item.name}</span>
+                  <span className="text-[10px] font-mono opacity-70 mt-0.5">{item.desc}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* API Key Input (if cloud provider chosen) */}
+          {provider !== "local" ? (
+            <div className="space-y-2 animate-fadeIn">
+              <label className="text-xs font-mono uppercase tracking-wider text-[#8A96B4] flex items-center justify-between">
+                <span>{provider.toUpperCase()} API Key (BYOK)</span>
+                <span className="text-[10px] text-[#30D158] flex items-center gap-1">
+                  <ShieldCheck className="w-3 h-3" /> Client-only storage
+                </span>
+              </label>
+              <div className="relative">
+                <input
+                  type="password"
+                  value={apiKey}
+                  onChange={(e) => setApiKey(e.target.value)}
+                  placeholder={
+                    provider === "gemini"
+                      ? "AIzaSy..."
+                      : provider === "anthropic"
+                      ? "sk-ant-..."
+                      : "sk-..."
+                  }
+                  className="w-full bg-[#080A12] border border-[#20273D] focus:border-[#64D2FF] rounded-xl px-4 py-3 text-xs font-mono text-white placeholder-[#454E6B] outline-none"
+                />
+              </div>
+              <p className="text-[11px] text-[#727D9B] font-mono">
+                Key is stored only in your browser&apos;s localStorage and sent directly for briefing/reply generation.
+              </p>
+            </div>
+          ) : (
+            <div className="p-4 rounded-xl bg-[#090E16] border border-[#18263D] text-xs text-[#8299C2] space-y-2">
+              <div className="flex items-center gap-2 font-bold text-[#64D2FF]">
+                <Cpu className="w-4 h-4" />
+                <span>Local Real-Time NLP Synthesizer Active</span>
+              </div>
+              <p className="leading-relaxed text-[11px]">
+                WhatsUP? runs dynamic keyword clustering, Hinglish translation, commitment tracking, and contextual response drafting directly from your uploaded chat files with zero third-party API dependencies.
+              </p>
+            </div>
+          )}
+
+          {/* Action buttons */}
+          <div className="flex items-center justify-between pt-2">
+            <button
+              type="button"
+              onClick={handleClear}
+              className="text-xs font-mono text-[#7883A0] hover:text-[#FF334B] transition-colors"
+            >
+              Reset to Local AI
+            </button>
+
+            <button
+              type="button"
+              onClick={handleSave}
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#64D2FF] to-[#3B82F6] hover:from-[#50BEEB] hover:to-[#2563EB] text-black font-mono font-bold text-xs flex items-center gap-2 shadow-lg shadow-[#64D2FF]/20 transition-all"
+            >
+              {isSaved ? (
+                <>
+                  <Check className="w-4 h-4" />
+                  <span>Saved!</span>
+                </>
+              ) : (
+                <>
+                  <Sparkles className="w-4 h-4" />
+                  <span>Save Engine Settings</span>
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

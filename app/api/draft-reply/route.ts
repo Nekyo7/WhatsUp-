@@ -1,0 +1,59 @@
+import { NextResponse } from "next/server";
+import { callLLMWithSchema, ReplyDraftsResponseSchema, type AIProvider } from "@/lib/llm";
+import { generateLocalReplyDrafts } from "@/lib/localAi";
+
+export async function POST(req: Request) {
+  try {
+    const { chatId, lastMessagesText, contactName = "Friend", apiKey, provider, model } = await req.json();
+
+    if (!lastMessagesText) {
+      return NextResponse.json({ error: "Missing lastMessagesText" }, { status: 400 });
+    }
+
+    const customKey = apiKey || req.headers.get("x-ai-key") || undefined;
+    const customProvider = (provider || req.headers.get("x-ai-provider") || undefined) as AIProvider | undefined;
+
+    const systemPrompt = `You are a conversational AI assistant generating guilt-free response drafts for people who accidentally left a friend or colleague on read.
+Generate three distinct tones:
+1. "apologetic": Sincere apology, honest brief reason (busy/swamped), and immediate answer/deliverable.
+2. "casual": Friendly, warm, acknowledging delay without excessive groveling.
+3. "short": Ultra-concise, punchy 1-sentence reply with immediate answer.`;
+
+    const userPrompt = `Contact: ${contactName}
+Pending unanswered context:
+${lastMessagesText}
+
+Generate the 3 drafts JSON object.`;
+
+    const result = await callLLMWithSchema({
+      task: "draft_reply",
+      systemPrompt,
+      userPrompt,
+      schema: ReplyDraftsResponseSchema,
+      apiKey: customKey,
+      provider: customProvider,
+      model,
+    });
+
+    if (result.success) {
+      return NextResponse.json({
+        success: true,
+        drafts: result.data,
+        bytesUsed: result.bytesUsed,
+      });
+    }
+
+    // Dynamic Context-Aware Local Reply Drafter on actual messages
+    const localDrafts = generateLocalReplyDrafts(contactName, lastMessagesText);
+
+    return NextResponse.json({
+      success: true,
+      drafts: localDrafts,
+      bytesUsed: 0,
+      isDemoCached: false,
+      fallbackNotice: "Generated via Local Contextual Drafter",
+    });
+  } catch (err: any) {
+    return NextResponse.json({ error: err.message || "Failed to generate drafts" }, { status: 500 });
+  }
+}
