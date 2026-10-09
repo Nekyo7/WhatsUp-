@@ -186,7 +186,7 @@ export const ReplyDraftModal: React.FC<ReplyDraftModalProps> = ({
                   </span>
 
                   <button
-                    onClick={() => handleCopy(drafts[activeTone], activeTone)}
+                    onClick={() => handleCopy(drafts[activeTone] || "", activeTone)}
                     className="px-4 py-2 rounded-xl bg-[#30D158] hover:bg-[#28B84B] text-black font-mono font-bold text-xs flex items-center gap-2 shadow-lg shadow-[#30D158]/20 transition-all"
                   >
                     {copiedTone === activeTone ? (

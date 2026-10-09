@@ -1,207 +1,186 @@
 # 🚀 WhatsUP? — The Chat Guilt Ledger & Unread Command Center
 
-> *"Other apps summarize your chats. We tell you who you've been letting down."*
+> *"Other chat apps summarize your messages. We audit your social commitments and tell you who you've been leaving on read."*
 
-[![Next.js](https://img.shields.io/badge/Next.js-14.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Next.js 14](https://img.shields.io/badge/Next.js-14.2%20App%20Router-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![Storage](https://img.shields.io/badge/Storage-IndexedDB%20%2F%20In--Memory-green?style=for-the-badge)](https://dexie.org/)
-[![UI Style](https://img.shields.io/badge/Theme-Storybook%20RPG%20%26%20Classic-parchment?style=for-the-badge&color=8DA87B)](https://github.com/Nekyo7/WhatsUp-)
-[![Vitest](https://img.shields.io/badge/Tests-41%2F41%20Passed-brightgreen?style=for-the-badge&logo=vitest)](https://vitest.dev/)
+[![Storage](https://img.shields.io/badge/Storage-IndexedDB%20(Dexie%20v2)-green?style=for-the-badge)](https://dexie.org/)
+[![Security](https://img.shields.io/badge/Security-AES--GCM%20%2B%20CSP%20%2B%20Zero--Cloud-gold?style=for-the-badge)](./SECURITY.md)
+[![Tests](https://img.shields.io/badge/Tests-54%2F54%20Passing-brightgreen?style=for-the-badge&logo=vitest)](https://vitest.dev/)
+[![UI Style](https://img.shields.io/badge/Theme-Cozy%20Storybook%20RPG%20%26%20Classic-parchment?style=for-the-badge&color=8DA87B)](https://github.com/Nekyo7/WhatsUp-)
 
 ---
 
-> **Privacy Guarantee:** Analytics run 100% locally. AI is optional and sends only redacted excerpts, which you see first.  
-> **Aesthetic Experience:** Features a Cozy Fantasy RPG Storybook UI ("A playable storybook brought to life") and an analytical Classic Ledger View.
+## 📌 The Problem: The Unread Debt Crisis
 
+Every active user of WhatsApp, Telegram, or Discord faces an invisible, accumulating psychological burden: **Conversational Debt**.
 
----
+* 🥀 **Unanswered direct questions:** *"Can you review the pitch deck today?"*
+* 🤝 **Forgotten promises:** *"Main shaam tak bhej dunga"* (I will send it by evening)
+* 👻 **Fading relationships:** Meaningful connections silently drifting into dormant silence
+* 💥 **Overwhelming group chaos:** Hundreds of unread messages where you don't even know if someone asked you something
 
-## 📌 Problem Statement
+Generic AI summaries spit out dry recaps of chat banter. They don't answer the question that actually causes stress: **"Who is waiting on me, what commitments did I make, and what do I owe?"**
 
-Every day, active messaging users across **WhatsApp**, **Telegram**, and **Discord** accumulate a heavy cognitive burden: **Conversational Debt**.
-- Unanswered direct questions ("Bhai kal bhej raha hai kya?")
-- Forgotten commitments ("main sham tak bhej dunga")
-- Close friends drifting into silence
-- Overwhelming group chat backlogs
-
-Generic chat summarizers spit out dry summaries without addressing the **guilt and social friction** of conversational backlog.
-
-**WhatsUP? (The Guilt Ledger)** audits your exported chat history to tell you exactly **who is waiting on you, what promises you broke, and what decisions need your immediate response.**
+**WhatsUP? (The Guilt Ledger)** audits exported chat logs completely on your machine. It turns guilt into action with concrete triage queues, automated commitment resolution, and guilt-free response drafts.
 
 ---
 
-## ✨ Core Features
+## 🏛️ System Architecture
 
-### 1. 🚨 Reply Debt Index (0 - 100 Gauge)
-- Dynamically scores your conversational debt based on:
-  - Number of people currently waiting on your reply
-  - Cumulative unanswered days
-  - Urgency of unanswered direct questions
-  - Open unfulfilled commitments from the Promise Ledger
-- Itemized collapsible breakdown of each conversation in debt.
+### 1. Zero-Knowledge Local-First Data Flow
 
-### 2. 👻 Ghost Radar (4 Triage Lanes + In-Sync Overview)
-Categorizes relationships with exact timestamp heuristics:
-- **You Ghosted**: Their last message(s) unanswered for more than 3 days (weighted higher for direct questions and formerly active chats; skipped for group chats with >8 members).
-- **They Ghosted**: Your last message unanswered for more than 3 days.
-- **Fading**: Last-30-day weekly average below 25% of the chat's own peak 30-day average.
-- **Revivable**: Top 20% chat by volume silent for over 60 days.
-- **In-Sync Overview**: Separate overview of healthy conversations with active reciprocal turns.
-- *Notice:* Ghosted = unanswered. Chat exports have no read receipts.
-
-### 3. 📝 Promise Ledger & Deadline Tracker
-- Automated detection of commitments in **English and colloquial Hinglish** ("I will finish the deck", "kal bhej dunga", "dekh ke batata hu", "thodi der me bhejta hu").
-- Tense-aware resolution: future verb forms ("dunga", "karunga") resolve due dates to tomorrow; past forms ("bheja tha", "kiya tha") leave due dates null.
-- Filters negative non-commitments ("let me know", "let me see if", "I'll be there").
-- Extracts deadlines relative to message timestamps using **chrono-node**.
-- Tracks **Open**, **Fulfilled**, and **Stale (>14d)** commitments with 1-click status toggles and confidence scores.
-
-### 4. 👥 People & Group Chat Leaderboard
-- Works for **1-on-1 chats and multi-member Group Chats**.
-- Filter by All, 1-on-1, or Group conversations.
-- Computes:
-  - **Estimated Talk Time** (clustered by 30-min conversational session gaps)
-  - **Median Reply Turnaround Time** (excluding >24h gaps)
-  - **Conversation Initiation Share** (% of sessions started by you vs. others)
-  - **Multi-Member Distribution Bars** for group chats.
-
-### 5. 📊 24x7 Activity Heatmap
-- 7 days × 24 hours interactive grid visualizing your conversational biorhythm and communication hotspots.
-
-### 6. 🏆 Guilt Wrapped '26
-- End-of-year style shareable recap card:
-  - #1 Favorite Human & Total Talk Time Hours
-  - Longest Ghost / Silence Streak
-  - % of Promises Kept vs Broken
-  - Real Most Active Chatting Hour
-  - AI Guilt Verdict / Roast
-
-### 7. ⚡ AI Briefings (15s Speed / 2min Standard / 10min Deep)
-- Instant context catch-up on overwhelming chat threads.
-- 3-Bullet Executive TL;DR, Key Topic Clusters, Decisions Reached, Action Items for You, and Tracked Deadlines.
-
-### 8. 💬 Context-Aware Reply Drafter
-- Generates 3 guilt-relief reply variations (**Apologetic**, **Casual**, **Short**) referencing the actual topic and specific questions in the chat.
-
-### 9. 🌐 Real-Time Hinglish Translation
-- Converts colloquial Hindi-English mixed slang into clear English with tone annotations.
-
----
-
-## 🔒 Privacy-First Hybrid Architecture
-
-```
-┌────────────────────────────────────────────────────────┐
-│                   USER BROWSER                         │
-│                                                        │
-│  [Upload .txt / .json]                                 │
-│        │                                               │
-│        ▼                                               │
-│  [Parser Engine] (WhatsApp / Telegram / Discord)       │
-│        │                                               │
-│        ▼                                               │
-│  [Local Analytics Engine]                              │
-│  (Sessions, Reply Times, Heatmaps, Ghosts, Promises)   │
-│        │                                               │
-│        ▼                                               │
-│  [IndexedDB or In-Memory Mode]                         │
-│        │                                               │
-│        ▼                                               │
-│  [Client-Side PII Redactor]                            │
-│  Masks names, nicknames, phones, emails, UPI IDs,      │
-│  Aadhaar, PAN, Cards, OTPs, PIN codes, URLs            │
-└────────┬───────────────────────────────────────────────┘
-         │ (Only redacted text sent for optional AI)
-         ▼
-┌────────────────────────────────────────────────────────┐
-│                   AI INFERENCE LAYER                   │
-│                                                        │
-│  ├── Google Gemini API (BYOK or Server Key)            │
-│  ├── Anthropic Claude (BYOK or Server Key)             │
-│  ├── OpenAI-compatible Endpoint (Custom Base URL)      │
-│  └── Extractive Local Fallback (No LLM / Offline)      │
-└────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    A[WhatsApp .txt/.zip\nTelegram/Discord .json] -->|Drop in Browser| B(Safe Zip & Text Parser)
+    B -->|Compute Parsing Report| C{Local Analytics Engine}
+    
+    subgraph Browser Storage & Analytics [100% Client-Side Sandbox]
+        C --> D[(Dexie IndexedDB v2)]
+        C --> E[Ghost Radar Heuristics\nAdaptive Latencies + Sleep-Aware]
+        C --> F[Promise Ledger Engine\nEnglish + Hinglish NLP + Chrono]
+        C --> G[Per-Person Profiles\nAttributed Quotes & Turnarounds]
+        C --> H[24x7 Activity Heatmap]
+        C --> I[Reply Debt Score 0-100]
+    end
+    
+    subgraph Privacy Redaction & Optional AI [Zero Raw Content Sent]
+        D -.-> J[Client-Side PII Redactor\nNames, UPI, Phones, OTPs masked]
+        J -.-> K[Redaction Inspection Modal\nUser Approves Payload]
+        K -.-> L[Target Translation / Briefing API]
+        L -.-> M[Google Gemini / Claude / OpenAI BYOK\nEncrypted with Web Crypto AES-GCM]
+        L -.-> N[Offline Extractive Heuristic Fallback\n0 Network Bytes]
+    end
 ```
 
-1. **Analytics Run 100% Locally**: Message parsing, turn latencies, talk time, ghost detection, and promise extraction never touch the network.
-2. **Best-Effort Client-Side Redaction**: Before sending text to an AI provider, names/nicknames are anonymized (`Person A (You)`, `Person B`), and sensitive Indian & global identifiers (UPI, Aadhaar, PAN, Cards, OTPs, PIN codes, phones, emails, URLs) are masked. Unredaction happens strictly in the client.
-3. **Transparent Network Ledger**: On-screen badge displays real-time network usage and outbound byte counters.
-4. **No-Persist Mode**: "Don't save to this browser" toggle keeps all data in RAM only, bypassing IndexedDB entirely.
-5. **Multi-Provider AI + Extractive Local Fallback**:
-   - Google Gemini
-   - Anthropic Claude
-   - OpenAI-compatible endpoints (Ollama / Local / OpenAI)
-   - **Bring Your Own Key (BYOK)** directly in browser settings
-   - **Extractive Fallback (No LLM)**: If no API key is provided, the extractive engine extracts key points locally without any third-party requests.
+### 2. Component Topology
+
+```mermaid
+graph LR
+    subgraph UI Layers
+        RPG[Cozy Storybook RPG Mode\nIllustrated Quest Menu]
+        Classic[Classic Ledger Mode\nHigh-Density Executive Dashboard]
+    end
+
+    subgraph Core Features
+        Debt[Reply Debt Index 0-100]
+        Radar[Ghost Radar: 4 Lanes]
+        Ledger[Promise Ledger: 4 Tabs]
+        Person[Per-Person Tabs & Quotes]
+        Briefing[AI Guilt Briefings]
+        Drafter[5-Tone Reply Drafter]
+        Amends[Amends Mode Queue]
+        Wrapped[Guilt Wrapped '26]
+    end
+
+    RPG --> Debt & Radar & Ledger & Person
+    Classic --> Debt & Radar & Ledger & Person
+```
 
 ---
 
-## 🛡️ Limitations and Threat Model
+## ✨ Feature Tour
 
-- **Redaction Limits**: Redaction is best-effort. Deterministic regexes cover names, emails, phone numbers, URLs, UPI IDs, Aadhaar numbers, PAN cards, card numbers, OTPs, and Indian PIN codes. However, unstructured contextual clues (e.g., "meet me at the blue house behind St. Xavier's") or non-text media cannot be guaranteed sanitized. Always review the "What will be sent" preview payload.
-- **Unencrypted Local Storage**: By default, data stored in IndexedDB is unencrypted on your local machine file system. If using a shared computer, enable **"Don't save to this browser"** mode or click **"Wipe all data"** before closing your session.
-- **Server Keys vs Direct BYOK**: When using a server environment key, redacted excerpts are routed through Next.js API endpoints to reach the AI model provider. No message logs or request bodies are saved on the server. When using direct browser BYOK, requests travel straight from the browser to the model provider.
-- **Extractive Local Mode is Not an LLM**: The built-in offline local fallback is a heuristic rule-based extractor (regex pattern matching for decisions, deadlines, and questions), not a generative neural language model.
+### 1. 🗂️ Resilient Data Importer & Import Report
+* Supports standard **WhatsApp `.txt` files and `.zip` archives** (Android and iOS export patterns).
+* **Automatic DMY vs MDY Detection:** Pre-scans date stamps across the entire file before parsing to eliminate misparsed dates.
+* **Multi-Line Continuation:** Long paragraphs, code snippets, and linebreaks remain intact with original sender attribution.
+* **Interactive Import Report:** Displays message counts, detected participants, skipped system events, media placeholders, and an inspector for any unparsed lines.
+
+### 2. 👻 Adaptive Ghost Radar (Bidirectional)
+* **Two Directions:**
+  * **"They ghosted me":** You reached out with a conversation turn; they haven't replied.
+  * **"I ghosted them":** They sent the last turn; ball is in your court.
+* **Sleep-Hour Awareness:** Automatically pauses time calculation between **23:00 and 08:00**, so a late-night message doesn't artificially count as ghosting by morning.
+* **Adaptive Latency Baselines:** Compares silence against that relationship's historical median & P90 reply turnaround rather than arbitrary static cutoffs.
+* **Conversation Closer Detection:** Natural closers (*"Thanks!", "👍", "Bye", "Haan"* without follow-up questions) are marked as `closed`, preventing false ghost alarms.
+* **4 Clear Triage Lanes:** `Recent (<3d)`, `Warning (3-7d)`, `Ghosted (>7d)`, `Revivable (>60d)`.
+
+### 3. 📜 Promise Ledger & Commitment Resolution
+* **Bilingual English + Hinglish Extraction:** Captures promises in English (*"I'll upload the PR tomorrow"*) and Hindi slang (*"kal bhej dunga"*, *"dekh ke batata hu"*, *"shaam tak pakka"*).
+* **Two Directions:**
+  * **"I Owe":** Commitments you made to other people.
+  * **"They Owe Me":** Commitments others promised you.
+* **Resolution Lifecycles:** Automatically tracks commitments as `open`, `kept`, `overdue`, or `broken` by checking subsequent messages from the promiser.
+* **Relative Chrono Deadlines:** Resolves dates using message timestamps rather than the current day.
+* **Evidence Snippets & User Overrides:** Shows quoted evidence directly in the UI with 1-click status toggles (`Mark Kept`, `Dismiss`).
+
+### 4. 👤 Per-Person Tabs ("What Riya Said")
+* Deep profile view accessible for any participant from the People Leaderboard:
+  * **Attributed Highlights:** Quotes questions, plans, requests, and decisions made specifically by that person.
+  * **Conversational Dynamics:** Message volume share, median turnaround both directions, conversation-starter ratio, and busiest chatting hours.
+  * **Mutual Commitments:** Both "What I owe them" and "What they owe me" in one view.
+  * **Private Local Notes:** Encrypted, client-side scratchpad for context and reminders.
+
+### 5. 🤖 Multi-Provider AI with Local Fallback
+* **Bring Your Own Key (BYOK):** Direct support for Google Gemini, Anthropic Claude, and OpenAI GPT-4o.
+* **AES-GCM Web Crypto Storage:** API keys in browser storage are encrypted using client-side Web Crypto AES-GCM.
+* **Zero-Cloud Local Fallback:** No API key? WhatsUP? features a built-in heuristic NLP extractor that clusters topics, drafts contextual responses, and synthesizes 15s/2min/10min briefings using 0 network bytes.
+* **5 Contextual Reply Tones:** Generate responses in **Warm**, **Direct**, **Apologetic**, **Professional**, or **Casual** tones.
+* **Priority-First Briefings:** Auto-triaged into *"Needs your reply within 24h"*, *"FYI only"*, and *"Action item for team"*, with source message citations.
+
+### 6. 🎨 Dual UI Experiences
+* **Cozy Storybook RPG Mode:** Hand-drawn, parchment-inspired fantasy adventure menu where conversational debt becomes quest objectives and ghosted chats become slumbering companions.
+* **Analytical Classic Ledger:** High-density, professional command center with Recharts data visualizations, 24x7 activity biorhythm heatmaps, and itemized debt breakdowns.
+
+### 7. 🎁 Guilt Wrapped '26 & Amends Mode
+* **Guilt Wrapped:** Spotify-style annual recap of your communication health—identifies your #1 talk partner, longest ghosting streak, percentage of promises fulfilled, and AI roast.
+* **Amends Mode:** A distraction-free, 1-by-1 clearing queue to work through your top reply debts in rapid succession.
 
 ---
 
-## 🛠️ Supported Chat Export Formats
+## 🔒 Security & Privacy
 
-| Platform | Format | How to Export |
+Privacy is not an add-on; it is the core design principle. See [SECURITY.md](./SECURITY.md) for full details.
+
+| Vector | Protection Mechanism |
+|---|---|
+| **Chat Content** | 100% processed client-side. Zero messages stored on any server. |
+| **BYOK API Keys** | Web Crypto PBKDF2 + AES-GCM client-side encryption. |
+| **AI Payload Sanitization** | Regex redactor scrubs names, phones, UPI IDs, Aadhaar, PAN, emails, OTPs. |
+| **Zip Bomb Defense** | Safe extraction capped at 50MB, max 500 files, directory traversal rejection. |
+| **HTTP Headers** | Strict Content-Security-Policy (CSP), nosniff, DENY framing. |
+| **Data Deletion** | Instant 1-click **"Wipe All Local Data"** clears IndexedDB, caches, and memory. |
+
+---
+
+## 🛠️ Supported Formats
+
+| Format | Platform | Instructions |
 |---|---|---|
-| **WhatsApp** | `.txt` | Chat Settings ➔ Export Chat ➔ Without Media |
-| **Telegram** | `.json` | Telegram Desktop ➔ Chat Settings ➔ Export Chat History ➔ JSON format |
-| **Discord** | `.json` | Exported channel JSON logs (e.g. DiscordChatExporter) |
+| `.txt` | **WhatsApp** | Chat ➔ Export Chat ➔ *Without Media* |
+| `.zip` | **WhatsApp** | Direct zip exported from WhatsApp on iOS or Android |
+| `.json` | **Telegram** | Telegram Desktop ➔ Export Chat History ➔ *JSON format* |
+| `.json` | **Discord** | Channel export generated via DiscordChatExporter JSON |
 
 ---
 
----
-
-## 🚀 Quick Start & Installation
+## 🚀 Quick Start (Tested Copy-Paste)
 
 ### Prerequisites
-- Node.js 18.x or 20.x+
+- Node.js `18.x` or `20.x+`
 - npm or pnpm
 
-### 1. Clone the repository
+### 1. Clone & Install
 ```bash
 git clone https://github.com/Nekyo7/WhatsUp-.git
 cd WhatsUp-
-```
-
-### 2. Install dependencies
-```bash
 npm install
 ```
 
-### 3. (Optional) Configure Environment Variables
-```bash
-cp .env.example .env.local
-```
-Add your preferred API key (optional — app includes a full Local Real-Time NLP Engine and supports in-app BYOK):
-```env
-# Optional: Google Gemini API Key
-GEMINI_API_KEY=your_gemini_api_key_here
-
-# Optional: Anthropic Claude API Key
-ANTHROPIC_API_KEY=your_anthropic_api_key_here
-
-# Optional: OpenAI API Key
-OPENAI_API_KEY=your_openai_api_key_here
-```
-
-### 4. Run Development Server
+### 2. Run the Development Server
 ```bash
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
-### 5. Run Automated Tests
+### 3. Run Automated Tests
 ```bash
-npm test
+npx vitest run
 ```
+*All 54 tests pass across 7 suites.*
 
-### 6. Production Build
+### 4. Production Build & Verify
 ```bash
 npm run build
 npm start
@@ -209,33 +188,53 @@ npm start
 
 ---
 
-## 🚢 Deployment Guide
+## 🧪 Testing with Included Fixtures (For Hackathon Judges)
 
-WhatsUP? is optimized for one-click deployment on **Vercel**, **Netlify**, or **Docker/Node.js**.
+You do not need to use your personal private chats to test WhatsUP?. We provide realistic, pre-anonymized chat fixtures inside `tests/fixtures/`:
 
-### Deploy to Vercel
-1. Push your repository to GitHub.
-2. Import the project into [Vercel](https://vercel.com).
-3. Set Framework Preset to **Next.js**.
-4. (Optional) Add `GEMINI_API_KEY` or `ANTHROPIC_API_KEY` under Environment Variables.
-5. Click **Deploy**.
-
----
-
-## 🧪 Test Suite Coverage
-
-The project includes unit test suites verifying edge cases:
-- `tests/parsers.test.ts`: WhatsApp DMY/MDY date format auto-detection, 12h/24h timestamps, multi-line continuations, Telegram & Discord JSON router.
-- `tests/analytics.test.ts`: Session talk time clustering, reply turnaround latencies, ghost classification, reply debt calculation, promise extraction.
-- `tests/redact.test.ts`: PII anonymization, phone/email/URL masking, client-side unredaction.
-- `tests/groupAndLocalAi.test.ts`: Group chat multi-member statistics, dynamic local AI briefings, contextual reply drafting, Hinglish translation dictionary, BYOK provider detection.
+1. Open **[http://localhost:3000](http://localhost:3000)**.
+2. Click **"Import Chat"** (or use the dropzone in Classic Mode).
+3. Drag and drop any test fixture:
+   - `tests/fixtures/chat_1on1.txt`: Realistic 1-on-1 friend chat with ghosting intervals, commitments, and questions.
+   - `tests/fixtures/group_chat.txt`: Multi-member project group chat with shared decisions and action items.
+   - `tests/fixtures/hinglish_chat.txt`: Rich Hindi-English conversation testing Hinglish promise detection and translation.
+   - `tests/fixtures/media_system_chat.txt`: Chat full of system events, security code changes, and omitted media files.
+4. Or simply click **"Load Demo Dataset"** in the navigation bar to immediately explore all metrics with pre-seeded data.
 
 ---
 
-## 👥 Hackathon Submission
+## 🧰 Tech Stack
 
-- **Repository**: [https://github.com/Nekyo7/WhatsUp-](https://github.com/Nekyo7/WhatsUp-)
-- **Live Demo**: Ready for local and cloud deployment
-- **Context & Roadmap**: See [context.md](file:///d:/git/WhatsUp-/context.md) for architectural records and design decisions.
+| Layer | Technologies |
+|---|---|
+| **Framework** | Next.js 14 (App Router), React 18 |
+| **Language** | TypeScript 5.8 (Strict Mode) |
+| **Styling** | Tailwind CSS, Lucide React icons, Custom Parchment Theme |
+| **Local Storage** | Dexie.js (IndexedDB v2 with schema versioning) |
+| **Visualizations** | Recharts, Custom 24x7 Canvas Heatmap |
+| **Date & Parsing** | chrono-node, JSZip, Native RegEx State Machine |
+| **Security** | Web Crypto API (SubtleCrypto AES-GCM), Next.js CSP Headers |
+| **Testing** | Vitest 3.2 |
+
+---
+
+## ❓ Hackathon Judges FAQ
+
+<details>
+<summary><b>Q: Does any chat text ever reach your server?</b></summary>
+<b>No.</b> All parsing, statistics, latencies, promise detection, and profile building occur exclusively in your browser via JavaScript and Dexie (IndexedDB). When you use optional AI briefings or translations, only a PII-redacted excerpt is sent directly to your chosen provider (or processed locally via our zero-network extractive NLP engine).
+</details>
+
+<details>
+<summary><b>Q: How does WhatsUP? detect ghosting if chat exports don't have read receipts?</b></summary>
+Chat exports indicate message timestamps and senders, but not read receipts. WhatsUP? defines ghosting as an <i>unanswered conversational turn</i>. If you sent the last question/turn and received no response after 3+ days, that conversation is flagged. To prevent false positives, we check for conversation closers ("Thanks", "👍", "Bye") and adapt thresholds to each relationship's typical response latency.
+</details>
+
+<details>
+<summary><b>Q: Why does the app support both Storybook RPG Mode and Classic View?</b></summary>
+Conversational debt produces real anxiety. The <b>Cozy Storybook RPG Mode</b> reframes guilt as a playful, immersive quest with warm parchment aesthetics, lowering cognitive friction. For deep analytical inspections, the <b>Classic Ledger Mode</b> provides dense tables, Recharts graphs, and itemized debt scores.
+</details>
+
+---
 
 *Built with ❤️ for hackers, friends, and chronically unread communicators.*
