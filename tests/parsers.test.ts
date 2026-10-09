@@ -107,4 +107,14 @@ Step 3: Monitor logs
     expect(parsedDc.platform).toBe("discord");
     expect(parsedDc.messages[0].text).toBe("Discord GG");
   });
+
+  it("Test 8: handles Unicode spaces, narrow no-break spaces (\\u202F), and ISO/dot dates", () => {
+    const rawUnicode = `15.04.2024, 11.30\u202Fpm - ~Kunal (+91 98765 43210): Bhai kal pakka bhej dunga
+2024-04-16, 09:15 - ~Kunal (+91 98765 43210): Sent the file!`;
+    const res = parseWhatsAppExport(rawUnicode, "Kunal.txt");
+    expect(res.messages).toHaveLength(2);
+    expect(new Date(res.messages[0].timestamp).getUTCHours()).toBe(23); // 11:30 PM is 23:30 UTC
+    expect(res.messages[0].sender).toContain("Kunal");
+    expect(new Date(res.messages[1].timestamp).getUTCDate()).toBe(16);
+  });
 });

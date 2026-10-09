@@ -85,7 +85,8 @@ function detectDateFormat(lines: string[]): "DMY" | "MDY" {
   const datePattern = /(?:^\[?|\s)(\d{1,2})[./\-](\d{1,2})[./\-](\d{2,4})/;
 
   for (let i = 0; i < Math.min(lines.length, 500); i++) {
-    const match = lines[i].match(datePattern);
+    const cleanLine = lines[i].replace(/[\u200E\u200F\u202A-\u202E\u202F\u00A0\uFEFF]/g, " ");
+    const match = cleanLine.match(datePattern);
     if (match) {
       const num1 = parseInt(match[1], 10);
       const num2 = parseInt(match[2], 10);
@@ -97,7 +98,7 @@ function detectDateFormat(lines: string[]): "DMY" | "MDY" {
     }
   }
 
-  // Default to DMY (standard in most of world including India/UK) unless MDY has clear signals
+  // Default to DMY (standard in India, UK, Europe, etc.) unless MDY has clear signals
   return secondOver12 > firstOver12 ? "MDY" : "DMY";
 }
 
@@ -110,26 +111,46 @@ function parseWhatsAppTimestamp(
   dateFormat: "DMY" | "MDY"
 ): string | null {
   try {
-    // Clean date separators
-    const dMatch = datePart.match(/(\d{1,2})[./\-](\d{1,2})[./\-](\d{2,4})/);
-    if (!dMatch) return null;
+    const cleanDate = datePart.trim();
+    const cleanTime = timePart.replace(/[\u202F\u00A0\uFEFF]/g, " ").trim();
 
-    let day = parseInt(dMatch[1], 10);
-    let month = parseInt(dMatch[2], 10);
-    let year = parseInt(dMatch[3], 10);
+    let year = 2024;
+    let month = 1;
+    let day = 1;
 
-    if (dateFormat === "MDY") {
-      const temp = day;
-      day = month;
-      month = temp;
+    // Check for ISO date format: YYYY-MM-DD or YYYY/MM/DD
+    const isoMatch = cleanDate.match(/^(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})$/);
+    if (isoMatch) {
+      year = parseInt(isoMatch[1], 10);
+      month = parseInt(isoMatch[2], 10);
+      day = parseInt(isoMatch[3], 10);
+    } else {
+      const dMatch = cleanDate.match(/^(\d{1,2})[./\-](\d{1,2})[./\-](\d{2,4})$/);
+      if (!dMatch) return null;
+
+      let num1 = parseInt(dMatch[1], 10);
+      let num2 = parseInt(dMatch[2], 10);
+      let num3 = parseInt(dMatch[3], 10);
+
+      if (dateFormat === "MDY") {
+        month = num1;
+        day = num2;
+      } else {
+        day = num1;
+        month = num2;
+      }
+
+      year = num3;
+      if (year < 100) {
+        year += 2000;
+      }
     }
 
-    if (year < 100) {
-      year += 2000;
-    }
+    if (month < 1 || month > 12 || day < 1 || day > 31) return null;
 
-    // Clean time part (e.g., "3:45:12 PM", "15:45", "03:45 pm", "3:45:12")
-    const tMatch = timePart.trim().match(/(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(am|pm|AM|PM)?/i);
+    // Clean time part (e.g., "3:45:12 PM", "15:45", "03:45 pm", "3:45:12", "03.45 pm")
+    const normalizedTime = cleanTime.replace(/\./g, ":");
+    const tMatch = normalizedTime.match(/(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(am|pm|AM|PM)?/i);
     if (!tMatch) return null;
 
     let hours = parseInt(tMatch[1], 10);
@@ -158,11 +179,13 @@ export function parseWhatsAppExport(fileContent: string, fileName: string): Pars
   const lines = fileContent.replace(/\r\n/g, "\n").replace(/\r/g, "\n").split("\n");
   const dateFormat = detectDateFormat(lines);
 
-  // Line regex variations:
+  // Universal regex supporting:
   // 1) [15/03/24, 11:42:15 AM] Sender: Text
   // 2) 15/03/24, 11:42 AM - Sender: Text
   // 3) 15/03/2024, 11:42 - Sender: Text
-  const linePattern = /^(?:\[?(\d{1,2}[./\-]\d{1,2}[./\-]\d{2,4})[,\s]+(\d{1,2}:\d{2}(?::\d{2})?(?:\s*[AaPp][Mm])?)\]?(?:\s*-\s*|\s+))([^:]+?)(?::\s*(.*)|$)/;
+  // 4) 2024-03-15, 11:42 - Sender: Text
+  // 5) 15.03.2024, 11:42 - Sender: Text
+  const linePattern = /^(?:\[?(\d{1,4}[./\-]\d{1,2}[./\-]\d{2,4})[,\s]+(\d{1,2}[:.]\d{2}(?:[:.]\d{2})?(?:\s*[AaPp][Mm])?)\]?(?:\s*-\s*|\s+))([^:]+?)(?::\s*(.*)|$)/;
 
   const messages: Message[] = [];
   const participantsSet = new Set<string>();
@@ -177,8 +200,11 @@ export function parseWhatsAppExport(fileContent: string, fileName: string): Pars
 
   for (let i = 0; i < lines.length; i++) {
     const rawLine = lines[i];
-    // Remove LTR/RTL invisible markers
-    const line = rawLine.replace(/[\u200E\u200F\u202A-\u202E]/g, "").trimEnd();
+    // Strip all zero-width, bidirectional, and special space unicode markers
+    const line = rawLine
+      .replace(/[\u200E\u200F\u202A-\u202E\uFEFF\u200B\u200C\u200D]/g, "")
+      .replace(/[\u202F\u00A0]/g, " ")
+      .trimEnd();
     if (!line) continue;
 
     const match = line.match(linePattern);
@@ -195,7 +221,9 @@ export function parseWhatsAppExport(fileContent: string, fileName: string): Pars
       const possibleSender = match[3]?.trim();
       const content = match[4] !== undefined ? match[4].trim() : "";
 
-      const isoTimestamp = parseWhatsAppTimestamp(dateStr, timeStr, dateFormat) || new Date().toISOString();
+      const parsedTs = parseWhatsAppTimestamp(dateStr, timeStr, dateFormat);
+      // If parsing fails, interpolate from previous message or fallback
+      const isoTimestamp = parsedTs || (messages.length > 0 ? messages[messages.length - 1].timestamp : new Date().toISOString());
 
       // Check if it's a system message (either no colon or sender matches system text)
       const isSystemNotice =

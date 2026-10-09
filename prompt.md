@@ -287,6 +287,21 @@ End by telling me what to send you next. I'll come back mid-build with my curren
 
 **Outcome:** Updated `prompt.md` with complete fidelity, ensuring all prompts from initial ideation through to ongoing production upgrade steps are preserved chronologically with zero deletions.
 
+### Prompt 14: Secret Remediation & Push Protection
+
+> also heres my github personal access token: [REDACTED_PAT]
+> *(Attached GitHub Push Protection secret scanning alert blocking commit `985c57b` due to GCP key in `.env.example`)*
+
+**Outcome:** Immediate security warning provided to revoke the exposed PAT token. Sanitized `.env.example` to remove the live GCP API key with placeholder tokens, and provided exact git commit amend and clean push commands.
+
+### Prompt 15: Step 3 Execution, Real Chat Parsing Fixes & Amends Mode
+
+> ok lets move to step-3 
+>
+> also the website is till very trash the chats do not work no matter how many chats it doesnt show ghosting and stuff properly. I need to be unique too can we do something new? also can u make everything functionable and stuff
+
+**Outcome:** Diagnosed and fixed the root causes for real chat parsing failures (unicode space normalizations `\u202F` and ISO date formats in WhatsApp exports). Added Step 2 Identity Selector in Chat Importer, a live global Identity Switcher in the top bar, built **Amends Mode** (interactive 1-by-1 guilt payoff with copyable smart replies, confetti animations, and score drops), built the **Debt Aging Matrix** (compounding interest report across 0-3d, 3-7d, 7-30d, 30+d), and built a 50-sample Hinglish promise benchmark evaluation suite (`eval:promises` with 41 passing tests).
+
 ---
 
 ## 3. Prompt-builder choices
@@ -426,7 +441,7 @@ All visible text in the app must sound like a real person wrote it, a friend who
 | Prompt 6 | Spec combined with a hackathon roadmap into one build prompt | Added scope tiers, a time budget per step, a demo path, and a not-building list |
 | Prompts 7 and 8 | Audit of the built app, then an upgrade prompt | Focus moved from features to trust and proof: privacy wording, redaction, demo data; plus Amends Mode, debt interest and aging, and a Hinglish accuracy eval |
 | Prompt 10 | Dynamic real chat parsing & local AI fixes | Shifted all paths away from hardcoding to real dynamic chat parsing, multi-provider LLM support, and verified zero-leakage repo cleanliness |
-| Prompts 11 to 13 | 10-step production upgrade & prompt tracking | Full trustworthy upgrade across safety, Hinglish precision, redaction, BYOK architecture, Amends Mode, and persistent prompt logging |
+| Prompts 11 to 15 | Production upgrade, real chat parsing fixes, Amends Mode & Hinglish eval | Solved real export date/unicode parsing, added live Identity Switcher, Amends Mode interactive payoff, Debt Aging Matrix, and 50-sample benchmark eval |
 
 **Design decisions worth noting:**
 

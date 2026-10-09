@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Sparkles, Trophy, Trash2, Shield, Upload, FileText, CheckCircle2, RotateCcw, Cpu, PlusCircle } from "lucide-react";
+import { Sparkles, Trophy, Trash2, Shield, Upload, FileText, CheckCircle2, RotateCcw, Cpu, PlusCircle, UserCheck, HeartHandshake } from "lucide-react";
 import { db } from "@/lib/db";
+import { analyzeChat } from "@/lib/analytics";
 import { calculateReplyDebt } from "@/lib/analytics/debt";
 import { calculateHeatmap } from "@/lib/analytics/heatmap";
 import { ChatImporter } from "@/components/ChatImporter";
@@ -18,6 +19,8 @@ import { WrappedModal } from "@/components/WrappedModal";
 import { WipeDataModal } from "@/components/WipeDataModal";
 import { ChatDetailModal } from "@/components/ChatDetailModal";
 import { AISettingsModal } from "@/components/AISettingsModal";
+import { AmendsModeModal } from "@/components/AmendsModeModal";
+import { IdentitySwitcherModal } from "@/components/IdentitySwitcherModal";
 import type { Chat, Message, ChatStats, GhostEntry, PromiseItem, ReplyDebtBreakdown, HeatmapPoint } from "@/types";
 
 export default function Home() {
@@ -32,6 +35,7 @@ export default function Home() {
   const [isLoadingDB, setIsLoadingDB] = useState(true);
   const [isDemoDataset, setIsDemoDataset] = useState(false);
   const [activeAIEngine, setActiveAIEngine] = useState<string>("Local AI");
+  const [activeSelfName, setActiveSelfName] = useState<string>("You");
 
   // Modal active states
   const [activeChatForDetail, setActiveChatForDetail] = useState<Chat | null>(null);
@@ -41,11 +45,15 @@ export default function Home() {
   const [isWipeModalOpen, setIsWipeModalOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isImporterOpen, setIsImporterOpen] = useState(false);
+  const [isAmendsOpen, setIsAmendsOpen] = useState(false);
+  const [isIdentityModalOpen, setIsIdentityModalOpen] = useState(false);
 
   // Load from Dexie on mount
   useEffect(() => {
     loadExistingDatabase();
     refreshAIEngineBadge();
+    const savedSelf = localStorage.getItem("whatsup_self_name");
+    if (savedSelf) setActiveSelfName(savedSelf);
   }, []);
 
   const refreshAIEngineBadge = () => {
@@ -72,6 +80,10 @@ export default function Home() {
         setGhosts(storedGhosts);
         setPromises(storedPromises);
         setAllMessages(storedMsgs);
+
+        if (storedChats[0]?.selfName) {
+          setActiveSelfName(storedChats[0].selfName);
+        }
 
         const debt = calculateReplyDebt(storedGhosts, storedChats, storedPromises);
         setReplyDebt(debt);
@@ -101,11 +113,86 @@ export default function Home() {
     setIsDemoDataset(data.isDemo);
     setIsImporterOpen(false);
 
+    if (data.chats[0]?.selfName) {
+      setActiveSelfName(data.chats[0].selfName);
+    }
+
     db.messages.toArray().then((msgs) => {
       setAllMessages(msgs);
       setAggregateHeatmap(calculateHeatmap(msgs));
     });
   };
+
+  // Switch identity and recalculate all analytics across all chats live
+  const handleSwitchIdentity = async (newSelfName: string) => {
+    setActiveSelfName(newSelfName);
+    localStorage.setItem("whatsup_self_name", newSelfName);
+
+    if (chats.length === 0) return;
+
+    const updatedChats = chats.map((c) => ({ ...c, selfName: newSelfName }));
+    const newStats: ChatStats[] = [];
+    const newGhosts: GhostEntry[] = [];
+    const newPromises: PromiseItem[] = [];
+
+    const totalChats = updatedChats.length || 1;
+
+    for (let i = 0; i < updatedChats.length; i++) {
+      const chat = updatedChats[i];
+      const chatMsgs = allMessages.filter((m) => m.chatId === chat.id);
+      const analysis = analyzeChat(chat.id, chatMsgs, newSelfName, (i + 1) / totalChats);
+
+      newStats.push(analysis.stats);
+      if (analysis.ghost) {
+        newGhosts.push(analysis.ghost);
+      }
+      newPromises.push(...analysis.promises);
+    }
+
+    const newDebt = calculateReplyDebt(newGhosts, updatedChats, newPromises);
+
+    setChats(updatedChats);
+    setStats(newStats);
+    setGhosts(newGhosts);
+    setPromises(newPromises);
+    setReplyDebt(newDebt);
+
+    // Persist updated analytics in Dexie
+    await db.transaction("rw", [db.chats, db.stats, db.ghosts, db.promises], async () => {
+      await db.chats.bulkPut(updatedChats);
+      await db.stats.bulkPut(newStats);
+      await db.ghosts.bulkPut(newGhosts);
+      await db.promises.bulkPut(newPromises);
+    });
+  };
+
+  // Mark debt/promise paid via Amends Mode
+  const handleMarkItemPaid = async (item: { type: "ghost" | "promise"; id: string; chatId: string }) => {
+    if (item.type === "ghost") {
+      const updatedGhosts = ghosts.filter((g) => g.chatId !== item.chatId);
+      setGhosts(updatedGhosts);
+      const newDebt = calculateReplyDebt(updatedGhosts, chats, promises);
+      setReplyDebt(newDebt);
+      await db.ghosts.where("chatId").equals(item.chatId).delete();
+    } else {
+      const updatedPromises = promises.map((p) => (p.id === item.id ? { ...p, status: "done" as const } : p));
+      setPromises(updatedPromises);
+      const newDebt = calculateReplyDebt(ghosts, chats, updatedPromises);
+      setReplyDebt(newDebt);
+      await db.promises.update(item.id, { status: "done" });
+    }
+  };
+
+  // Extract all unique detected senders across imported messages
+  const availableSendersMap = new Map<string, number>();
+  allMessages.forEach((m) => {
+    if (!m.isSystem && m.sender && m.sender !== "System") {
+      availableSendersMap.set(m.sender, (availableSendersMap.get(m.sender) || 0) + 1);
+    }
+  });
+  const availableSenders = Array.from(availableSendersMap.entries())
+    .map(([name, messageCount]) => ({ name, messageCount }))
+    .sort((a, b) => b.messageCount - a.messageCount);
 
   const handleSelectChatById = (chatId: string) => {
     const chat = chats.find((c) => c.id === chatId);
@@ -155,6 +242,18 @@ export default function Home() {
 
           {/* Action Bar */}
           <div className="flex flex-wrap items-center gap-3">
+            {/* Identity Switcher Button */}
+            {chats.length > 0 && (
+              <button
+                onClick={() => setIsIdentityModalOpen(true)}
+                className="px-3.5 py-1.5 rounded-lg bg-[#121A2E] hover:bg-[#1E2C4D] border border-[#2B4070] text-xs font-mono text-[#64D2FF] flex items-center gap-1.5 transition-all shadow-sm"
+                title="Switch which sender identity is 'You'"
+              >
+                <UserCheck className="w-3.5 h-3.5 text-[#64D2FF]" />
+                <span>You: <strong>{activeSelfName}</strong></span>
+              </button>
+            )}
+
             {/* AI Engine Selector Button */}
             <button
               onClick={() => setIsSettingsOpen(true)}
@@ -230,7 +329,14 @@ export default function Home() {
                     <strong>BENCHMARK DATASET LOADED:</strong> 9 synthetic WhatsApp, Telegram & Discord conversations.
                   </span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => setIsAmendsOpen(true)}
+                    className="px-3 py-1 rounded-lg bg-[#FF334B]/20 border border-[#FF334B]/50 text-[#FF453A] font-bold hover:bg-[#FF334B]/30 transition-all flex items-center gap-1"
+                  >
+                    <HeartHandshake className="w-3.5 h-3.5" />
+                    <span>Try Amends Mode</span>
+                  </button>
                   <button
                     onClick={() => {
                       const rohanChat = chats.find((c) => c.id === "wa_rohan_sharma");
@@ -244,12 +350,19 @@ export default function Home() {
               </div>
             )}
 
-            {/* 1. Reply Debt Hero Card */}
+            {/* 1. Reply Debt Hero Card with Amends Mode & Debt Aging Matrix */}
             {replyDebt && (
-              <ReplyDebtCard debt={replyDebt} onSelectChat={handleSelectChatById} />
+              <ReplyDebtCard
+                debt={replyDebt}
+                ghosts={ghosts}
+                promises={promises}
+                chats={chats}
+                onSelectChat={handleSelectChatById}
+                onOpenAmendsMode={() => setIsAmendsOpen(true)}
+              />
             )}
 
-            {/* 2. Ghost Radar (4 Lanes) */}
+            {/* 2. Ghost Radar (4 Lanes + In-Sync) */}
             <GhostRadar
               ghosts={ghosts}
               chats={chats}
@@ -338,6 +451,25 @@ export default function Home() {
         onOpenBriefing={handleTriggerBriefing}
         onOpenReplyDraft={handleTriggerReplyDraft}
         onClose={() => setActiveChatForDetail(null)}
+      />
+
+      {/* Standout Feature: Amends Mode Modal */}
+      <AmendsModeModal
+        isOpen={isAmendsOpen}
+        onClose={() => setIsAmendsOpen(false)}
+        ghosts={ghosts}
+        chats={chats}
+        promises={promises}
+        onMarkItemPaid={handleMarkItemPaid}
+      />
+
+      {/* Standout Feature: Identity Switcher Modal */}
+      <IdentitySwitcherModal
+        isOpen={isIdentityModalOpen}
+        onClose={() => setIsIdentityModalOpen(false)}
+        currentSelfName={activeSelfName}
+        availableSenders={availableSenders}
+        onSelectIdentity={handleSwitchIdentity}
       />
     </main>
   );
