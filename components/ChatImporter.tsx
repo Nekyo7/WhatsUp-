@@ -389,7 +389,7 @@ export const ChatImporter: React.FC<ChatImporterProps> = ({ onDataLoaded }) => {
             ref={fileInputRef}
             onChange={handleFileInputChange}
             multiple
-            accept=".txt,.json"
+            accept=".txt,.json,.zip"
             className="hidden"
           />
 
@@ -403,14 +403,14 @@ export const ChatImporter: React.FC<ChatImporterProps> = ({ onDataLoaded }) => {
                 Drop Exported Chat Files to Audit
               </h2>
               <p className="text-sm text-[#8E99B8] leading-relaxed">
-                Upload exported <strong>WhatsApp</strong> (.txt), <strong>Telegram</strong> (JSON), or <strong>Discord</strong> (JSON) chats. Supports both 1-on-1 and Group chats.
+                Upload exported <strong>WhatsApp</strong> (.txt / .zip), <strong>Telegram</strong> (.json), or <strong>Discord</strong> (.json) chats. Supports both 1-on-1 and Group chats.
               </p>
             </div>
 
             {/* Supported Format Pills */}
             <div className="flex flex-wrap items-center justify-center gap-2 pt-2 text-xs font-mono text-[#7D88A6]">
               <span className="px-3 py-1.5 rounded-xl bg-[#111524] border border-[#1E253E] flex items-center gap-1.5 text-[#30D158]">
-                <FileText className="w-3.5 h-3.5" /> WhatsApp .txt
+                <FileText className="w-3.5 h-3.5" /> WhatsApp .txt / .zip
               </span>
               <span className="px-3 py-1.5 rounded-xl bg-[#111524] border border-[#1E253E] flex items-center gap-1.5 text-[#64D2FF]">
                 <FileText className="w-3.5 h-3.5" /> Telegram .json
@@ -422,6 +422,7 @@ export const ChatImporter: React.FC<ChatImporterProps> = ({ onDataLoaded }) => {
                 <Users className="w-3.5 h-3.5" /> Group Chats
               </span>
             </div>
+
 
             {/* Honest Privacy Statement */}
             <div className="pt-3 flex flex-col items-center gap-1.5 text-xs font-mono text-[#8894B3]">

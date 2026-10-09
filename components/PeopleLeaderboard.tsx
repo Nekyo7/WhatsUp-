@@ -8,9 +8,16 @@ interface PeopleLeaderboardProps {
   chats: Chat[];
   stats: ChatStats[];
   onSelectChat: (chatId: string) => void;
+  onOpenPersonProfile?: (personName: string, chat: Chat) => void;
 }
 
-export const PeopleLeaderboard: React.FC<PeopleLeaderboardProps> = ({ chats, stats, onSelectChat }) => {
+export const PeopleLeaderboard: React.FC<PeopleLeaderboardProps> = ({
+  chats,
+  stats,
+  onSelectChat,
+  onOpenPersonProfile,
+}) => {
+
   const [sortBy, setSortBy] = useState<"volume" | "talkTime" | "replyTime">("volume");
   const [filterType, setFilterType] = useState<"all" | "direct" | "group">("all");
 

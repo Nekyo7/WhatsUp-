@@ -116,4 +116,57 @@ describe("Hinglish & English Promise Detection Suite", () => {
     const promises = extractPromises([msg1, msg2], "You", baseTime);
     expect(promises).toHaveLength(0);
   });
+
+  it("Test 16: Detects promises made BY OTHERS to you ('they_owe_me')", () => {
+    const msg: Message = {
+      id: "16",
+      chatId: "c1",
+      sender: "Rohan",
+      timestamp: baseTime.toISOString(),
+      text: "I'll send the updated pitch deck by tomorrow morning",
+      isSystem: false,
+      isMedia: false,
+    };
+    const promises = extractPromises([msg], "You", baseTime);
+    expect(promises).toHaveLength(1);
+    expect(promises[0].direction).toBe("they_owe_me");
+    expect(promises[0].promiser).toBe("Rohan");
+    expect(promises[0].promisee).toBe("You");
+  });
+
+  it("Test 17: Tracks overdue resolution when due date has passed without completion", () => {
+    const msg: Message = {
+      id: "17",
+      chatId: "c1",
+      sender: "You",
+      timestamp: new Date("2024-03-10T10:00:00Z").toISOString(),
+      text: "I will finish the design by Friday",
+      isSystem: false,
+      isMedia: false,
+    };
+    // Reference time 10 days later (March 20)
+    const promises = extractPromises([msg], "You", baseTime);
+    expect(promises).toHaveLength(1);
+    expect(promises[0].resolution).toBe("overdue");
+    expect(promises[0].evidence).toContain("Due date passed");
+  });
+
+  it("Test 18: Respects user manual overrides (kept, dismissed)", () => {
+    const msg: Message = {
+      id: "18",
+      chatId: "c1",
+      sender: "You",
+      timestamp: baseTime.toISOString(),
+      text: "I'll transfer the money tonight",
+      isSystem: false,
+      isMedia: false,
+    };
+    const overrides = { "promise_18": "kept" as const };
+    const promises = extractPromises([msg], "You", baseTime, overrides);
+    expect(promises).toHaveLength(1);
+    expect(promises[0].status).toBe("done");
+    expect(promises[0].resolution).toBe("kept");
+    expect(promises[0].evidence).toBe("Marked as kept by user");
+  });
 });
+

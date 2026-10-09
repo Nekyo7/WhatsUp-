@@ -1,5 +1,5 @@
 import * as chrono from "chrono-node";
-import type { Message, PromiseItem, PromiseStatus } from "@/types";
+import type { Message, PromiseItem, PromiseStatus, PromiseDirection, PromiseResolution } from "@/types";
 
 // Negative patterns: requests, non-commitments, conditionals, pure attendance
 const NEGATIVE_PATTERNS = [
@@ -16,17 +16,19 @@ const NEGATIVE_PATTERNS = [
   /\bbhejega kya\b/i,
   /\bkarega kya\b/i,
   /\b(?:if|agar)\s+.*\b(?:karunga|bhejunga|dunga)\b/i, // conditional
+  /\bi won'?t\b/i,
+  /\bwould send if\b/i,
 ];
 
 // Positive commitment patterns
 const COMMITMENT_REGEXES = [
-  /\b(?:i'?ll|i will|let me|will do|give me till|i can send|i promise|will share|will upload|will send|will check and send|i am going to|i'll review|i'll ping|will update|will get back)\b/i,
-  /\b(?:main kar dunga|mai kar dunga|kal bhej dunga|sham ko bhejta hu|aaj bhej dunga|dekh ke batata hu|karta hu|bhejta hu|share karta hu|pakka bhejta hu|de dunga|bhej dunga|ho jayega|kar dunga|dekh lenge|kal tak|kal subah|sham tak|thodi der mai|thodi der me|bhej rha hu|kar rha hu|mai karunga|mai bhejta hu|main bhejunga|main karunga|karunga|bhejunga)\b/i,
+  /\b(?:i'?ll|i will|let me|will do|give me till|i can send|i promise|will share|will upload|will send|will check and send|i am going to|i'll review|i'll ping|will update|will get back|we'll meet|i'll pay|will transfer)\b/i,
+  /\b(?:main kar dunga|mai kar dunga|kal bhej dunga|sham ko bhejta hu|aaj bhej dunga|dekh ke batata hu|karta hu|bhejta hu|share karta hu|pakka bhejta hu|de dunga|bhej dunga|ho jayega|kar dunga|dekh lenge|kal tak|kal subah|sham tak|thodi der mai|thodi der me|bhej rha hu|kar rha hu|mai karunga|mai bhejta hu|main bhejunga|main karunga|karunga|bhejunga|pakka|promise kar raha|kar dungi|bhej dungi)\b/i,
 ];
 
 // Explicit completion cues from the sender
 const EXPLICIT_COMPLETION_REGEXES = [
-  /\b(?:bhej diya|kar diya|shared the|uploaded the|mailed the|sent the link|sent it|done with|completed the|ho gaya bhai|check karo|attached the|done)\b/i,
+  /\b(?:bhej diya|kar diya|shared the|uploaded the|mailed the|sent the link|sent it|done with|completed the|ho gaya bhai|check karo|attached the|done|paid|transferred|here you go|here it is)\b/i,
 ];
 
 // Hinglish future vs past tense indicators
@@ -81,25 +83,28 @@ export function resolveHinglishDueDate(text: string, msgDate: Date): { dueAt: st
 }
 
 /**
- * Extracts explicit commitments made by the user in chat,
+ * Extracts explicit commitments made in chat (both directions: I owe vs They owe me),
  * extracts deadlines using chrono-node and Hinglish tense resolution,
- * filters negative/non-commitment patterns, and tracks completion status.
+ * filters negative/non-commitment patterns, tracks completion resolution,
+ * and incorporates user overrides.
  */
 export function extractPromises(
   messages: Message[],
   selfName: string,
-  referenceTime: Date = new Date()
+  referenceTime?: Date,
+  userOverrides?: Record<string, "kept" | "dismissed" | "wrong">
 ): PromiseItem[] {
   const validMessages = messages
     .filter((m) => !m.isSystem)
     .sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
 
+  if (validMessages.length === 0) return [];
+
+  const effectiveRefTime = referenceTime || new Date(validMessages[validMessages.length - 1].timestamp);
   const promises: PromiseItem[] = [];
 
   for (let i = 0; i < validMessages.length; i++) {
     const msg = validMessages[i];
-    if (msg.sender !== selfName) continue;
-
     const text = msg.text.trim();
     if (!text || text.length < 5) continue;
 
@@ -143,6 +148,10 @@ export function extractPromises(
 
     if (!isCommitment) continue;
 
+    const isFromMe = msg.sender === selfName;
+    const direction: PromiseDirection = isFromMe ? "i_owe" : "they_owe_me";
+    const otherParticipant = validMessages.find((m) => m.sender !== msg.sender)?.sender || (isFromMe ? "Others" : selfName);
+
     const msgDate = new Date(msg.timestamp);
 
     // 5. Extract deadline using Hinglish tense resolution or chrono-node
@@ -164,16 +173,22 @@ export function extractPromises(
       // Fallback cleanly
     }
 
-    // 6. Determine status: check if explicit completion was confirmed later in chat
+    // 6. Determine resolution: check if explicit completion was confirmed later in chat
     let status: PromiseStatus = "open";
-    const daysSinceMsg = (referenceTime.getTime() - msgDate.getTime()) / (1000 * 60 * 60 * 24);
+    let resolution: PromiseResolution = "open";
+    let evidenceText = `Promised on ${msgDate.toLocaleDateString()}`;
+
+    const daysSinceMsg = (effectiveRefTime.getTime() - msgDate.getTime()) / (1000 * 60 * 60 * 24);
 
     for (let j = i + 1; j < validMessages.length; j++) {
       const laterMsg = validMessages[j];
-      if (laterMsg.sender === selfName) {
+      // Completion cue must come from the person who made the promise
+      if (laterMsg.sender === msg.sender) {
         for (const compRegex of EXPLICIT_COMPLETION_REGEXES) {
-          if (compRegex.test(laterMsg.text)) {
+          if (compRegex.test(laterMsg.text) || laterMsg.isMedia) {
             status = "done";
+            resolution = "kept";
+            evidenceText = `Completed in follow-up message: "${laterMsg.text.slice(0, 60)}"`;
             break;
           }
         }
@@ -181,23 +196,51 @@ export function extractPromises(
       }
     }
 
-    if (status === "open" && daysSinceMsg > 14) {
-      status = "stale";
+    if (status === "open") {
+      if (dueAt && new Date(dueAt).getTime() < effectiveRefTime.getTime()) {
+        resolution = "overdue";
+        evidenceText = `Due date passed on ${new Date(dueAt).toLocaleDateString()} without completion cue`;
+      } else if (daysSinceMsg > 14) {
+        status = "stale";
+        resolution = "broken";
+        evidenceText = `Unresolved after ${Math.floor(daysSinceMsg)} days of silence`;
+      } else {
+        resolution = "open";
+        evidenceText = dueAt ? `Due by ${new Date(dueAt).toLocaleDateString()}` : `Open commitment`;
+      }
+    }
+
+    const promiseId = `promise_${msg.id}`;
+
+    // Apply any user override
+    const override = userOverrides ? userOverrides[promiseId] : null;
+    if (override === "kept") {
+      status = "done";
+      resolution = "kept";
+      evidenceText = "Marked as kept by user";
+    } else if (override === "dismissed") {
+      status = "done";
+      evidenceText = "Dismissed by user";
     }
 
     promises.push({
-      id: `promise_${msg.id}`,
+      id: promiseId,
       chatId: msg.chatId,
       messageId: msg.id,
       text,
       sender: msg.sender,
+      promiser: msg.sender,
+      promisee: otherParticipant,
+      direction,
       dueAt,
       status,
+      resolution,
       confidence: Number(confidence.toFixed(2)),
+      evidence: evidenceText,
+      userOverride: override || null,
       createdAt: msg.timestamp,
     });
   }
 
   return promises;
 }
-

@@ -29,11 +29,15 @@ export function analyzeChat(
   messages: Message[],
   selfName: string,
   volumePercentile = 0.5,
-  referenceTime: Date = new Date()
+  referenceTime?: Date
 ): FullChatAnalysisResult {
   const validMessages = messages
     .filter((m) => !m.isSystem)
     .sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
+
+  const lastMsg = validMessages[validMessages.length - 1];
+  // If no reference time is passed, measure relative to the export's last message timestamp!
+  const effectiveRefTime = referenceTime || (lastMsg ? new Date(lastMsg.timestamp) : new Date());
 
   // 1. Message shares
   const youCount = validMessages.filter((m) => m.sender === selfName).length;
@@ -51,23 +55,23 @@ export function analyzeChat(
   const heatmap = calculateHeatmap(messages);
 
   // 5. Last message details
-  const lastMsg = validMessages[validMessages.length - 1];
   const lastMessageFrom = lastMsg?.sender || "Unknown";
-  const lastTime = lastMsg ? new Date(lastMsg.timestamp).getTime() : referenceTime.getTime();
+  const lastTime = lastMsg ? new Date(lastMsg.timestamp).getTime() : effectiveRefTime.getTime();
   const daysSinceLastMessage = Math.max(
     0,
-    Math.floor((referenceTime.getTime() - lastTime) / (1000 * 60 * 60 * 24))
+    Math.floor((effectiveRefTime.getTime() - lastTime) / (1000 * 60 * 60 * 24))
   );
 
   // 6. 30-day activity rates
-  const { recentRate, peakRate } = calculate30DayActivityRates(validMessages, referenceTime);
+  const { recentRate, peakRate } = calculate30DayActivityRates(validMessages, effectiveRefTime);
 
   // 7. Ghost classification
   const sendersSet = new Set(validMessages.map((m) => m.sender));
-  const ghost = classifyGhostStatus(chatId, messages, selfName, volumePercentile, referenceTime, sendersSet.size);
+  const ghost = classifyGhostStatus(chatId, messages, selfName, volumePercentile, effectiveRefTime, sendersSet.size);
 
   // 8. Promises
-  const promises = extractPromises(messages, selfName, referenceTime);
+  const promises = extractPromises(messages, selfName, effectiveRefTime);
+
 
   // 9. Historical Longest Silence & Unanswered Questions
   let maxSilenceDays = 0;

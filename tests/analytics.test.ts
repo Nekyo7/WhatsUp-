@@ -155,4 +155,29 @@ describe("Analytics Unit Tests", () => {
     // m2 promise should be marked "done" due to m3 completion cue
     expect(promises[1].status).toBe("done");
   });
+
+  it("Test 7: Does NOT flag ghosting when conversation ended with a natural closer like 'thanks' or '👍'", () => {
+    const closedMessages: Message[] = [
+      { id: "m1", chatId: "c_close", sender: "Rohan", timestamp: "2024-03-10T10:00:00Z", text: "Here are the files", isSystem: false, isMedia: false },
+      { id: "m2", chatId: "c_close", sender: "You", timestamp: "2024-03-10T10:05:00Z", text: "Thanks 👍", isSystem: false, isMedia: false },
+    ];
+
+    // Reference time 8 days later, but the thread closed politely with "Thanks 👍"
+    const ghost = classifyGhostStatus("c_close", closedMessages, "You", 0.5, baseTime);
+    expect(ghost).toBeNull();
+  });
+
+  it("Test 8: Populates explainable evidence and adaptive confidence in GhostEntry", () => {
+    const questionMessages: Message[] = [
+      { id: "m1", chatId: "c_evidence", sender: "You", timestamp: "2024-03-10T10:00:00Z", text: "Hey! Can we meet at 4pm?", isSystem: false, isMedia: false },
+    ];
+
+    const ghost = classifyGhostStatus("c_evidence", questionMessages, "You", 0.5, baseTime);
+    expect(ghost).not.toBeNull();
+    expect(ghost?.type).toBe("they_ghosted");
+    expect(ghost?.evidence).toBeDefined();
+    expect(ghost?.evidence?.isQuestion).toBe(true);
+    expect(ghost?.explanation).toContain("usually replies");
+  });
 });
+
