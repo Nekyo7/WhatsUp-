@@ -173,11 +173,27 @@ export const PeopleLeaderboard: React.FC<PeopleLeaderboardProps> = ({
                           <Users className="w-3 h-3" /> {item.chat.participants.length || memberStats.length} members
                         </span>
                       ) : (
-                        <span>1-on-1</span>
+                        <span className="flex items-center gap-2">
+                          <span>1-on-1</span>
+                          {onOpenPersonProfile && (
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                const other = item.chat.participants.find((p) => p !== item.chat.selfName) || item.chat.title;
+                                onOpenPersonProfile(other, item.chat);
+                              }}
+                              className="px-2 py-0.5 rounded-md bg-[#64D2FF]/15 text-[#64D2FF] hover:bg-[#64D2FF]/25 border border-[#64D2FF]/30 text-[10px] font-mono transition-all"
+                            >
+                              Personal Tab &rarr;
+                            </button>
+                          )}
+                        </span>
                       )}
                     </div>
                   </div>
                 </div>
+
 
                 {/* Center: Message Share Ratio Bar or Member breakdown */}
                 <div className="flex-1 max-w-xs space-y-1">
