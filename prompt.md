@@ -302,6 +302,25 @@ End by telling me what to send you next. I'll come back mid-build with my curren
 
 **Outcome:** Diagnosed and fixed the root causes for real chat parsing failures (unicode space normalizations `\u202F` and ISO date formats in WhatsApp exports). Added Step 2 Identity Selector in Chat Importer, a live global Identity Switcher in the top bar, built **Amends Mode** (interactive 1-by-1 guilt payoff with copyable smart replies, confetti animations, and score drops), built the **Debt Aging Matrix** (compounding interest report across 0-3d, 3-7d, 7-30d, 30+d), and built a 50-sample Hinglish promise benchmark evaluation suite (`eval:promises` with 41 passing tests).
 
+### Prompt 16: Cozy Fantasy RPG / Illustrated Storybook UI/UX Transformation
+
+*(A reference image was attached depicting a cozy fantasy RPG storybook adventure game interface featuring an illustrated character in a twilight enchanted forest, warm parchment panels with hand-drawn botanical vine borders, Quest / Skills / Items / Equip / Status tabs, character status HUD, mini-map, and controller/keyboard prompt footer.)*
+
+> Lets make some ui/ux changes i have given u refrence image and here are specifics:
+>
+> UI / UX SPECIFICATIONS
+> Design Style:
+> - Cozy fantasy RPG / illustrated storybook aesthetic
+> - Hand-drawn, whimsical, nature-inspired interface
+> - “A playable storybook brought to life”
+> - Inspired by classic adventure game menus and folklore illustrations
+> - Warm, nostalgic, immersive, and slightly magical
+> - UI should feel physically embedded in the game world
+>
+> *(Full specification covering warm parchment colors, forest green & dusty lavender accents, deep twilight sky & layered foliage background, left-anchored character visual, right-anchored parchment compartments for Quests, Skills, Items, Equip, Status, classic fantasy serif typography, hand-drawn outlines, and responsive gamepad/keyboard HUD.)*
+
+**Outcome:** Re-engineered the application interface into an enchanted storybook RPG adventure journal. Gamified conversational debts, promises, and reply drafting into Quests, Skills, Items, and Companion Bonds, while preserving 100% of the underlying chat parsing, Ghost Radar, and local AI intelligence engines with full test coverage.
+
 ---
 
 ## 3. Prompt-builder choices
@@ -539,3 +558,342 @@ DEFINITION OF DONE
 - README: live URL, screenshot or GIF, honest privacy section, limitations, setup, env vars, demo path.
 - At the end, give me: what changed, what was cut, the exact git-history commands if needed, the demo script (6 clicks, under 3 minutes), and 10 hard judge questions with short honest answers.
 ```
+
+---
+
+### Prompt 17: V2 Fix, Upgrade and Hardening
+
+```markdown
+# WhatsUP? (The Guilt Ledger) — V2 Fix, Upgrade and Hardening Prompt
+
+> Paste this entire file into Claude Code / Cursor at the root of the `Nekyo7/WhatsUp-` repo.
+> Read `context.md` and `README.md` first. Then execute the phases in order.
+
+---
+
+## 0. ROLE AND MISSION
+
+You are a senior full-stack engineer and product-minded designer working on **WhatsUP?** — a local-first web app for the hackathon challenge **"The Unread Problem — What Did I Miss?"**. Users import their chat exports and the app helps them understand and prioritize overwhelming conversations.
+
+The app is already built. It is **not working correctly yet.** Your job in this pass is to:
+
+1. **Fix** what is broken, starting with the data layer, so every imported chat actually works.
+2. **Upgrade** the features that are weak or half-working.
+3. **Add** per-person tabs.
+4. **Harden** security.
+5. **Rewrite** the README so it looks like a winning hackathon submission.
+
+Do not rebuild from scratch. Keep the existing stack and architecture unless something is genuinely broken at the root, and if you change an architectural decision, say why in `context.md`.
+
+**Existing stack (verify against the repo, do not assume):** Next.js 14, Dexie (IndexedDB), Vitest (23 tests currently), multi-provider AI (Gemini / Claude / OpenAI, BYOK, plus a local NLP fallback). Supabase is planned for **authentication only**. No chat data may ever be stored on any server.
+
+**Non-negotiables:**
+- Local-first. Chat content stays in the browser. The only thing that ever leaves the device is the specific text snippet sent to the user's chosen AI provider, and only when the user triggers an AI action.
+- Hybrid AI design stays: **local heuristics** for stats, ghost detection and promise detection; **API** for summaries, briefings and translation.
+- Everything must work offline except the AI calls, and those must fail gracefully.
+- Do not fake data, hardcode demo numbers into real views, or hide errors. If something can't be computed, say so in the UI.
+
+---
+
+## 1. WORKING RULES
+
+- **Diagnose before you fix.** For every issue below, first reproduce it, find the root cause, and write a one-line root-cause note. Then fix it. Do not patch symptoms.
+- **Test with real data.** Create a fixtures folder with realistic chat exports: a 1:1 chat, a large group chat, a Hinglish chat, a chat with media/system messages, and a very large chat (50k+ messages). If the repo already has fixtures, extend them.
+- **Write tests for every fix.** Add Vitest tests that would have caught each bug. The test count must go up, not down. All tests must pass before moving on.
+- **Work phase by phase.** After each phase, run lint, typecheck, tests and a build. Fix everything before starting the next phase.
+- **Keep a running changelog** in `context.md` (what was broken, why, what you changed).
+- **Ask before destructive changes** (deleting files, changing the DB schema in a way that loses user data). For schema changes, write a Dexie migration so existing local data is not lost.
+- If any requirement is ambiguous, pick the most reasonable option, state your assumption in `context.md`, and keep going. Do not stall.
+
+---
+
+## 2. PHASE 1 — FIX THE DATA LAYER (HIGHEST PRIORITY)
+
+**Problem:** The data is not working properly. I want **all chats to work**, not just some. Many views show empty or zero values, which usually means the import/parse/normalize pipeline is wrong or silently dropping data.
+
+### 2.1 Audit the pipeline end to end
+Trace data from file upload → parsing → normalization → Dexie storage → selectors/queries → UI. Log or test what happens at each stage with each fixture. Find where data is lost, mis-typed, mis-dated or mis-attributed.
+
+### 2.2 Make parsing robust
+Support at minimum:
+- WhatsApp `.txt` exports and `.zip` exports (with and without media).
+- **Both major date formats and both 12h and 24h time**, including `DD/MM/YY`, `MM/DD/YY`, `DD/MM/YYYY`, with AM/PM variants, different separators, and the narrow no-break space characters newer exports use. Auto-detect the format from the whole file, not just the first line, and handle ambiguity (e.g. `03/04/24`) by scanning for unambiguous dates.
+- Android and iOS export differences.
+- **Multi-line messages** (continuation lines with no timestamp must append to the previous message).
+- System messages (encryption notice, "X added Y", "X left", group icon changes, "Messages and calls are end-to-end encrypted") — classify them as system events, never as messages from a person.
+- Media placeholders (`<Media omitted>`, `image omitted`, `(file attached)`, etc.), deleted messages (`This message was deleted`, `You deleted this message`), edited messages, polls, locations, contact cards, missed calls.
+- Unicode, emoji, RTL scripts, Indian languages, and romanized Hinglish.
+- Sender-name edge cases: names with colons, phone numbers as names, contacts saved vs unsaved, duplicate display names, the user's own name (let the user pick "which one is me" at import and persist it).
+- Large files: parse in a **Web Worker**, stream or chunk, show real progress, never freeze the UI.
+
+### 2.3 Normalize into one clean schema
+Every message becomes a typed record: `id`, `chatId`, `senderId`, `timestamp` (UTC epoch + original tz note), `type` (text / media / system / deleted / call), `text`, `replyToId?`, `language?`. Every chat has `participants[]`, `isGroup`, `meId`. Keep one canonical identity per person even if the name varies slightly.
+
+### 2.4 Make the failures visible
+If a line cannot be parsed, count it and surface "X lines could not be read" with a way to inspect them. Never silently drop data. Add an **Import Report** after every import: messages parsed, participants found, date range, system messages skipped, media count, parse warnings.
+
+### 2.5 Verify
+For each fixture, assert exact expected counts (messages, per-person counts, date range). Add a debug page or dev panel (dev only) showing raw vs parsed data for any chat.
+
+**Done when:** every fixture imports with correct counts, every chat in the dashboard shows real data, and no view shows zeros caused by a parsing bug.
+
+---
+
+## 3. PHASE 2 — REDESIGN GHOST DETECTION
+
+**Problem:** The Ghost Radar shows **0 for everything**. I think the way it measures "am I being ghosted?" is wrong, so don't just tweak the old thresholds. Redesign the measurement.
+
+### 3.1 First find out why it is 0
+Identify whether the zeros come from a data bug (Phase 1), a threshold that is never reached, a wrong comparison (e.g. comparing to "now" when the export is old), or filtering that excludes everything. Write the root cause.
+
+### 3.2 Use the right reference time
+Never measure against the real current time by default. An export from 8 months ago would make everyone look ghosted. Measure against the **export's last message timestamp**, with an optional toggle "treat as of today". Show which reference time is in use.
+
+### 3.3 Define ghosting properly (two directions)
+Compute both, separately, per person:
+
+- **They ghosted me:** I sent a message (or a question) and they have not replied, and the silence is unusual **for that person**.
+- **I ghosted them (Reply Debt):** They sent a message (or a question) and I have not replied, and the silence is unusual **for me with that person**.
+
+### 3.4 Make thresholds adaptive, not fixed
+- Calculate each person's **normal reply latency** (median and 90th percentile) from the history of that conversation, excluding overnight gaps (use sleep-hour awareness: a reply at 9am to a 11pm message is normal).
+- A person is "ghosting" only if the current unanswered gap is significantly beyond their own normal (e.g. > P90 × a factor and above a minimum absolute floor such as 12 hours).
+- For people with too little history, fall back to sensible defaults and label confidence as **low**.
+- Distinguish **conversation endings** from ghosting: if the last message was "ok", "thanks", "👍", "bye", "good night" etc., the thread closed naturally and is not ghosting. Detect this with a small multilingual closer list plus a "last message is not a question or request" check.
+- Weigh **unanswered questions and requests** more heavily than statements.
+- Handle **dormant relationships** (long silence from both sides) separately as "gone quiet", not ghosting.
+- Handle group chats separately: per-person ghosting inside a group means "did not respond to messages that addressed or mentioned them / asked them a direct question". Do not mark group members as ghosts for ignoring general chatter.
+
+### 3.5 Output a score, not just a flag
+For each person produce: status (`active`, `slowing`, `ghosting`, `ghosted-by-me`, `gone-quiet`, `closed`), a **0–100 ghost score**, a **confidence** level, the exact evidence (the unanswered message, when it was sent, their usual reply time, how far past normal), and a plain-language explanation ("Riya usually replies in ~40 min. Your last message, a question, has been unanswered for 6 days.").
+
+### 3.6 UI
+Rebuild the Ghost Radar so it is visually clear (sorted by score, filter by direction, tap to see the evidence, link to the person's tab). Show an honest empty state when there genuinely are no ghosts, with a count of how many people were analyzed so it is obvious the feature ran.
+
+### 3.7 Tests
+Cover: normal fast replier gone silent, naturally ended conversation, overnight gaps, old exports, one-sided conversations, group mentions, low-history people, both directions.
+
+**Done when:** the Radar shows meaningful, explainable results on the fixtures, and results change sensibly when you change the data.
+
+---
+
+## 4. PHASE 3 — FIX THE PROMISE LEDGER
+
+**Problem:** The Promise Ledger is not working correctly. Treat it as a feature that tracks **commitments made in chats and whether they were kept**, in both directions (promises I made, promises others made to me).
+
+### 4.1 Detection
+Detect commitments locally first (fast, private), using pattern rules in **English, Hindi (romanized), Hinglish and common Indian-English phrasing**: "I'll send it", "will do", "kal karta hu", "I'll call you", "let me check and get back", "done by Friday", "pakka", "promise", "remind me", "I'll pay you", "we'll meet on Sunday", etc.
+- Capture: who promised, to whom, what was promised, the original message, the timestamp, and any **due date or time expression** ("tomorrow", "by Friday", "next week", "kal", "parso", "EOD").
+- Resolve relative dates against the **message's own timestamp**, never against today.
+- Ignore false positives: hypotheticals ("I would send it if..."), questions ("will you send it?"), quotes, jokes, negations ("I won't").
+- Optional AI pass (API) to improve extraction on demand, merged with the local results without duplicating them.
+
+### 4.2 Resolution tracking
+For each promise decide a status: `open`, `kept` (a later message from the promiser indicates completion, e.g. "sent", "done", "paid", "here you go", media attachment after "I'll send the photo"), `overdue` (due date passed with no sign of completion), `broken/stale` (very old, no follow-up), or `unclear`. Always show the evidence for the status.
+
+### 4.3 Let the user override
+The user can mark any promise as kept, dismissed, or wrong, and that decision is stored and respected on future re-analysis.
+
+### 4.4 UI
+A clear ledger with tabs/filters: **I owe** / **They owe me** / **Overdue** / **Kept**. Each entry shows who, what, when promised, due date, status, a link to the exact message in the chat, and a one-tap reply/follow-up draft (reuse the existing reply drafts feature).
+
+### 4.5 Tests
+Include multilingual phrases, relative date parsing, false positives, resolution detection, and user overrides.
+
+**Done when:** the ledger returns real, accurate entries on the fixtures and the user can trust it.
+
+---
+
+## 5. PHASE 4 — FIX THE TRANSLATION FEATURE
+
+**Problem:** Translation is not correct. Find out why (wrong language detection, translating things that should not be translated, truncation, mangled names/emoji, wrong target language, API errors, caching bugs) and fix all of it.
+
+### Requirements
+- **Per-message language detection**, including romanized Hindi/Hinglish and mixed-language messages. Do not translate a message that is already in the target language.
+- Let the user choose the **target language** once (persisted), and translate a single message, a selection, or a whole chat.
+- **Preserve** names, @mentions, emoji, URLs, numbers, and line breaks. Do not translate proper nouns or code-mixed slang into nonsense. For Hinglish, translate meaning, not word-by-word.
+- Always show **original and translation side by side** (or toggle), with the detected source language and a confidence indicator.
+- **Batch** requests to respect token and rate limits; **cache** results in Dexie keyed by (message hash, target language, provider) so nothing is translated twice.
+- Handle failures: provider errors, rate limits, missing API key, offline. Show a clear message and fall back gracefully; never show a half-translated blank.
+- Translation of summaries and AI briefings follows the same target-language setting.
+- Prompt-injection safe: chat text is **data**, never instructions (see Security).
+
+### Tests
+Language detection fixtures (English, Hindi, Hinglish, Kannada, Tamil, mixed), preservation of mentions/emoji/URLs, cache hits, batching, error paths.
+
+**Done when:** translations are correct, consistent, cached, and fail gracefully.
+
+---
+
+## 6. PHASE 5 — PERSONAL TABS (NEW FEATURE)
+
+**Requirement:** **Every person should have their own personal tab.** Each tab is a dashboard about that one person and their dynamic with me, including **what this person said**, attributed clearly to them.
+
+### 6.1 What each personal tab contains
+- **Header:** name, avatar/initials, first and last message date, total messages, who talks more, a "relationship at a glance" line.
+- **Stats:** message share (me vs them), average reply time both ways, busiest hours and days, longest streak, longest silence, conversation starters (who initiates more), average message length, emoji and media usage.
+- **Ghost / Reply Debt status** for this person with the evidence from Phase 2.
+- **Promises** between us from Phase 3 (I owe / they owe me).
+- **What they said (attributed highlights):** their unanswered questions, requests they made, plans they proposed, key facts they shared (dates, places, numbers, deadlines), decisions and opinions, and notable moments — each shown with the **exact quote, date, and a jump-to-message link**. Always attribute correctly: "**Riya said** …". Local extraction first; AI pass on demand.
+- **Per-person AI briefing:** "What did I miss with this person?" — a short bullet summary, open loops, suggested next action, and optional reply drafts in my tone.
+- **Timeline** of the conversation with activity heat (messages per week) and important moments marked.
+- **Shared topics** (top keywords/themes), shared links and media counts.
+- **Personal notes:** a private notes field per person stored locally.
+- **Actions:** translate this chat, export this person's summary, pin/mute this person.
+
+### 6.2 Navigation
+A people index (searchable, sortable by recency, ghost score, reply debt, message count), with each row linking to the person's tab. Deep links like `/people/[id]`. In group chats, each member also gets a tab scoped to the group (messages they sent in that group) and a combined view across all shared chats when the same person appears in several.
+
+### 6.3 Performance
+Compute person aggregates once per import and cache them in Dexie. Opening a tab must feel instant even for large chats.
+
+**Done when:** every participant has a working, accurate, good-looking tab and "this person said this" content is correctly attributed.
+
+---
+
+## 7. PHASE 6 — IMPROVE THE PERSONALISE FEATURE AND AI BRIEFING
+
+I **really like the Personalise feature** — keep it and build on it, do not remove or dilute it. The **AI briefing is a good feature, but it can be much better.**
+
+### 7.1 Personalise
+- Keep all existing personalization options working. Audit them for bugs.
+- Extend it where natural: tone for reply drafts (casual, formal, short, Hinglish), summary length, language, which sections appear on the dashboard, people pinned/muted, and theme options. Persist everything locally and make settings apply instantly.
+- Let personalization influence the briefing and drafts (e.g. the user's usual tone and length).
+
+### 7.2 AI Briefing — make it genuinely useful
+Upgrade the briefing from a summary into an **actionable catch-up**:
+- **Priority-first:** the top of the briefing says what needs attention now (urgent questions to me, deadlines, promises due, people I'm ghosting), ranked with reasons.
+- **Structured sections:** TL;DR, Needs my reply, Decisions made, Plans and dates, Promises, Things I can safely ignore, Sentiment/tone shift (only if clearly supported).
+- **Bullet points with citations:** every claim links back to the source message so the user can verify it.
+- **Time-window control:** "since I last opened this chat", last 24h, last 7 days, custom range.
+- **Group chat intelligence:** separate signal from noise, attribute points to the right people, and surface only what concerns the user (mentions, questions to them, tasks assigned).
+- **One-tap actions:** draft a reply, add to promise ledger, set a reminder, translate.
+- **Quality controls:** a faithfulness instruction so the model does not invent facts; if confidence is low, say so. Show which provider/model produced it.
+- **Local fallback:** a useful no-API briefing from heuristics when no key is set.
+- **Streaming output** and cached results so reopening is instant; a regenerate button; token-aware chunking for huge chats (map-reduce summarization).
+- Make the experience feel like a calm, premium "morning briefing" rather than a wall of text.
+
+### 7.3 Tests
+Mock the providers. Test chunking, citation integrity (every cited message id exists), fallback behavior, and cache invalidation when new data is imported.
+
+**Done when:** the briefing is clearly more useful than before and every statement is traceable to a message.
+
+---
+
+## 8. PHASE 7 — SECURITY HARDENING
+
+Improve security across the whole app. Treat all chat content and all uploaded files as **untrusted input**. Work through this checklist, fix what applies, and document the result in a `SECURITY.md`.
+
+### 8.1 API key (BYOK) handling
+- Never hardcode keys. Never commit `.env` files; confirm `.gitignore` and scan git history for leaked keys.
+- Keep the user's key out of logs, URLs, error messages and analytics.
+- Offer **session-only** storage as the default and an opt-in "remember on this device" that encrypts the key at rest with the **Web Crypto API** (not plaintext localStorage).
+- If requests go through a Next.js API route, make it a **thin stateless proxy** that does not log or persist bodies or keys. Prefer direct client-to-provider calls where the provider allows it.
+
+### 8.2 Injection and rendering safety
+- **XSS:** never render chat text with `dangerouslySetInnerHTML`. Escape everything. Sanitize any markdown/HTML from AI output (e.g. DOMPurify or a safe markdown renderer with HTML disabled). Sanitize URLs (block `javascript:` and data URLs) and add `rel="noopener noreferrer"` to external links.
+- **Prompt injection:** chat messages can contain instructions aimed at the AI ("ignore previous instructions…"). Wrap chat content in clearly delimited data blocks, tell the model it is untrusted data, never let model output trigger actions automatically, and validate/parse structured AI output with a schema (e.g. Zod) before using it.
+
+### 8.3 File upload safety
+- Enforce **file size limits**, **allowed types**, and **zip-bomb protections** (cap total uncompressed size, file count, nesting, and path traversal such as `../`). Never execute or render uploaded media as code.
+- Parse in a Web Worker with timeouts so a malicious file cannot freeze or crash the tab.
+- Strip or ignore unexpected files in the zip.
+
+### 8.4 Browser and platform security
+- Add strict **security headers** in `next.config.js`: `Content-Security-Policy` (no `unsafe-eval` if avoidable; restrict `connect-src` to the chosen AI providers and Supabase), `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, `X-Frame-Options`/`frame-ancestors`, and HSTS for production.
+- Disable any unneeded third-party scripts. Self-host fonts and assets where possible. Add **no analytics or trackers** (this is part of the privacy story).
+- Add Subresource Integrity or lock dependencies where applicable.
+
+### 8.5 Authentication (Supabase, auth only)
+- Use Supabase **only for authentication**. No chat content, summaries, names or metadata in Supabase tables or storage.
+- If any table exists (e.g. profiles/settings), enable **Row Level Security** with strict per-user policies, and never expose the service-role key to the client.
+- Use secure cookies/session handling, validate sessions on any server route, and add rate limiting on auth and proxy endpoints.
+- Make the app usable in **guest/local mode** without an account so judges can try it instantly.
+
+### 8.6 Data protection on device
+- Provide a **"Delete all my data"** button that wipes IndexedDB, caches and stored keys.
+- Offer an optional **local app lock / encryption at rest** for the Dexie database (passphrase-derived key), clearly labeled optional.
+- Offer a **redact PII before sending to AI** option (phone numbers, emails, card-like numbers, Aadhaar/PAN-style patterns) and show the user exactly what will be sent before the first AI call.
+- Keep the **privacy badge** accurate: it must reflect reality (what is local, what is sent, to which provider).
+
+### 8.7 Supply chain and hygiene
+- Run `npm audit` and fix or document issues; pin versions; remove unused dependencies.
+- Add a dependency-scan step (e.g. a GitHub Action with `npm audit` / Dependabot config).
+- Don't leak stack traces or internal errors to the UI; log safely in dev only.
+
+### 8.8 Tests
+Add tests for sanitization (XSS payloads), zip-bomb and path-traversal rejection, size limits, schema validation of AI output, key storage encryption round-trip, and PII redaction.
+
+**Done when:** `SECURITY.md` documents the threat model, every item above is implemented or has a stated reason, and the tests pass.
+
+---
+
+## 9. PHASE 8 — README THAT WINS
+
+**Requirement:** The old README must change. Make the new one **absolutely excellent** — the kind of README that makes a judge want to try the app in the first ten seconds. You may (and should) add **screenshots and GIFs of the website**.
+
+### 9.1 Screenshots and media
+- Run the app with realistic **synthetic demo data** (never real personal chats) and capture screenshots using Playwright (or the best available tool) at a consistent viewport, light and dark if both exist.
+- Save to `docs/images/` with clean names and reference them with relative paths. Capture at least: landing/import screen, dashboard, Ghost Radar, Promise Ledger, a person's personal tab, AI briefing, translation side-by-side, Personalise settings, privacy badge/security panel, and mobile view.
+- If possible, add a short **demo GIF** of the import-to-briefing flow. Optimize image sizes.
+- Include a seeded **demo mode / sample dataset** in the repo so anyone can load realistic fake chats with one click.
+
+### 9.2 Structure
+1. **Hero:** logo/title, one-line tagline, badges (build, tests, license, Next.js, local-first, privacy), a hero screenshot or GIF, and a live demo link if deployed.
+2. **The problem:** "The Unread Problem — What Did I Miss?" in 3–4 punchy lines.
+3. **The solution and the unique angle** (the Guilt Ledger): what makes this different from every other submission on the same problem statement.
+4. **Feature tour** with a screenshot per feature: import report, people stats, Ghost Radar (both directions), Promise Ledger, personal tabs, AI briefing, translation, reply drafts, Reply Debt score, Wrapped-style recap, Personalise, privacy badge.
+5. **How it works:** a clean architecture diagram (Mermaid) showing import → parse → local analysis → optional AI → UI, and a **privacy/data-flow diagram** that shows exactly what stays local and what is sent.
+6. **Privacy and security:** local-first, BYOK, no chat data on servers, Supabase auth-only, security headers, redaction, delete-all. Link to `SECURITY.md`.
+7. **Quick start:** prerequisites, install, env setup, run, how to export a chat from WhatsApp (Android and iOS), how to add an API key, demo mode. Commands must be copy-pasteable and **tested**.
+8. **Tech stack** table and **project structure** tree.
+9. **Testing:** how to run the suite and what it covers.
+10. **Design decisions and tradeoffs** (why hybrid AI, why local-first, why a website instead of automatic capture).
+11. **Roadmap**, **limitations (be honest)**, **contributing**, **license**, **credits/team**.
+12. **Hackathon info:** problem statement, how this solves it, and where to find `prompt.md`.
+
+### 9.3 Quality bar
+Scannable, visually clean, no walls of text, correct links, no broken images, consistent emoji/heading style, and every claim in the README must be true of the actual code. Verify every command and link yourself.
+
+---
+
+## 10. PHASE 9 — HACKATHON SUBMISSION FILES
+
+- Update `context.md` with the changelog, architecture, assumptions, and known limitations.
+- Create or update **`prompt.md`** (the prompt log required by the hackathon): include the key prompts used to build and fix the app, including this one, in order, with a short note on what each produced. Keep it honest and readable.
+- Add a **`DEMO.md`** with a 3-minute demo script: exact click-through steps using the demo dataset, what to say at each step, and a fallback plan if the live demo fails.
+- Add a short **FAQ for judges**: privacy, how ghost detection works, how accurate it is, what happens without an API key.
+
+---
+
+## 11. FINAL VERIFICATION CHECKLIST
+
+Before you finish, run everything and confirm each item with evidence (command output or screenshot), not assumption:
+
+- [ ] Typecheck, lint, tests and production build all pass; test count is higher than 23.
+- [ ] Every fixture chat imports with correct counts; an Import Report appears.
+- [ ] No dashboard view shows zeros caused by a bug.
+- [ ] Ghost Radar returns explainable results in both directions with adaptive thresholds and the right reference time.
+- [ ] Promise Ledger finds, tracks and resolves promises with evidence and user overrides.
+- [ ] Translation is correct, cached, side-by-side, and degrades gracefully.
+- [ ] Every participant has a personal tab with attributed "said this" content.
+- [ ] Personalise works and influences briefings and drafts; AI briefing is priority-first with citations.
+- [ ] Security checklist implemented, `SECURITY.md` written, no secrets in the repo or git history.
+- [ ] README rewritten with working screenshots/GIF, tested quick start, diagrams, and honest limitations.
+- [ ] `context.md`, `prompt.md` and `DEMO.md` updated.
+- [ ] App works in guest/demo mode with no account and no API key.
+
+---
+
+## 12. HOW TO REPORT BACK
+
+When finished, give me:
+1. A short summary of the **root cause** of each original issue (data, ghost = 0, Promise Ledger, translation).
+2. What you changed, phase by phase.
+3. Anything you could not finish or are unsure about, and why.
+4. The exact commands to run, test and demo the app.
+5. A prioritized list of the top 5 things I should still do before submitting.
+
+Be direct. Do not claim something works unless you ran it and saw it work.
+```
+

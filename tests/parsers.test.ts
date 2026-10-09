@@ -117,4 +117,55 @@ Step 3: Monitor logs
     expect(res.messages[0].sender).toContain("Kunal");
     expect(new Date(res.messages[1].timestamp).getUTCDate()).toBe(16);
   });
+
+  it("Test 9: parses 1:1 chat fixture with exact message count and participants", () => {
+    const fs = require("fs");
+    const path = require("path");
+    const content = fs.readFileSync(path.join(__dirname, "fixtures/chat_1on1.txt"), "utf-8");
+    const result = parseWhatsAppExport(content, "Priya Sharma.txt");
+
+    expect(result.messages.length).toBe(8);
+    expect(result.participants).toContain("Priya Sharma");
+    expect(result.participants).toContain("You");
+    expect(result.report).toBeDefined();
+    expect(result.report?.messagesParsed).toBe(8);
+    expect(result.report?.unparsedLinesCount).toBe(0);
+  });
+
+  it("Test 10: parses group chat fixture with system events filtered and multiple participants", () => {
+    const fs = require("fs");
+    const path = require("path");
+    const content = fs.readFileSync(path.join(__dirname, "fixtures/group_chat.txt"), "utf-8");
+    const result = parseWhatsAppExport(content, "Hackathon Core.txt");
+
+    expect(result.isGroup).toBe(true);
+    expect(result.participants.length).toBeGreaterThanOrEqual(4);
+    expect(result.participants).toContain("Aryan");
+    expect(result.participants).toContain("Rohan");
+    expect(result.participants).toContain("Tanya");
+    expect(result.participants).toContain("You");
+    expect(result.report?.systemMessagesSkipped).toBeGreaterThanOrEqual(3);
+  });
+
+  it("Test 11: parses Hinglish fixture and correctly classifies language tokens", () => {
+    const fs = require("fs");
+    const path = require("path");
+    const content = fs.readFileSync(path.join(__dirname, "fixtures/hinglish_chat.txt"), "utf-8");
+    const result = parseWhatsAppExport(content, "Kabir.txt");
+
+    expect(result.messages.length).toBe(8);
+    const hinglishMsgs = result.messages.filter((m) => m.lang === "hinglish");
+    expect(hinglishMsgs.length).toBeGreaterThanOrEqual(4);
+  });
+
+  it("Test 12: parses media & system chat fixture identifying deleted messages and calls", () => {
+    const fs = require("fs");
+    const path = require("path");
+    const content = fs.readFileSync(path.join(__dirname, "fixtures/media_system_chat.txt"), "utf-8");
+    const result = parseWhatsAppExport(content, "Roadtrip 2024.txt");
+
+    expect(result.report?.mediaCount).toBeGreaterThanOrEqual(2);
+    expect(result.report?.systemMessagesSkipped).toBeGreaterThanOrEqual(3);
+  });
 });
+

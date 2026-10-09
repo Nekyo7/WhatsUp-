@@ -1,0 +1,12 @@
+15/03/2024, 11:00 - Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.
+15/03/2024, 11:01 - Aryan created group "Hackathon Core"
+15/03/2024, 11:02 - Aryan added You, Rohan, and Tanya
+15/03/2024, 11:05 - Aryan: Welcome folks! Let's divide tasks for the weekend.
+15/03/2024, 11:08 - Rohan: I'll handle the backend APIs and Postgres setup.
+15/03/2024, 11:10 - Tanya: I will take the UI Figma prototypes and landing page.
+15/03/2024, 11:12 - You: Sounds good, I'll take the local analytics engine and parsers.
+15/03/2024, 11:15 - Aryan: Perfect. When can we have the initial MVP wireframe ready?
+15/03/2024, 11:18 - Tanya: By tomorrow evening 6 PM for sure.
+15/03/2024, 11:20 - You: I'll push the parser tests by tonight.
+15/03/2024, 18:30 - Rohan: Backend schema is drafted. Tanya check your DMs.
+15/03/2024, 18:32 - Tanya: Checking now 👍

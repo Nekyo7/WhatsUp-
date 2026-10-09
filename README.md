@@ -5,12 +5,14 @@
 [![Next.js](https://img.shields.io/badge/Next.js-14.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Storage](https://img.shields.io/badge/Storage-IndexedDB%20%2F%20In--Memory-green?style=for-the-badge)](https://dexie.org/)
-[![Privacy](https://img.shields.io/badge/Privacy-Local--First%20Analytics-blue?style=for-the-badge)](https://github.com/Nekyo7/WhatsUp-)
-[![Vitest](https://img.shields.io/badge/Tests-39%2F39%20Passed-brightgreen?style=for-the-badge&logo=vitest)](https://vitest.dev/)
+[![UI Style](https://img.shields.io/badge/Theme-Storybook%20RPG%20%26%20Classic-parchment?style=for-the-badge&color=8DA87B)](https://github.com/Nekyo7/WhatsUp-)
+[![Vitest](https://img.shields.io/badge/Tests-41%2F41%20Passed-brightgreen?style=for-the-badge&logo=vitest)](https://vitest.dev/)
 
 ---
 
-> **Privacy Guarantee:** Analytics run 100% locally. AI is optional and sends only redacted excerpts, which you see first.
+> **Privacy Guarantee:** Analytics run 100% locally. AI is optional and sends only redacted excerpts, which you see first.  
+> **Aesthetic Experience:** Features a Cozy Fantasy RPG Storybook UI ("A playable storybook brought to life") and an analytical Classic Ledger View.
+
 
 ---
 

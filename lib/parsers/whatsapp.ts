@@ -1,4 +1,4 @@
-import type { Message, Platform } from "@/types";
+import type { Message, Platform, ImportReport } from "@/types";
 
 export interface ParsedChatResult {
   chatId: string;
@@ -10,6 +10,7 @@ export interface ParsedChatResult {
   firstMessageAt: string;
   lastMessageAt: string;
   detectedSelfNameCandidate?: string;
+  report?: ImportReport;
 }
 
 const SYSTEM_PHRASES = [
@@ -23,6 +24,7 @@ const SYSTEM_PHRASES = [
   "changed the subject",
   "changed the group",
   "changed this group's icon",
+  "changed the group description",
   "security code changed",
   "you're now an admin",
   "joined using this group's invite link",
@@ -30,6 +32,10 @@ const SYSTEM_PHRASES = [
   "started a call",
   "missed voice call",
   "missed video call",
+  "waiting for this message. this may take a while",
+  "pinned a message",
+  "changed their phone number",
+  "switched to a new phone number",
 ];
 
 const MEDIA_PHRASES = [
@@ -41,25 +47,28 @@ const MEDIA_PHRASES = [
   "document omitted",
   "gif omitted",
   "contact card omitted",
+  "(file attached)",
   "location:",
   "this message was deleted",
   "you deleted this message",
+  "poll:",
 ];
 
 const HINGLISH_KEYWORDS = [
   "bhai", "yaar", "kya", "haan", "nahi", "kar", "karna", "karega", "kardo",
   "bhej", "bheja", "dekh", "theek", "accha", "acha", "sahi", "aaj", "kal",
   "parso", "hoga", "raha", "rahe", "wala", "wali", "matlab", "kuch", "aisa",
-  "samajh", "paise", "kaam", "abhy", "chal", "chalo", "sun", "are", "arre", "bc", "bhaiya"
+  "samajh", "paise", "kaam", "abhy", "chal", "chalo", "sun", "are", "arre", "bc", "bhaiya",
+  "pakka", "batata", "karenge", "bhejenge", "sham", "shaam", "subah", "raat"
 ];
 
 export function detectLanguage(text: string): "en" | "hinglish" | "hi" | "other" {
   if (!text) return "en";
-  const lower = text.toLowerCase();
   // Check for Devanagari Unicode range
   if (/[\u0900-\u097F]/.test(text)) {
     return "hi";
   }
+  const lower = text.toLowerCase();
   const words = lower.split(/\s+/);
   let hinglishMatches = 0;
   for (const word of words) {
@@ -76,15 +85,16 @@ export function detectLanguage(text: string): "en" | "hinglish" | "hi" | "other"
 
 /**
  * Auto-detects whether date format is DD/MM/YY(YY) or MM/DD/YY(YY)
- * by examining days > 12 across all candidate date tokens in the export.
+ * by scanning candidate date tokens across the entire export for values > 12.
  */
-function detectDateFormat(lines: string[]): "DMY" | "MDY" {
+export function detectDateFormat(lines: string[]): "DMY" | "MDY" {
   let firstOver12 = 0;
   let secondOver12 = 0;
 
   const datePattern = /(?:^\[?|\s)(\d{1,2})[./\-](\d{1,2})[./\-](\d{2,4})/;
 
-  for (let i = 0; i < Math.min(lines.length, 500); i++) {
+  // Check lines throughout the file for unambiguous days (> 12)
+  for (let i = 0; i < lines.length; i++) {
     const cleanLine = lines[i].replace(/[\u200E\u200F\u202A-\u202E\u202F\u00A0\uFEFF]/g, " ");
     const match = cleanLine.match(datePattern);
     if (match) {
@@ -98,14 +108,14 @@ function detectDateFormat(lines: string[]): "DMY" | "MDY" {
     }
   }
 
-  // Default to DMY (standard in India, UK, Europe, etc.) unless MDY has clear signals
+  // Default to DMY (standard across India, UK, Europe, Latin America) unless clear MDY signal
   return secondOver12 > firstOver12 ? "MDY" : "DMY";
 }
 
 /**
- * Parses timestamp string into standard ISO string
+ * Parses date and time components into a standard UTC ISO 8601 string.
  */
-function parseWhatsAppTimestamp(
+export function parseWhatsAppTimestamp(
   datePart: string,
   timePart: string,
   dateFormat: "DMY" | "MDY"
@@ -118,7 +128,7 @@ function parseWhatsAppTimestamp(
     let month = 1;
     let day = 1;
 
-    // Check for ISO date format: YYYY-MM-DD or YYYY/MM/DD
+    // Check for ISO format: YYYY-MM-DD or YYYY/MM/DD or YYYY.MM.DD
     const isoMatch = cleanDate.match(/^(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})$/);
     if (isoMatch) {
       year = parseInt(isoMatch[1], 10);
@@ -128,8 +138,8 @@ function parseWhatsAppTimestamp(
       const dMatch = cleanDate.match(/^(\d{1,2})[./\-](\d{1,2})[./\-](\d{2,4})$/);
       if (!dMatch) return null;
 
-      let num1 = parseInt(dMatch[1], 10);
-      let num2 = parseInt(dMatch[2], 10);
+      const num1 = parseInt(dMatch[1], 10);
+      const num2 = parseInt(dMatch[2], 10);
       let num3 = parseInt(dMatch[3], 10);
 
       if (dateFormat === "MDY") {
@@ -140,15 +150,15 @@ function parseWhatsAppTimestamp(
         month = num2;
       }
 
-      year = num3;
-      if (year < 100) {
-        year += 2000;
+      if (num3 < 100) {
+        num3 += 2000;
       }
+      year = num3;
     }
 
     if (month < 1 || month > 12 || day < 1 || day > 31) return null;
 
-    // Clean time part (e.g., "3:45:12 PM", "15:45", "03:45 pm", "3:45:12", "03.45 pm")
+    // Clean time part (e.g. "3:45:12 PM", "15:45", "03:45 pm", "3:45:12", "03.45 pm")
     const normalizedTime = cleanTime.replace(/\./g, ":");
     const tMatch = normalizedTime.match(/(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(am|pm|AM|PM)?/i);
     if (!tMatch) return null;
@@ -170,16 +180,20 @@ function parseWhatsAppTimestamp(
 }
 
 /**
- * Comprehensive WhatsApp txt parser supporting:
- * - Square brackets format: [15/03/24, 3:45:12 PM] Sender: Message
- * - Standard dash format: 15/03/2024, 15:45 - Sender: Message
- * - 12h/24h, seconds optional, unicode invisible chars, multi-line continuations
+ * Robust WhatsApp text parser supporting:
+ * - Square brackets format: [15/03/24, 3:45:12 PM] Sender: Message (iOS)
+ * - Standard dash format: 15/03/2024, 15:45 - Sender: Message (Android)
+ * - Dots format: 15.03.24, 15:45 - Sender: Message
+ * - Phone numbers as senders: 15/03/24, 15:45 - +91 98765 43210: Message
+ * - Multi-line message continuation
+ * - Full system message filtering
+ * - Detailed Import Report generation
  */
 export function parseWhatsAppExport(fileContent: string, fileName: string): ParsedChatResult {
   const lines = fileContent.replace(/\r\n/g, "\n").replace(/\r/g, "\n").split("\n");
   const dateFormat = detectDateFormat(lines);
 
-  // Universal regex supporting:
+  // Universal regex matching both brackets and dash formats:
   // 1) [15/03/24, 11:42:15 AM] Sender: Text
   // 2) 15/03/24, 11:42 AM - Sender: Text
   // 3) 15/03/2024, 11:42 - Sender: Text
@@ -190,6 +204,9 @@ export function parseWhatsAppExport(fileContent: string, fileName: string): Pars
   const messages: Message[] = [];
   const participantsSet = new Set<string>();
   const senderCounts: Record<string, number> = {};
+  const unparsedLines: string[] = [];
+  let systemMessagesCount = 0;
+  let mediaCount = 0;
 
   const chatId = "wa_" + Math.random().toString(36).substring(2, 9);
   let chatTitle = fileName.replace(/\.txt$/i, "").replace(/^WhatsApp Chat with /i, "").trim();
@@ -200,17 +217,18 @@ export function parseWhatsAppExport(fileContent: string, fileName: string): Pars
 
   for (let i = 0; i < lines.length; i++) {
     const rawLine = lines[i];
-    // Strip all zero-width, bidirectional, and special space unicode markers
+    // Strip zero-width, bidirectional, and special non-breaking space characters
     const line = rawLine
       .replace(/[\u200E\u200F\u202A-\u202E\uFEFF\u200B\u200C\u200D]/g, "")
       .replace(/[\u202F\u00A0]/g, " ")
       .trimEnd();
+
     if (!line) continue;
 
     const match = line.match(linePattern);
 
     if (match) {
-      // If we had a previous message, commit it
+      // Commit previous message
       if (currentMsg) {
         messages.push(currentMsg);
         currentMsg = null;
@@ -222,10 +240,9 @@ export function parseWhatsAppExport(fileContent: string, fileName: string): Pars
       const content = match[4] !== undefined ? match[4].trim() : "";
 
       const parsedTs = parseWhatsAppTimestamp(dateStr, timeStr, dateFormat);
-      // If parsing fails, interpolate from previous message or fallback
       const isoTimestamp = parsedTs || (messages.length > 0 ? messages[messages.length - 1].timestamp : new Date().toISOString());
 
-      // Check if it's a system message (either no colon or sender matches system text)
+      // Check if this is a system message (no colon separating sender & text, or text matches system patterns)
       const isSystemNotice =
         content === "" ||
         SYSTEM_PHRASES.some((phrase) =>
@@ -233,6 +250,7 @@ export function parseWhatsAppExport(fileContent: string, fileName: string): Pars
         );
 
       if (isSystemNotice) {
+        systemMessagesCount++;
         const fullText = (possibleSender + (content ? ": " + content : "")).trim();
         currentMsg = {
           id: `${chatId}_msg_${++msgIdx}`,
@@ -251,6 +269,7 @@ export function parseWhatsAppExport(fileContent: string, fileName: string): Pars
 
         const lowerContent = content.toLowerCase();
         const isMedia = MEDIA_PHRASES.some((phrase) => lowerContent.includes(phrase));
+        if (isMedia) mediaCount++;
 
         currentMsg = {
           id: `${chatId}_msg_${++msgIdx}`,
@@ -264,11 +283,13 @@ export function parseWhatsAppExport(fileContent: string, fileName: string): Pars
         };
       }
     } else {
-      // Continuation of multi-line message
+      // Continuation of a multi-line message
       if (currentMsg) {
         currentMsg.text += "\n" + line;
-        // Re-detect language with extended text
         currentMsg.lang = detectLanguage(currentMsg.text);
+      } else {
+        // Line before any valid message header (e.g. metadata or corrupted header)
+        unparsedLines.push(`L${i + 1}: ${line}`);
       }
     }
   }
@@ -280,7 +301,7 @@ export function parseWhatsAppExport(fileContent: string, fileName: string): Pars
   const participants = Array.from(participantsSet);
   const isGroup = participants.length > 2 || chatTitle.toLowerCase().includes("group");
 
-  // Determine likely self candidate (the one with highest message frequency or labelled "You")
+  // Determine likely self candidate (the one named "You" or the top sender)
   let detectedSelfNameCandidate = "";
   if (participants.includes("You")) {
     detectedSelfNameCandidate = "You";
@@ -290,6 +311,25 @@ export function parseWhatsAppExport(fileContent: string, fileName: string): Pars
 
   const firstMessageAt = messages[0]?.timestamp || new Date().toISOString();
   const lastMessageAt = messages[messages.length - 1]?.timestamp || new Date().toISOString();
+
+  const warnings: string[] = [];
+  if (unparsedLines.length > 0) {
+    warnings.push(`${unparsedLines.length} lines could not be attributed to a timestamp header.`);
+  }
+  if (participants.length === 0) {
+    warnings.push("No distinct participants found; this export may only contain system events.");
+  }
+
+  const report: ImportReport = {
+    messagesParsed: messages.length,
+    participantsFound: participants,
+    dateRange: { start: firstMessageAt, end: lastMessageAt },
+    systemMessagesSkipped: systemMessagesCount,
+    mediaCount,
+    unparsedLinesCount: unparsedLines.length,
+    unparsedLinesSample: unparsedLines.slice(0, 5),
+    warnings,
+  };
 
   return {
     chatId,
@@ -301,5 +341,6 @@ export function parseWhatsAppExport(fileContent: string, fileName: string): Pars
     firstMessageAt,
     lastMessageAt,
     detectedSelfNameCandidate,
+    report,
   };
 }

@@ -1,0 +1,8 @@
+20/04/2024, 14:00 - Kabir: Bhai sun, wo project report ka kya scene hai?
+20/04/2024, 14:02 - You: Haan bhai, draft ready ho raha hai.
+20/04/2024, 14:03 - Kabir: Kab tak bhejega? Client ko demo dena hai.
+20/04/2024, 14:05 - You: Kal bhej dunga pakka 12 baje se pehle.
+20/04/2024, 14:06 - Kabir: Theek hai bhai, yaad se bhej dena.
+20/04/2024, 14:08 - Kabir: Aur wo API credentials bhi share kar de.
+20/04/2024, 14:10 - You: Haan shaam tak bhejta hu credentials.
+20/04/2024, 14:11 - Kabir: Sahi hai, thanks!

@@ -1,13 +1,14 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { UploadCloud, Sparkles, FileText, CheckCircle2, AlertCircle, Loader2, Users, Shield, Cpu, UserCheck, ArrowRight } from "lucide-react";
-import { parseChatFile } from "@/lib/parsers";
+import { UploadCloud, Sparkles, FileText, CheckCircle2, AlertCircle, Loader2, Users, Shield, Cpu, UserCheck, ArrowRight, FileArchive, Info, ChevronDown, ChevronUp } from "lucide-react";
+import { parseChatFile, parseWhatsAppZip } from "@/lib/parsers";
 import { analyzeChat } from "@/lib/analytics";
 import { calculateReplyDebt } from "@/lib/analytics/debt";
 import { db } from "@/lib/db";
 import { loadDemoChatsIntoDB } from "@/lib/demoLoader";
-import type { Chat, Message, ChatStats, GhostEntry, PromiseItem, ReplyDebtBreakdown } from "@/types";
+import type { Chat, Message, ChatStats, GhostEntry, PromiseItem, ReplyDebtBreakdown, ImportReport } from "@/types";
+
 
 interface ChatImporterProps {
   onDataLoaded: (data: {
@@ -29,10 +30,11 @@ export const ChatImporter: React.FC<ChatImporterProps> = ({ onDataLoaded }) => {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   // Staged parsed files waiting for identity confirmation
-  const [stagedParsedChats, setStagedParsedChats] = useState<{ chat: Chat; messages: Message[] }[] | null>(null);
+  const [stagedParsedChats, setStagedParsedChats] = useState<{ chat: Chat; messages: Message[]; report?: ImportReport }[] | null>(null);
   const [detectedParticipants, setDetectedParticipants] = useState<string[]>([]);
   const [selectedSelfName, setSelectedSelfName] = useState<string>("");
   const [customSelfName, setCustomSelfName] = useState<string>("");
+  const [showUnparsedDetails, setShowUnparsedDetails] = useState<boolean>(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -79,7 +81,7 @@ export const ChatImporter: React.FC<ChatImporterProps> = ({ onDataLoaded }) => {
     setFileProgress({ current: 0, total: files.length });
 
     try {
-      const parsedList: { chat: Chat; messages: Message[] }[] = [];
+      const parsedList: { chat: Chat; messages: Message[]; report?: ImportReport }[] = [];
       const allParticipants = new Set<string>();
 
       for (let i = 0; i < files.length; i++) {
@@ -87,8 +89,14 @@ export const ChatImporter: React.FC<ChatImporterProps> = ({ onDataLoaded }) => {
         setFileProgress({ current: i + 1, total: files.length });
         setProgressStatus(`Parsing ${file.name}...`);
 
-        const textContent = await file.text();
-        const parsed = parseChatFile(textContent, file.name);
+        let parsed;
+        if (file.name.toLowerCase().endsWith(".zip")) {
+          const buffer = await file.arrayBuffer();
+          parsed = await parseWhatsAppZip(buffer, file.name);
+        } else {
+          const textContent = await file.text();
+          parsed = parseChatFile(textContent, file.name);
+        }
 
         parsed.participants.forEach((p) => allParticipants.add(p));
 
@@ -107,6 +115,7 @@ export const ChatImporter: React.FC<ChatImporterProps> = ({ onDataLoaded }) => {
         parsedList.push({
           chat: chatObj,
           messages: parsed.messages,
+          report: parsed.report,
         });
       }
 
@@ -123,6 +132,7 @@ export const ChatImporter: React.FC<ChatImporterProps> = ({ onDataLoaded }) => {
       setIsProcessingFiles(false);
     }
   };
+
 
   const handleConfirmIdentityAndAnalyze = async () => {
     if (!stagedParsedChats) return;
@@ -229,20 +239,76 @@ export const ChatImporter: React.FC<ChatImporterProps> = ({ onDataLoaded }) => {
             </div>
           </div>
 
-          {/* Uploaded Summary List */}
-          <div className="p-3.5 rounded-xl bg-[#080A12] border border-[#161B2E] space-y-2">
-            <span className="text-[11px] font-mono text-[#747E9E]">Parsed Conversations:</span>
-            <div className="flex flex-wrap gap-2">
-              {stagedParsedChats.map(({ chat }) => (
-                <span
-                  key={chat.id}
-                  className="px-2.5 py-1 rounded-lg bg-[#101422] border border-[#1C243B] text-xs font-mono text-[#CCD2E3]"
-                >
-                  {chat.title} ({chat.messageCount} msgs)
-                </span>
+          {/* Import Report Section */}
+          <div className="p-4 rounded-2xl bg-[#080A12] border border-[#161B2E] space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-mono font-bold text-[#64D2FF] flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-[#30D158]" />
+                Import Report ({stagedParsedChats.length} file{stagedParsedChats.length > 1 ? "s" : ""})
+              </span>
+              <span className="text-[11px] font-mono text-[#8E99B8]">
+                {stagedParsedChats.reduce((acc, c) => acc + c.chat.messageCount, 0)} total messages
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
+              {stagedParsedChats.map(({ chat, report }) => (
+                <div key={chat.id} className="p-3 rounded-xl bg-[#0E1220] border border-[#1B233A] space-y-1.5">
+                  <div className="flex items-center justify-between text-[#CCD2E3] font-bold">
+                    <span className="truncate max-w-[180px]">{chat.title}</span>
+                    <span className="text-[#30D158]">{chat.messageCount} msgs</span>
+                  </div>
+                  <div className="text-[11px] text-[#7A85A4] space-y-0.5">
+                    <div>Participants: {chat.participants.length} ({chat.participants.slice(0, 3).join(", ")}{chat.participants.length > 3 ? "..." : ""})</div>
+                    <div>Date Range: {new Date(chat.firstMessageAt).toLocaleDateString()} &rarr; {new Date(chat.lastMessageAt).toLocaleDateString()}</div>
+                    {report && (
+                      <div className="flex items-center gap-2 pt-1 text-[10px]">
+                        <span className="text-[#8E99B8]">System: {report.systemMessagesSkipped}</span>
+                        <span>•</span>
+                        <span className="text-[#8E99B8]">Media: {report.mediaCount}</span>
+                        {report.unparsedLinesCount > 0 && (
+                          <>
+                            <span>•</span>
+                            <span className="text-[#FF9F0A] font-bold">{report.unparsedLinesCount} unparsed</span>
+                          </>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
               ))}
             </div>
+
+            {/* If any file had unparsed lines or warnings, show expandable inspector */}
+            {stagedParsedChats.some((c) => (c.report?.unparsedLinesCount || 0) > 0) && (
+              <div className="pt-2 border-t border-[#161B2E]">
+                <button
+                  type="button"
+                  onClick={() => setShowUnparsedDetails(!showUnparsedDetails)}
+                  className="w-full flex items-center justify-between p-2 rounded-xl bg-[#FF9F0A]/10 border border-[#FF9F0A]/30 text-xs font-mono text-[#FF9F0A] hover:bg-[#FF9F0A]/20 transition-all"
+                >
+                  <span className="flex items-center gap-1.5 font-bold">
+                    <AlertCircle className="w-3.5 h-3.5" />
+                    Inspect Unparsed Lines ({stagedParsedChats.reduce((acc, c) => acc + (c.report?.unparsedLinesCount || 0), 0)} lines)
+                  </span>
+                  {showUnparsedDetails ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                </button>
+
+                {showUnparsedDetails && (
+                  <div className="mt-2 p-3 rounded-xl bg-[#05060A] border border-[#222B42] text-[11px] font-mono text-[#A0AABF] max-h-40 overflow-y-auto space-y-1">
+                    {stagedParsedChats.map(({ chat, report }) =>
+                      report?.unparsedLinesSample?.map((sample, idx) => (
+                        <div key={`${chat.id}_${idx}`} className="text-red-300/80">
+                          [{chat.title}] {sample}
+                        </div>
+                      ))
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
+
 
           {/* Participant Selectors */}
           <div className="space-y-3">

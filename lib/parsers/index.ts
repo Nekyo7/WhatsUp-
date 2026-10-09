@@ -1,9 +1,10 @@
 import { parseWhatsAppExport, type ParsedChatResult } from "./whatsapp";
 import { parseTelegramExport } from "./telegram";
 import { parseDiscordExport } from "./discord";
+import { parseWhatsAppZip } from "./zip";
 
 export type { ParsedChatResult };
-export { parseWhatsAppExport, parseTelegramExport, parseDiscordExport };
+export { parseWhatsAppExport, parseTelegramExport, parseDiscordExport, parseWhatsAppZip };
 
 /**
  * Automatically detects file format and parses chat export into unified ParsedChatResult.

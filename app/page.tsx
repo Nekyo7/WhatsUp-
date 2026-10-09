@@ -21,6 +21,7 @@ import { ChatDetailModal } from "@/components/ChatDetailModal";
 import { AISettingsModal } from "@/components/AISettingsModal";
 import { AmendsModeModal } from "@/components/AmendsModeModal";
 import { IdentitySwitcherModal } from "@/components/IdentitySwitcherModal";
+import { RPGGameInterface } from "@/components/RPGGameInterface";
 import type { Chat, Message, ChatStats, GhostEntry, PromiseItem, ReplyDebtBreakdown, HeatmapPoint } from "@/types";
 
 export default function Home() {
@@ -47,6 +48,7 @@ export default function Home() {
   const [isImporterOpen, setIsImporterOpen] = useState(false);
   const [isAmendsOpen, setIsAmendsOpen] = useState(false);
   const [isIdentityModalOpen, setIsIdentityModalOpen] = useState(false);
+  const [isRPGView, setIsRPGView] = useState(true);
 
   // Load from Dexie on mount
   useEffect(() => {
@@ -223,6 +225,108 @@ export default function Home() {
     setIsImporterOpen(false);
   };
 
+  // If in Cozy Fantasy RPG Mode and not importing
+  if (isRPGView && !isImporterOpen) {
+    return (
+      <main className="min-h-screen bg-[#13101C]">
+        <RPGGameInterface
+          chats={chats}
+          stats={stats}
+          ghosts={ghosts}
+          promises={promises}
+          replyDebt={replyDebt}
+          allMessages={allMessages}
+          activeSelfName={activeSelfName}
+          activeAIEngine={activeAIEngine}
+          onSelectChat={handleSelectChatById}
+          onOpenIdentityModal={() => setIsIdentityModalOpen(true)}
+          onOpenSettingsModal={() => setIsSettingsOpen(true)}
+          onOpenImporter={() => setIsImporterOpen(true)}
+          onOpenAmendsMode={() => setIsAmendsOpen(true)}
+          onMarkItemPaid={handleMarkItemPaid}
+          onSwitchToClassicView={() => setIsRPGView(false)}
+        />
+
+        {/* Global Modals */}
+        <BriefingModal
+          isOpen={Boolean(activeChatForBriefing)}
+          chat={activeChatForBriefing}
+          messages={
+            activeChatForBriefing
+              ? allMessages.filter((m) => m.chatId === activeChatForBriefing.id)
+              : []
+          }
+          onClose={() => setActiveChatForBriefing(null)}
+        />
+
+        <ReplyDraftModal
+          isOpen={Boolean(activeChatForReplyDraft)}
+          chat={activeChatForReplyDraft}
+          messages={
+            activeChatForReplyDraft
+              ? allMessages.filter((m) => m.chatId === activeChatForReplyDraft.id)
+              : []
+          }
+          onClose={() => setActiveChatForReplyDraft(null)}
+        />
+
+        <WrappedModal
+          isOpen={isWrappedOpen}
+          chats={chats}
+          stats={stats}
+          promises={promises}
+          ghosts={ghosts}
+          replyDebtScore={replyDebt?.score || 0}
+          onClose={() => setIsWrappedOpen(false)}
+        />
+
+        <AISettingsModal
+          isOpen={isSettingsOpen}
+          onClose={() => setIsSettingsOpen(false)}
+          onSettingsSaved={refreshAIEngineBadge}
+        />
+
+        <WipeDataModal
+          isOpen={isWipeModalOpen}
+          onClose={() => setIsWipeModalOpen(false)}
+          onWiped={handleWipedData}
+        />
+
+        <ChatDetailModal
+          isOpen={Boolean(activeChatForDetail)}
+          chat={activeChatForDetail}
+          messages={
+            activeChatForDetail
+              ? allMessages.filter((m) => m.chatId === activeChatForDetail.id)
+              : []
+          }
+          stat={stats.find((s) => s.chatId === activeChatForDetail?.id) || null}
+          ghost={ghosts.find((g) => g.chatId === activeChatForDetail?.id) || null}
+          onOpenBriefing={handleTriggerBriefing}
+          onOpenReplyDraft={handleTriggerReplyDraft}
+          onClose={() => setActiveChatForDetail(null)}
+        />
+
+        <AmendsModeModal
+          isOpen={isAmendsOpen}
+          onClose={() => setIsAmendsOpen(false)}
+          ghosts={ghosts}
+          chats={chats}
+          promises={promises}
+          onMarkItemPaid={handleMarkItemPaid}
+        />
+
+        <IdentitySwitcherModal
+          isOpen={isIdentityModalOpen}
+          onClose={() => setIsIdentityModalOpen(false)}
+          currentSelfName={activeSelfName}
+          availableSenders={availableSenders}
+          onSelectIdentity={handleSwitchIdentity}
+        />
+      </main>
+    );
+  }
+
   return (
     <main className="min-h-screen bg-[#07080C] text-[#E6E8F0] p-4 sm:p-6 lg:p-10 font-sans">
       <div className="max-w-7xl mx-auto space-y-8">
@@ -242,6 +346,15 @@ export default function Home() {
 
           {/* Action Bar */}
           <div className="flex flex-wrap items-center gap-3">
+            {/* Storybook RPG View Toggle Button */}
+            <button
+              onClick={() => setIsRPGView(true)}
+              className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-[#5E7E52] to-[#789B6A] hover:brightness-110 border border-[#8DA87B] text-xs font-mono font-bold text-white flex items-center gap-1.5 transition-all shadow-md shadow-[#5E7E52]/20"
+              title="Switch to Cozy Fantasy RPG Storybook View"
+            >
+              <span>🌿 Storybook RPG Mode</span>
+            </button>
+
             {/* Identity Switcher Button */}
             {chats.length > 0 && (
               <button

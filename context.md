@@ -89,11 +89,29 @@ WhatsUP? is a local-first conversational intelligence dashboard that audits expo
 - [x] **Hinglish Promise Benchmark Suite (Step 10)**: 50 hand-labeled samples with `npm run eval:promises` script and automated Vitest evaluation suite.
 - [x] **Multi-Provider AI Backend & BYOK**: Google Gemini + Anthropic Claude + OpenAI-compatible + Local NLP Synthesizer.
 - [x] **Guilt Wrapped '26**: Dynamic end-of-year style recap cards with shareable summaries.
+- [x] **Cozy Fantasy RPG / Illustrated Storybook UI (UI/UX Transformation)**: Complete redesign inspired by classic adventure game storybooks. Features custom hand-drawn character Luna, twilight forest environment, parchment panels, animated stats (HP, MP, EXP, Guilt Coins, Kept Vows), controller tabs (`[QUEST]`, `[SKILLS]`, `[ITEMS]`, `[EQUIP]`, `[STATUS]`), Quests-to-Promises engine, Skills-to-AI-Amends spellbook, Area Map exploration, and seamless toggle between Storybook RPG Mode and Classic Ledger View.
 - [x] **Production Build Validation**: Next.js 14 production build verified and passing cleanly with zero build errors.
 
 ---
 
-## 6. Verification Status
+## 6. Storybook RPG UI/UX Transformation
+
+| Element | Implementation Details |
+|---|---|
+| **Design Language** | Cozy fantasy RPG / illustrated storybook aesthetic ("A playable storybook brought to life") |
+| **Color Palette** | Aged Parchment (`#F4EAD6`), Forest/Moss Green (`#8DA87B`), Twilight Purple (`#A393B5`), Umber Outlines (`#36291C`), Terracotta/Coral (`#D97059`) |
+| **Hero Visual** | Hand-drawn character Luna anchored on a winding stone path under a twilight sky with crescent moon, glowing lanterns, and layered foliage |
+| **Gamified HUD** | Level 18, HP (Conversational Health), MP (AI Spell Mana), EXP, 🌸 Karma, 🪙 Guilt Coins, 🌿 Kept Vows |
+| **Controller Navigation** | `[L1] [QUEST] [SKILLS] [ITEMS] [EQUIP] [STATUS] [R1]` with gamepad-inspired visual prompts (`[✕ Confirm] [○ Back] [□ View on Map] [☰ Options]`) |
+| **Quests System** | Conversational commitments mapped to folklore quests with progress bars, rewards, and completion flows |
+| **Skills Spellbook** | Conversational reply tactics mapped to spells (*Nature's Touch* = Apologetic Heal, *Glimmer Spray* = Casual Charm, *Breeze Step* = Quick Evasion, *Calm Heart* = Deep Amends) |
+| **Satchel & Map** | Inventory slots for chat archive scrolls, interactive Area Map of Whispering Glen with location points |
+| **Dual Mode** | Instant toggle between **🌿 Storybook RPG Mode** and **⚔️ Classic Ledger View** with state persistence |
+
+---
+
+## 7. Verification Status
 
 - **Unit & Benchmark Tests**: 41/41 tests passing across 6 test suites (`parsers.test.ts`, `analytics.test.ts`, `promisesHinglish.test.ts`, `promisesEval.test.ts`, `redact.test.ts`, `groupAndLocalAi.test.ts`).
 - **Production Build & Type Check**: `npx tsc --noEmit`, `npm run build`, and `npx vitest run` pass cleanly.
+
