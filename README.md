@@ -7,7 +7,7 @@
 [![Storage](https://img.shields.io/badge/Storage-IndexedDB%20(Dexie%20v2)-green?style=for-the-badge)](https://dexie.org/)
 [![Security](https://img.shields.io/badge/Security-AES--GCM%20%2B%20CSP%20%2B%20Zero--Cloud-gold?style=for-the-badge)](./SECURITY.md)
 [![Tests](https://img.shields.io/badge/Tests-54%2F54%20Passing-brightgreen?style=for-the-badge&logo=vitest)](https://vitest.dev/)
-[![UI Style](https://img.shields.io/badge/Theme-Cozy%20Storybook%20RPG%20%26%20Classic-parchment?style=for-the-badge&color=8DA87B)](https://github.com/Nekyo7/WhatsUp-)
+[![UI](https://img.shields.io/badge/UI-Executive%20Guilt%20Command%20Center-darkblue?style=for-the-badge&color=1E293B)](https://github.com/Nekyo7/WhatsUp-)
 
 ---
 
@@ -56,13 +56,10 @@ flowchart TD
 ### 2. Component Topology
 
 ```mermaid
-graph LR
-    subgraph UI Layers
-        RPG[Cozy Storybook RPG Mode\nIllustrated Quest Menu]
-        Classic[Classic Ledger Mode\nHigh-Density Executive Dashboard]
-    end
+graph TD
+    Dashboard[Executive Guilt Command Center]
 
-    subgraph Core Features
+    subgraph Core Engines
         Debt[Reply Debt Index 0-100]
         Radar[Ghost Radar: 4 Lanes]
         Ledger[Promise Ledger: 4 Tabs]
@@ -73,8 +70,7 @@ graph LR
         Wrapped[Guilt Wrapped '26]
     end
 
-    RPG --> Debt & Radar & Ledger & Person
-    Classic --> Debt & Radar & Ledger & Person
+    Dashboard --> Debt & Radar & Ledger & Person & Briefing & Drafter & Amends & Wrapped
 ```
 
 ---
@@ -119,9 +115,9 @@ graph LR
 * **5 Contextual Reply Tones:** Generate responses in **Warm**, **Direct**, **Apologetic**, **Professional**, or **Casual** tones.
 * **Priority-First Briefings:** Auto-triaged into *"Needs your reply within 24h"*, *"FYI only"*, and *"Action item for team"*, with source message citations.
 
-### 6. 🎨 Dual UI Experiences
-* **Cozy Storybook RPG Mode:** Hand-drawn, parchment-inspired fantasy adventure menu where conversational debt becomes quest objectives and ghosted chats become slumbering companions.
-* **Analytical Classic Ledger:** High-density, professional command center with Recharts data visualizations, 24x7 activity biorhythm heatmaps, and itemized debt breakdowns.
+### 6. 📊 Executive Guilt Command Center
+* High-density, professional command center with interactive **Recharts visualizations**, **24x7 activity biorhythm heatmaps**, and itemized debt breakdowns.
+* Instant 1-click sender identity switching to recalculate all statistics and debt scores for any participant.
 
 ### 7. 🎁 Guilt Wrapped '26 & Amends Mode
 * **Guilt Wrapped:** Spotify-style annual recap of your communication health—identifies your #1 talk partner, longest ghosting streak, percentage of promises fulfilled, and AI roast.
@@ -231,8 +227,8 @@ Chat exports indicate message timestamps and senders, but not read receipts. Wha
 </details>
 
 <details>
-<summary><b>Q: Why does the app support both Storybook RPG Mode and Classic View?</b></summary>
-Conversational debt produces real anxiety. The <b>Cozy Storybook RPG Mode</b> reframes guilt as a playful, immersive quest with warm parchment aesthetics, lowering cognitive friction. For deep analytical inspections, the <b>Classic Ledger Mode</b> provides dense tables, Recharts graphs, and itemized debt scores.
+<summary><b>Q: Can WhatsUP? be used completely offline with zero API keys?</b></summary>
+<b>Yes.</b> WhatsUP? includes a built-in Local NLP Synthesizer that runs topic clustering, commitment resolution, and contextual reply drafting directly in your browser. All metrics, Recharts graphs, and triage queues function with zero internet connection and 0 bytes sent.
 </details>
 
 ---

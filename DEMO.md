@@ -23,7 +23,7 @@ Before the demo:
 
 ### 0:00 – 0:30 | The Hook & Problem Pitch
 **What to show:**
-* Start on the **Cozy Storybook RPG View** or the analytical **Classic Ledger View**.
+* Open the **Executive Guilt Command Center**.
 * Show the prominent **Reply Debt Index gauge (e.g. 74/100)**.
 
 **What to say:**
@@ -79,7 +79,6 @@ Before the demo:
 ### 2:40 – 3:00 | Privacy Architecture & Closing
 **What to show:**
 * Point to the **Network Ledger badge**: `0 Network Bytes • Local AI Active`.
-* Mention the dual theme switch: toggle between **Storybook RPG View** and **Classic Ledger View**.
 * Click **"Guilt Wrapped '26"** to show the shareable annual communication recap.
 
 **What to say:**
