@@ -40,6 +40,9 @@ export const ReplyDraftsResponseSchema = z.object({
   apologetic: z.string(),
   casual: z.string(),
   short: z.string(),
+  warm: z.string().optional(),
+  direct: z.string().optional(),
+  professional: z.string().optional(),
 });
 
 export const WrappedCaptionResponseSchema = z.object({

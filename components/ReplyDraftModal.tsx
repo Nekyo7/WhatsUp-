@@ -20,7 +20,7 @@ export const ReplyDraftModal: React.FC<ReplyDraftModalProps> = ({
   onClose,
 }) => {
   const [drafts, setDrafts] = useState<ReplyDraftOptions | null>(null);
-  const [activeTone, setActiveTone] = useState<"apologetic" | "casual" | "short">("apologetic");
+  const [activeTone, setActiveTone] = useState<"warm" | "direct" | "apologetic" | "professional" | "casual">("warm");
   const [isLoading, setIsLoading] = useState(false);
   const [copiedTone, setCopiedTone] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -94,6 +94,9 @@ export const ReplyDraftModal: React.FC<ReplyDraftModalProps> = ({
         apologetic: unredactText(rawDrafts.apologetic, redaction.reverseNameMapping),
         casual: unredactText(rawDrafts.casual, redaction.reverseNameMapping),
         short: unredactText(rawDrafts.short, redaction.reverseNameMapping),
+        warm: unredactText(rawDrafts.warm || rawDrafts.casual, redaction.reverseNameMapping),
+        direct: unredactText(rawDrafts.direct || rawDrafts.short, redaction.reverseNameMapping),
+        professional: unredactText(rawDrafts.professional || rawDrafts.apologetic, redaction.reverseNameMapping),
       });
     } catch (err: any) {
       setErrorMsg(err.message || "Failed to generate drafts");
@@ -122,7 +125,7 @@ export const ReplyDraftModal: React.FC<ReplyDraftModalProps> = ({
                 </h3>
               </div>
               <p className="text-xs text-[#828BA5]">
-                Generate 3 context-aware response variations for {chat.title}
+                Generate 5 context-aware response variations for {chat.title}
               </p>
             </div>
             <button onClick={onClose} className="text-[#7E89A6] hover:text-white">
@@ -131,20 +134,26 @@ export const ReplyDraftModal: React.FC<ReplyDraftModalProps> = ({
           </div>
 
           {/* Tone Tabs */}
-          <div className="px-6 py-3 bg-[#0A0C14] border-b border-[#1A1F33] flex items-center justify-between">
+          <div className="px-6 py-3 bg-[#0A0C14] border-b border-[#1A1F33] flex items-center justify-between flex-wrap gap-2">
             <span className="text-xs font-mono text-[#7682A0]">Select Tone:</span>
-            <div className="flex items-center gap-2 bg-[#121626] p-1 rounded-xl border border-[#202740]">
-              {(["apologetic", "casual", "short"] as const).map((tone) => (
+            <div className="flex items-center gap-1.5 bg-[#121626] p-1 rounded-xl border border-[#202740] flex-wrap">
+              {[
+                { id: "warm", label: "🌸 Warm" },
+                { id: "direct", label: "🎯 Direct" },
+                { id: "apologetic", label: "🙏 Apologetic" },
+                { id: "professional", label: "💼 Professional" },
+                { id: "casual", label: "☕ Casual" },
+              ].map((t) => (
                 <button
-                  key={tone}
-                  onClick={() => setActiveTone(tone)}
-                  className={`px-3 py-1 rounded-lg text-xs font-mono font-bold capitalize transition-all ${
-                    activeTone === tone
+                  key={t.id}
+                  onClick={() => setActiveTone(t.id as any)}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold capitalize transition-all ${
+                    activeTone === t.id
                       ? "bg-[#64D2FF] text-black shadow-md shadow-[#64D2FF]/20"
                       : "text-[#828CA8] hover:text-white"
                   }`}
                 >
-                  {tone === "apologetic" ? "🙏 Apologetic" : tone === "casual" ? "☕ Casual" : "⚡ Short"}
+                  {t.label}
                 </button>
               ))}
             </div>

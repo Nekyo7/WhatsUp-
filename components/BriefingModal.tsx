@@ -251,6 +251,53 @@ export const BriefingModal: React.FC<BriefingModalProps> = ({
                   </div>
                 )}
 
+                {/* Priority-First Triage Section */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <div className={`p-3 rounded-xl border flex items-center gap-2.5 ${
+                    briefing.actionItems.length > 0 || briefing.deadlines.length > 0
+                      ? "bg-[#2D0F16] border-[#FF334B]/50 text-[#FF8595]"
+                      : "bg-[#0A0D18] border-[#1C233C] text-[#6B7694] opacity-60"
+                  }`}>
+                    <span className="text-base">🚨</span>
+                    <div>
+                      <div className="text-[11px] font-bold uppercase tracking-wider font-mono">
+                        {briefing.actionItems.length > 0 || briefing.deadlines.length > 0 ? "Action Required" : "No Urgent Reply"}
+                      </div>
+                      <div className="text-[10px] opacity-80">
+                        {briefing.actionItems.length > 0 ? "Needs reply within 24h" : "Zero pending blockers"}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`p-3 rounded-xl border flex items-center gap-2.5 ${
+                    briefing.actionItems.length === 0 && briefing.deadlines.length === 0
+                      ? "bg-[#0F281E] border-[#30D158]/50 text-[#30D158]"
+                      : "bg-[#0A0D18] border-[#1C233C] text-[#6B7694] opacity-60"
+                  }`}>
+                    <span className="text-base">💡</span>
+                    <div>
+                      <div className="text-[11px] font-bold uppercase tracking-wider font-mono">
+                        FYI Only
+                      </div>
+                      <div className="text-[10px] opacity-80">
+                        {briefing.actionItems.length === 0 ? "Safe to archive/read later" : "Contains informational context"}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-3 rounded-xl border bg-[#161226] border-[#7928CA]/40 text-[#D8B4FE] flex items-center gap-2.5">
+                    <span className="text-base">👥</span>
+                    <div>
+                      <div className="text-[11px] font-bold uppercase tracking-wider font-mono">
+                        Team & Delegated
+                      </div>
+                      <div className="text-[10px] opacity-80">
+                        {briefing.decisions.length > 0 ? `${briefing.decisions.length} mutual decisions` : "Monitored thread"}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 {/* 3-Bullet TL;DR Box */}
                 <div className="p-5 rounded-xl bg-[#121524] border border-[#252E4C] space-y-3">
                   <div className="text-xs font-mono uppercase tracking-wider text-[#FF453A] font-bold flex items-center gap-2">
@@ -271,17 +318,27 @@ export const BriefingModal: React.FC<BriefingModalProps> = ({
                 {/* Structured Topics */}
                 {briefing.topics.length > 0 && (
                   <div className="space-y-3">
-                    <h4 className="text-xs font-mono uppercase text-[#7D88A6] font-bold tracking-wider">
-                      Key Topics & Blocker Threads
-                    </h4>
+                    <div className="flex items-center justify-between">
+                      <h4 className="text-xs font-mono uppercase text-[#7D88A6] font-bold tracking-wider">
+                        Key Topics & Blocker Threads
+                      </h4>
+                      <span className="text-[10px] font-mono text-[#64D2FF]">Source citations linked</span>
+                    </div>
                     <div className="space-y-3">
                       {briefing.topics.map((topic, i) => (
                         <div
                           key={i}
                           className="p-4 rounded-xl bg-[#090B12] border border-[#1A1F33] space-y-2"
                         >
-                          <div className="font-bold text-white text-sm text-[#64D2FF]">
-                            {topic.title}
+                          <div className="flex items-center justify-between">
+                            <span className="font-bold text-sm text-[#64D2FF]">
+                              {topic.title}
+                            </span>
+                            {topic.sourceMessageIds?.length > 0 && (
+                              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#162238] text-[#64D2FF] border border-[#233554]">
+                                📍 {topic.sourceMessageIds.length} source msgs
+                              </span>
+                            )}
                           </div>
                           <ul className="space-y-1.5 text-xs text-[#9FA9C2] pl-4 list-disc">
                             {topic.bullets.map((bullet, bi) => (

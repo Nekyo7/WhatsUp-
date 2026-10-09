@@ -227,6 +227,9 @@ export interface ReplyDraftOptions {
   apologetic: string;
   casual: string;
   short: string;
+  warm?: string;
+  direct?: string;
+  professional?: string;
 }
 
 export interface WrappedData {

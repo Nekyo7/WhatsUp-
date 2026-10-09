@@ -21,10 +21,11 @@ describe("Security Hardening Tests", () => {
     expect(redactedText).not.toContain("rohan@okaxis");
     expect(redactedText).not.toContain("+91 98765 43210");
     expect(redactedText).not.toContain("ABCDE1234F");
-    expect(redactedText).toContain("[UPI]");
-    expect(redactedText).toContain("[PHONE]");
-    expect(redactedText).toContain("[PAN]");
+    expect(redactedText).toContain("[UPI: masked]");
+    expect(redactedText).toContain("[PHONE: masked]");
+    expect(redactedText).toContain("[PAN: masked]");
   });
+
 
   it("Test 2: Rejects zip archives with directory traversal attempts (../)", async () => {
     const zip = new JSZip();

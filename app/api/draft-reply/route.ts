@@ -14,16 +14,19 @@ export async function POST(req: Request) {
     const customProvider = (provider || req.headers.get("x-ai-provider") || undefined) as AIProvider | undefined;
 
     const systemPrompt = `You are a conversational AI assistant generating guilt-free response drafts for people who accidentally left a friend or colleague on read.
-Generate three distinct tones:
+Generate drafts across the following tones:
 1. "apologetic": Sincere apology, honest brief reason (busy/swamped), and immediate answer/deliverable.
-2. "casual": Friendly, warm, acknowledging delay without excessive groveling.
-3. "short": Ultra-concise, punchy 1-sentence reply with immediate answer.`;
+2. "casual": Friendly, chill, acknowledging delay without excessive groveling.
+3. "short": Ultra-concise, punchy 1-sentence reply with immediate answer.
+4. "warm": Kind, empathetic, appreciative, caring check-in tone.
+5. "direct": Straight-to-the-point, clear and actionable without excuses.
+6. "professional": Courteous, structured, polite workplace tone.`;
 
     const userPrompt = `Contact: ${contactName}
 Pending unanswered context:
 ${lastMessagesText}
 
-Generate the 3 drafts JSON object.`;
+Generate the drafts JSON object containing apologetic, casual, short, warm, direct, and professional replies.`;
 
     const result = await callLLMWithSchema({
       task: "draft_reply",

@@ -273,17 +273,26 @@ export function generateLocalReplyDrafts(
   let apologetic = `Hey ${contactName}, really sorry for the delay in getting back to you! Got swamped with a few things. Regarding "${cleanLastLine.slice(0, 50)}"—let's connect and get this sorted today!`;
   let casual = `Hey ${contactName}! My bad on the delay. On it right now regarding "${cleanLastLine.slice(0, 45)}"`;
   let short = `Hey ${contactName}, on it right now! Will update you in a bit.`;
+  let warm = `Hi ${contactName}, thinking of you! So sorry for going quiet on you. About "${cleanLastLine.slice(0, 45)}" — let's definitely catch up and sort it out!`;
+  let direct = `Hey ${contactName}, about "${cleanLastLine.slice(0, 40)}" — handling this now. Will confirm as soon as it's done.`;
+  let professional = `Hello ${contactName}, apologies for the delayed response. Regarding your note on "${cleanLastLine.slice(0, 45)}", I am addressing this today and will follow up shortly.`;
 
   if (hasQuestion) {
     apologetic = `Hey ${contactName}, so sorry for keeping you waiting! To answer your question about "${cleanLastLine.slice(0, 45)}": Yes, let's do this! Checking the details right now.`;
     casual = `Hey ${contactName}, my bad on the late reply! Regarding "${cleanLastLine.slice(0, 40)}": On it, let me get back to you with the details shortly.`;
     short = `On it! Checking "${cleanLastLine.slice(0, 35)}" and updating you soon.`;
+    warm = `Hi ${contactName}! Thanks so much for your patience. To answer "${cleanLastLine.slice(0, 40)}" — looking into this now and will send you everything with pleasure!`;
+    direct = `Hey ${contactName}, regarding "${cleanLastLine.slice(0, 35)}": Yes, working on it now and will deliver an answer shortly.`;
+    professional = `Hello ${contactName}, thank you for your query regarding "${cleanLastLine.slice(0, 40)}". I am reviewing the specifics and will provide a complete response today.`;
   }
 
   return {
     apologetic,
     casual,
     short,
+    warm,
+    direct,
+    professional,
   };
 }
 

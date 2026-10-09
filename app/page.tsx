@@ -22,7 +22,10 @@ import { AISettingsModal } from "@/components/AISettingsModal";
 import { AmendsModeModal } from "@/components/AmendsModeModal";
 import { IdentitySwitcherModal } from "@/components/IdentitySwitcherModal";
 import { RPGGameInterface } from "@/components/RPGGameInterface";
-import type { Chat, Message, ChatStats, GhostEntry, PromiseItem, ReplyDebtBreakdown, HeatmapPoint } from "@/types";
+import { PersonalTabModal } from "@/components/PersonalTabModal";
+import { buildPersonProfile } from "@/lib/analytics/personProfile";
+import type { Chat, Message, ChatStats, GhostEntry, PromiseItem, ReplyDebtBreakdown, HeatmapPoint, PersonProfile } from "@/types";
+
 
 export default function Home() {
   const [chats, setChats] = useState<Chat[]>([]);
@@ -49,6 +52,7 @@ export default function Home() {
   const [isAmendsOpen, setIsAmendsOpen] = useState(false);
   const [isIdentityModalOpen, setIsIdentityModalOpen] = useState(false);
   const [isRPGView, setIsRPGView] = useState(true);
+  const [activePersonProfile, setActivePersonProfile] = useState<PersonProfile | null>(null);
 
   // Load from Dexie on mount
   useEffect(() => {
@@ -211,6 +215,12 @@ export default function Home() {
   const handleTriggerReplyDraft = (chat: Chat) => {
     setActiveChatForDetail(null);
     setActiveChatForReplyDraft(chat);
+  };
+
+  const handleOpenPersonProfile = (personName: string, chat: Chat) => {
+    const chatMsgs = allMessages.filter((m) => m.chatId === chat.id);
+    const profile = buildPersonProfile(personName, chat, chatMsgs, activeSelfName, ghosts, promises);
+    setActivePersonProfile(profile);
   };
 
   const handleWipedData = () => {
@@ -495,6 +505,7 @@ export default function Home() {
               chats={chats}
               stats={stats}
               onSelectChat={handleSelectChatById}
+              onOpenPersonProfile={handleOpenPersonProfile}
             />
 
             {/* 5. 24x7 Conversational Activity Heatmap */}
@@ -583,6 +594,14 @@ export default function Home() {
         currentSelfName={activeSelfName}
         availableSenders={availableSenders}
         onSelectIdentity={handleSwitchIdentity}
+      />
+
+      {/* Per-Person Tab Modal */}
+      <PersonalTabModal
+        isOpen={Boolean(activePersonProfile)}
+        profile={activePersonProfile}
+        onClose={() => setActivePersonProfile(null)}
+        onSelectMessage={handleSelectChatById}
       />
     </main>
   );
