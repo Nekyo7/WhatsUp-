@@ -1,8 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Settings, Key, Cpu, ShieldCheck, Check, X, Sparkles, AlertCircle } from "lucide-react";
+import { Settings, Key, Cpu, ShieldCheck, Check, X, Sparkles, AlertCircle, Lock } from "lucide-react";
 import type { AIProvider } from "@/lib/llm";
+import {
+  saveStoredApiKey,
+  getStoredApiKey,
+  getStoredProvider,
+  clearStoredApiKey,
+  getStorageMode,
+} from "@/lib/cryptoKey";
 
 interface AISettingsModalProps {
   isOpen: boolean;
@@ -17,42 +24,59 @@ export const AISettingsModal: React.FC<AISettingsModalProps> = ({
 }) => {
   const [provider, setProvider] = useState<AIProvider>("local");
   const [apiKey, setApiKey] = useState<string>("");
+  const [storageType, setStorageType] = useState<"device" | "session">("device");
   const [isSaved, setIsSaved] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
-      const storedKey = localStorage.getItem("whatsup_custom_api_key") || "";
-      const storedProvider = (localStorage.getItem("whatsup_custom_provider") || "local") as AIProvider;
-      setApiKey(storedKey);
-      setProvider(storedProvider);
-      setIsSaved(false);
+      let isMounted = true;
+      const loadSettings = async () => {
+        const storedProvider = getStoredProvider() as AIProvider;
+        const storedKey = await getStoredApiKey();
+        const mode = getStorageMode();
+        if (isMounted) {
+          setProvider(storedProvider);
+          setApiKey(storedKey);
+          setStorageType(mode === "session" ? "session" : "device");
+          setIsSaved(false);
+        }
+      };
+      loadSettings();
+      return () => {
+        isMounted = false;
+      };
     }
   }, [isOpen]);
 
   if (!isOpen) return null;
 
-  const handleSave = () => {
-    if (provider === "local" || !apiKey.trim()) {
-      localStorage.removeItem("whatsup_custom_api_key");
-      localStorage.setItem("whatsup_custom_provider", "local");
-      setApiKey("");
-      setProvider("local");
-    } else {
-      localStorage.setItem("whatsup_custom_api_key", apiKey.trim());
-      localStorage.setItem("whatsup_custom_provider", provider);
-    }
+  const handleSave = async () => {
+    setIsLoading(true);
+    try {
+      if (provider === "local" || !apiKey.trim()) {
+        clearStoredApiKey();
+        setApiKey("");
+        setProvider("local");
+      } else {
+        await saveStoredApiKey(apiKey.trim(), provider, storageType);
+      }
 
-    setIsSaved(true);
-    onSettingsSaved?.();
-    setTimeout(() => {
-      setIsSaved(false);
-      onClose();
-    }, 1000);
+      setIsSaved(true);
+      onSettingsSaved?.();
+      setTimeout(() => {
+        setIsSaved(false);
+        onClose();
+      }, 1000);
+    } catch (err: any) {
+      alert(`Failed to save settings: ${err.message || String(err)}`);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleClear = () => {
-    localStorage.removeItem("whatsup_custom_api_key");
-    localStorage.setItem("whatsup_custom_provider", "local");
+    clearStoredApiKey();
     setApiKey("");
     setProvider("local");
     setIsSaved(true);
@@ -135,6 +159,44 @@ export const AISettingsModal: React.FC<AISettingsModalProps> = ({
                 />
               </div>
 
+              {/* Storage Mode Selector */}
+              <div className="p-3 rounded-xl bg-[#080B14] border border-[#1B2236] space-y-2">
+                <span className="text-[11px] font-mono text-[#828CA8] block">Key Storage Security:</span>
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setStorageType("device")}
+                    className={`p-2 rounded-lg text-left border text-[11px] transition-all flex items-center gap-2 ${
+                      storageType === "device"
+                        ? "bg-[#142338] border-[#64D2FF] text-white"
+                        : "bg-[#0A0D18] border-[#181E30] text-[#7A86A4] hover:text-white"
+                    }`}
+                  >
+                    <Lock className="w-3.5 h-3.5 text-[#64D2FF]" />
+                    <div>
+                      <div className="font-bold">Device Encrypted</div>
+                      <div className="text-[9px] opacity-70">AES-GCM in localStorage</div>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setStorageType("session")}
+                    className={`p-2 rounded-lg text-left border text-[11px] transition-all flex items-center gap-2 ${
+                      storageType === "session"
+                        ? "bg-[#142338] border-[#64D2FF] text-white"
+                        : "bg-[#0A0D18] border-[#181E30] text-[#7A86A4] hover:text-white"
+                    }`}
+                  >
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#30D158]" />
+                    <div>
+                      <div className="font-bold">Session Only</div>
+                      <div className="text-[9px] opacity-70">Clears on tab close</div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+
               {/* Key Test & Token Estimate Info */}
               <div className="flex items-center justify-between text-[11px] font-mono text-[#727D9B] pt-1">
                 <span className="flex items-center gap-1.5 text-[#64D2FF]">
@@ -188,7 +250,8 @@ export const AISettingsModal: React.FC<AISettingsModalProps> = ({
             <button
               type="button"
               onClick={handleSave}
-              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#64D2FF] to-[#3B82F6] hover:from-[#50BEEB] hover:to-[#2563EB] text-black font-mono font-bold text-xs flex items-center gap-2 shadow-lg shadow-[#64D2FF]/20 transition-all"
+              disabled={isLoading}
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#64D2FF] to-[#3B82F6] hover:from-[#50BEEB] hover:to-[#2563EB] text-black font-mono font-bold text-xs flex items-center gap-2 shadow-lg shadow-[#64D2FF]/20 transition-all disabled:opacity-50"
             >
               {isSaved ? (
                 <>

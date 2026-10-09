@@ -11,19 +11,19 @@
 | **Chat Content Storage** | **100% On-Device**. No message text, participant list, or metadata is ever saved to any remote server or database. Data resides in client IndexedDB (`Dexie.js`) or ephemeral in-memory state. |
 | **Network Ledger** | Every single outgoing HTTP request is tracked and displayed to the user via a live network ledger badge (`0 bytes sent` until an AI action is explicitly confirmed). |
 | **Cloud AI Transmission** | Optional. Only triggered upon explicit user interaction (Briefing, Translation, Reply Draft). Only sanitized excerpts are transmitted, never full export files. |
-| **Authentication** | Supabase is configured strictly for authentication (user session verification), never for storing chat data, summaries, or messages. The app is fully functional in Guest / Demo mode with zero account requirements. |
+| **Authentication & Accounts** | **Zero Accounts Required**. WhatsUP? operates entirely client-side without registration, passwords, or cloud accounts. Zero user profile or session data is held on any remote server. |
 
 ---
 
 ## 2. API Key (BYOK) Security
 
 1. **Encrypted at Rest**:
-   - When a user chooses "Remember on this device", their API key is encrypted using the **Web Crypto API (AES-GCM 256-bit)** derived via PBKDF2 with 100,000 iterations.
+   - When a user chooses "Remember on this device", their API key is encrypted using the **Web Crypto API (AES-GCM 256-bit)** derived via PBKDF2 with 100,000 iterations and saved with an `enc_v1:` signature.
    - Keys are never stored in plaintext `localStorage`.
 2. **Session-Only Option**:
-   - Users can choose session-only in-memory storage, which clears automatically on tab close.
+   - Users can choose session-only in-memory storage (`sessionStorage`), which clears automatically on tab close.
 3. **No Key Leaks**:
-   - Client API keys are sent via encrypted HTTPS request headers (`x-ai-key`) or used in browser-direct requests. Server route handlers act as stateless proxies that never log request bodies or API keys.
+   - Client API keys are transmitted via encrypted HTTPS request headers (`x-ai-key` or `x-goog-api-key`), never in URL query strings. Server route handlers act as stateless, rate-limited proxies with payload size caps.
 
 ---
 

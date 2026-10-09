@@ -1,9 +1,19 @@
 import { NextResponse } from "next/server";
-import { callLLMWithSchema, PromiseConfirmationResponseSchema } from "@/lib/llm";
+import { callLLMWithSchema, PromiseConfirmationResponseSchema, type AIProvider } from "@/lib/llm";
+import { analyzePromiseCandidate } from "@/lib/analytics/promises";
+import { checkApiRateLimitAndPayload } from "@/lib/apiSecurity";
 
 export async function POST(req: Request) {
   try {
-    const { messageText, contextText = "" } = await req.json();
+    const rawText = await req.text();
+    const body = JSON.parse(rawText || "{}");
+    const { messageText, contextText = "", apiKey, provider, model } = body;
+
+    const customKey = apiKey || req.headers.get("x-ai-key") || undefined;
+    const customProvider = (provider || req.headers.get("x-ai-provider") || undefined) as AIProvider | undefined;
+
+    const rateLimitError = checkApiRateLimitAndPayload(req, rawText, Boolean(customKey));
+    if (rateLimitError) return rateLimitError;
 
     if (!messageText) {
       return NextResponse.json({ error: "Missing message text" }, { status: 400 });
@@ -27,6 +37,9 @@ Analyze this promise and return JSON adhering to schema.`;
       systemPrompt,
       userPrompt,
       schema: PromiseConfirmationResponseSchema,
+      apiKey: customKey,
+      provider: customProvider,
+      model,
     });
 
     if (result.success) {
@@ -37,15 +50,12 @@ Analyze this promise and return JSON adhering to schema.`;
       });
     }
 
+    // Heuristic analysis fallback
+    const heuristicData = analyzePromiseCandidate(messageText);
+
     return NextResponse.json({
       success: true,
-      data: {
-        isPromise: true,
-        promiseText: messageText,
-        dueAt: null,
-        confidence: 0.88,
-        reasoning: "Detected first-person commitment via keyword heuristic.",
-      },
+      data: heuristicData,
       bytesUsed: 0,
       isDemoCached: true,
     });

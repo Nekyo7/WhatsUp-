@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import confetti from "canvas-confetti";
 import { Sparkles, Trophy, Flame, Clock, Share2, Check, X, Shield, RefreshCw } from "lucide-react";
 import type { Chat, ChatStats, PromiseItem, GhostEntry, WrappedData } from "@/types";
+import { getStoredApiKey, getStoredProvider } from "@/lib/cryptoKey";
 
 interface WrappedModalProps {
   isOpen: boolean;
@@ -149,12 +150,16 @@ export const WrappedModal: React.FC<WrappedModalProps> = ({
   const fetchAICaption = async (data: WrappedData) => {
     setIsLoadingCaption(true);
     try {
-      const apiKey = localStorage.getItem("whatsup_custom_api_key") || undefined;
-      const provider = localStorage.getItem("whatsup_custom_provider") || undefined;
+      const apiKey = (await getStoredApiKey()) || undefined;
+      const provider = getStoredProvider() || undefined;
+
+      const headers: Record<string, string> = { "Content-Type": "application/json" };
+      if (apiKey) headers["x-ai-key"] = apiKey;
+      if (provider) headers["x-ai-provider"] = provider;
 
       const res = await fetch("/api/wrapped-captions", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers,
         body: JSON.stringify({
           topPersonName: data.topPerson.name,
           totalTalkHours: data.topPerson.talkTimeHours,

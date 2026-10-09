@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Sparkles, Trophy, Trash2, Shield, Upload, FileText, CheckCircle2, RotateCcw, Cpu, PlusCircle, UserCheck, HeartHandshake } from "lucide-react";
+import { Sparkles, Trophy, Trash2, Shield, Upload, FileText, CheckCircle2, RotateCcw, Cpu, PlusCircle, UserCheck, HeartHandshake, Clock } from "lucide-react";
 import { db } from "@/lib/db";
 import { analyzeChat } from "@/lib/analytics";
 import { calculateReplyDebt } from "@/lib/analytics/debt";
@@ -39,6 +39,7 @@ export default function Home() {
   const [isDemoDataset, setIsDemoDataset] = useState(false);
   const [activeAIEngine, setActiveAIEngine] = useState<string>("Local AI");
   const [activeSelfName, setActiveSelfName] = useState<string>("You");
+  const [refTimeMode, setRefTimeMode] = useState<"export" | "today">("export");
 
   // Modal active states
   const [activeChatForDetail, setActiveChatForDetail] = useState<Chat | null>(null);
@@ -127,24 +128,31 @@ export default function Home() {
     });
   };
 
-  // Switch identity and recalculate all analytics across all chats live
-  const handleSwitchIdentity = async (newSelfName: string) => {
-    setActiveSelfName(newSelfName);
-    localStorage.setItem("whatsup_self_name", newSelfName);
+  const getEffectiveReferenceTime = (chatList: Chat[], mode: "export" | "today" = refTimeMode): Date => {
+    if (mode === "today") return new Date();
+    const timestamps = chatList
+      .map((c) => new Date(c.lastMessageAt).getTime())
+      .filter((t) => !isNaN(t) && t > 0);
+    return timestamps.length > 0 ? new Date(Math.max(...timestamps)) : new Date();
+  };
 
-    if (chats.length === 0) return;
-
-    const updatedChats = chats.map((c) => ({ ...c, selfName: newSelfName }));
+  const reanalyzeAllChats = async (
+    chatList: Chat[],
+    msgs: Message[],
+    selfName: string,
+    mode: "export" | "today"
+  ) => {
+    if (chatList.length === 0) return;
+    const totalChats = chatList.length || 1;
+    const refDate = getEffectiveReferenceTime(chatList, mode);
     const newStats: ChatStats[] = [];
     const newGhosts: GhostEntry[] = [];
     const newPromises: PromiseItem[] = [];
 
-    const totalChats = updatedChats.length || 1;
-
-    for (let i = 0; i < updatedChats.length; i++) {
-      const chat = updatedChats[i];
-      const chatMsgs = allMessages.filter((m) => m.chatId === chat.id);
-      const analysis = analyzeChat(chat.id, chatMsgs, newSelfName, (i + 1) / totalChats);
+    for (let i = 0; i < chatList.length; i++) {
+      const chat = chatList[i];
+      const chatMsgs = msgs.filter((m) => m.chatId === chat.id);
+      const analysis = analyzeChat(chat.id, chatMsgs, selfName, (i + 1) / totalChats, refDate);
 
       newStats.push(analysis.stats);
       if (analysis.ghost) {
@@ -153,21 +161,30 @@ export default function Home() {
       newPromises.push(...analysis.promises);
     }
 
-    const newDebt = calculateReplyDebt(newGhosts, updatedChats, newPromises);
-
-    setChats(updatedChats);
+    const newDebt = calculateReplyDebt(newGhosts, chatList, newPromises);
     setStats(newStats);
     setGhosts(newGhosts);
     setPromises(newPromises);
     setReplyDebt(newDebt);
 
-    // Persist updated analytics in Dexie
-    await db.transaction("rw", [db.chats, db.stats, db.ghosts, db.promises], async () => {
-      await db.chats.bulkPut(updatedChats);
+    await db.transaction("rw", [db.stats, db.ghosts, db.promises], async () => {
       await db.stats.bulkPut(newStats);
       await db.ghosts.bulkPut(newGhosts);
       await db.promises.bulkPut(newPromises);
     });
+  };
+
+  // Switch identity and recalculate all analytics across all chats live
+  const handleSwitchIdentity = async (newSelfName: string) => {
+    setActiveSelfName(newSelfName);
+    localStorage.setItem("whatsup_self_name", newSelfName);
+
+    if (chats.length === 0) return;
+
+    const updatedChats = chats.map((c) => ({ ...c, selfName: newSelfName }));
+    setChats(updatedChats);
+    await db.chats.bulkPut(updatedChats);
+    await reanalyzeAllChats(updatedChats, allMessages, newSelfName, refTimeMode);
   };
 
   // Mark debt/promise paid via Amends Mode
@@ -287,11 +304,16 @@ export default function Home() {
                 </button>
 
                 <button
-                  onClick={() => setIsWrappedOpen(true)}
-                  className="px-3.5 py-1.5 rounded-lg bg-[#161C2E] hover:bg-[#202840] border border-[#2B3554] text-xs font-mono font-bold text-[#FF9F0A] flex items-center gap-1.5 transition-all shadow-sm"
+                  onClick={() => {
+                    const newMode = refTimeMode === "export" ? "today" : "export";
+                    setRefTimeMode(newMode);
+                    reanalyzeAllChats(chats, allMessages, activeSelfName, newMode);
+                  }}
+                  className="px-3.5 py-1.5 rounded-lg bg-[#141A2E] hover:bg-[#1E2642] border border-[#2B375C] text-xs font-mono font-bold text-white flex items-center gap-1.5 transition-all shadow-sm"
+                  title={`Timeline reference: ${refTimeMode === "export" ? "As of Export Date" : "As of Today"}. Click to toggle.`}
                 >
-                  <Trophy className="w-3.5 h-3.5" />
-                  <span>Guilt Wrapped &lsquo;26</span>
+                  <Clock className="w-3.5 h-3.5 text-[#64D2FF]" />
+                  <span>Timeline: <strong className="text-[#64D2FF]">{refTimeMode === "export" ? "Export Date" : "Today"}</strong></span>
                 </button>
 
                 <button

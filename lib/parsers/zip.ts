@@ -32,11 +32,22 @@ export async function parseWhatsAppZip(
       throw new Error(`Suspicious path detected in zip archive: ${relativePath}`);
     }
 
+    const lower = relativePath.toLowerCase();
+    // Reject nested archives (zip bomb amplification vector)
+    if (
+      lower.endsWith(".zip") ||
+      lower.endsWith(".tar") ||
+      lower.endsWith(".gz") ||
+      lower.endsWith(".7z") ||
+      lower.endsWith(".rar")
+    ) {
+      throw new Error(`Nested archive detected in zip archive: ${relativePath}`);
+    }
+
     const entry = loadedZip.files[relativePath];
     if (entry.dir) continue;
 
     // Check media file extension
-    const lower = relativePath.toLowerCase();
     if (
       lower.endsWith(".jpg") ||
       lower.endsWith(".jpeg") ||

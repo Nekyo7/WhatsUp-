@@ -5,6 +5,7 @@ import { MessageSquareReply, Copy, Check, Sparkles, X, Shield, Loader2 } from "l
 import type { Chat, Message, ReplyDraftOptions } from "@/types";
 import { redactMessages, unredactText, type RedactionResult } from "@/lib/redact";
 import { RedactionPreviewModal } from "./RedactionPreviewModal";
+import { getStoredApiKey, getStoredProvider } from "@/lib/cryptoKey";
 
 interface ReplyDraftModalProps {
   isOpen: boolean;
@@ -57,12 +58,16 @@ export const ReplyDraftModal: React.FC<ReplyDraftModalProps> = ({
   const executeDraftFetch = async (redaction: RedactionResult) => {
     setIsLoading(true);
     try {
-      const apiKey = localStorage.getItem("whatsup_custom_api_key") || undefined;
-      const provider = localStorage.getItem("whatsup_custom_provider") || undefined;
+      const apiKey = (await getStoredApiKey()) || undefined;
+      const provider = getStoredProvider() || undefined;
+
+      const headers: Record<string, string> = { "Content-Type": "application/json" };
+      if (apiKey) headers["x-ai-key"] = apiKey;
+      if (provider) headers["x-ai-provider"] = provider;
 
       const res = await fetch("/api/draft-reply", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers,
         body: JSON.stringify({
           chatId: chat.id,
           contactName: chat.title,

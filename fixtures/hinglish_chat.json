@@ -1,0 +1,20 @@
+{
+  "fixtureName": "hinglish_chat",
+  "totalMessages": 8,
+  "systemMessages": 0,
+  "mediaCount": 0,
+  "participants": [
+    "Kabir",
+    "You"
+  ],
+  "perPersonCounts": {
+    "Kabir": 5,
+    "You": 3
+  },
+  "dateRange": {
+    "start": "2024-03-14",
+    "end": "2024-03-14"
+  },
+  "platform": "whatsapp",
+  "isGroup": false
+}

@@ -31,11 +31,22 @@ export const PromiseLedger: React.FC<PromiseLedgerProps> = ({
   const chatMap = new Map<string, Chat>();
   chats.forEach((c) => chatMap.set(c.id, c));
 
+  const isPromiseOverdue = (p: PromiseItem): boolean => {
+    if (p.status === "done" || p.userOverride === "dismissed") return false;
+    if (p.resolution === "overdue") return true;
+    if (p.dueAt) {
+      const chat = chatMap.get(p.chatId);
+      const refDate = chat?.lastMessageAt ? new Date(chat.lastMessageAt) : new Date();
+      return new Date(p.dueAt).getTime() < refDate.getTime();
+    }
+    return false;
+  };
+
   const filteredPromises = promises.filter((p) => {
     if (activeTab === "all") return true;
     if (activeTab === "i_owe") return p.direction === "i_owe" && p.status !== "done";
     if (activeTab === "they_owe_me") return p.direction === "they_owe_me" && p.status !== "done";
-    if (activeTab === "overdue") return p.resolution === "overdue" || (p.dueAt && new Date(p.dueAt) < new Date() && p.status !== "done");
+    if (activeTab === "overdue") return isPromiseOverdue(p);
     if (activeTab === "kept") return p.status === "done" || p.resolution === "kept";
     return true;
   });
@@ -138,7 +149,7 @@ export const PromiseLedger: React.FC<PromiseLedgerProps> = ({
 
   const iOweCount = promises.filter((p) => p.direction === "i_owe" && p.status !== "done").length;
   const theyOweCount = promises.filter((p) => p.direction === "they_owe_me" && p.status !== "done").length;
-  const overdueCount = promises.filter((p) => p.resolution === "overdue" || (p.dueAt && new Date(p.dueAt) < new Date() && p.status !== "done")).length;
+  const overdueCount = promises.filter(isPromiseOverdue).length;
   const keptCount = promises.filter((p) => p.status === "done" || p.resolution === "kept").length;
 
   return (

@@ -174,7 +174,7 @@ Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 ```bash
 npx vitest run
 ```
-*All 54 tests pass across 7 suites.*
+*All 56 tests pass across 7 suites.*
 
 ### 4. Production Build & Verify
 ```bash

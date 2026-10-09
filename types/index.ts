@@ -8,6 +8,8 @@ export interface Message {
   text: string;
   isSystem: boolean;
   isMedia: boolean;
+  type?: "text" | "media" | "system" | "deleted" | "call";
+  replyToId?: string;
   lang?: "en" | "hinglish" | "hi" | "other";
 }
 

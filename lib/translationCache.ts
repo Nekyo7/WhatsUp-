@@ -4,15 +4,23 @@ import type { CachedTranslation } from "@/types";
 /**
  * Fast string hash for translation caching key.
  */
+/**
+ * Collision-resistant 64-bit dual-hash for translation caching key.
+ */
 export function hashTranslationKey(text: string, targetLang: string, provider: string): string {
-  let hash = 0;
   const str = `${text}_${targetLang}_${provider}`;
+  let h1 = 0x811c9dc5;
+  let h2 = 0x1000193;
+
   for (let i = 0; i < str.length; i++) {
-    const char = str.charCodeAt(i);
-    hash = (hash << 5) - hash + char;
-    hash |= 0; // Convert to 32bit integer
+    const ch = str.charCodeAt(i);
+    h1 = Math.imul(h1 ^ ch, 16777619);
+    h2 = Math.imul(h2 ^ (ch * 31), 2166136261);
   }
-  return `trans_${Math.abs(hash).toString(36)}`;
+
+  const hex1 = (h1 >>> 0).toString(16).padStart(8, "0");
+  const hex2 = (h2 >>> 0).toString(16).padStart(8, "0");
+  return `trans_${hex1}${hex2}`;
 }
 
 export interface TranslateOptions {
@@ -55,9 +63,13 @@ export async function translateTextWithCache({
   }
 
   // 2. Call translation API
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (apiKey) headers["x-ai-key"] = apiKey;
+  if (provider) headers["x-ai-provider"] = provider;
+
   const res = await fetch("/api/translate", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers,
     body: JSON.stringify({
       text,
       targetLanguage,
@@ -71,12 +83,13 @@ export async function translateTextWithCache({
     throw new Error(data.error || "Failed to translate message");
   }
 
-  // 3. Cache result in IndexedDB
+  // 3. Cache result in IndexedDB (store truncated snippet to minimize PII at rest)
   try {
+    const preview = text.length > 50 ? `${text.slice(0, 47)}...` : text;
     const cacheRecord: CachedTranslation = {
       id: hash,
       hash,
-      originalText: text,
+      originalText: preview,
       targetLang: targetLanguage,
       translatedText: data.translatedText,
       detectedSourceLang: data.detectedLanguage || "unknown",

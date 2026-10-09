@@ -1,0 +1,4 @@
+18/03/2024, 09:15 - Ananya: Good morning! Standup in 15 mins.
+18/03/2024, 09:20 - You: Morning! Joining via mobile today.
+18/03/2024, 17:45 - Ananya: Could you please push the release tags?
+19/03/2024, 11:30 - Ananya: Hey, did you push the release tags? CI build is waiting.

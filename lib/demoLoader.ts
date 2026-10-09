@@ -12,6 +12,8 @@ interface DemoFileDefinition {
 }
 
 const DEMO_FILES: DemoFileDefinition[] = [
+  { id: "wa_arnav_priya_500", name: "WhatsApp Chat with Arnav & Priya (500 msgs).txt", path: "/fixtures/chat_1on1_500.txt", selfName: "Arnav" },
+  { id: "wa_hacknation_2000", name: "WhatsApp Chat with HackNation Core (2000 msgs).txt", path: "/fixtures/group_chat_2000.txt", selfName: "Arnav" },
   { id: "wa_rohan_sharma", name: "WhatsApp Chat with Rohan Sharma.txt", path: "/demo/1_whatsapp_rohan_sharma.txt", selfName: "You" },
   { id: "wa_goa_trip_squad", name: "WhatsApp Chat with Goa Plan 2024.txt", path: "/demo/2_whatsapp_goa_trip_squad.txt", selfName: "You" },
   { id: "wa_tanvi_designer", name: "WhatsApp Chat with Tanvi UI UX.txt", path: "/demo/3_whatsapp_tanvi_designer.txt", selfName: "You" },
@@ -108,7 +110,8 @@ const DEMO_CONTENTS_FALLBACK: Record<string, string> = {
 };
 
 export async function loadDemoChatsIntoDB(
-  onProgress?: (current: number, total: number, name: string) => void
+  onProgress?: (current: number, total: number, name: string) => void,
+  options?: { skipWipe?: boolean; noPersist?: boolean }
 ): Promise<{
   chats: Chat[];
   stats: ChatStats[];
@@ -116,7 +119,9 @@ export async function loadDemoChatsIntoDB(
   promises: PromiseItem[];
   replyDebt: ReplyDebtBreakdown;
 }> {
-  await wipeAllData();
+  if (!options?.skipWipe) {
+    await wipeAllData();
+  }
 
   const total = DEMO_FILES.length;
   const parsedChats: { chat: Chat; messages: Message[] }[] = [];
@@ -176,9 +181,15 @@ export async function loadDemoChatsIntoDB(
   const allPromises: PromiseItem[] = [];
   const allMessages: Message[] = [];
 
+  // Dynamically compute reference time as max timestamp across chats
+  const maxTs = Math.max(
+    ...parsedChats.map((p) => new Date(p.chat.lastMessageAt).getTime())
+  );
+  const effectiveDemoRefTime = !isNaN(maxTs) && maxTs > 0 ? new Date(maxTs) : demoReferenceTime;
+
   for (let i = 0; i < parsedChats.length; i++) {
     const { chat, messages } = parsedChats[i];
-    const analysis = analyzeChat(chat.id, messages, chat.selfName, (i + 1) / total, demoReferenceTime);
+    const analysis = analyzeChat(chat.id, messages, chat.selfName, (i + 1) / total, effectiveDemoRefTime);
 
     allStats.push(analysis.stats);
     if (analysis.ghost) {
@@ -188,16 +199,20 @@ export async function loadDemoChatsIntoDB(
     allMessages.push(...messages);
   }
 
-  const replyDebt = calculateReplyDebt(allGhosts, allChats);
+  const replyDebt = calculateReplyDebt(allGhosts, allChats, allPromises);
 
-  // Bulk put into Dexie DB
-  await db.transaction("rw", [db.chats, db.messages, db.stats, db.ghosts, db.promises], async () => {
-    await db.chats.bulkPut(allChats);
-    await db.messages.bulkPut(allMessages);
-    await db.stats.bulkPut(allStats);
-    await db.ghosts.bulkPut(allGhosts);
-    await db.promises.bulkPut(allPromises);
-  });
+  const isNoPersist = options?.noPersist ?? (typeof window !== "undefined" && localStorage.getItem("whatsup_no_persist") === "true");
+
+  // Bulk put into Dexie DB only if persistence is permitted
+  if (!isNoPersist) {
+    await db.transaction("rw", [db.chats, db.messages, db.stats, db.ghosts, db.promises], async () => {
+      await db.chats.bulkPut(allChats);
+      await db.messages.bulkPut(allMessages);
+      await db.stats.bulkPut(allStats);
+      await db.ghosts.bulkPut(allGhosts);
+      await db.promises.bulkPut(allPromises);
+    });
+  }
 
   return {
     chats: allChats,

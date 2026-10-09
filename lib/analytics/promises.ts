@@ -244,3 +244,118 @@ export function extractPromises(
 
   return promises;
 }
+
+/**
+ * Standalone heuristic evaluator for a single message text candidate.
+ * Used by /api/confirm-promise as an intelligent offline/fallback validator.
+ */
+export function analyzePromiseCandidate(
+  text: string,
+  referenceDate: Date = new Date()
+): {
+  isPromise: boolean;
+  promiseText: string;
+  dueAt: string | null;
+  confidence: number;
+  reasoning: string;
+} {
+  const trimmed = text.trim();
+  if (!trimmed || trimmed.length < 5) {
+    return {
+      isPromise: false,
+      promiseText: trimmed,
+      dueAt: null,
+      confidence: 0.1,
+      reasoning: "Text is too short to be a meaningful commitment.",
+    };
+  }
+
+  // Filter out quoted or forwarded text
+  if (
+    trimmed.startsWith(">") ||
+    trimmed.startsWith('"') ||
+    trimmed.startsWith("“") ||
+    trimmed.startsWith("[Forwarded") ||
+    trimmed.toLowerCase().startsWith("forwarded")
+  ) {
+    return {
+      isPromise: false,
+      promiseText: trimmed,
+      dueAt: null,
+      confidence: 0.1,
+      reasoning: "Quoted or forwarded content is not a first-person commitment.",
+    };
+  }
+
+  // Filter out questions
+  if (trimmed.endsWith("?") || trimmed.includes("?")) {
+    return {
+      isPromise: false,
+      promiseText: trimmed,
+      dueAt: null,
+      confidence: 0.1,
+      reasoning: "Question or inquiry, not a declaration of commitment.",
+    };
+  }
+
+  // Filter out negative non-commitments
+  for (const neg of NEGATIVE_PATTERNS) {
+    if (neg.test(trimmed)) {
+      return {
+        isPromise: false,
+        promiseText: trimmed,
+        dueAt: null,
+        confidence: 0.1,
+        reasoning: "Contains non-commitment or conditional pattern.",
+      };
+    }
+  }
+
+  // Test positive commitment patterns
+  let isCommitment = false;
+  let confidence = 0.75;
+  for (const regex of COMMITMENT_REGEXES) {
+    if (regex.test(trimmed)) {
+      isCommitment = true;
+      confidence = 0.88;
+      break;
+    }
+  }
+
+  if (!isCommitment) {
+    return {
+      isPromise: false,
+      promiseText: trimmed,
+      dueAt: null,
+      confidence: 0.2,
+      reasoning: "No explicit first-person commitment patterns detected.",
+    };
+  }
+
+  // Extract deadline
+  let dueAt: string | null = null;
+  try {
+    const hinglishRes = resolveHinglishDueDate(trimmed, referenceDate);
+    if (hinglishRes.dueAt) {
+      dueAt = hinglishRes.dueAt;
+      confidence = 0.95;
+    } else if (!hinglishRes.isAmbiguous) {
+      const parsedDeadline = chrono.parseDate(trimmed, referenceDate, { forwardDate: true });
+      if (parsedDeadline && parsedDeadline.getTime() > referenceDate.getTime()) {
+        dueAt = parsedDeadline.toISOString();
+        confidence = Math.min(0.98, confidence + 0.08);
+      }
+    }
+  } catch {
+    // fallback cleanly
+  }
+
+  return {
+    isPromise: true,
+    promiseText: trimmed,
+    dueAt,
+    confidence: Number(confidence.toFixed(2)),
+    reasoning: "Detected first-person commitment via keyword heuristic.",
+  };
+}
+

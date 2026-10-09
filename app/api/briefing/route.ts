@@ -1,10 +1,12 @@
 import { NextResponse } from "next/server";
 import { callLLMWithSchema, BriefingResponseSchema, type AIProvider } from "@/lib/llm";
 import { generateLocalBriefing } from "@/lib/localAi";
+import { checkApiRateLimitAndPayload } from "@/lib/apiSecurity";
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
+    const rawText = await req.text();
+    const body = JSON.parse(rawText || "{}");
     const {
       chatId,
       timeBudget = "2min",
@@ -20,6 +22,9 @@ export async function POST(req: Request) {
     // Check custom headers for BYOK API keys
     const customKey = apiKey || req.headers.get("x-ai-key") || undefined;
     const customProvider = (provider || req.headers.get("x-ai-provider") || undefined) as AIProvider | undefined;
+
+    const rateLimitError = checkApiRateLimitAndPayload(req, rawText, Boolean(customKey));
+    if (rateLimitError) return rateLimitError;
 
     const systemPrompt = `You are WhatsUP? Guilt Briefing Engine. You analyze overwhelming chat excerpts to triage conversational debt.
 Strict constraints:

@@ -46,11 +46,11 @@ export function calculateSleepAwareGapMs(start: Date, end: Date): number {
   // Increment by hour steps for accurate sleep window exclusion
   const stepMs = 60 * 60 * 1000;
   while (current.getTime() < endMs) {
-    const hour = current.getUTCHours();
+    const hour = current.getHours();
     const nextStep = Math.min(current.getTime() + stepMs, endMs);
     const duration = nextStep - current.getTime();
 
-    // Sleep window: 23:00 - 08:00 UTC (or local nocturnal window)
+    // Sleep window: 23:00 - 08:00 (local nocturnal window)
     const isSleepWindow = hour >= 23 || hour < 8;
     if (!isSleepWindow) {
       effectiveMs += duration;
@@ -181,17 +181,18 @@ export function classifyGhostStatus(
     };
   }
 
-  // 2. YOU_GHOSTED: Their last message unanswered > 3 days (Skip for large groups > 8 participants)
-  if (isLastFromThem && daysSilent > 3) {
+  // 2. YOU_GHOSTED: Their last message unanswered > 3 days, or direct pending question (Skip for large groups > 8 participants)
+  if (isLastFromThem && (daysSilent > 3 || hasQuestion)) {
     if (effectiveParticipantCount <= 8) {
       let score = 50;
       if (hasQuestion) score += 25;
       if (validMessages.length > 40 || allChatsVolumeRankPercentile >= 0.7) score += 15;
       if (daysSilent > 7) score += 10;
+      else if (daysSilent > 3) score += 5;
       score = Math.min(100, score);
 
       const questionReason = hasQuestion
-        ? `Left with a direct pending question (${daysSilent}d silent)`
+        ? (daysSilent > 0 ? `Left with a direct pending question (${daysSilent}d silent)` : `Left with a direct pending question`)
         : `Unanswered message (${daysSilent}d silent)`;
 
       const latencies = calculateAdaptiveLatencies(validMessages, otherSender, selfName);

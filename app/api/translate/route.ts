@@ -2,10 +2,17 @@ import { NextResponse } from "next/server";
 import { callLLMWithSchema, TranslationResponseSchema, type AIProvider } from "@/lib/llm";
 import { translateHinglishLocal } from "@/lib/localAi";
 import { detectLanguage } from "@/lib/parsers/whatsapp";
+import { checkApiRateLimitAndPayload } from "@/lib/apiSecurity";
 
 export async function POST(req: Request) {
   try {
-    const { text, messages, targetLanguage = "English", apiKey, provider, model } = await req.json();
+    const rawText = await req.text();
+    const body = JSON.parse(rawText || "{}");
+    const { text, messages, targetLanguage = "English", apiKey, provider, model } = body;
+
+    const customKey = apiKey || req.headers.get("x-ai-key") || undefined;
+    const rateLimitError = checkApiRateLimitAndPayload(req, rawText, Boolean(customKey));
+    if (rateLimitError) return rateLimitError;
 
     // Support single text or batch messages
     const textToTranslate = text || (Array.isArray(messages) ? messages.map((m: any) => m.text).join("\n") : "");
@@ -28,7 +35,6 @@ export async function POST(req: Request) {
       });
     }
 
-    const customKey = apiKey || req.headers.get("x-ai-key") || undefined;
     const customProvider = (provider || req.headers.get("x-ai-provider") || undefined) as AIProvider | undefined;
 
     // Prompt injection safety: isolate input within XML delimiters

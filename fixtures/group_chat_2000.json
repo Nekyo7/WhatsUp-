@@ -1,0 +1,32 @@
+{
+  "fixtureName": "group_chat_2000",
+  "totalMessages": 2000,
+  "systemMessages": 4,
+  "mediaCount": 200,
+  "participants": [
+    "Aryan",
+    "Rohan",
+    "Tanya",
+    "Dev",
+    "Sara",
+    "Sam",
+    "Kabir",
+    "You"
+  ],
+  "perPersonCounts": {
+    "Aryan": 250,
+    "Rohan": 250,
+    "Tanya": 250,
+    "Dev": 250,
+    "Sara": 250,
+    "Sam": 250,
+    "Kabir": 250,
+    "You": 250
+  },
+  "dateRange": {
+    "start": "2024-01-10",
+    "end": "2024-03-31"
+  },
+  "platform": "whatsapp",
+  "isGroup": true
+}

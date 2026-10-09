@@ -242,16 +242,30 @@ export function parseWhatsAppExport(fileContent: string, fileName: string): Pars
       const parsedTs = parseWhatsAppTimestamp(dateStr, timeStr, dateFormat);
       const isoTimestamp = parsedTs || (messages.length > 0 ? messages[messages.length - 1].timestamp : new Date().toISOString());
 
-      // Check if this is a system message (no colon separating sender & text, or text matches system patterns)
+      // Check if this is a system message:
+      // In WhatsApp exports:
+      // 1) Any timestamp line without a colon separating sender & content (content === "") is a system event
+      // 2) Explicit system senders or specific system headers (calls, encryption notices)
+      const lowerSender = possibleSender.toLowerCase();
+      const lowerContent = content.toLowerCase();
       const isSystemNotice =
         content === "" ||
-        SYSTEM_PHRASES.some((phrase) =>
-          (possibleSender + " " + content).toLowerCase().includes(phrase)
-        );
+        lowerSender === "system" ||
+        lowerSender === "whatsapp" ||
+        lowerContent.includes("messages and calls are end-to-end encrypted") ||
+        lowerContent.includes("security code changed") ||
+        lowerContent.startsWith("missed voice call") ||
+        lowerContent.startsWith("missed video call") ||
+        lowerContent.includes("disappearing messages");
 
       if (isSystemNotice) {
         systemMessagesCount++;
         const fullText = (possibleSender + (content ? ": " + content : "")).trim();
+        const isCall =
+          fullText.toLowerCase().includes("missed voice call") ||
+          fullText.toLowerCase().includes("missed video call") ||
+          fullText.toLowerCase().includes("started a call");
+
         currentMsg = {
           id: `${chatId}_msg_${++msgIdx}`,
           chatId,
@@ -260,6 +274,7 @@ export function parseWhatsAppExport(fileContent: string, fileName: string): Pars
           text: fullText,
           isSystem: true,
           isMedia: false,
+          type: isCall ? "call" : "system",
           lang: "en",
         };
       } else {
@@ -267,9 +282,13 @@ export function parseWhatsAppExport(fileContent: string, fileName: string): Pars
         participantsSet.add(sender);
         senderCounts[sender] = (senderCounts[sender] || 0) + 1;
 
-        const lowerContent = content.toLowerCase();
         const isMedia = MEDIA_PHRASES.some((phrase) => lowerContent.includes(phrase));
         if (isMedia) mediaCount++;
+
+        const isDeleted =
+          lowerContent === "this message was deleted" ||
+          lowerContent === "you deleted this message" ||
+          lowerContent === "this message was deleted.";
 
         currentMsg = {
           id: `${chatId}_msg_${++msgIdx}`,
@@ -279,6 +298,7 @@ export function parseWhatsAppExport(fileContent: string, fileName: string): Pars
           text: content,
           isSystem: false,
           isMedia,
+          type: isDeleted ? "deleted" : isMedia ? "media" : "text",
           lang: detectLanguage(content),
         };
       }

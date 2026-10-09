@@ -1,13 +1,19 @@
 import { NextResponse } from "next/server";
 import { callLLMWithSchema, WrappedCaptionResponseSchema, type AIProvider } from "@/lib/llm";
 import { generateLocalWrappedCaption } from "@/lib/localAi";
+import { checkApiRateLimitAndPayload } from "@/lib/apiSecurity";
 
 export async function POST(req: Request) {
   try {
-    const { topPersonName, totalTalkHours, longestSilenceDays, replyDebtScore, apiKey, provider, model } = await req.json();
+    const rawText = await req.text();
+    const body = JSON.parse(rawText || "{}");
+    const { topPersonName, totalTalkHours, longestSilenceDays, replyDebtScore, apiKey, provider, model } = body;
 
     const customKey = apiKey || req.headers.get("x-ai-key") || undefined;
     const customProvider = (provider || req.headers.get("x-ai-provider") || undefined) as AIProvider | undefined;
+
+    const rateLimitError = checkApiRateLimitAndPayload(req, rawText, Boolean(customKey));
+    if (rateLimitError) return rateLimitError;
 
     const systemPrompt = `You are the witty, slightly roasty copywriter for "WhatsUP? Guilt Wrapped".
 Craft a funny, insightful, self-aware Instagram/Twitter caption summarizing the user's messaging habits and conversational guilt.`;

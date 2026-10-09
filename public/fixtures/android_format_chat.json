@@ -1,0 +1,20 @@
+{
+  "fixtureName": "android_format_chat",
+  "totalMessages": 4,
+  "systemMessages": 0,
+  "mediaCount": 0,
+  "participants": [
+    "Ananya",
+    "You"
+  ],
+  "perPersonCounts": {
+    "Ananya": 3,
+    "You": 1
+  },
+  "dateRange": {
+    "start": "2024-03-18",
+    "end": "2024-03-19"
+  },
+  "platform": "whatsapp",
+  "isGroup": false
+}

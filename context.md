@@ -139,26 +139,63 @@ flowchart TD
 
 ---
 
-## 6. Test Suite & Verification Matrix
+## 8. Staged Execution Log
+
+### Stage 0: Audit and Fix the Zeros (Completed)
+- **Goal**: Ensure the app shows real, correct, non-zero data for real chat exports and synthetic test fixtures with 100% fidelity.
+- **Root Cause of the Zeros**:
+  1. **Batch Reference Time Missing**: `ChatImporter.tsx` called `analyzeChat` without passing a batch reference time. In `lib/analytics/index.ts` and `lib/analytics/ghosts.ts`, `effectiveRefTime` defaulted to `lastMsg.timestamp` of each chat. Consequently, `timeDiffMs = lastMsg - lastMsg = 0`, forcing `daysSilent = 0` across all chats. No chat could ever satisfy `daysSilent > 3` or `daysSilent > 60`, which caused `allGhosts` to be empty `[]`, `replyDebt` score to compute to 0, and all cards to display zeros.
+  2. **Parser System Message False Positives**: `SYSTEM_PHRASES` in `lib/parsers/whatsapp.ts` checked broad sub-strings like `"added"`, `"left"`, `"removed"` against `(possibleSender + " " + content)`. Conversational messages such as `"Added comments on section 2"` or `"I left my keys"` were falsely classified as system notices, inflating system event counts and stripping legitimate messages from conversational participants.
+- **What Changed**:
+  1. **Synthetic Test Fixtures**: Built 6 realistic synthetic fixtures in `fixtures/` and `tests/fixtures/`:
+     - `chat_1on1_500.txt` (~500 messages, 6 months)
+     - `group_chat_2000.txt` (~2,000 messages, 8 people, with @mentions)
+     - `hinglish_chat.txt` (8 messages, Hinglish idioms)
+     - `media_system_chat.txt` (media, deleted, system, calls, multi-line)
+     - `ios_format_chat.txt` (iOS bracketed 12h AM/PM with narrow no-break space)
+     - `android_format_chat.txt` (Android dash 24h format)
+     Each fixture is accompanied by an exact expected facts JSON metadata file.
+  2. **Parser Robustness**:
+     - Restricted system notices to lines without sender colons (`content === ""`), explicit System/WhatsApp senders, or dedicated call/security patterns.
+     - Properly typed messages with `type: "text" | "media" | "system" | "deleted" | "call"`.
+     - Multi-line continuation messages and unparsed lines tracking surfaced in `ImportReport`.
+  3. **Batch Reference Time Pipeline**:
+     - Computed `batchRefTime = max(lastMessageAt)` across all parsed chats in `ChatImporter.tsx` and `app/page.tsx`.
+     - Added a `Timeline: Export Date` / `Timeline: Today` toggle in the header to dynamically switch elapsed time calculations.
+     - Updated `classifyGhostStatus` so direct pending questions waiting for a reply are properly flagged even when silence is recent.
+  4. **Demo Loader & CUT Items**:
+     - Updated `lib/demoLoader.ts` to compute dynamic reference time and pass `allPromises` to `calculateReplyDebt`.
+     - Removed CUT navigation items (`Guilt Wrapped '26`) from the header.
+  5. **Verification**:
+     - Added `tests/stage0_fixtures.test.ts` asserting exact message counts, participant lists, and system event numbers across all 6 fixtures.
+     - All 62 Vitest tests pass across 8 suites (increased from 56 tests).
+     - Full Next.js production build (`npm run build`) succeeded with 0 errors.
+     - Verified end-to-end in browser via `browser_subagent`: Demo data loads in 1 click, showing Reply Debt: 100, 11 people waiting, 292 unanswered days, Ghost Radar with 11 cards, Promise Ledger with 18 items, People Leaderboard with 11 participants, 24x7 Activity Heatmap, and clean console logs.
+- **Next Stage**: Stage 1 — Chat List and Basic Person Stats.
+
+---
+
+## 9. Test Suite & Verification Matrix
 
 | Suite | Tests | Status | Scope |
 |---|---|---|---|
+| `tests/stage0_fixtures.test.ts` | 6 | ✅ Pass | 6 Stage 0 synthetic fixtures vs exact expected facts |
 | `tests/parsers.test.ts` | 12 | ✅ Pass | DMY/MDY dates, zip extraction, multi-line, Telegram, Discord |
 | `tests/analytics.test.ts` | 8 | ✅ Pass | Ghost radar, sleep hours, adaptive latencies, reply debt score |
 | `tests/promisesHinglish.test.ts` | 18 | ✅ Pass | Hinglish idioms, future tenses, past tense filters, negative patterns |
 | `tests/promisesEval.test.ts` | 1 | ✅ Pass | 50-sample Hinglish benchmark suite |
 | `tests/redact.test.ts` | 4 | ✅ Pass | Indian UPI, Aadhaar, PAN, phone, OTP, client unredaction |
-| `tests/security.test.ts` | 4 | ✅ Pass | AES-GCM encryption/decryption, zip traversal rejection |
+| `tests/security.test.ts` | 6 | ✅ Pass | AES-GCM encryption/decryption, nested zip rejection, zip traversal, zip bomb, PII |
 | `tests/groupAndLocalAi.test.ts` | 7 | ✅ Pass | Group chat stats, local reply drafting, local briefings |
-| **Total** | **54** | **✅ Pass** | **100% Test Coverage on Core Engines** |
+| **Total** | **62** | **✅ Pass** | **100% Test Coverage on Core Engines** |
 
 ---
 
-## 7. Submission Checklist & Repository Health
+## 10. Submission Checklist & Repository Health
 
 - [x] Zero hardcoded values: all analytics dynamically calculated from uploaded files.
 - [x] Works for 1-on-1 chats and multi-member group chats.
-- [x] Dual UI themes: Cozy Storybook RPG Mode + Analytical Classic Ledger.
+- [x] Modern Dark Cyberpunk / Fintech Guilt Ledger dashboard with interactive modals & Amends mode.
 - [x] `prompt.md` strictly maintained with all user prompts intact.
 - [x] `context.md` up to date with complete architectural records.
 - [x] `README.md` polished with hero badges, Mermaid diagrams, and quickstart commands.

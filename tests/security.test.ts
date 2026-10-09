@@ -57,4 +57,25 @@ describe("Security Hardening Tests", () => {
     expect(result.report?.mediaCount).toBe(1);
     expect(result.participants).toContain("Kabir");
   });
+
+  it("Test 5: Rejects zip archives with nested archives (zip bomb defense)", async () => {
+    const zip = new JSZip();
+    zip.file("_chat.txt", "10/01/2024, 10:00 - A: hi");
+    zip.file("nested.zip", "fake-nested-zip-content");
+    const zipBuffer = await zip.generateAsync({ type: "nodebuffer" });
+
+    await expect(parseWhatsAppZip(zipBuffer, "test.zip")).rejects.toThrow(/Nested archive detected/);
+  });
+
+  it("Test 6: Encrypts API keys with AES-GCM and decrypts back accurately", async () => {
+    const { encryptApiKey, decryptApiKey, ENC_PREFIX } = await import("../lib/cryptoKey");
+    const rawKey = "AIzaSyTestKey123456789";
+
+    const encrypted = await encryptApiKey(rawKey);
+    expect(encrypted).not.toBe(rawKey);
+    expect(encrypted.startsWith(ENC_PREFIX)).toBe(true);
+
+    const decrypted = await decryptApiKey(encrypted);
+    expect(decrypted).toBe(rawKey);
+  });
 });

@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { Sparkles, MessageSquareReply, Languages, Clock, Users, X, Check, Filter } from "lucide-react";
 import type { Chat, Message, ChatStats, GhostEntry } from "@/types";
+import { redactMessages, unredactText } from "@/lib/redact";
+import { getStoredApiKey, getStoredProvider } from "@/lib/cryptoKey";
 
 interface ChatDetailModalProps {
   isOpen: boolean;
@@ -34,17 +36,36 @@ export const ChatDetailModal: React.FC<ChatDetailModalProps> = ({
   const handleTranslateMessage = async (msg: Message) => {
     setTranslatingMsgId(msg.id);
     try {
-      const apiKey = localStorage.getItem("whatsup_custom_api_key") || undefined;
-      const provider = localStorage.getItem("whatsup_custom_provider") || undefined;
+      const redaction = redactMessages([msg], chat.selfName || "You", chat.participants);
+      const redactedMsgText = redaction.redactedMessages[0]?.text || msg.text;
+
+      const apiKey = (await getStoredApiKey()) || undefined;
+      const provider = getStoredProvider() || undefined;
+
+      const headers: Record<string, string> = { "Content-Type": "application/json" };
+      if (apiKey) headers["x-ai-key"] = apiKey;
+      if (provider) headers["x-ai-provider"] = provider;
 
       const res = await fetch("/api/translate", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: msg.text, apiKey, provider }),
+        headers,
+        body: JSON.stringify({ text: redactedMsgText, apiKey, provider }),
       });
       const data = await res.json();
       if (res.ok && data.success) {
-        setTranslations((prev) => ({ ...prev, [msg.id]: data.translatedText }));
+        const unredactedTranslation = unredactText(data.translatedText, redaction.reverseNameMapping);
+        setTranslations((prev) => ({ ...prev, [msg.id]: unredactedTranslation }));
+
+        if (data.bytesUsed > 0 && typeof window !== "undefined") {
+          const stored = localStorage.getItem("whatsup_network_ledger");
+          const prevLedger = stored ? JSON.parse(stored) : { apiCalls: 0, bytesSent: 0 };
+          const updated = {
+            apiCalls: prevLedger.apiCalls + 1,
+            bytesSent: prevLedger.bytesSent + data.bytesUsed,
+            lastCallAt: new Date().toISOString(),
+          };
+          localStorage.setItem("whatsup_network_ledger", JSON.stringify(updated));
+        }
       }
     } catch (err) {
       console.error("Translate error:", err);

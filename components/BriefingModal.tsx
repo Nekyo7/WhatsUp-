@@ -6,6 +6,7 @@ import type { Briefing, Chat, Message, TimeBudget } from "@/types";
 import { redactMessages, unredactText, type RedactionResult } from "@/lib/redact";
 import { RedactionPreviewModal } from "./RedactionPreviewModal";
 import { db } from "@/lib/db";
+import { getStoredApiKey, getStoredProvider } from "@/lib/cryptoKey";
 
 interface BriefingModalProps {
   isOpen: boolean;
@@ -84,18 +85,23 @@ export const BriefingModal: React.FC<BriefingModalProps> = ({
 
   const executeBriefingGeneration = async (redaction: RedactionResult, budget: TimeBudget) => {
     try {
-      const apiKey = localStorage.getItem("whatsup_custom_api_key") || undefined;
-      const provider = localStorage.getItem("whatsup_custom_provider") || undefined;
+      const apiKey = (await getStoredApiKey()) || undefined;
+      const provider = getStoredProvider() || undefined;
+
+      const headers: Record<string, string> = { "Content-Type": "application/json" };
+      if (apiKey) headers["x-ai-key"] = apiKey;
+      if (provider) headers["x-ai-provider"] = provider;
 
       const res = await fetch("/api/briefing", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers,
         body: JSON.stringify({
           chatId: chat.id,
           chatTitle: chat.title,
           isGroup: chat.isGroup,
           timeBudget: budget,
           redactedExcerptText: redaction.redactedExcerptText,
+          messages: redaction.redactedMessages,
           apiKey,
           provider,
         }),

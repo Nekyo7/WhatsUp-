@@ -1,0 +1,501 @@
+01/10/2023, 09:00 - Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.
+01/10/2023, 09:15 - Arnav: Hey Priya! Did you start the machine learning assignment?
+01/10/2023, 09:21 - Priya: Hey Arnav! Just saw it, question 3 looks super tricky.
+01/10/2023, 09:28 - Arnav: Yeah, gradient descent derivation is confusing.
+01/10/2023, 09:36 - Priya: I'll try working through the math tonight and send you my notes.
+01/10/2023, 09:45 - Arnav: Awesome, let me know when you finish.
+01/10/2023, 13:55 - Arnav: Morning! Coffee at Blue Tokai today?
+01/10/2023, 14:06 - Priya: Yes please! Need caffeine urgently.
+01/10/2023, 14:18 - Arnav: Meet in 20 minutes?
+01/10/2023, 14:31 - Priya: On my way!
+01/10/2023, 14:45 - Arnav: Here already, grabbed a table near the window.
+01/10/2023, 20:00 - Arnav: Did you apply to the Google Summer of Code program?
+01/10/2023, 20:16 - Priya: Drafting my proposal right now. Can you review it?
+01/10/2023, 20:33 - Arnav: Send over the Google Doc link.
+01/10/2023, 20:51 - Priya: Here: https://docs.google.com/document/d/fake123
+01/10/2023, 21:10 - Arnav: Looks great! Added comments on section 2.
+02/10/2023, 03:30 - Arnav: Are we meeting for the group project tomorrow?
+02/10/2023, 03:51 - Priya: Yes, 4 PM at the library discussion room.
+02/10/2023, 04:13 - Arnav: Should I bring my laptop charger?
+02/10/2023, 04:36 - Priya: Definitely, we'll be debugging for at least 3 hours.
+02/10/2023, 05:00 - Arnav: Cool, see you there.
+02/10/2023, 12:25 - Arnav: Bhai did you see the new Next.js 14 release?
+02/10/2023, 12:51 - Priya: Server Actions are crazy good!
+02/10/2023, 13:18 - Arnav: Finally no more boilerplate API routes for simple forms.
+02/10/2023, 13:46 - Priya: I'm refactoring our hackathon project this weekend.
+02/10/2023, 14:15 - Arnav: Nice, let's test it together.
+02/10/2023, 22:45 - Arnav: Happy Diwali Priya!
+02/10/2023, 23:16 - Priya: Happy Diwali Arnav! Have fun with family!
+02/10/2023, 23:48 - Arnav: Send photos of the sweets!
+03/10/2023, 00:21 - Priya: <Media omitted>
+03/10/2023, 00:55 - Arnav: Those laddoos look amazing!
+03/10/2023, 10:30 - Arnav: Can you share the lecture slides for Distributed Systems?
+03/10/2023, 11:06 - Priya: Checking my downloads folder...
+03/10/2023, 11:43 - Arnav: Found them, attaching now.
+03/10/2023, 12:21 - Priya: <Media omitted>
+03/10/2023, 13:00 - Arnav: Thanks a ton!
+03/10/2023, 23:05 - Arnav: Are you attending the tech talk by Andrej Karpathy tonight?
+03/10/2023, 23:11 - Priya: Yes, registered last week! Streaming starts at 8pm.
+03/10/2023, 23:18 - Arnav: Let's discuss key takeaways after.
+03/10/2023, 23:26 - Priya: For sure, will write a quick summary.
+04/10/2023, 10:35 - Arnav: Hey, did you get around to pushing that pull request?
+04/10/2023, 10:45 - Priya: Almost done, fixing one lint error in the auth hook.
+04/10/2023, 10:56 - Arnav: Take your time, no rush.
+04/10/2023, 11:08 - Priya: Merged! Check PR #42.
+04/10/2023, 11:21 - Arnav: Super clean code, approved and merged.
+04/10/2023, 23:35 - Arnav: Hey Priya! Did you start the machine learning assignment?
+04/10/2023, 23:50 - Priya: Hey Arnav! Just saw it, question 3 looks super tricky.
+05/10/2023, 00:06 - Arnav: Yeah, gradient descent derivation is confusing.
+05/10/2023, 00:23 - Priya: I'll try working through the math tonight and send you my notes.
+05/10/2023, 00:41 - Arnav: Awesome, let me know when you finish.
+05/10/2023, 14:00 - Arnav: Morning! Coffee at Blue Tokai today?
+05/10/2023, 14:20 - Priya: Yes please! Need caffeine urgently.
+05/10/2023, 14:41 - Arnav: Meet in 20 minutes?
+05/10/2023, 15:03 - Priya: On my way!
+05/10/2023, 15:26 - Arnav: Here already, grabbed a table near the window.
+06/10/2023, 05:50 - Arnav: Did you apply to the Google Summer of Code program?
+06/10/2023, 06:15 - Priya: Drafting my proposal right now. Can you review it?
+06/10/2023, 06:41 - Arnav: Send over the Google Doc link.
+06/10/2023, 07:08 - Priya: Here: https://docs.google.com/document/d/fake123
+06/10/2023, 07:36 - Arnav: Looks great! Added comments on section 2.
+06/10/2023, 23:05 - Arnav: Are we meeting for the group project tomorrow?
+06/10/2023, 23:35 - Priya: Yes, 4 PM at the library discussion room.
+07/10/2023, 00:06 - Arnav: Should I bring my laptop charger?
+07/10/2023, 00:38 - Priya: Definitely, we'll be debugging for at least 3 hours.
+07/10/2023, 01:11 - Arnav: Cool, see you there.
+07/10/2023, 17:45 - Arnav: Bhai did you see the new Next.js 14 release?
+07/10/2023, 18:20 - Priya: Server Actions are crazy good!
+07/10/2023, 18:56 - Arnav: Finally no more boilerplate API routes for simple forms.
+07/10/2023, 19:33 - Priya: I'm refactoring our hackathon project this weekend.
+07/10/2023, 20:11 - Arnav: Nice, let's test it together.
+08/10/2023, 13:50 - Arnav: Happy Diwali Priya!
+08/10/2023, 13:55 - Priya: Happy Diwali Arnav! Have fun with family!
+08/10/2023, 14:01 - Arnav: Send photos of the sweets!
+08/10/2023, 14:08 - Priya: <Media omitted>
+08/10/2023, 14:16 - Arnav: Those laddoos look amazing!
+08/10/2023, 18:25 - Arnav: Can you share the lecture slides for Distributed Systems?
+08/10/2023, 18:35 - Priya: Checking my downloads folder...
+08/10/2023, 18:46 - Arnav: Found them, attaching now.
+08/10/2023, 18:58 - Priya: <Media omitted>
+08/10/2023, 19:11 - Arnav: Thanks a ton!
+09/10/2023, 00:25 - Arnav: Are you attending the tech talk by Andrej Karpathy tonight?
+09/10/2023, 00:40 - Priya: Yes, registered last week! Streaming starts at 8pm.
+09/10/2023, 00:56 - Arnav: Let's discuss key takeaways after.
+09/10/2023, 01:13 - Priya: For sure, will write a quick summary.
+09/10/2023, 07:31 - Arnav: Hey, did you get around to pushing that pull request?
+09/10/2023, 07:50 - Priya: Almost done, fixing one lint error in the auth hook.
+09/10/2023, 08:10 - Arnav: Take your time, no rush.
+09/10/2023, 08:31 - Priya: Merged! Check PR #42.
+09/10/2023, 08:53 - Arnav: Super clean code, approved and merged.
+09/10/2023, 16:16 - Arnav: Hey Priya! Did you start the machine learning assignment?
+09/10/2023, 16:40 - Priya: Hey Arnav! Just saw it, question 3 looks super tricky.
+09/10/2023, 17:05 - Arnav: Yeah, gradient descent derivation is confusing.
+09/10/2023, 17:31 - Priya: I'll try working through the math tonight and send you my notes.
+09/10/2023, 17:58 - Arnav: Awesome, let me know when you finish.
+10/10/2023, 02:26 - Arnav: Morning! Coffee at Blue Tokai today?
+10/10/2023, 02:55 - Priya: Yes please! Need caffeine urgently.
+10/10/2023, 03:25 - Arnav: Meet in 20 minutes?
+10/10/2023, 03:56 - Priya: On my way!
+10/10/2023, 04:28 - Arnav: Here already, grabbed a table near the window.
+10/10/2023, 14:01 - Arnav: Did you apply to the Google Summer of Code program?
+10/10/2023, 14:35 - Priya: Drafting my proposal right now. Can you review it?
+10/10/2023, 15:10 - Arnav: Send over the Google Doc link.
+10/10/2023, 15:46 - Priya: Here: https://docs.google.com/document/d/fake123
+10/10/2023, 16:23 - Arnav: Looks great! Added comments on section 2.
+11/10/2023, 03:01 - Arnav: Are we meeting for the group project tomorrow?
+11/10/2023, 03:40 - Priya: Yes, 4 PM at the library discussion room.
+11/10/2023, 03:45 - Arnav: Should I bring my laptop charger?
+11/10/2023, 03:51 - Priya: Definitely, we'll be debugging for at least 3 hours.
+11/10/2023, 03:58 - Arnav: Cool, see you there.
+11/10/2023, 15:06 - Arnav: Bhai did you see the new Next.js 14 release?
+11/10/2023, 15:15 - Priya: Server Actions are crazy good!
+11/10/2023, 15:25 - Arnav: Finally no more boilerplate API routes for simple forms.
+11/10/2023, 15:36 - Priya: I'm refactoring our hackathon project this weekend.
+11/10/2023, 15:48 - Arnav: Nice, let's test it together.
+12/10/2023, 04:01 - Arnav: Happy Diwali Priya!
+12/10/2023, 04:15 - Priya: Happy Diwali Arnav! Have fun with family!
+12/10/2023, 04:30 - Arnav: Send photos of the sweets!
+12/10/2023, 04:46 - Priya: <Media omitted>
+12/10/2023, 05:03 - Arnav: Those laddoos look amazing!
+12/10/2023, 18:21 - Arnav: Can you share the lecture slides for Distributed Systems?
+12/10/2023, 18:40 - Priya: Checking my downloads folder...
+12/10/2023, 19:00 - Arnav: Found them, attaching now.
+12/10/2023, 19:21 - Priya: <Media omitted>
+12/10/2023, 19:43 - Arnav: Thanks a ton!
+13/10/2023, 10:06 - Arnav: Are you attending the tech talk by Andrej Karpathy tonight?
+13/10/2023, 10:30 - Priya: Yes, registered last week! Streaming starts at 8pm.
+13/10/2023, 10:55 - Arnav: Let's discuss key takeaways after.
+13/10/2023, 11:21 - Priya: For sure, will write a quick summary.
+14/10/2023, 02:48 - Arnav: Hey, did you get around to pushing that pull request?
+14/10/2023, 03:16 - Priya: Almost done, fixing one lint error in the auth hook.
+14/10/2023, 03:45 - Arnav: Take your time, no rush.
+14/10/2023, 04:15 - Priya: Merged! Check PR #42.
+14/10/2023, 04:46 - Arnav: Super clean code, approved and merged.
+14/10/2023, 21:18 - Arnav: Hey Priya! Did you start the machine learning assignment?
+14/10/2023, 21:51 - Priya: Hey Arnav! Just saw it, question 3 looks super tricky.
+14/10/2023, 22:25 - Arnav: Yeah, gradient descent derivation is confusing.
+14/10/2023, 23:00 - Priya: I'll try working through the math tonight and send you my notes.
+14/10/2023, 23:36 - Arnav: Awesome, let me know when you finish.
+15/10/2023, 17:13 - Arnav: Morning! Coffee at Blue Tokai today?
+15/10/2023, 17:51 - Priya: Yes please! Need caffeine urgently.
+15/10/2023, 18:30 - Arnav: Meet in 20 minutes?
+15/10/2023, 18:35 - Priya: On my way!
+15/10/2023, 18:41 - Arnav: Here already, grabbed a table near the window.
+15/10/2023, 22:48 - Arnav: Did you apply to the Google Summer of Code program?
+15/10/2023, 22:56 - Priya: Drafting my proposal right now. Can you review it?
+15/10/2023, 23:05 - Arnav: Send over the Google Doc link.
+15/10/2023, 23:15 - Priya: Here: https://docs.google.com/document/d/fake123
+15/10/2023, 23:26 - Arnav: Looks great! Added comments on section 2.
+16/10/2023, 04:38 - Arnav: Are we meeting for the group project tomorrow?
+16/10/2023, 04:51 - Priya: Yes, 4 PM at the library discussion room.
+16/10/2023, 05:05 - Arnav: Should I bring my laptop charger?
+16/10/2023, 05:20 - Priya: Definitely, we'll be debugging for at least 3 hours.
+16/10/2023, 05:36 - Arnav: Cool, see you there.
+16/10/2023, 11:53 - Arnav: Bhai did you see the new Next.js 14 release?
+16/10/2023, 12:11 - Priya: Server Actions are crazy good!
+16/10/2023, 12:30 - Arnav: Finally no more boilerplate API routes for simple forms.
+16/10/2023, 12:50 - Priya: I'm refactoring our hackathon project this weekend.
+16/10/2023, 13:11 - Arnav: Nice, let's test it together.
+16/10/2023, 20:33 - Arnav: Happy Diwali Priya!
+16/10/2023, 20:56 - Priya: Happy Diwali Arnav! Have fun with family!
+16/10/2023, 21:20 - Arnav: Send photos of the sweets!
+16/10/2023, 21:45 - Priya: <Media omitted>
+16/10/2023, 22:11 - Arnav: Those laddoos look amazing!
+17/10/2023, 06:38 - Arnav: Can you share the lecture slides for Distributed Systems?
+17/10/2023, 07:06 - Priya: Checking my downloads folder...
+17/10/2023, 07:35 - Arnav: Found them, attaching now.
+17/10/2023, 08:05 - Priya: <Media omitted>
+17/10/2023, 08:36 - Arnav: Thanks a ton!
+17/10/2023, 18:08 - Arnav: Are you attending the tech talk by Andrej Karpathy tonight?
+17/10/2023, 18:41 - Priya: Yes, registered last week! Streaming starts at 8pm.
+17/10/2023, 19:15 - Arnav: Let's discuss key takeaways after.
+17/10/2023, 19:50 - Priya: For sure, will write a quick summary.
+18/10/2023, 06:26 - Arnav: Hey, did you get around to pushing that pull request?
+18/10/2023, 07:03 - Priya: Almost done, fixing one lint error in the auth hook.
+18/10/2023, 07:41 - Arnav: Take your time, no rush.
+18/10/2023, 08:20 - Priya: Merged! Check PR #42.
+18/10/2023, 08:25 - Arnav: Super clean code, approved and merged.
+18/10/2023, 19:31 - Arnav: Hey Priya! Did you start the machine learning assignment?
+18/10/2023, 19:38 - Priya: Hey Arnav! Just saw it, question 3 looks super tricky.
+18/10/2023, 19:46 - Arnav: Yeah, gradient descent derivation is confusing.
+18/10/2023, 19:55 - Priya: I'll try working through the math tonight and send you my notes.
+18/10/2023, 20:05 - Arnav: Awesome, let me know when you finish.
+19/10/2023, 08:16 - Arnav: Morning! Coffee at Blue Tokai today?
+19/10/2023, 08:28 - Priya: Yes please! Need caffeine urgently.
+19/10/2023, 08:41 - Arnav: Meet in 20 minutes?
+19/10/2023, 08:55 - Priya: On my way!
+19/10/2023, 09:10 - Arnav: Here already, grabbed a table near the window.
+19/10/2023, 22:26 - Arnav: Did you apply to the Google Summer of Code program?
+19/10/2023, 22:43 - Priya: Drafting my proposal right now. Can you review it?
+19/10/2023, 23:01 - Arnav: Send over the Google Doc link.
+19/10/2023, 23:20 - Priya: Here: https://docs.google.com/document/d/fake123
+19/10/2023, 23:40 - Arnav: Looks great! Added comments on section 2.
+20/10/2023, 14:01 - Arnav: Are we meeting for the group project tomorrow?
+20/10/2023, 14:23 - Priya: Yes, 4 PM at the library discussion room.
+20/10/2023, 14:46 - Arnav: Should I bring my laptop charger?
+20/10/2023, 15:10 - Priya: Definitely, we'll be debugging for at least 3 hours.
+20/10/2023, 15:35 - Arnav: Cool, see you there.
+21/10/2023, 07:01 - Arnav: Bhai did you see the new Next.js 14 release?
+21/10/2023, 07:28 - Priya: Server Actions are crazy good!
+21/10/2023, 07:56 - Arnav: Finally no more boilerplate API routes for simple forms.
+21/10/2023, 08:25 - Priya: I'm refactoring our hackathon project this weekend.
+21/10/2023, 08:55 - Arnav: Nice, let's test it together.
+22/10/2023, 01:26 - Arnav: Happy Diwali Priya!
+22/10/2023, 01:58 - Priya: Happy Diwali Arnav! Have fun with family!
+22/10/2023, 02:31 - Arnav: Send photos of the sweets!
+22/10/2023, 03:05 - Priya: <Media omitted>
+22/10/2023, 03:40 - Arnav: Those laddoos look amazing!
+22/10/2023, 21:16 - Arnav: Can you share the lecture slides for Distributed Systems?
+22/10/2023, 21:53 - Priya: Checking my downloads folder...
+22/10/2023, 22:31 - Arnav: Found them, attaching now.
+22/10/2023, 23:10 - Priya: <Media omitted>
+22/10/2023, 23:15 - Arnav: Thanks a ton!
+23/10/2023, 03:21 - Arnav: Are you attending the tech talk by Andrej Karpathy tonight?
+23/10/2023, 03:28 - Priya: Yes, registered last week! Streaming starts at 8pm.
+23/10/2023, 03:36 - Arnav: Let's discuss key takeaways after.
+23/10/2023, 03:45 - Priya: For sure, will write a quick summary.
+23/10/2023, 08:55 - Arnav: Hey, did you get around to pushing that pull request?
+23/10/2023, 09:06 - Priya: Almost done, fixing one lint error in the auth hook.
+23/10/2023, 09:18 - Arnav: Take your time, no rush.
+23/10/2023, 09:31 - Priya: Merged! Check PR #42.
+23/10/2023, 09:45 - Arnav: Super clean code, approved and merged.
+23/10/2023, 16:00 - Arnav: Hey Priya! Did you start the machine learning assignment?
+23/10/2023, 16:16 - Priya: Hey Arnav! Just saw it, question 3 looks super tricky.
+23/10/2023, 16:33 - Arnav: Yeah, gradient descent derivation is confusing.
+23/10/2023, 16:51 - Priya: I'll try working through the math tonight and send you my notes.
+23/10/2023, 17:10 - Arnav: Awesome, let me know when you finish.
+24/10/2023, 00:30 - Arnav: Morning! Coffee at Blue Tokai today?
+24/10/2023, 00:51 - Priya: Yes please! Need caffeine urgently.
+24/10/2023, 01:13 - Arnav: Meet in 20 minutes?
+24/10/2023, 01:36 - Priya: On my way!
+24/10/2023, 02:00 - Arnav: Here already, grabbed a table near the window.
+24/10/2023, 10:25 - Arnav: Did you apply to the Google Summer of Code program?
+24/10/2023, 10:51 - Priya: Drafting my proposal right now. Can you review it?
+24/10/2023, 11:18 - Arnav: Send over the Google Doc link.
+24/10/2023, 11:46 - Priya: Here: https://docs.google.com/document/d/fake123
+24/10/2023, 12:15 - Arnav: Looks great! Added comments on section 2.
+24/10/2023, 21:45 - Arnav: Are we meeting for the group project tomorrow?
+24/10/2023, 22:16 - Priya: Yes, 4 PM at the library discussion room.
+24/10/2023, 22:48 - Arnav: Should I bring my laptop charger?
+24/10/2023, 23:21 - Priya: Definitely, we'll be debugging for at least 3 hours.
+24/10/2023, 23:55 - Arnav: Cool, see you there.
+25/10/2023, 10:30 - Arnav: Bhai did you see the new Next.js 14 release?
+25/10/2023, 11:06 - Priya: Server Actions are crazy good!
+25/10/2023, 11:43 - Arnav: Finally no more boilerplate API routes for simple forms.
+25/10/2023, 12:21 - Priya: I'm refactoring our hackathon project this weekend.
+25/10/2023, 13:00 - Arnav: Nice, let's test it together.
+26/10/2023, 00:05 - Arnav: Happy Diwali Priya!
+26/10/2023, 00:11 - Priya: Happy Diwali Arnav! Have fun with family!
+26/10/2023, 00:18 - Arnav: Send photos of the sweets!
+26/10/2023, 00:26 - Priya: <Media omitted>
+26/10/2023, 00:35 - Arnav: Those laddoos look amazing!
+26/10/2023, 12:45 - Arnav: Can you share the lecture slides for Distributed Systems?
+26/10/2023, 12:56 - Priya: Checking my downloads folder...
+26/10/2023, 13:08 - Arnav: Found them, attaching now.
+26/10/2023, 13:21 - Priya: <Media omitted>
+26/10/2023, 13:35 - Arnav: Thanks a ton!
+27/10/2023, 02:50 - Arnav: Are you attending the tech talk by Andrej Karpathy tonight?
+27/10/2023, 03:06 - Priya: Yes, registered last week! Streaming starts at 8pm.
+27/10/2023, 03:23 - Arnav: Let's discuss key takeaways after.
+27/10/2023, 03:41 - Priya: For sure, will write a quick summary.
+27/10/2023, 18:00 - Arnav: Hey, did you get around to pushing that pull request?
+27/10/2023, 18:20 - Priya: Almost done, fixing one lint error in the auth hook.
+27/10/2023, 18:41 - Arnav: Take your time, no rush.
+27/10/2023, 19:03 - Priya: Merged! Check PR #42.
+27/10/2023, 19:26 - Arnav: Super clean code, approved and merged.
+28/10/2023, 10:50 - Arnav: Hey Priya! Did you start the machine learning assignment?
+28/10/2023, 11:15 - Priya: Hey Arnav! Just saw it, question 3 looks super tricky.
+28/10/2023, 11:41 - Arnav: Yeah, gradient descent derivation is confusing.
+28/10/2023, 12:08 - Priya: I'll try working through the math tonight and send you my notes.
+28/10/2023, 12:36 - Arnav: Awesome, let me know when you finish.
+29/10/2023, 05:05 - Arnav: Morning! Coffee at Blue Tokai today?
+29/10/2023, 05:35 - Priya: Yes please! Need caffeine urgently.
+29/10/2023, 06:06 - Arnav: Meet in 20 minutes?
+29/10/2023, 06:38 - Priya: On my way!
+29/10/2023, 07:11 - Arnav: Here already, grabbed a table near the window.
+30/10/2023, 00:45 - Arnav: Did you apply to the Google Summer of Code program?
+30/10/2023, 01:20 - Priya: Drafting my proposal right now. Can you review it?
+30/10/2023, 01:56 - Arnav: Send over the Google Doc link.
+30/10/2023, 02:33 - Priya: Here: https://docs.google.com/document/d/fake123
+30/10/2023, 03:11 - Arnav: Looks great! Added comments on section 2.
+30/10/2023, 07:50 - Arnav: Are we meeting for the group project tomorrow?
+30/10/2023, 07:55 - Priya: Yes, 4 PM at the library discussion room.
+30/10/2023, 08:01 - Arnav: Should I bring my laptop charger?
+30/10/2023, 08:08 - Priya: Definitely, we'll be debugging for at least 3 hours.
+30/10/2023, 08:16 - Arnav: Cool, see you there.
+30/10/2023, 13:25 - Arnav: Bhai did you see the new Next.js 14 release?
+30/10/2023, 13:35 - Priya: Server Actions are crazy good!
+30/10/2023, 13:46 - Arnav: Finally no more boilerplate API routes for simple forms.
+30/10/2023, 13:58 - Priya: I'm refactoring our hackathon project this weekend.
+30/10/2023, 14:11 - Arnav: Nice, let's test it together.
+30/10/2023, 20:25 - Arnav: Happy Diwali Priya!
+30/10/2023, 20:40 - Priya: Happy Diwali Arnav! Have fun with family!
+30/10/2023, 20:56 - Arnav: Send photos of the sweets!
+30/10/2023, 21:13 - Priya: <Media omitted>
+30/10/2023, 21:31 - Arnav: Those laddoos look amazing!
+31/10/2023, 04:50 - Arnav: Can you share the lecture slides for Distributed Systems?
+31/10/2023, 05:10 - Priya: Checking my downloads folder...
+31/10/2023, 05:31 - Arnav: Found them, attaching now.
+31/10/2023, 05:53 - Priya: <Media omitted>
+31/10/2023, 06:16 - Arnav: Thanks a ton!
+31/10/2023, 14:40 - Arnav: Are you attending the tech talk by Andrej Karpathy tonight?
+31/10/2023, 15:05 - Priya: Yes, registered last week! Streaming starts at 8pm.
+31/10/2023, 15:31 - Arnav: Let's discuss key takeaways after.
+31/10/2023, 15:58 - Priya: For sure, will write a quick summary.
+01/11/2023, 01:26 - Arnav: Hey, did you get around to pushing that pull request?
+01/11/2023, 01:55 - Priya: Almost done, fixing one lint error in the auth hook.
+01/11/2023, 02:25 - Arnav: Take your time, no rush.
+01/11/2023, 02:56 - Priya: Merged! Check PR #42.
+01/11/2023, 03:28 - Arnav: Super clean code, approved and merged.
+01/11/2023, 14:01 - Arnav: Hey Priya! Did you start the machine learning assignment?
+01/11/2023, 14:35 - Priya: Hey Arnav! Just saw it, question 3 looks super tricky.
+01/11/2023, 15:10 - Arnav: Yeah, gradient descent derivation is confusing.
+01/11/2023, 15:46 - Priya: I'll try working through the math tonight and send you my notes.
+01/11/2023, 16:23 - Arnav: Awesome, let me know when you finish.
+02/11/2023, 04:01 - Arnav: Morning! Coffee at Blue Tokai today?
+02/11/2023, 04:40 - Priya: Yes please! Need caffeine urgently.
+02/11/2023, 04:45 - Arnav: Meet in 20 minutes?
+02/11/2023, 04:51 - Priya: On my way!
+02/11/2023, 04:58 - Arnav: Here already, grabbed a table near the window.
+02/11/2023, 17:06 - Arnav: Did you apply to the Google Summer of Code program?
+02/11/2023, 17:15 - Priya: Drafting my proposal right now. Can you review it?
+02/11/2023, 17:25 - Arnav: Send over the Google Doc link.
+02/11/2023, 17:36 - Priya: Here: https://docs.google.com/document/d/fake123
+02/11/2023, 17:48 - Arnav: Looks great! Added comments on section 2.
+03/11/2023, 07:01 - Arnav: Are we meeting for the group project tomorrow?
+03/11/2023, 07:15 - Priya: Yes, 4 PM at the library discussion room.
+03/11/2023, 07:30 - Arnav: Should I bring my laptop charger?
+03/11/2023, 07:46 - Priya: Definitely, we'll be debugging for at least 3 hours.
+03/11/2023, 08:03 - Arnav: Cool, see you there.
+03/11/2023, 22:21 - Arnav: Bhai did you see the new Next.js 14 release?
+03/11/2023, 22:40 - Priya: Server Actions are crazy good!
+03/11/2023, 23:00 - Arnav: Finally no more boilerplate API routes for simple forms.
+03/11/2023, 23:21 - Priya: I'm refactoring our hackathon project this weekend.
+03/11/2023, 23:43 - Arnav: Nice, let's test it together.
+04/11/2023, 15:06 - Arnav: Happy Diwali Priya!
+04/11/2023, 15:30 - Priya: Happy Diwali Arnav! Have fun with family!
+04/11/2023, 15:55 - Arnav: Send photos of the sweets!
+04/11/2023, 16:21 - Priya: <Media omitted>
+04/11/2023, 16:48 - Arnav: Those laddoos look amazing!
+05/11/2023, 09:16 - Arnav: Can you share the lecture slides for Distributed Systems?
+05/11/2023, 09:45 - Priya: Checking my downloads folder...
+05/11/2023, 10:15 - Arnav: Found them, attaching now.
+05/11/2023, 10:46 - Priya: <Media omitted>
+05/11/2023, 11:18 - Arnav: Thanks a ton!
+06/11/2023, 04:51 - Arnav: Are you attending the tech talk by Andrej Karpathy tonight?
+06/11/2023, 05:25 - Priya: Yes, registered last week! Streaming starts at 8pm.
+06/11/2023, 06:00 - Arnav: Let's discuss key takeaways after.
+06/11/2023, 06:36 - Priya: For sure, will write a quick summary.
+06/11/2023, 11:13 - Arnav: Hey, did you get around to pushing that pull request?
+06/11/2023, 11:51 - Priya: Almost done, fixing one lint error in the auth hook.
+06/11/2023, 12:30 - Arnav: Take your time, no rush.
+06/11/2023, 12:35 - Priya: Merged! Check PR #42.
+06/11/2023, 12:41 - Arnav: Super clean code, approved and merged.
+06/11/2023, 17:48 - Arnav: Hey Priya! Did you start the machine learning assignment?
+06/11/2023, 17:56 - Priya: Hey Arnav! Just saw it, question 3 looks super tricky.
+06/11/2023, 18:05 - Arnav: Yeah, gradient descent derivation is confusing.
+06/11/2023, 18:15 - Priya: I'll try working through the math tonight and send you my notes.
+06/11/2023, 18:26 - Arnav: Awesome, let me know when you finish.
+07/11/2023, 00:38 - Arnav: Morning! Coffee at Blue Tokai today?
+07/11/2023, 00:51 - Priya: Yes please! Need caffeine urgently.
+07/11/2023, 01:05 - Arnav: Meet in 20 minutes?
+07/11/2023, 01:20 - Priya: On my way!
+07/11/2023, 01:36 - Arnav: Here already, grabbed a table near the window.
+07/11/2023, 08:53 - Arnav: Did you apply to the Google Summer of Code program?
+07/11/2023, 09:11 - Priya: Drafting my proposal right now. Can you review it?
+07/11/2023, 09:30 - Arnav: Send over the Google Doc link.
+07/11/2023, 09:50 - Priya: Here: https://docs.google.com/document/d/fake123
+07/11/2023, 10:11 - Arnav: Looks great! Added comments on section 2.
+07/11/2023, 18:33 - Arnav: Are we meeting for the group project tomorrow?
+07/11/2023, 18:56 - Priya: Yes, 4 PM at the library discussion room.
+07/11/2023, 19:20 - Arnav: Should I bring my laptop charger?
+07/11/2023, 19:45 - Priya: Definitely, we'll be debugging for at least 3 hours.
+07/11/2023, 20:11 - Arnav: Cool, see you there.
+08/11/2023, 05:38 - Arnav: Bhai did you see the new Next.js 14 release?
+08/11/2023, 06:06 - Priya: Server Actions are crazy good!
+08/11/2023, 06:35 - Arnav: Finally no more boilerplate API routes for simple forms.
+08/11/2023, 07:05 - Priya: I'm refactoring our hackathon project this weekend.
+08/11/2023, 07:36 - Arnav: Nice, let's test it together.
+08/11/2023, 18:08 - Arnav: Happy Diwali Priya!
+08/11/2023, 18:41 - Priya: Happy Diwali Arnav! Have fun with family!
+08/11/2023, 19:15 - Arnav: Send photos of the sweets!
+08/11/2023, 19:50 - Priya: <Media omitted>
+08/11/2023, 20:26 - Arnav: Those laddoos look amazing!
+09/11/2023, 08:03 - Arnav: Can you share the lecture slides for Distributed Systems?
+09/11/2023, 08:41 - Priya: Checking my downloads folder...
+09/11/2023, 09:20 - Arnav: Found them, attaching now.
+09/11/2023, 09:25 - Priya: <Media omitted>
+09/11/2023, 09:31 - Arnav: Thanks a ton!
+09/11/2023, 21:38 - Arnav: Are you attending the tech talk by Andrej Karpathy tonight?
+09/11/2023, 21:46 - Priya: Yes, registered last week! Streaming starts at 8pm.
+09/11/2023, 21:55 - Arnav: Let's discuss key takeaways after.
+09/11/2023, 22:05 - Priya: For sure, will write a quick summary.
+10/11/2023, 11:16 - Arnav: Hey, did you get around to pushing that pull request?
+10/11/2023, 11:28 - Priya: Almost done, fixing one lint error in the auth hook.
+10/11/2023, 11:41 - Arnav: Take your time, no rush.
+10/11/2023, 11:55 - Priya: Merged! Check PR #42.
+10/11/2023, 12:10 - Arnav: Super clean code, approved and merged.
+11/11/2023, 02:26 - Arnav: Hey Priya! Did you start the machine learning assignment?
+11/11/2023, 02:43 - Priya: Hey Arnav! Just saw it, question 3 looks super tricky.
+11/11/2023, 03:01 - Arnav: Yeah, gradient descent derivation is confusing.
+11/11/2023, 03:20 - Priya: I'll try working through the math tonight and send you my notes.
+11/11/2023, 03:40 - Arnav: Awesome, let me know when you finish.
+11/11/2023, 19:01 - Arnav: Morning! Coffee at Blue Tokai today?
+11/11/2023, 19:23 - Priya: Yes please! Need caffeine urgently.
+11/11/2023, 19:46 - Arnav: Meet in 20 minutes?
+11/11/2023, 20:10 - Priya: On my way!
+11/11/2023, 20:35 - Arnav: Here already, grabbed a table near the window.
+12/11/2023, 13:01 - Arnav: Did you apply to the Google Summer of Code program?
+12/11/2023, 13:28 - Priya: Drafting my proposal right now. Can you review it?
+12/11/2023, 13:56 - Arnav: Send over the Google Doc link.
+12/11/2023, 14:25 - Priya: Here: https://docs.google.com/document/d/fake123
+12/11/2023, 14:55 - Arnav: Looks great! Added comments on section 2.
+13/11/2023, 08:26 - Arnav: Are we meeting for the group project tomorrow?
+13/11/2023, 08:58 - Priya: Yes, 4 PM at the library discussion room.
+13/11/2023, 09:31 - Arnav: Should I bring my laptop charger?
+13/11/2023, 10:05 - Priya: Definitely, we'll be debugging for at least 3 hours.
+13/11/2023, 10:40 - Arnav: Cool, see you there.
+13/11/2023, 15:16 - Arnav: Bhai did you see the new Next.js 14 release?
+13/11/2023, 15:53 - Priya: Server Actions are crazy good!
+13/11/2023, 16:31 - Arnav: Finally no more boilerplate API routes for simple forms.
+13/11/2023, 17:10 - Priya: I'm refactoring our hackathon project this weekend.
+13/11/2023, 17:15 - Arnav: Nice, let's test it together.
+13/11/2023, 22:21 - Arnav: Happy Diwali Priya!
+13/11/2023, 22:28 - Priya: Happy Diwali Arnav! Have fun with family!
+13/11/2023, 22:36 - Arnav: Send photos of the sweets!
+13/11/2023, 22:45 - Priya: <Media omitted>
+13/11/2023, 22:55 - Arnav: Those laddoos look amazing!
+14/11/2023, 05:06 - Arnav: Can you share the lecture slides for Distributed Systems?
+14/11/2023, 05:18 - Priya: Checking my downloads folder...
+14/11/2023, 05:31 - Arnav: Found them, attaching now.
+14/11/2023, 05:45 - Priya: <Media omitted>
+14/11/2023, 06:00 - Arnav: Thanks a ton!
+14/11/2023, 13:16 - Arnav: Are you attending the tech talk by Andrej Karpathy tonight?
+14/11/2023, 13:33 - Priya: Yes, registered last week! Streaming starts at 8pm.
+14/11/2023, 13:51 - Arnav: Let's discuss key takeaways after.
+14/11/2023, 14:10 - Priya: For sure, will write a quick summary.
+14/11/2023, 22:30 - Arnav: Hey, did you get around to pushing that pull request?
+14/11/2023, 22:51 - Priya: Almost done, fixing one lint error in the auth hook.
+14/11/2023, 23:13 - Arnav: Take your time, no rush.
+14/11/2023, 23:36 - Priya: Merged! Check PR #42.
+15/11/2023, 00:00 - Arnav: Super clean code, approved and merged.
+15/11/2023, 09:25 - Arnav: Hey Priya! Did you start the machine learning assignment?
+15/11/2023, 09:51 - Priya: Hey Arnav! Just saw it, question 3 looks super tricky.
+15/11/2023, 10:18 - Arnav: Yeah, gradient descent derivation is confusing.
+15/11/2023, 10:46 - Priya: I'll try working through the math tonight and send you my notes.
+15/11/2023, 11:15 - Arnav: Awesome, let me know when you finish.
+15/11/2023, 21:45 - Arnav: Morning! Coffee at Blue Tokai today?
+15/11/2023, 22:16 - Priya: Yes please! Need caffeine urgently.
+15/11/2023, 22:48 - Arnav: Meet in 20 minutes?
+15/11/2023, 23:21 - Priya: On my way!
+15/11/2023, 23:55 - Arnav: Here already, grabbed a table near the window.
+16/11/2023, 11:30 - Arnav: Did you apply to the Google Summer of Code program?
+16/11/2023, 12:06 - Priya: Drafting my proposal right now. Can you review it?
+16/11/2023, 12:43 - Arnav: Send over the Google Doc link.
+16/11/2023, 13:21 - Priya: Here: https://docs.google.com/document/d/fake123
+16/11/2023, 14:00 - Arnav: Looks great! Added comments on section 2.
+17/11/2023, 02:05 - Arnav: Are we meeting for the group project tomorrow?
+17/11/2023, 02:11 - Priya: Yes, 4 PM at the library discussion room.
+17/11/2023, 02:18 - Arnav: Should I bring my laptop charger?
+17/11/2023, 02:26 - Priya: Definitely, we'll be debugging for at least 3 hours.
+17/11/2023, 02:35 - Arnav: Cool, see you there.
+17/11/2023, 15:45 - Arnav: Bhai did you see the new Next.js 14 release?
+17/11/2023, 15:56 - Priya: Server Actions are crazy good!
+17/11/2023, 16:08 - Arnav: Finally no more boilerplate API routes for simple forms.
+17/11/2023, 16:21 - Priya: I'm refactoring our hackathon project this weekend.
+17/11/2023, 16:35 - Arnav: Nice, let's test it together.
+18/11/2023, 06:50 - Arnav: Happy Diwali Priya!
+18/11/2023, 07:06 - Priya: Happy Diwali Arnav! Have fun with family!
+18/11/2023, 07:23 - Arnav: Send photos of the sweets!
+18/11/2023, 07:41 - Priya: <Media omitted>
+18/11/2023, 08:00 - Arnav: Those laddoos look amazing!
+18/11/2023, 23:20 - Arnav: Can you share the lecture slides for Distributed Systems?
+18/11/2023, 23:41 - Priya: Checking my downloads folder...
+19/11/2023, 00:03 - Arnav: Found them, attaching now.
+19/11/2023, 00:26 - Priya: <Media omitted>
+19/11/2023, 00:50 - Arnav: Thanks a ton!
+19/11/2023, 17:15 - Arnav: Are you attending the tech talk by Andrej Karpathy tonight?
+19/11/2023, 17:41 - Priya: Yes, registered last week! Streaming starts at 8pm.
+19/11/2023, 18:08 - Arnav: Let's discuss key takeaways after.
+19/11/2023, 18:36 - Priya: For sure, will write a quick summary.
+20/11/2023, 12:05 - Arnav: Hey, did you get around to pushing that pull request?
+20/11/2023, 12:35 - Priya: Almost done, fixing one lint error in the auth hook.
+20/11/2023, 13:06 - Arnav: Take your time, no rush.
+20/11/2023, 13:38 - Priya: Merged! Check PR #42.
+20/11/2023, 14:11 - Arnav: Super clean code, approved and merged.
+20/11/2023, 18:45 - Arnav: Hey Priya! Did you start the machine learning assignment?
+20/11/2023, 19:20 - Priya: Hey Arnav! Just saw it, question 3 looks super tricky.
+20/11/2023, 19:56 - Arnav: Yeah, gradient descent derivation is confusing.
+20/11/2023, 20:33 - Priya: I'll try working through the math tonight and send you my notes.
+20/11/2023, 21:11 - Arnav: Awesome, let me know when you finish.
+21/11/2023, 02:50 - Arnav: Morning! Coffee at Blue Tokai today?
+21/11/2023, 02:55 - Priya: Yes please! Need caffeine urgently.
+21/11/2023, 03:01 - Arnav: Meet in 20 minutes?
+21/11/2023, 03:08 - Priya: On my way!
+21/11/2023, 03:16 - Arnav: Here already, grabbed a table near the window.
+21/11/2023, 09:25 - Arnav: Did you apply to the Google Summer of Code program?
+21/11/2023, 09:35 - Priya: Drafting my proposal right now. Can you review it?
+21/11/2023, 09:46 - Arnav: Send over the Google Doc link.
+21/11/2023, 09:58 - Priya: Here: https://docs.google.com/document/d/fake123
+21/11/2023, 10:11 - Arnav: Looks great! Added comments on section 2.
+31/03/2024, 18:30 - Priya: Hey Arnav, did you finish reviewing the final report? Let me know!

@@ -1,17 +1,23 @@
 import { NextResponse } from "next/server";
 import { callLLMWithSchema, ReplyDraftsResponseSchema, type AIProvider } from "@/lib/llm";
 import { generateLocalReplyDrafts } from "@/lib/localAi";
+import { checkApiRateLimitAndPayload } from "@/lib/apiSecurity";
 
 export async function POST(req: Request) {
   try {
-    const { chatId, lastMessagesText, contactName = "Friend", apiKey, provider, model } = await req.json();
+    const rawText = await req.text();
+    const body = JSON.parse(rawText || "{}");
+    const { chatId, lastMessagesText, contactName = "Friend", apiKey, provider, model } = body;
+
+    const customKey = apiKey || req.headers.get("x-ai-key") || undefined;
+    const customProvider = (provider || req.headers.get("x-ai-provider") || undefined) as AIProvider | undefined;
+
+    const rateLimitError = checkApiRateLimitAndPayload(req, rawText, Boolean(customKey));
+    if (rateLimitError) return rateLimitError;
 
     if (!lastMessagesText) {
       return NextResponse.json({ error: "Missing lastMessagesText" }, { status: 400 });
     }
-
-    const customKey = apiKey || req.headers.get("x-ai-key") || undefined;
-    const customProvider = (provider || req.headers.get("x-ai-provider") || undefined) as AIProvider | undefined;
 
     const systemPrompt = `You are a conversational AI assistant generating guilt-free response drafts for people who accidentally left a friend or colleague on read.
 Generate drafts across the following tones:

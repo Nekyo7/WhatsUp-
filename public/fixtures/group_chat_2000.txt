@@ -1,0 +1,2004 @@
+10/01/2024, 09:00 - Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.
+10/01/2024, 09:01 - Aryan created group "HackNation Core 2024"
+10/01/2024, 09:02 - Aryan added Rohan, Tanya, Dev, Sara, Sam, Kabir, and You
+10/01/2024, 09:03 - Tanya changed the group description
+10/01/2024, 09:05 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+10/01/2024, 09:08 - Rohan: Working on the database schema and query indexes right now.
+10/01/2024, 09:12 - Tanya: Just pushed the Figma components for dark mode!
+10/01/2024, 09:17 - Dev: Can someone test the new API endpoint on localhost:3000?
+10/01/2024, 09:23 - Sara: <Media omitted>
+10/01/2024, 09:30 - Sam: LGTM! PR approved.
+10/01/2024, 09:38 - Kabir: Are we meeting at 5pm for architecture review?
+10/01/2024, 09:47 - You: Yes, link is on the calendar invite.
+10/01/2024, 09:57 - Aryan: Don't forget to push your branch before the sync!
+10/01/2024, 10:08 - Rohan: Deployed staging build to Vercel. Test it out!
+10/01/2024, 10:20 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+10/01/2024, 10:33 - Dev: Working on the database schema and query indexes right now.
+10/01/2024, 10:47 - Sara: Just pushed the Figma components for dark mode!
+10/01/2024, 11:02 - Sam: Can someone test the new API endpoint on localhost:3000?
+10/01/2024, 11:18 - Kabir: <Media omitted>
+10/01/2024, 17:35 - You: LGTM! PR approved.
+10/01/2024, 17:53 - Aryan: Are we meeting at 5pm for architecture review?
+10/01/2024, 18:12 - Rohan: Yes, link is on the calendar invite.
+10/01/2024, 18:32 - Tanya: Don't forget to push your branch before the sync!
+10/01/2024, 18:53 - Dev: Deployed staging build to Vercel. Test it out!
+10/01/2024, 18:55 - Sara: Hey team, daily standup: @Sam what are your blockers?
+10/01/2024, 18:58 - Sam: Working on the database schema and query indexes right now.
+10/01/2024, 19:02 - Kabir: Just pushed the Figma components for dark mode!
+10/01/2024, 19:07 - You: Can someone test the new API endpoint on localhost:3000?
+10/01/2024, 19:13 - Aryan: <Media omitted>
+10/01/2024, 19:20 - Rohan: LGTM! PR approved.
+10/01/2024, 19:28 - Tanya: Are we meeting at 5pm for architecture review?
+10/01/2024, 19:37 - Dev: Yes, link is on the calendar invite.
+10/01/2024, 19:47 - Sara: Don't forget to push your branch before the sync!
+10/01/2024, 19:58 - Sam: Deployed staging build to Vercel. Test it out!
+11/01/2024, 02:10 - Kabir: Hey team, daily standup: @You what are your blockers?
+11/01/2024, 02:23 - You: Working on the database schema and query indexes right now.
+11/01/2024, 02:37 - Aryan: Just pushed the Figma components for dark mode!
+11/01/2024, 02:52 - Rohan: Can someone test the new API endpoint on localhost:3000?
+11/01/2024, 03:08 - Tanya: <Media omitted>
+11/01/2024, 03:25 - Dev: LGTM! PR approved.
+11/01/2024, 03:43 - Sara: Are we meeting at 5pm for architecture review?
+11/01/2024, 04:02 - Sam: Yes, link is on the calendar invite.
+11/01/2024, 04:22 - Kabir: Don't forget to push your branch before the sync!
+11/01/2024, 04:43 - You: Deployed staging build to Vercel. Test it out!
+11/01/2024, 04:45 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+11/01/2024, 04:48 - Rohan: Working on the database schema and query indexes right now.
+11/01/2024, 04:52 - Tanya: Just pushed the Figma components for dark mode!
+11/01/2024, 04:57 - Dev: Can someone test the new API endpoint on localhost:3000?
+11/01/2024, 05:03 - Sara: <Media omitted>
+11/01/2024, 11:10 - Sam: LGTM! PR approved.
+11/01/2024, 11:18 - Kabir: Are we meeting at 5pm for architecture review?
+11/01/2024, 11:27 - You: Yes, link is on the calendar invite.
+11/01/2024, 11:37 - Aryan: Don't forget to push your branch before the sync!
+11/01/2024, 11:48 - Rohan: Deployed staging build to Vercel. Test it out!
+11/01/2024, 12:00 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+11/01/2024, 12:13 - Dev: Working on the database schema and query indexes right now.
+11/01/2024, 12:27 - Sara: Just pushed the Figma components for dark mode!
+11/01/2024, 12:42 - Sam: Can someone test the new API endpoint on localhost:3000?
+11/01/2024, 12:58 - Kabir: <Media omitted>
+11/01/2024, 13:15 - You: LGTM! PR approved.
+11/01/2024, 13:33 - Aryan: Are we meeting at 5pm for architecture review?
+11/01/2024, 13:52 - Rohan: Yes, link is on the calendar invite.
+11/01/2024, 14:12 - Tanya: Don't forget to push your branch before the sync!
+11/01/2024, 14:33 - Dev: Deployed staging build to Vercel. Test it out!
+11/01/2024, 20:35 - Sara: Hey team, daily standup: @Sam what are your blockers?
+11/01/2024, 20:38 - Sam: Working on the database schema and query indexes right now.
+11/01/2024, 20:42 - Kabir: Just pushed the Figma components for dark mode!
+11/01/2024, 20:47 - You: Can someone test the new API endpoint on localhost:3000?
+11/01/2024, 20:53 - Aryan: <Media omitted>
+11/01/2024, 21:00 - Rohan: LGTM! PR approved.
+11/01/2024, 21:08 - Tanya: Are we meeting at 5pm for architecture review?
+11/01/2024, 21:17 - Dev: Yes, link is on the calendar invite.
+11/01/2024, 21:27 - Sara: Don't forget to push your branch before the sync!
+11/01/2024, 21:38 - Sam: Deployed staging build to Vercel. Test it out!
+11/01/2024, 21:50 - Kabir: Hey team, daily standup: @You what are your blockers?
+11/01/2024, 22:03 - You: Working on the database schema and query indexes right now.
+11/01/2024, 22:17 - Aryan: Just pushed the Figma components for dark mode!
+11/01/2024, 22:32 - Rohan: Can someone test the new API endpoint on localhost:3000?
+11/01/2024, 22:48 - Tanya: <Media omitted>
+12/01/2024, 05:05 - Dev: LGTM! PR approved.
+12/01/2024, 05:23 - Sara: Are we meeting at 5pm for architecture review?
+12/01/2024, 05:42 - Sam: Yes, link is on the calendar invite.
+12/01/2024, 06:02 - Kabir: Don't forget to push your branch before the sync!
+12/01/2024, 06:23 - You: Deployed staging build to Vercel. Test it out!
+12/01/2024, 06:25 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+12/01/2024, 06:28 - Rohan: Working on the database schema and query indexes right now.
+12/01/2024, 06:32 - Tanya: Just pushed the Figma components for dark mode!
+12/01/2024, 06:37 - Dev: Can someone test the new API endpoint on localhost:3000?
+12/01/2024, 06:43 - Sara: <Media omitted>
+12/01/2024, 06:50 - Sam: LGTM! PR approved.
+12/01/2024, 06:58 - Kabir: Are we meeting at 5pm for architecture review?
+12/01/2024, 07:07 - You: Yes, link is on the calendar invite.
+12/01/2024, 07:17 - Aryan: Don't forget to push your branch before the sync!
+12/01/2024, 07:28 - Rohan: Deployed staging build to Vercel. Test it out!
+12/01/2024, 13:40 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+12/01/2024, 13:53 - Dev: Working on the database schema and query indexes right now.
+12/01/2024, 14:07 - Sara: Just pushed the Figma components for dark mode!
+12/01/2024, 14:22 - Sam: Can someone test the new API endpoint on localhost:3000?
+12/01/2024, 14:38 - Kabir: <Media omitted>
+12/01/2024, 14:55 - You: LGTM! PR approved.
+12/01/2024, 15:13 - Aryan: Are we meeting at 5pm for architecture review?
+12/01/2024, 15:32 - Rohan: Yes, link is on the calendar invite.
+12/01/2024, 15:52 - Tanya: Don't forget to push your branch before the sync!
+12/01/2024, 16:13 - Dev: Deployed staging build to Vercel. Test it out!
+12/01/2024, 16:15 - Sara: Hey team, daily standup: @Sam what are your blockers?
+12/01/2024, 16:18 - Sam: Working on the database schema and query indexes right now.
+12/01/2024, 16:22 - Kabir: Just pushed the Figma components for dark mode!
+12/01/2024, 16:27 - You: Can someone test the new API endpoint on localhost:3000?
+12/01/2024, 16:33 - Aryan: <Media omitted>
+12/01/2024, 22:40 - Rohan: LGTM! PR approved.
+12/01/2024, 22:48 - Tanya: Are we meeting at 5pm for architecture review?
+12/01/2024, 22:57 - Dev: Yes, link is on the calendar invite.
+12/01/2024, 23:07 - Sara: Don't forget to push your branch before the sync!
+12/01/2024, 23:18 - Sam: Deployed staging build to Vercel. Test it out!
+12/01/2024, 23:30 - Kabir: Hey team, daily standup: @You what are your blockers?
+12/01/2024, 23:43 - You: Working on the database schema and query indexes right now.
+12/01/2024, 23:57 - Aryan: Just pushed the Figma components for dark mode!
+13/01/2024, 00:12 - Rohan: Can someone test the new API endpoint on localhost:3000?
+13/01/2024, 00:28 - Tanya: <Media omitted>
+13/01/2024, 00:45 - Dev: LGTM! PR approved.
+13/01/2024, 01:03 - Sara: Are we meeting at 5pm for architecture review?
+13/01/2024, 01:22 - Sam: Yes, link is on the calendar invite.
+13/01/2024, 01:42 - Kabir: Don't forget to push your branch before the sync!
+13/01/2024, 02:03 - You: Deployed staging build to Vercel. Test it out!
+13/01/2024, 08:05 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+13/01/2024, 08:08 - Rohan: Working on the database schema and query indexes right now.
+13/01/2024, 08:12 - Tanya: Just pushed the Figma components for dark mode!
+13/01/2024, 08:17 - Dev: Can someone test the new API endpoint on localhost:3000?
+13/01/2024, 08:23 - Sara: <Media omitted>
+13/01/2024, 08:30 - Sam: LGTM! PR approved.
+13/01/2024, 08:38 - Kabir: Are we meeting at 5pm for architecture review?
+13/01/2024, 08:47 - You: Yes, link is on the calendar invite.
+13/01/2024, 08:57 - Aryan: Don't forget to push your branch before the sync!
+13/01/2024, 09:08 - Rohan: Deployed staging build to Vercel. Test it out!
+13/01/2024, 09:20 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+13/01/2024, 09:33 - Dev: Working on the database schema and query indexes right now.
+13/01/2024, 09:47 - Sara: Just pushed the Figma components for dark mode!
+13/01/2024, 10:02 - Sam: Can someone test the new API endpoint on localhost:3000?
+13/01/2024, 10:18 - Kabir: <Media omitted>
+13/01/2024, 16:35 - You: LGTM! PR approved.
+13/01/2024, 16:53 - Aryan: Are we meeting at 5pm for architecture review?
+13/01/2024, 17:12 - Rohan: Yes, link is on the calendar invite.
+13/01/2024, 17:32 - Tanya: Don't forget to push your branch before the sync!
+13/01/2024, 17:53 - Dev: Deployed staging build to Vercel. Test it out!
+13/01/2024, 17:55 - Sara: Hey team, daily standup: @Sam what are your blockers?
+13/01/2024, 17:58 - Sam: Working on the database schema and query indexes right now.
+13/01/2024, 18:02 - Kabir: Just pushed the Figma components for dark mode!
+13/01/2024, 18:07 - You: Can someone test the new API endpoint on localhost:3000?
+13/01/2024, 18:13 - Aryan: <Media omitted>
+13/01/2024, 18:20 - Rohan: LGTM! PR approved.
+13/01/2024, 18:28 - Tanya: Are we meeting at 5pm for architecture review?
+13/01/2024, 18:37 - Dev: Yes, link is on the calendar invite.
+13/01/2024, 18:47 - Sara: Don't forget to push your branch before the sync!
+13/01/2024, 18:58 - Sam: Deployed staging build to Vercel. Test it out!
+14/01/2024, 01:10 - Kabir: Hey team, daily standup: @You what are your blockers?
+14/01/2024, 01:23 - You: Working on the database schema and query indexes right now.
+14/01/2024, 01:37 - Aryan: Just pushed the Figma components for dark mode!
+14/01/2024, 01:52 - Rohan: Can someone test the new API endpoint on localhost:3000?
+14/01/2024, 02:08 - Tanya: <Media omitted>
+14/01/2024, 02:25 - Dev: LGTM! PR approved.
+14/01/2024, 02:43 - Sara: Are we meeting at 5pm for architecture review?
+14/01/2024, 03:02 - Sam: Yes, link is on the calendar invite.
+14/01/2024, 03:22 - Kabir: Don't forget to push your branch before the sync!
+14/01/2024, 03:43 - You: Deployed staging build to Vercel. Test it out!
+14/01/2024, 03:45 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+14/01/2024, 03:48 - Rohan: Working on the database schema and query indexes right now.
+14/01/2024, 03:52 - Tanya: Just pushed the Figma components for dark mode!
+14/01/2024, 03:57 - Dev: Can someone test the new API endpoint on localhost:3000?
+14/01/2024, 04:03 - Sara: <Media omitted>
+14/01/2024, 10:10 - Sam: LGTM! PR approved.
+14/01/2024, 10:18 - Kabir: Are we meeting at 5pm for architecture review?
+14/01/2024, 10:27 - You: Yes, link is on the calendar invite.
+14/01/2024, 10:37 - Aryan: Don't forget to push your branch before the sync!
+14/01/2024, 10:48 - Rohan: Deployed staging build to Vercel. Test it out!
+14/01/2024, 11:00 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+14/01/2024, 11:13 - Dev: Working on the database schema and query indexes right now.
+14/01/2024, 11:27 - Sara: Just pushed the Figma components for dark mode!
+14/01/2024, 11:42 - Sam: Can someone test the new API endpoint on localhost:3000?
+14/01/2024, 11:58 - Kabir: <Media omitted>
+14/01/2024, 12:15 - You: LGTM! PR approved.
+14/01/2024, 12:33 - Aryan: Are we meeting at 5pm for architecture review?
+14/01/2024, 12:52 - Rohan: Yes, link is on the calendar invite.
+14/01/2024, 13:12 - Tanya: Don't forget to push your branch before the sync!
+14/01/2024, 13:33 - Dev: Deployed staging build to Vercel. Test it out!
+14/01/2024, 19:35 - Sara: Hey team, daily standup: @Sam what are your blockers?
+14/01/2024, 19:38 - Sam: Working on the database schema and query indexes right now.
+14/01/2024, 19:42 - Kabir: Just pushed the Figma components for dark mode!
+14/01/2024, 19:47 - You: Can someone test the new API endpoint on localhost:3000?
+14/01/2024, 19:53 - Aryan: <Media omitted>
+14/01/2024, 20:00 - Rohan: LGTM! PR approved.
+14/01/2024, 20:08 - Tanya: Are we meeting at 5pm for architecture review?
+14/01/2024, 20:17 - Dev: Yes, link is on the calendar invite.
+14/01/2024, 20:27 - Sara: Don't forget to push your branch before the sync!
+14/01/2024, 20:38 - Sam: Deployed staging build to Vercel. Test it out!
+14/01/2024, 20:50 - Kabir: Hey team, daily standup: @You what are your blockers?
+14/01/2024, 21:03 - You: Working on the database schema and query indexes right now.
+14/01/2024, 21:17 - Aryan: Just pushed the Figma components for dark mode!
+14/01/2024, 21:32 - Rohan: Can someone test the new API endpoint on localhost:3000?
+14/01/2024, 21:48 - Tanya: <Media omitted>
+15/01/2024, 04:05 - Dev: LGTM! PR approved.
+15/01/2024, 04:23 - Sara: Are we meeting at 5pm for architecture review?
+15/01/2024, 04:42 - Sam: Yes, link is on the calendar invite.
+15/01/2024, 05:02 - Kabir: Don't forget to push your branch before the sync!
+15/01/2024, 05:23 - You: Deployed staging build to Vercel. Test it out!
+15/01/2024, 05:25 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+15/01/2024, 05:28 - Rohan: Working on the database schema and query indexes right now.
+15/01/2024, 05:32 - Tanya: Just pushed the Figma components for dark mode!
+15/01/2024, 05:37 - Dev: Can someone test the new API endpoint on localhost:3000?
+15/01/2024, 05:43 - Sara: <Media omitted>
+15/01/2024, 05:50 - Sam: LGTM! PR approved.
+15/01/2024, 05:58 - Kabir: Are we meeting at 5pm for architecture review?
+15/01/2024, 06:07 - You: Yes, link is on the calendar invite.
+15/01/2024, 06:17 - Aryan: Don't forget to push your branch before the sync!
+15/01/2024, 06:28 - Rohan: Deployed staging build to Vercel. Test it out!
+15/01/2024, 12:40 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+15/01/2024, 12:53 - Dev: Working on the database schema and query indexes right now.
+15/01/2024, 13:07 - Sara: Just pushed the Figma components for dark mode!
+15/01/2024, 13:22 - Sam: Can someone test the new API endpoint on localhost:3000?
+15/01/2024, 13:38 - Kabir: <Media omitted>
+15/01/2024, 13:55 - You: LGTM! PR approved.
+15/01/2024, 14:13 - Aryan: Are we meeting at 5pm for architecture review?
+15/01/2024, 14:32 - Rohan: Yes, link is on the calendar invite.
+15/01/2024, 14:52 - Tanya: Don't forget to push your branch before the sync!
+15/01/2024, 15:13 - Dev: Deployed staging build to Vercel. Test it out!
+15/01/2024, 15:15 - Sara: Hey team, daily standup: @Sam what are your blockers?
+15/01/2024, 15:18 - Sam: Working on the database schema and query indexes right now.
+15/01/2024, 15:22 - Kabir: Just pushed the Figma components for dark mode!
+15/01/2024, 15:27 - You: Can someone test the new API endpoint on localhost:3000?
+15/01/2024, 15:33 - Aryan: <Media omitted>
+15/01/2024, 21:40 - Rohan: LGTM! PR approved.
+15/01/2024, 21:48 - Tanya: Are we meeting at 5pm for architecture review?
+15/01/2024, 21:57 - Dev: Yes, link is on the calendar invite.
+15/01/2024, 22:07 - Sara: Don't forget to push your branch before the sync!
+15/01/2024, 22:18 - Sam: Deployed staging build to Vercel. Test it out!
+15/01/2024, 22:30 - Kabir: Hey team, daily standup: @You what are your blockers?
+15/01/2024, 22:43 - You: Working on the database schema and query indexes right now.
+15/01/2024, 22:57 - Aryan: Just pushed the Figma components for dark mode!
+15/01/2024, 23:12 - Rohan: Can someone test the new API endpoint on localhost:3000?
+15/01/2024, 23:28 - Tanya: <Media omitted>
+15/01/2024, 23:45 - Dev: LGTM! PR approved.
+16/01/2024, 00:03 - Sara: Are we meeting at 5pm for architecture review?
+16/01/2024, 00:22 - Sam: Yes, link is on the calendar invite.
+16/01/2024, 00:42 - Kabir: Don't forget to push your branch before the sync!
+16/01/2024, 01:03 - You: Deployed staging build to Vercel. Test it out!
+16/01/2024, 07:05 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+16/01/2024, 07:08 - Rohan: Working on the database schema and query indexes right now.
+16/01/2024, 07:12 - Tanya: Just pushed the Figma components for dark mode!
+16/01/2024, 07:17 - Dev: Can someone test the new API endpoint on localhost:3000?
+16/01/2024, 07:23 - Sara: <Media omitted>
+16/01/2024, 07:30 - Sam: LGTM! PR approved.
+16/01/2024, 07:38 - Kabir: Are we meeting at 5pm for architecture review?
+16/01/2024, 07:47 - You: Yes, link is on the calendar invite.
+16/01/2024, 07:57 - Aryan: Don't forget to push your branch before the sync!
+16/01/2024, 08:08 - Rohan: Deployed staging build to Vercel. Test it out!
+16/01/2024, 08:20 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+16/01/2024, 08:33 - Dev: Working on the database schema and query indexes right now.
+16/01/2024, 08:47 - Sara: Just pushed the Figma components for dark mode!
+16/01/2024, 09:02 - Sam: Can someone test the new API endpoint on localhost:3000?
+16/01/2024, 09:18 - Kabir: <Media omitted>
+16/01/2024, 15:35 - You: LGTM! PR approved.
+16/01/2024, 15:53 - Aryan: Are we meeting at 5pm for architecture review?
+16/01/2024, 16:12 - Rohan: Yes, link is on the calendar invite.
+16/01/2024, 16:32 - Tanya: Don't forget to push your branch before the sync!
+16/01/2024, 16:53 - Dev: Deployed staging build to Vercel. Test it out!
+16/01/2024, 16:55 - Sara: Hey team, daily standup: @Sam what are your blockers?
+16/01/2024, 16:58 - Sam: Working on the database schema and query indexes right now.
+16/01/2024, 17:02 - Kabir: Just pushed the Figma components for dark mode!
+16/01/2024, 17:07 - You: Can someone test the new API endpoint on localhost:3000?
+16/01/2024, 17:13 - Aryan: <Media omitted>
+16/01/2024, 17:20 - Rohan: LGTM! PR approved.
+16/01/2024, 17:28 - Tanya: Are we meeting at 5pm for architecture review?
+16/01/2024, 17:37 - Dev: Yes, link is on the calendar invite.
+16/01/2024, 17:47 - Sara: Don't forget to push your branch before the sync!
+16/01/2024, 17:58 - Sam: Deployed staging build to Vercel. Test it out!
+17/01/2024, 00:10 - Kabir: Hey team, daily standup: @You what are your blockers?
+17/01/2024, 00:23 - You: Working on the database schema and query indexes right now.
+17/01/2024, 00:37 - Aryan: Just pushed the Figma components for dark mode!
+17/01/2024, 00:52 - Rohan: Can someone test the new API endpoint on localhost:3000?
+17/01/2024, 01:08 - Tanya: <Media omitted>
+17/01/2024, 01:25 - Dev: LGTM! PR approved.
+17/01/2024, 01:43 - Sara: Are we meeting at 5pm for architecture review?
+17/01/2024, 02:02 - Sam: Yes, link is on the calendar invite.
+17/01/2024, 02:22 - Kabir: Don't forget to push your branch before the sync!
+17/01/2024, 02:43 - You: Deployed staging build to Vercel. Test it out!
+17/01/2024, 02:45 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+17/01/2024, 02:48 - Rohan: Working on the database schema and query indexes right now.
+17/01/2024, 02:52 - Tanya: Just pushed the Figma components for dark mode!
+17/01/2024, 02:57 - Dev: Can someone test the new API endpoint on localhost:3000?
+17/01/2024, 03:03 - Sara: <Media omitted>
+17/01/2024, 09:10 - Sam: LGTM! PR approved.
+17/01/2024, 09:18 - Kabir: Are we meeting at 5pm for architecture review?
+17/01/2024, 09:27 - You: Yes, link is on the calendar invite.
+17/01/2024, 09:37 - Aryan: Don't forget to push your branch before the sync!
+17/01/2024, 09:48 - Rohan: Deployed staging build to Vercel. Test it out!
+17/01/2024, 10:00 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+17/01/2024, 10:13 - Dev: Working on the database schema and query indexes right now.
+17/01/2024, 10:27 - Sara: Just pushed the Figma components for dark mode!
+17/01/2024, 10:42 - Sam: Can someone test the new API endpoint on localhost:3000?
+17/01/2024, 10:58 - Kabir: <Media omitted>
+17/01/2024, 11:15 - You: LGTM! PR approved.
+17/01/2024, 11:33 - Aryan: Are we meeting at 5pm for architecture review?
+17/01/2024, 11:52 - Rohan: Yes, link is on the calendar invite.
+17/01/2024, 12:12 - Tanya: Don't forget to push your branch before the sync!
+17/01/2024, 12:33 - Dev: Deployed staging build to Vercel. Test it out!
+17/01/2024, 18:35 - Sara: Hey team, daily standup: @Sam what are your blockers?
+17/01/2024, 18:38 - Sam: Working on the database schema and query indexes right now.
+17/01/2024, 18:42 - Kabir: Just pushed the Figma components for dark mode!
+17/01/2024, 18:47 - You: Can someone test the new API endpoint on localhost:3000?
+17/01/2024, 18:53 - Aryan: <Media omitted>
+17/01/2024, 19:00 - Rohan: LGTM! PR approved.
+17/01/2024, 19:08 - Tanya: Are we meeting at 5pm for architecture review?
+17/01/2024, 19:17 - Dev: Yes, link is on the calendar invite.
+17/01/2024, 19:27 - Sara: Don't forget to push your branch before the sync!
+17/01/2024, 19:38 - Sam: Deployed staging build to Vercel. Test it out!
+17/01/2024, 19:50 - Kabir: Hey team, daily standup: @You what are your blockers?
+17/01/2024, 20:03 - You: Working on the database schema and query indexes right now.
+17/01/2024, 20:17 - Aryan: Just pushed the Figma components for dark mode!
+17/01/2024, 20:32 - Rohan: Can someone test the new API endpoint on localhost:3000?
+17/01/2024, 20:48 - Tanya: <Media omitted>
+18/01/2024, 03:05 - Dev: LGTM! PR approved.
+18/01/2024, 03:23 - Sara: Are we meeting at 5pm for architecture review?
+18/01/2024, 03:42 - Sam: Yes, link is on the calendar invite.
+18/01/2024, 04:02 - Kabir: Don't forget to push your branch before the sync!
+18/01/2024, 04:23 - You: Deployed staging build to Vercel. Test it out!
+18/01/2024, 04:25 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+18/01/2024, 04:28 - Rohan: Working on the database schema and query indexes right now.
+18/01/2024, 04:32 - Tanya: Just pushed the Figma components for dark mode!
+18/01/2024, 04:37 - Dev: Can someone test the new API endpoint on localhost:3000?
+18/01/2024, 04:43 - Sara: <Media omitted>
+18/01/2024, 04:50 - Sam: LGTM! PR approved.
+18/01/2024, 04:58 - Kabir: Are we meeting at 5pm for architecture review?
+18/01/2024, 05:07 - You: Yes, link is on the calendar invite.
+18/01/2024, 05:17 - Aryan: Don't forget to push your branch before the sync!
+18/01/2024, 05:28 - Rohan: Deployed staging build to Vercel. Test it out!
+18/01/2024, 11:40 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+18/01/2024, 11:53 - Dev: Working on the database schema and query indexes right now.
+18/01/2024, 12:07 - Sara: Just pushed the Figma components for dark mode!
+18/01/2024, 12:22 - Sam: Can someone test the new API endpoint on localhost:3000?
+18/01/2024, 12:38 - Kabir: <Media omitted>
+18/01/2024, 12:55 - You: LGTM! PR approved.
+18/01/2024, 13:13 - Aryan: Are we meeting at 5pm for architecture review?
+18/01/2024, 13:32 - Rohan: Yes, link is on the calendar invite.
+18/01/2024, 13:52 - Tanya: Don't forget to push your branch before the sync!
+18/01/2024, 14:13 - Dev: Deployed staging build to Vercel. Test it out!
+18/01/2024, 14:15 - Sara: Hey team, daily standup: @Sam what are your blockers?
+18/01/2024, 14:18 - Sam: Working on the database schema and query indexes right now.
+18/01/2024, 14:22 - Kabir: Just pushed the Figma components for dark mode!
+18/01/2024, 14:27 - You: Can someone test the new API endpoint on localhost:3000?
+18/01/2024, 14:33 - Aryan: <Media omitted>
+18/01/2024, 20:40 - Rohan: LGTM! PR approved.
+18/01/2024, 20:48 - Tanya: Are we meeting at 5pm for architecture review?
+18/01/2024, 20:57 - Dev: Yes, link is on the calendar invite.
+18/01/2024, 21:07 - Sara: Don't forget to push your branch before the sync!
+18/01/2024, 21:18 - Sam: Deployed staging build to Vercel. Test it out!
+18/01/2024, 21:30 - Kabir: Hey team, daily standup: @You what are your blockers?
+18/01/2024, 21:43 - You: Working on the database schema and query indexes right now.
+18/01/2024, 21:57 - Aryan: Just pushed the Figma components for dark mode!
+18/01/2024, 22:12 - Rohan: Can someone test the new API endpoint on localhost:3000?
+18/01/2024, 22:28 - Tanya: <Media omitted>
+18/01/2024, 22:45 - Dev: LGTM! PR approved.
+18/01/2024, 23:03 - Sara: Are we meeting at 5pm for architecture review?
+18/01/2024, 23:22 - Sam: Yes, link is on the calendar invite.
+18/01/2024, 23:42 - Kabir: Don't forget to push your branch before the sync!
+19/01/2024, 00:03 - You: Deployed staging build to Vercel. Test it out!
+19/01/2024, 06:05 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+19/01/2024, 06:08 - Rohan: Working on the database schema and query indexes right now.
+19/01/2024, 06:12 - Tanya: Just pushed the Figma components for dark mode!
+19/01/2024, 06:17 - Dev: Can someone test the new API endpoint on localhost:3000?
+19/01/2024, 06:23 - Sara: <Media omitted>
+19/01/2024, 06:30 - Sam: LGTM! PR approved.
+19/01/2024, 06:38 - Kabir: Are we meeting at 5pm for architecture review?
+19/01/2024, 06:47 - You: Yes, link is on the calendar invite.
+19/01/2024, 06:57 - Aryan: Don't forget to push your branch before the sync!
+19/01/2024, 07:08 - Rohan: Deployed staging build to Vercel. Test it out!
+19/01/2024, 07:20 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+19/01/2024, 07:33 - Dev: Working on the database schema and query indexes right now.
+19/01/2024, 07:47 - Sara: Just pushed the Figma components for dark mode!
+19/01/2024, 08:02 - Sam: Can someone test the new API endpoint on localhost:3000?
+19/01/2024, 08:18 - Kabir: <Media omitted>
+19/01/2024, 14:35 - You: LGTM! PR approved.
+19/01/2024, 14:53 - Aryan: Are we meeting at 5pm for architecture review?
+19/01/2024, 15:12 - Rohan: Yes, link is on the calendar invite.
+19/01/2024, 15:32 - Tanya: Don't forget to push your branch before the sync!
+19/01/2024, 15:53 - Dev: Deployed staging build to Vercel. Test it out!
+19/01/2024, 15:55 - Sara: Hey team, daily standup: @Sam what are your blockers?
+19/01/2024, 15:58 - Sam: Working on the database schema and query indexes right now.
+19/01/2024, 16:02 - Kabir: Just pushed the Figma components for dark mode!
+19/01/2024, 16:07 - You: Can someone test the new API endpoint on localhost:3000?
+19/01/2024, 16:13 - Aryan: <Media omitted>
+19/01/2024, 16:20 - Rohan: LGTM! PR approved.
+19/01/2024, 16:28 - Tanya: Are we meeting at 5pm for architecture review?
+19/01/2024, 16:37 - Dev: Yes, link is on the calendar invite.
+19/01/2024, 16:47 - Sara: Don't forget to push your branch before the sync!
+19/01/2024, 16:58 - Sam: Deployed staging build to Vercel. Test it out!
+19/01/2024, 23:10 - Kabir: Hey team, daily standup: @You what are your blockers?
+19/01/2024, 23:23 - You: Working on the database schema and query indexes right now.
+19/01/2024, 23:37 - Aryan: Just pushed the Figma components for dark mode!
+19/01/2024, 23:52 - Rohan: Can someone test the new API endpoint on localhost:3000?
+20/01/2024, 00:08 - Tanya: <Media omitted>
+20/01/2024, 00:25 - Dev: LGTM! PR approved.
+20/01/2024, 00:43 - Sara: Are we meeting at 5pm for architecture review?
+20/01/2024, 01:02 - Sam: Yes, link is on the calendar invite.
+20/01/2024, 01:22 - Kabir: Don't forget to push your branch before the sync!
+20/01/2024, 01:43 - You: Deployed staging build to Vercel. Test it out!
+20/01/2024, 01:45 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+20/01/2024, 01:48 - Rohan: Working on the database schema and query indexes right now.
+20/01/2024, 01:52 - Tanya: Just pushed the Figma components for dark mode!
+20/01/2024, 01:57 - Dev: Can someone test the new API endpoint on localhost:3000?
+20/01/2024, 02:03 - Sara: <Media omitted>
+20/01/2024, 08:10 - Sam: LGTM! PR approved.
+20/01/2024, 08:18 - Kabir: Are we meeting at 5pm for architecture review?
+20/01/2024, 08:27 - You: Yes, link is on the calendar invite.
+20/01/2024, 08:37 - Aryan: Don't forget to push your branch before the sync!
+20/01/2024, 08:48 - Rohan: Deployed staging build to Vercel. Test it out!
+20/01/2024, 09:00 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+20/01/2024, 09:13 - Dev: Working on the database schema and query indexes right now.
+20/01/2024, 09:27 - Sara: Just pushed the Figma components for dark mode!
+20/01/2024, 09:42 - Sam: Can someone test the new API endpoint on localhost:3000?
+20/01/2024, 09:58 - Kabir: <Media omitted>
+20/01/2024, 10:15 - You: LGTM! PR approved.
+20/01/2024, 10:33 - Aryan: Are we meeting at 5pm for architecture review?
+20/01/2024, 10:52 - Rohan: Yes, link is on the calendar invite.
+20/01/2024, 11:12 - Tanya: Don't forget to push your branch before the sync!
+20/01/2024, 11:33 - Dev: Deployed staging build to Vercel. Test it out!
+20/01/2024, 17:35 - Sara: Hey team, daily standup: @Sam what are your blockers?
+20/01/2024, 17:38 - Sam: Working on the database schema and query indexes right now.
+20/01/2024, 17:42 - Kabir: Just pushed the Figma components for dark mode!
+20/01/2024, 17:47 - You: Can someone test the new API endpoint on localhost:3000?
+20/01/2024, 17:53 - Aryan: <Media omitted>
+20/01/2024, 18:00 - Rohan: LGTM! PR approved.
+20/01/2024, 18:08 - Tanya: Are we meeting at 5pm for architecture review?
+20/01/2024, 18:17 - Dev: Yes, link is on the calendar invite.
+20/01/2024, 18:27 - Sara: Don't forget to push your branch before the sync!
+20/01/2024, 18:38 - Sam: Deployed staging build to Vercel. Test it out!
+20/01/2024, 18:50 - Kabir: Hey team, daily standup: @You what are your blockers?
+20/01/2024, 19:03 - You: Working on the database schema and query indexes right now.
+20/01/2024, 19:17 - Aryan: Just pushed the Figma components for dark mode!
+20/01/2024, 19:32 - Rohan: Can someone test the new API endpoint on localhost:3000?
+20/01/2024, 19:48 - Tanya: <Media omitted>
+21/01/2024, 02:05 - Dev: LGTM! PR approved.
+21/01/2024, 02:23 - Sara: Are we meeting at 5pm for architecture review?
+21/01/2024, 02:42 - Sam: Yes, link is on the calendar invite.
+21/01/2024, 03:02 - Kabir: Don't forget to push your branch before the sync!
+21/01/2024, 03:23 - You: Deployed staging build to Vercel. Test it out!
+21/01/2024, 03:25 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+21/01/2024, 03:28 - Rohan: Working on the database schema and query indexes right now.
+21/01/2024, 03:32 - Tanya: Just pushed the Figma components for dark mode!
+21/01/2024, 03:37 - Dev: Can someone test the new API endpoint on localhost:3000?
+21/01/2024, 03:43 - Sara: <Media omitted>
+21/01/2024, 03:50 - Sam: LGTM! PR approved.
+21/01/2024, 03:58 - Kabir: Are we meeting at 5pm for architecture review?
+21/01/2024, 04:07 - You: Yes, link is on the calendar invite.
+21/01/2024, 04:17 - Aryan: Don't forget to push your branch before the sync!
+21/01/2024, 04:28 - Rohan: Deployed staging build to Vercel. Test it out!
+21/01/2024, 10:40 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+21/01/2024, 10:53 - Dev: Working on the database schema and query indexes right now.
+21/01/2024, 11:07 - Sara: Just pushed the Figma components for dark mode!
+21/01/2024, 11:22 - Sam: Can someone test the new API endpoint on localhost:3000?
+21/01/2024, 11:38 - Kabir: <Media omitted>
+21/01/2024, 11:55 - You: LGTM! PR approved.
+21/01/2024, 12:13 - Aryan: Are we meeting at 5pm for architecture review?
+21/01/2024, 12:32 - Rohan: Yes, link is on the calendar invite.
+21/01/2024, 12:52 - Tanya: Don't forget to push your branch before the sync!
+21/01/2024, 13:13 - Dev: Deployed staging build to Vercel. Test it out!
+21/01/2024, 13:15 - Sara: Hey team, daily standup: @Sam what are your blockers?
+21/01/2024, 13:18 - Sam: Working on the database schema and query indexes right now.
+21/01/2024, 13:22 - Kabir: Just pushed the Figma components for dark mode!
+21/01/2024, 13:27 - You: Can someone test the new API endpoint on localhost:3000?
+21/01/2024, 13:33 - Aryan: <Media omitted>
+21/01/2024, 19:40 - Rohan: LGTM! PR approved.
+21/01/2024, 19:48 - Tanya: Are we meeting at 5pm for architecture review?
+21/01/2024, 19:57 - Dev: Yes, link is on the calendar invite.
+21/01/2024, 20:07 - Sara: Don't forget to push your branch before the sync!
+21/01/2024, 20:18 - Sam: Deployed staging build to Vercel. Test it out!
+21/01/2024, 20:30 - Kabir: Hey team, daily standup: @You what are your blockers?
+21/01/2024, 20:43 - You: Working on the database schema and query indexes right now.
+21/01/2024, 20:57 - Aryan: Just pushed the Figma components for dark mode!
+21/01/2024, 21:12 - Rohan: Can someone test the new API endpoint on localhost:3000?
+21/01/2024, 21:28 - Tanya: <Media omitted>
+21/01/2024, 21:45 - Dev: LGTM! PR approved.
+21/01/2024, 22:03 - Sara: Are we meeting at 5pm for architecture review?
+21/01/2024, 22:22 - Sam: Yes, link is on the calendar invite.
+21/01/2024, 22:42 - Kabir: Don't forget to push your branch before the sync!
+21/01/2024, 23:03 - You: Deployed staging build to Vercel. Test it out!
+22/01/2024, 05:05 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+22/01/2024, 05:08 - Rohan: Working on the database schema and query indexes right now.
+22/01/2024, 05:12 - Tanya: Just pushed the Figma components for dark mode!
+22/01/2024, 05:17 - Dev: Can someone test the new API endpoint on localhost:3000?
+22/01/2024, 05:23 - Sara: <Media omitted>
+22/01/2024, 05:30 - Sam: LGTM! PR approved.
+22/01/2024, 05:38 - Kabir: Are we meeting at 5pm for architecture review?
+22/01/2024, 05:47 - You: Yes, link is on the calendar invite.
+22/01/2024, 05:57 - Aryan: Don't forget to push your branch before the sync!
+22/01/2024, 06:08 - Rohan: Deployed staging build to Vercel. Test it out!
+22/01/2024, 06:20 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+22/01/2024, 06:33 - Dev: Working on the database schema and query indexes right now.
+22/01/2024, 06:47 - Sara: Just pushed the Figma components for dark mode!
+22/01/2024, 07:02 - Sam: Can someone test the new API endpoint on localhost:3000?
+22/01/2024, 07:18 - Kabir: <Media omitted>
+22/01/2024, 13:35 - You: LGTM! PR approved.
+22/01/2024, 13:53 - Aryan: Are we meeting at 5pm for architecture review?
+22/01/2024, 14:12 - Rohan: Yes, link is on the calendar invite.
+22/01/2024, 14:32 - Tanya: Don't forget to push your branch before the sync!
+22/01/2024, 14:53 - Dev: Deployed staging build to Vercel. Test it out!
+22/01/2024, 14:55 - Sara: Hey team, daily standup: @Sam what are your blockers?
+22/01/2024, 14:58 - Sam: Working on the database schema and query indexes right now.
+22/01/2024, 15:02 - Kabir: Just pushed the Figma components for dark mode!
+22/01/2024, 15:07 - You: Can someone test the new API endpoint on localhost:3000?
+22/01/2024, 15:13 - Aryan: <Media omitted>
+22/01/2024, 15:20 - Rohan: LGTM! PR approved.
+22/01/2024, 15:28 - Tanya: Are we meeting at 5pm for architecture review?
+22/01/2024, 15:37 - Dev: Yes, link is on the calendar invite.
+22/01/2024, 15:47 - Sara: Don't forget to push your branch before the sync!
+22/01/2024, 15:58 - Sam: Deployed staging build to Vercel. Test it out!
+22/01/2024, 22:10 - Kabir: Hey team, daily standup: @You what are your blockers?
+22/01/2024, 22:23 - You: Working on the database schema and query indexes right now.
+22/01/2024, 22:37 - Aryan: Just pushed the Figma components for dark mode!
+22/01/2024, 22:52 - Rohan: Can someone test the new API endpoint on localhost:3000?
+22/01/2024, 23:08 - Tanya: <Media omitted>
+22/01/2024, 23:25 - Dev: LGTM! PR approved.
+22/01/2024, 23:43 - Sara: Are we meeting at 5pm for architecture review?
+23/01/2024, 00:02 - Sam: Yes, link is on the calendar invite.
+23/01/2024, 00:22 - Kabir: Don't forget to push your branch before the sync!
+23/01/2024, 00:43 - You: Deployed staging build to Vercel. Test it out!
+23/01/2024, 00:45 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+23/01/2024, 00:48 - Rohan: Working on the database schema and query indexes right now.
+23/01/2024, 00:52 - Tanya: Just pushed the Figma components for dark mode!
+23/01/2024, 00:57 - Dev: Can someone test the new API endpoint on localhost:3000?
+23/01/2024, 01:03 - Sara: <Media omitted>
+23/01/2024, 07:10 - Sam: LGTM! PR approved.
+23/01/2024, 07:18 - Kabir: Are we meeting at 5pm for architecture review?
+23/01/2024, 07:27 - You: Yes, link is on the calendar invite.
+23/01/2024, 07:37 - Aryan: Don't forget to push your branch before the sync!
+23/01/2024, 07:48 - Rohan: Deployed staging build to Vercel. Test it out!
+23/01/2024, 08:00 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+23/01/2024, 08:13 - Dev: Working on the database schema and query indexes right now.
+23/01/2024, 08:27 - Sara: Just pushed the Figma components for dark mode!
+23/01/2024, 08:42 - Sam: Can someone test the new API endpoint on localhost:3000?
+23/01/2024, 08:58 - Kabir: <Media omitted>
+23/01/2024, 09:15 - You: LGTM! PR approved.
+23/01/2024, 09:33 - Aryan: Are we meeting at 5pm for architecture review?
+23/01/2024, 09:52 - Rohan: Yes, link is on the calendar invite.
+23/01/2024, 10:12 - Tanya: Don't forget to push your branch before the sync!
+23/01/2024, 10:33 - Dev: Deployed staging build to Vercel. Test it out!
+23/01/2024, 16:35 - Sara: Hey team, daily standup: @Sam what are your blockers?
+23/01/2024, 16:38 - Sam: Working on the database schema and query indexes right now.
+23/01/2024, 16:42 - Kabir: Just pushed the Figma components for dark mode!
+23/01/2024, 16:47 - You: Can someone test the new API endpoint on localhost:3000?
+23/01/2024, 16:53 - Aryan: <Media omitted>
+23/01/2024, 17:00 - Rohan: LGTM! PR approved.
+23/01/2024, 17:08 - Tanya: Are we meeting at 5pm for architecture review?
+23/01/2024, 17:17 - Dev: Yes, link is on the calendar invite.
+23/01/2024, 17:27 - Sara: Don't forget to push your branch before the sync!
+23/01/2024, 17:38 - Sam: Deployed staging build to Vercel. Test it out!
+23/01/2024, 17:50 - Kabir: Hey team, daily standup: @You what are your blockers?
+23/01/2024, 18:03 - You: Working on the database schema and query indexes right now.
+23/01/2024, 18:17 - Aryan: Just pushed the Figma components for dark mode!
+23/01/2024, 18:32 - Rohan: Can someone test the new API endpoint on localhost:3000?
+23/01/2024, 18:48 - Tanya: <Media omitted>
+24/01/2024, 01:05 - Dev: LGTM! PR approved.
+24/01/2024, 01:23 - Sara: Are we meeting at 5pm for architecture review?
+24/01/2024, 01:42 - Sam: Yes, link is on the calendar invite.
+24/01/2024, 02:02 - Kabir: Don't forget to push your branch before the sync!
+24/01/2024, 02:23 - You: Deployed staging build to Vercel. Test it out!
+24/01/2024, 02:25 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+24/01/2024, 02:28 - Rohan: Working on the database schema and query indexes right now.
+24/01/2024, 02:32 - Tanya: Just pushed the Figma components for dark mode!
+24/01/2024, 02:37 - Dev: Can someone test the new API endpoint on localhost:3000?
+24/01/2024, 02:43 - Sara: <Media omitted>
+24/01/2024, 02:50 - Sam: LGTM! PR approved.
+24/01/2024, 02:58 - Kabir: Are we meeting at 5pm for architecture review?
+24/01/2024, 03:07 - You: Yes, link is on the calendar invite.
+24/01/2024, 03:17 - Aryan: Don't forget to push your branch before the sync!
+24/01/2024, 03:28 - Rohan: Deployed staging build to Vercel. Test it out!
+24/01/2024, 09:40 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+24/01/2024, 09:53 - Dev: Working on the database schema and query indexes right now.
+24/01/2024, 10:07 - Sara: Just pushed the Figma components for dark mode!
+24/01/2024, 10:22 - Sam: Can someone test the new API endpoint on localhost:3000?
+24/01/2024, 10:38 - Kabir: <Media omitted>
+24/01/2024, 10:55 - You: LGTM! PR approved.
+24/01/2024, 11:13 - Aryan: Are we meeting at 5pm for architecture review?
+24/01/2024, 11:32 - Rohan: Yes, link is on the calendar invite.
+24/01/2024, 11:52 - Tanya: Don't forget to push your branch before the sync!
+24/01/2024, 12:13 - Dev: Deployed staging build to Vercel. Test it out!
+24/01/2024, 12:15 - Sara: Hey team, daily standup: @Sam what are your blockers?
+24/01/2024, 12:18 - Sam: Working on the database schema and query indexes right now.
+24/01/2024, 12:22 - Kabir: Just pushed the Figma components for dark mode!
+24/01/2024, 12:27 - You: Can someone test the new API endpoint on localhost:3000?
+24/01/2024, 12:33 - Aryan: <Media omitted>
+24/01/2024, 18:40 - Rohan: LGTM! PR approved.
+24/01/2024, 18:48 - Tanya: Are we meeting at 5pm for architecture review?
+24/01/2024, 18:57 - Dev: Yes, link is on the calendar invite.
+24/01/2024, 19:07 - Sara: Don't forget to push your branch before the sync!
+24/01/2024, 19:18 - Sam: Deployed staging build to Vercel. Test it out!
+24/01/2024, 19:30 - Kabir: Hey team, daily standup: @You what are your blockers?
+24/01/2024, 19:43 - You: Working on the database schema and query indexes right now.
+24/01/2024, 19:57 - Aryan: Just pushed the Figma components for dark mode!
+24/01/2024, 20:12 - Rohan: Can someone test the new API endpoint on localhost:3000?
+24/01/2024, 20:28 - Tanya: <Media omitted>
+24/01/2024, 20:45 - Dev: LGTM! PR approved.
+24/01/2024, 21:03 - Sara: Are we meeting at 5pm for architecture review?
+24/01/2024, 21:22 - Sam: Yes, link is on the calendar invite.
+24/01/2024, 21:42 - Kabir: Don't forget to push your branch before the sync!
+24/01/2024, 22:03 - You: Deployed staging build to Vercel. Test it out!
+25/01/2024, 04:05 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+25/01/2024, 04:08 - Rohan: Working on the database schema and query indexes right now.
+25/01/2024, 04:12 - Tanya: Just pushed the Figma components for dark mode!
+25/01/2024, 04:17 - Dev: Can someone test the new API endpoint on localhost:3000?
+25/01/2024, 04:23 - Sara: <Media omitted>
+25/01/2024, 04:30 - Sam: LGTM! PR approved.
+25/01/2024, 04:38 - Kabir: Are we meeting at 5pm for architecture review?
+25/01/2024, 04:47 - You: Yes, link is on the calendar invite.
+25/01/2024, 04:57 - Aryan: Don't forget to push your branch before the sync!
+25/01/2024, 05:08 - Rohan: Deployed staging build to Vercel. Test it out!
+25/01/2024, 05:20 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+25/01/2024, 05:33 - Dev: Working on the database schema and query indexes right now.
+25/01/2024, 05:47 - Sara: Just pushed the Figma components for dark mode!
+25/01/2024, 06:02 - Sam: Can someone test the new API endpoint on localhost:3000?
+25/01/2024, 06:18 - Kabir: <Media omitted>
+25/01/2024, 12:35 - You: LGTM! PR approved.
+25/01/2024, 12:53 - Aryan: Are we meeting at 5pm for architecture review?
+25/01/2024, 13:12 - Rohan: Yes, link is on the calendar invite.
+25/01/2024, 13:32 - Tanya: Don't forget to push your branch before the sync!
+25/01/2024, 13:53 - Dev: Deployed staging build to Vercel. Test it out!
+25/01/2024, 13:55 - Sara: Hey team, daily standup: @Sam what are your blockers?
+25/01/2024, 13:58 - Sam: Working on the database schema and query indexes right now.
+25/01/2024, 14:02 - Kabir: Just pushed the Figma components for dark mode!
+25/01/2024, 14:07 - You: Can someone test the new API endpoint on localhost:3000?
+25/01/2024, 14:13 - Aryan: <Media omitted>
+25/01/2024, 14:20 - Rohan: LGTM! PR approved.
+25/01/2024, 14:28 - Tanya: Are we meeting at 5pm for architecture review?
+25/01/2024, 14:37 - Dev: Yes, link is on the calendar invite.
+25/01/2024, 14:47 - Sara: Don't forget to push your branch before the sync!
+25/01/2024, 14:58 - Sam: Deployed staging build to Vercel. Test it out!
+25/01/2024, 21:10 - Kabir: Hey team, daily standup: @You what are your blockers?
+25/01/2024, 21:23 - You: Working on the database schema and query indexes right now.
+25/01/2024, 21:37 - Aryan: Just pushed the Figma components for dark mode!
+25/01/2024, 21:52 - Rohan: Can someone test the new API endpoint on localhost:3000?
+25/01/2024, 22:08 - Tanya: <Media omitted>
+25/01/2024, 22:25 - Dev: LGTM! PR approved.
+25/01/2024, 22:43 - Sara: Are we meeting at 5pm for architecture review?
+25/01/2024, 23:02 - Sam: Yes, link is on the calendar invite.
+25/01/2024, 23:22 - Kabir: Don't forget to push your branch before the sync!
+25/01/2024, 23:43 - You: Deployed staging build to Vercel. Test it out!
+25/01/2024, 23:45 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+25/01/2024, 23:48 - Rohan: Working on the database schema and query indexes right now.
+25/01/2024, 23:52 - Tanya: Just pushed the Figma components for dark mode!
+25/01/2024, 23:57 - Dev: Can someone test the new API endpoint on localhost:3000?
+26/01/2024, 00:03 - Sara: <Media omitted>
+26/01/2024, 06:10 - Sam: LGTM! PR approved.
+26/01/2024, 06:18 - Kabir: Are we meeting at 5pm for architecture review?
+26/01/2024, 06:27 - You: Yes, link is on the calendar invite.
+26/01/2024, 06:37 - Aryan: Don't forget to push your branch before the sync!
+26/01/2024, 06:48 - Rohan: Deployed staging build to Vercel. Test it out!
+26/01/2024, 07:00 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+26/01/2024, 07:13 - Dev: Working on the database schema and query indexes right now.
+26/01/2024, 07:27 - Sara: Just pushed the Figma components for dark mode!
+26/01/2024, 07:42 - Sam: Can someone test the new API endpoint on localhost:3000?
+26/01/2024, 07:58 - Kabir: <Media omitted>
+26/01/2024, 08:15 - You: LGTM! PR approved.
+26/01/2024, 08:33 - Aryan: Are we meeting at 5pm for architecture review?
+26/01/2024, 08:52 - Rohan: Yes, link is on the calendar invite.
+26/01/2024, 09:12 - Tanya: Don't forget to push your branch before the sync!
+26/01/2024, 09:33 - Dev: Deployed staging build to Vercel. Test it out!
+26/01/2024, 15:35 - Sara: Hey team, daily standup: @Sam what are your blockers?
+26/01/2024, 15:38 - Sam: Working on the database schema and query indexes right now.
+26/01/2024, 15:42 - Kabir: Just pushed the Figma components for dark mode!
+26/01/2024, 15:47 - You: Can someone test the new API endpoint on localhost:3000?
+26/01/2024, 15:53 - Aryan: <Media omitted>
+26/01/2024, 16:00 - Rohan: LGTM! PR approved.
+26/01/2024, 16:08 - Tanya: Are we meeting at 5pm for architecture review?
+26/01/2024, 16:17 - Dev: Yes, link is on the calendar invite.
+26/01/2024, 16:27 - Sara: Don't forget to push your branch before the sync!
+26/01/2024, 16:38 - Sam: Deployed staging build to Vercel. Test it out!
+26/01/2024, 16:50 - Kabir: Hey team, daily standup: @You what are your blockers?
+26/01/2024, 17:03 - You: Working on the database schema and query indexes right now.
+26/01/2024, 17:17 - Aryan: Just pushed the Figma components for dark mode!
+26/01/2024, 17:32 - Rohan: Can someone test the new API endpoint on localhost:3000?
+26/01/2024, 17:48 - Tanya: <Media omitted>
+27/01/2024, 00:05 - Dev: LGTM! PR approved.
+27/01/2024, 00:23 - Sara: Are we meeting at 5pm for architecture review?
+27/01/2024, 00:42 - Sam: Yes, link is on the calendar invite.
+27/01/2024, 01:02 - Kabir: Don't forget to push your branch before the sync!
+27/01/2024, 01:23 - You: Deployed staging build to Vercel. Test it out!
+27/01/2024, 01:25 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+27/01/2024, 01:28 - Rohan: Working on the database schema and query indexes right now.
+27/01/2024, 01:32 - Tanya: Just pushed the Figma components for dark mode!
+27/01/2024, 01:37 - Dev: Can someone test the new API endpoint on localhost:3000?
+27/01/2024, 01:43 - Sara: <Media omitted>
+27/01/2024, 01:50 - Sam: LGTM! PR approved.
+27/01/2024, 01:58 - Kabir: Are we meeting at 5pm for architecture review?
+27/01/2024, 02:07 - You: Yes, link is on the calendar invite.
+27/01/2024, 02:17 - Aryan: Don't forget to push your branch before the sync!
+27/01/2024, 02:28 - Rohan: Deployed staging build to Vercel. Test it out!
+27/01/2024, 08:40 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+27/01/2024, 08:53 - Dev: Working on the database schema and query indexes right now.
+27/01/2024, 09:07 - Sara: Just pushed the Figma components for dark mode!
+27/01/2024, 09:22 - Sam: Can someone test the new API endpoint on localhost:3000?
+27/01/2024, 09:38 - Kabir: <Media omitted>
+27/01/2024, 09:55 - You: LGTM! PR approved.
+27/01/2024, 10:13 - Aryan: Are we meeting at 5pm for architecture review?
+27/01/2024, 10:32 - Rohan: Yes, link is on the calendar invite.
+27/01/2024, 10:52 - Tanya: Don't forget to push your branch before the sync!
+27/01/2024, 11:13 - Dev: Deployed staging build to Vercel. Test it out!
+27/01/2024, 11:15 - Sara: Hey team, daily standup: @Sam what are your blockers?
+27/01/2024, 11:18 - Sam: Working on the database schema and query indexes right now.
+27/01/2024, 11:22 - Kabir: Just pushed the Figma components for dark mode!
+27/01/2024, 11:27 - You: Can someone test the new API endpoint on localhost:3000?
+27/01/2024, 11:33 - Aryan: <Media omitted>
+27/01/2024, 17:40 - Rohan: LGTM! PR approved.
+27/01/2024, 17:48 - Tanya: Are we meeting at 5pm for architecture review?
+27/01/2024, 17:57 - Dev: Yes, link is on the calendar invite.
+27/01/2024, 18:07 - Sara: Don't forget to push your branch before the sync!
+27/01/2024, 18:18 - Sam: Deployed staging build to Vercel. Test it out!
+27/01/2024, 18:30 - Kabir: Hey team, daily standup: @You what are your blockers?
+27/01/2024, 18:43 - You: Working on the database schema and query indexes right now.
+27/01/2024, 18:57 - Aryan: Just pushed the Figma components for dark mode!
+27/01/2024, 19:12 - Rohan: Can someone test the new API endpoint on localhost:3000?
+27/01/2024, 19:28 - Tanya: <Media omitted>
+27/01/2024, 19:45 - Dev: LGTM! PR approved.
+27/01/2024, 20:03 - Sara: Are we meeting at 5pm for architecture review?
+27/01/2024, 20:22 - Sam: Yes, link is on the calendar invite.
+27/01/2024, 20:42 - Kabir: Don't forget to push your branch before the sync!
+27/01/2024, 21:03 - You: Deployed staging build to Vercel. Test it out!
+28/01/2024, 03:05 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+28/01/2024, 03:08 - Rohan: Working on the database schema and query indexes right now.
+28/01/2024, 03:12 - Tanya: Just pushed the Figma components for dark mode!
+28/01/2024, 03:17 - Dev: Can someone test the new API endpoint on localhost:3000?
+28/01/2024, 03:23 - Sara: <Media omitted>
+28/01/2024, 03:30 - Sam: LGTM! PR approved.
+28/01/2024, 03:38 - Kabir: Are we meeting at 5pm for architecture review?
+28/01/2024, 03:47 - You: Yes, link is on the calendar invite.
+28/01/2024, 03:57 - Aryan: Don't forget to push your branch before the sync!
+28/01/2024, 04:08 - Rohan: Deployed staging build to Vercel. Test it out!
+28/01/2024, 04:20 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+28/01/2024, 04:33 - Dev: Working on the database schema and query indexes right now.
+28/01/2024, 04:47 - Sara: Just pushed the Figma components for dark mode!
+28/01/2024, 05:02 - Sam: Can someone test the new API endpoint on localhost:3000?
+28/01/2024, 05:18 - Kabir: <Media omitted>
+28/01/2024, 11:35 - You: LGTM! PR approved.
+28/01/2024, 11:53 - Aryan: Are we meeting at 5pm for architecture review?
+28/01/2024, 12:12 - Rohan: Yes, link is on the calendar invite.
+28/01/2024, 12:32 - Tanya: Don't forget to push your branch before the sync!
+28/01/2024, 12:53 - Dev: Deployed staging build to Vercel. Test it out!
+28/01/2024, 12:55 - Sara: Hey team, daily standup: @Sam what are your blockers?
+28/01/2024, 12:58 - Sam: Working on the database schema and query indexes right now.
+28/01/2024, 13:02 - Kabir: Just pushed the Figma components for dark mode!
+28/01/2024, 13:07 - You: Can someone test the new API endpoint on localhost:3000?
+28/01/2024, 13:13 - Aryan: <Media omitted>
+28/01/2024, 13:20 - Rohan: LGTM! PR approved.
+28/01/2024, 13:28 - Tanya: Are we meeting at 5pm for architecture review?
+28/01/2024, 13:37 - Dev: Yes, link is on the calendar invite.
+28/01/2024, 13:47 - Sara: Don't forget to push your branch before the sync!
+28/01/2024, 13:58 - Sam: Deployed staging build to Vercel. Test it out!
+28/01/2024, 20:10 - Kabir: Hey team, daily standup: @You what are your blockers?
+28/01/2024, 20:23 - You: Working on the database schema and query indexes right now.
+28/01/2024, 20:37 - Aryan: Just pushed the Figma components for dark mode!
+28/01/2024, 20:52 - Rohan: Can someone test the new API endpoint on localhost:3000?
+28/01/2024, 21:08 - Tanya: <Media omitted>
+28/01/2024, 21:25 - Dev: LGTM! PR approved.
+28/01/2024, 21:43 - Sara: Are we meeting at 5pm for architecture review?
+28/01/2024, 22:02 - Sam: Yes, link is on the calendar invite.
+28/01/2024, 22:22 - Kabir: Don't forget to push your branch before the sync!
+28/01/2024, 22:43 - You: Deployed staging build to Vercel. Test it out!
+28/01/2024, 22:45 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+28/01/2024, 22:48 - Rohan: Working on the database schema and query indexes right now.
+28/01/2024, 22:52 - Tanya: Just pushed the Figma components for dark mode!
+28/01/2024, 22:57 - Dev: Can someone test the new API endpoint on localhost:3000?
+28/01/2024, 23:03 - Sara: <Media omitted>
+29/01/2024, 05:10 - Sam: LGTM! PR approved.
+29/01/2024, 05:18 - Kabir: Are we meeting at 5pm for architecture review?
+29/01/2024, 05:27 - You: Yes, link is on the calendar invite.
+29/01/2024, 05:37 - Aryan: Don't forget to push your branch before the sync!
+29/01/2024, 05:48 - Rohan: Deployed staging build to Vercel. Test it out!
+29/01/2024, 06:00 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+29/01/2024, 06:13 - Dev: Working on the database schema and query indexes right now.
+29/01/2024, 06:27 - Sara: Just pushed the Figma components for dark mode!
+29/01/2024, 06:42 - Sam: Can someone test the new API endpoint on localhost:3000?
+29/01/2024, 06:58 - Kabir: <Media omitted>
+29/01/2024, 07:15 - You: LGTM! PR approved.
+29/01/2024, 07:33 - Aryan: Are we meeting at 5pm for architecture review?
+29/01/2024, 07:52 - Rohan: Yes, link is on the calendar invite.
+29/01/2024, 08:12 - Tanya: Don't forget to push your branch before the sync!
+29/01/2024, 08:33 - Dev: Deployed staging build to Vercel. Test it out!
+29/01/2024, 14:35 - Sara: Hey team, daily standup: @Sam what are your blockers?
+29/01/2024, 14:38 - Sam: Working on the database schema and query indexes right now.
+29/01/2024, 14:42 - Kabir: Just pushed the Figma components for dark mode!
+29/01/2024, 14:47 - You: Can someone test the new API endpoint on localhost:3000?
+29/01/2024, 14:53 - Aryan: <Media omitted>
+29/01/2024, 15:00 - Rohan: LGTM! PR approved.
+29/01/2024, 15:08 - Tanya: Are we meeting at 5pm for architecture review?
+29/01/2024, 15:17 - Dev: Yes, link is on the calendar invite.
+29/01/2024, 15:27 - Sara: Don't forget to push your branch before the sync!
+29/01/2024, 15:38 - Sam: Deployed staging build to Vercel. Test it out!
+29/01/2024, 15:50 - Kabir: Hey team, daily standup: @You what are your blockers?
+29/01/2024, 16:03 - You: Working on the database schema and query indexes right now.
+29/01/2024, 16:17 - Aryan: Just pushed the Figma components for dark mode!
+29/01/2024, 16:32 - Rohan: Can someone test the new API endpoint on localhost:3000?
+29/01/2024, 16:48 - Tanya: <Media omitted>
+29/01/2024, 23:05 - Dev: LGTM! PR approved.
+29/01/2024, 23:23 - Sara: Are we meeting at 5pm for architecture review?
+29/01/2024, 23:42 - Sam: Yes, link is on the calendar invite.
+30/01/2024, 00:02 - Kabir: Don't forget to push your branch before the sync!
+30/01/2024, 00:23 - You: Deployed staging build to Vercel. Test it out!
+30/01/2024, 00:25 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+30/01/2024, 00:28 - Rohan: Working on the database schema and query indexes right now.
+30/01/2024, 00:32 - Tanya: Just pushed the Figma components for dark mode!
+30/01/2024, 00:37 - Dev: Can someone test the new API endpoint on localhost:3000?
+30/01/2024, 00:43 - Sara: <Media omitted>
+30/01/2024, 00:50 - Sam: LGTM! PR approved.
+30/01/2024, 00:58 - Kabir: Are we meeting at 5pm for architecture review?
+30/01/2024, 01:07 - You: Yes, link is on the calendar invite.
+30/01/2024, 01:17 - Aryan: Don't forget to push your branch before the sync!
+30/01/2024, 01:28 - Rohan: Deployed staging build to Vercel. Test it out!
+30/01/2024, 07:40 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+30/01/2024, 07:53 - Dev: Working on the database schema and query indexes right now.
+30/01/2024, 08:07 - Sara: Just pushed the Figma components for dark mode!
+30/01/2024, 08:22 - Sam: Can someone test the new API endpoint on localhost:3000?
+30/01/2024, 08:38 - Kabir: <Media omitted>
+30/01/2024, 08:55 - You: LGTM! PR approved.
+30/01/2024, 09:13 - Aryan: Are we meeting at 5pm for architecture review?
+30/01/2024, 09:32 - Rohan: Yes, link is on the calendar invite.
+30/01/2024, 09:52 - Tanya: Don't forget to push your branch before the sync!
+30/01/2024, 10:13 - Dev: Deployed staging build to Vercel. Test it out!
+30/01/2024, 10:15 - Sara: Hey team, daily standup: @Sam what are your blockers?
+30/01/2024, 10:18 - Sam: Working on the database schema and query indexes right now.
+30/01/2024, 10:22 - Kabir: Just pushed the Figma components for dark mode!
+30/01/2024, 10:27 - You: Can someone test the new API endpoint on localhost:3000?
+30/01/2024, 10:33 - Aryan: <Media omitted>
+30/01/2024, 16:40 - Rohan: LGTM! PR approved.
+30/01/2024, 16:48 - Tanya: Are we meeting at 5pm for architecture review?
+30/01/2024, 16:57 - Dev: Yes, link is on the calendar invite.
+30/01/2024, 17:07 - Sara: Don't forget to push your branch before the sync!
+30/01/2024, 17:18 - Sam: Deployed staging build to Vercel. Test it out!
+30/01/2024, 17:30 - Kabir: Hey team, daily standup: @You what are your blockers?
+30/01/2024, 17:43 - You: Working on the database schema and query indexes right now.
+30/01/2024, 17:57 - Aryan: Just pushed the Figma components for dark mode!
+30/01/2024, 18:12 - Rohan: Can someone test the new API endpoint on localhost:3000?
+30/01/2024, 18:28 - Tanya: <Media omitted>
+30/01/2024, 18:45 - Dev: LGTM! PR approved.
+30/01/2024, 19:03 - Sara: Are we meeting at 5pm for architecture review?
+30/01/2024, 19:22 - Sam: Yes, link is on the calendar invite.
+30/01/2024, 19:42 - Kabir: Don't forget to push your branch before the sync!
+30/01/2024, 20:03 - You: Deployed staging build to Vercel. Test it out!
+31/01/2024, 02:05 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+31/01/2024, 02:08 - Rohan: Working on the database schema and query indexes right now.
+31/01/2024, 02:12 - Tanya: Just pushed the Figma components for dark mode!
+31/01/2024, 02:17 - Dev: Can someone test the new API endpoint on localhost:3000?
+31/01/2024, 02:23 - Sara: <Media omitted>
+31/01/2024, 02:30 - Sam: LGTM! PR approved.
+31/01/2024, 02:38 - Kabir: Are we meeting at 5pm for architecture review?
+31/01/2024, 02:47 - You: Yes, link is on the calendar invite.
+31/01/2024, 02:57 - Aryan: Don't forget to push your branch before the sync!
+31/01/2024, 03:08 - Rohan: Deployed staging build to Vercel. Test it out!
+31/01/2024, 03:20 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+31/01/2024, 03:33 - Dev: Working on the database schema and query indexes right now.
+31/01/2024, 03:47 - Sara: Just pushed the Figma components for dark mode!
+31/01/2024, 04:02 - Sam: Can someone test the new API endpoint on localhost:3000?
+31/01/2024, 04:18 - Kabir: <Media omitted>
+31/01/2024, 10:35 - You: LGTM! PR approved.
+31/01/2024, 10:53 - Aryan: Are we meeting at 5pm for architecture review?
+31/01/2024, 11:12 - Rohan: Yes, link is on the calendar invite.
+31/01/2024, 11:32 - Tanya: Don't forget to push your branch before the sync!
+31/01/2024, 11:53 - Dev: Deployed staging build to Vercel. Test it out!
+31/01/2024, 11:55 - Sara: Hey team, daily standup: @Sam what are your blockers?
+31/01/2024, 11:58 - Sam: Working on the database schema and query indexes right now.
+31/01/2024, 12:02 - Kabir: Just pushed the Figma components for dark mode!
+31/01/2024, 12:07 - You: Can someone test the new API endpoint on localhost:3000?
+31/01/2024, 12:13 - Aryan: <Media omitted>
+31/01/2024, 12:20 - Rohan: LGTM! PR approved.
+31/01/2024, 12:28 - Tanya: Are we meeting at 5pm for architecture review?
+31/01/2024, 12:37 - Dev: Yes, link is on the calendar invite.
+31/01/2024, 12:47 - Sara: Don't forget to push your branch before the sync!
+31/01/2024, 12:58 - Sam: Deployed staging build to Vercel. Test it out!
+31/01/2024, 19:10 - Kabir: Hey team, daily standup: @You what are your blockers?
+31/01/2024, 19:23 - You: Working on the database schema and query indexes right now.
+31/01/2024, 19:37 - Aryan: Just pushed the Figma components for dark mode!
+31/01/2024, 19:52 - Rohan: Can someone test the new API endpoint on localhost:3000?
+31/01/2024, 20:08 - Tanya: <Media omitted>
+31/01/2024, 20:25 - Dev: LGTM! PR approved.
+31/01/2024, 20:43 - Sara: Are we meeting at 5pm for architecture review?
+31/01/2024, 21:02 - Sam: Yes, link is on the calendar invite.
+31/01/2024, 21:22 - Kabir: Don't forget to push your branch before the sync!
+31/01/2024, 21:43 - You: Deployed staging build to Vercel. Test it out!
+31/01/2024, 21:45 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+31/01/2024, 21:48 - Rohan: Working on the database schema and query indexes right now.
+31/01/2024, 21:52 - Tanya: Just pushed the Figma components for dark mode!
+31/01/2024, 21:57 - Dev: Can someone test the new API endpoint on localhost:3000?
+31/01/2024, 22:03 - Sara: <Media omitted>
+01/02/2024, 04:10 - Sam: LGTM! PR approved.
+01/02/2024, 04:18 - Kabir: Are we meeting at 5pm for architecture review?
+01/02/2024, 04:27 - You: Yes, link is on the calendar invite.
+01/02/2024, 04:37 - Aryan: Don't forget to push your branch before the sync!
+01/02/2024, 04:48 - Rohan: Deployed staging build to Vercel. Test it out!
+01/02/2024, 05:00 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+01/02/2024, 05:13 - Dev: Working on the database schema and query indexes right now.
+01/02/2024, 05:27 - Sara: Just pushed the Figma components for dark mode!
+01/02/2024, 05:42 - Sam: Can someone test the new API endpoint on localhost:3000?
+01/02/2024, 05:58 - Kabir: <Media omitted>
+01/02/2024, 06:15 - You: LGTM! PR approved.
+01/02/2024, 06:33 - Aryan: Are we meeting at 5pm for architecture review?
+01/02/2024, 06:52 - Rohan: Yes, link is on the calendar invite.
+01/02/2024, 07:12 - Tanya: Don't forget to push your branch before the sync!
+01/02/2024, 07:33 - Dev: Deployed staging build to Vercel. Test it out!
+01/02/2024, 13:35 - Sara: Hey team, daily standup: @Sam what are your blockers?
+01/02/2024, 13:38 - Sam: Working on the database schema and query indexes right now.
+01/02/2024, 13:42 - Kabir: Just pushed the Figma components for dark mode!
+01/02/2024, 13:47 - You: Can someone test the new API endpoint on localhost:3000?
+01/02/2024, 13:53 - Aryan: <Media omitted>
+01/02/2024, 14:00 - Rohan: LGTM! PR approved.
+01/02/2024, 14:08 - Tanya: Are we meeting at 5pm for architecture review?
+01/02/2024, 14:17 - Dev: Yes, link is on the calendar invite.
+01/02/2024, 14:27 - Sara: Don't forget to push your branch before the sync!
+01/02/2024, 14:38 - Sam: Deployed staging build to Vercel. Test it out!
+01/02/2024, 14:50 - Kabir: Hey team, daily standup: @You what are your blockers?
+01/02/2024, 15:03 - You: Working on the database schema and query indexes right now.
+01/02/2024, 15:17 - Aryan: Just pushed the Figma components for dark mode!
+01/02/2024, 15:32 - Rohan: Can someone test the new API endpoint on localhost:3000?
+01/02/2024, 15:48 - Tanya: <Media omitted>
+01/02/2024, 22:05 - Dev: LGTM! PR approved.
+01/02/2024, 22:23 - Sara: Are we meeting at 5pm for architecture review?
+01/02/2024, 22:42 - Sam: Yes, link is on the calendar invite.
+01/02/2024, 23:02 - Kabir: Don't forget to push your branch before the sync!
+01/02/2024, 23:23 - You: Deployed staging build to Vercel. Test it out!
+01/02/2024, 23:25 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+01/02/2024, 23:28 - Rohan: Working on the database schema and query indexes right now.
+01/02/2024, 23:32 - Tanya: Just pushed the Figma components for dark mode!
+01/02/2024, 23:37 - Dev: Can someone test the new API endpoint on localhost:3000?
+01/02/2024, 23:43 - Sara: <Media omitted>
+01/02/2024, 23:50 - Sam: LGTM! PR approved.
+01/02/2024, 23:58 - Kabir: Are we meeting at 5pm for architecture review?
+02/02/2024, 00:07 - You: Yes, link is on the calendar invite.
+02/02/2024, 00:17 - Aryan: Don't forget to push your branch before the sync!
+02/02/2024, 00:28 - Rohan: Deployed staging build to Vercel. Test it out!
+02/02/2024, 06:40 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+02/02/2024, 06:53 - Dev: Working on the database schema and query indexes right now.
+02/02/2024, 07:07 - Sara: Just pushed the Figma components for dark mode!
+02/02/2024, 07:22 - Sam: Can someone test the new API endpoint on localhost:3000?
+02/02/2024, 07:38 - Kabir: <Media omitted>
+02/02/2024, 07:55 - You: LGTM! PR approved.
+02/02/2024, 08:13 - Aryan: Are we meeting at 5pm for architecture review?
+02/02/2024, 08:32 - Rohan: Yes, link is on the calendar invite.
+02/02/2024, 08:52 - Tanya: Don't forget to push your branch before the sync!
+02/02/2024, 09:13 - Dev: Deployed staging build to Vercel. Test it out!
+02/02/2024, 09:15 - Sara: Hey team, daily standup: @Sam what are your blockers?
+02/02/2024, 09:18 - Sam: Working on the database schema and query indexes right now.
+02/02/2024, 09:22 - Kabir: Just pushed the Figma components for dark mode!
+02/02/2024, 09:27 - You: Can someone test the new API endpoint on localhost:3000?
+02/02/2024, 09:33 - Aryan: <Media omitted>
+02/02/2024, 15:40 - Rohan: LGTM! PR approved.
+02/02/2024, 15:48 - Tanya: Are we meeting at 5pm for architecture review?
+02/02/2024, 15:57 - Dev: Yes, link is on the calendar invite.
+02/02/2024, 16:07 - Sara: Don't forget to push your branch before the sync!
+02/02/2024, 16:18 - Sam: Deployed staging build to Vercel. Test it out!
+02/02/2024, 16:30 - Kabir: Hey team, daily standup: @You what are your blockers?
+02/02/2024, 16:43 - You: Working on the database schema and query indexes right now.
+02/02/2024, 16:57 - Aryan: Just pushed the Figma components for dark mode!
+02/02/2024, 17:12 - Rohan: Can someone test the new API endpoint on localhost:3000?
+02/02/2024, 17:28 - Tanya: <Media omitted>
+02/02/2024, 17:45 - Dev: LGTM! PR approved.
+02/02/2024, 18:03 - Sara: Are we meeting at 5pm for architecture review?
+02/02/2024, 18:22 - Sam: Yes, link is on the calendar invite.
+02/02/2024, 18:42 - Kabir: Don't forget to push your branch before the sync!
+02/02/2024, 19:03 - You: Deployed staging build to Vercel. Test it out!
+03/02/2024, 01:05 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+03/02/2024, 01:08 - Rohan: Working on the database schema and query indexes right now.
+03/02/2024, 01:12 - Tanya: Just pushed the Figma components for dark mode!
+03/02/2024, 01:17 - Dev: Can someone test the new API endpoint on localhost:3000?
+03/02/2024, 01:23 - Sara: <Media omitted>
+03/02/2024, 01:30 - Sam: LGTM! PR approved.
+03/02/2024, 01:38 - Kabir: Are we meeting at 5pm for architecture review?
+03/02/2024, 01:47 - You: Yes, link is on the calendar invite.
+03/02/2024, 01:57 - Aryan: Don't forget to push your branch before the sync!
+03/02/2024, 02:08 - Rohan: Deployed staging build to Vercel. Test it out!
+03/02/2024, 02:20 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+03/02/2024, 02:33 - Dev: Working on the database schema and query indexes right now.
+03/02/2024, 02:47 - Sara: Just pushed the Figma components for dark mode!
+03/02/2024, 03:02 - Sam: Can someone test the new API endpoint on localhost:3000?
+03/02/2024, 03:18 - Kabir: <Media omitted>
+03/02/2024, 09:35 - You: LGTM! PR approved.
+03/02/2024, 09:53 - Aryan: Are we meeting at 5pm for architecture review?
+03/02/2024, 10:12 - Rohan: Yes, link is on the calendar invite.
+03/02/2024, 10:32 - Tanya: Don't forget to push your branch before the sync!
+03/02/2024, 10:53 - Dev: Deployed staging build to Vercel. Test it out!
+03/02/2024, 10:55 - Sara: Hey team, daily standup: @Sam what are your blockers?
+03/02/2024, 10:58 - Sam: Working on the database schema and query indexes right now.
+03/02/2024, 11:02 - Kabir: Just pushed the Figma components for dark mode!
+03/02/2024, 11:07 - You: Can someone test the new API endpoint on localhost:3000?
+03/02/2024, 11:13 - Aryan: <Media omitted>
+03/02/2024, 11:20 - Rohan: LGTM! PR approved.
+03/02/2024, 11:28 - Tanya: Are we meeting at 5pm for architecture review?
+03/02/2024, 11:37 - Dev: Yes, link is on the calendar invite.
+03/02/2024, 11:47 - Sara: Don't forget to push your branch before the sync!
+03/02/2024, 11:58 - Sam: Deployed staging build to Vercel. Test it out!
+03/02/2024, 18:10 - Kabir: Hey team, daily standup: @You what are your blockers?
+03/02/2024, 18:23 - You: Working on the database schema and query indexes right now.
+03/02/2024, 18:37 - Aryan: Just pushed the Figma components for dark mode!
+03/02/2024, 18:52 - Rohan: Can someone test the new API endpoint on localhost:3000?
+03/02/2024, 19:08 - Tanya: <Media omitted>
+03/02/2024, 19:25 - Dev: LGTM! PR approved.
+03/02/2024, 19:43 - Sara: Are we meeting at 5pm for architecture review?
+03/02/2024, 20:02 - Sam: Yes, link is on the calendar invite.
+03/02/2024, 20:22 - Kabir: Don't forget to push your branch before the sync!
+03/02/2024, 20:43 - You: Deployed staging build to Vercel. Test it out!
+03/02/2024, 20:45 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+03/02/2024, 20:48 - Rohan: Working on the database schema and query indexes right now.
+03/02/2024, 20:52 - Tanya: Just pushed the Figma components for dark mode!
+03/02/2024, 20:57 - Dev: Can someone test the new API endpoint on localhost:3000?
+03/02/2024, 21:03 - Sara: <Media omitted>
+04/02/2024, 03:10 - Sam: LGTM! PR approved.
+04/02/2024, 03:18 - Kabir: Are we meeting at 5pm for architecture review?
+04/02/2024, 03:27 - You: Yes, link is on the calendar invite.
+04/02/2024, 03:37 - Aryan: Don't forget to push your branch before the sync!
+04/02/2024, 03:48 - Rohan: Deployed staging build to Vercel. Test it out!
+04/02/2024, 04:00 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+04/02/2024, 04:13 - Dev: Working on the database schema and query indexes right now.
+04/02/2024, 04:27 - Sara: Just pushed the Figma components for dark mode!
+04/02/2024, 04:42 - Sam: Can someone test the new API endpoint on localhost:3000?
+04/02/2024, 04:58 - Kabir: <Media omitted>
+04/02/2024, 05:15 - You: LGTM! PR approved.
+04/02/2024, 05:33 - Aryan: Are we meeting at 5pm for architecture review?
+04/02/2024, 05:52 - Rohan: Yes, link is on the calendar invite.
+04/02/2024, 06:12 - Tanya: Don't forget to push your branch before the sync!
+04/02/2024, 06:33 - Dev: Deployed staging build to Vercel. Test it out!
+04/02/2024, 12:35 - Sara: Hey team, daily standup: @Sam what are your blockers?
+04/02/2024, 12:38 - Sam: Working on the database schema and query indexes right now.
+04/02/2024, 12:42 - Kabir: Just pushed the Figma components for dark mode!
+04/02/2024, 12:47 - You: Can someone test the new API endpoint on localhost:3000?
+04/02/2024, 12:53 - Aryan: <Media omitted>
+04/02/2024, 13:00 - Rohan: LGTM! PR approved.
+04/02/2024, 13:08 - Tanya: Are we meeting at 5pm for architecture review?
+04/02/2024, 13:17 - Dev: Yes, link is on the calendar invite.
+04/02/2024, 13:27 - Sara: Don't forget to push your branch before the sync!
+04/02/2024, 13:38 - Sam: Deployed staging build to Vercel. Test it out!
+04/02/2024, 13:50 - Kabir: Hey team, daily standup: @You what are your blockers?
+04/02/2024, 14:03 - You: Working on the database schema and query indexes right now.
+04/02/2024, 14:17 - Aryan: Just pushed the Figma components for dark mode!
+04/02/2024, 14:32 - Rohan: Can someone test the new API endpoint on localhost:3000?
+04/02/2024, 14:48 - Tanya: <Media omitted>
+04/02/2024, 21:05 - Dev: LGTM! PR approved.
+04/02/2024, 21:23 - Sara: Are we meeting at 5pm for architecture review?
+04/02/2024, 21:42 - Sam: Yes, link is on the calendar invite.
+04/02/2024, 22:02 - Kabir: Don't forget to push your branch before the sync!
+04/02/2024, 22:23 - You: Deployed staging build to Vercel. Test it out!
+04/02/2024, 22:25 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+04/02/2024, 22:28 - Rohan: Working on the database schema and query indexes right now.
+04/02/2024, 22:32 - Tanya: Just pushed the Figma components for dark mode!
+04/02/2024, 22:37 - Dev: Can someone test the new API endpoint on localhost:3000?
+04/02/2024, 22:43 - Sara: <Media omitted>
+04/02/2024, 22:50 - Sam: LGTM! PR approved.
+04/02/2024, 22:58 - Kabir: Are we meeting at 5pm for architecture review?
+04/02/2024, 23:07 - You: Yes, link is on the calendar invite.
+04/02/2024, 23:17 - Aryan: Don't forget to push your branch before the sync!
+04/02/2024, 23:28 - Rohan: Deployed staging build to Vercel. Test it out!
+05/02/2024, 05:40 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+05/02/2024, 05:53 - Dev: Working on the database schema and query indexes right now.
+05/02/2024, 06:07 - Sara: Just pushed the Figma components for dark mode!
+05/02/2024, 06:22 - Sam: Can someone test the new API endpoint on localhost:3000?
+05/02/2024, 06:38 - Kabir: <Media omitted>
+05/02/2024, 06:55 - You: LGTM! PR approved.
+05/02/2024, 07:13 - Aryan: Are we meeting at 5pm for architecture review?
+05/02/2024, 07:32 - Rohan: Yes, link is on the calendar invite.
+05/02/2024, 07:52 - Tanya: Don't forget to push your branch before the sync!
+05/02/2024, 08:13 - Dev: Deployed staging build to Vercel. Test it out!
+05/02/2024, 08:15 - Sara: Hey team, daily standup: @Sam what are your blockers?
+05/02/2024, 08:18 - Sam: Working on the database schema and query indexes right now.
+05/02/2024, 08:22 - Kabir: Just pushed the Figma components for dark mode!
+05/02/2024, 08:27 - You: Can someone test the new API endpoint on localhost:3000?
+05/02/2024, 08:33 - Aryan: <Media omitted>
+05/02/2024, 14:40 - Rohan: LGTM! PR approved.
+05/02/2024, 14:48 - Tanya: Are we meeting at 5pm for architecture review?
+05/02/2024, 14:57 - Dev: Yes, link is on the calendar invite.
+05/02/2024, 15:07 - Sara: Don't forget to push your branch before the sync!
+05/02/2024, 15:18 - Sam: Deployed staging build to Vercel. Test it out!
+05/02/2024, 15:30 - Kabir: Hey team, daily standup: @You what are your blockers?
+05/02/2024, 15:43 - You: Working on the database schema and query indexes right now.
+05/02/2024, 15:57 - Aryan: Just pushed the Figma components for dark mode!
+05/02/2024, 16:12 - Rohan: Can someone test the new API endpoint on localhost:3000?
+05/02/2024, 16:28 - Tanya: <Media omitted>
+05/02/2024, 16:45 - Dev: LGTM! PR approved.
+05/02/2024, 17:03 - Sara: Are we meeting at 5pm for architecture review?
+05/02/2024, 17:22 - Sam: Yes, link is on the calendar invite.
+05/02/2024, 17:42 - Kabir: Don't forget to push your branch before the sync!
+05/02/2024, 18:03 - You: Deployed staging build to Vercel. Test it out!
+06/02/2024, 00:05 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+06/02/2024, 00:08 - Rohan: Working on the database schema and query indexes right now.
+06/02/2024, 00:12 - Tanya: Just pushed the Figma components for dark mode!
+06/02/2024, 00:17 - Dev: Can someone test the new API endpoint on localhost:3000?
+06/02/2024, 00:23 - Sara: <Media omitted>
+06/02/2024, 00:30 - Sam: LGTM! PR approved.
+06/02/2024, 00:38 - Kabir: Are we meeting at 5pm for architecture review?
+06/02/2024, 00:47 - You: Yes, link is on the calendar invite.
+06/02/2024, 00:57 - Aryan: Don't forget to push your branch before the sync!
+06/02/2024, 01:08 - Rohan: Deployed staging build to Vercel. Test it out!
+06/02/2024, 01:20 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+06/02/2024, 01:33 - Dev: Working on the database schema and query indexes right now.
+06/02/2024, 01:47 - Sara: Just pushed the Figma components for dark mode!
+06/02/2024, 02:02 - Sam: Can someone test the new API endpoint on localhost:3000?
+06/02/2024, 02:18 - Kabir: <Media omitted>
+06/02/2024, 08:35 - You: LGTM! PR approved.
+06/02/2024, 08:53 - Aryan: Are we meeting at 5pm for architecture review?
+06/02/2024, 09:12 - Rohan: Yes, link is on the calendar invite.
+06/02/2024, 09:32 - Tanya: Don't forget to push your branch before the sync!
+06/02/2024, 09:53 - Dev: Deployed staging build to Vercel. Test it out!
+06/02/2024, 09:55 - Sara: Hey team, daily standup: @Sam what are your blockers?
+06/02/2024, 09:58 - Sam: Working on the database schema and query indexes right now.
+06/02/2024, 10:02 - Kabir: Just pushed the Figma components for dark mode!
+06/02/2024, 10:07 - You: Can someone test the new API endpoint on localhost:3000?
+06/02/2024, 10:13 - Aryan: <Media omitted>
+06/02/2024, 10:20 - Rohan: LGTM! PR approved.
+06/02/2024, 10:28 - Tanya: Are we meeting at 5pm for architecture review?
+06/02/2024, 10:37 - Dev: Yes, link is on the calendar invite.
+06/02/2024, 10:47 - Sara: Don't forget to push your branch before the sync!
+06/02/2024, 10:58 - Sam: Deployed staging build to Vercel. Test it out!
+06/02/2024, 17:10 - Kabir: Hey team, daily standup: @You what are your blockers?
+06/02/2024, 17:23 - You: Working on the database schema and query indexes right now.
+06/02/2024, 17:37 - Aryan: Just pushed the Figma components for dark mode!
+06/02/2024, 17:52 - Rohan: Can someone test the new API endpoint on localhost:3000?
+06/02/2024, 18:08 - Tanya: <Media omitted>
+06/02/2024, 18:25 - Dev: LGTM! PR approved.
+06/02/2024, 18:43 - Sara: Are we meeting at 5pm for architecture review?
+06/02/2024, 19:02 - Sam: Yes, link is on the calendar invite.
+06/02/2024, 19:22 - Kabir: Don't forget to push your branch before the sync!
+06/02/2024, 19:43 - You: Deployed staging build to Vercel. Test it out!
+06/02/2024, 19:45 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+06/02/2024, 19:48 - Rohan: Working on the database schema and query indexes right now.
+06/02/2024, 19:52 - Tanya: Just pushed the Figma components for dark mode!
+06/02/2024, 19:57 - Dev: Can someone test the new API endpoint on localhost:3000?
+06/02/2024, 20:03 - Sara: <Media omitted>
+07/02/2024, 02:10 - Sam: LGTM! PR approved.
+07/02/2024, 02:18 - Kabir: Are we meeting at 5pm for architecture review?
+07/02/2024, 02:27 - You: Yes, link is on the calendar invite.
+07/02/2024, 02:37 - Aryan: Don't forget to push your branch before the sync!
+07/02/2024, 02:48 - Rohan: Deployed staging build to Vercel. Test it out!
+07/02/2024, 03:00 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+07/02/2024, 03:13 - Dev: Working on the database schema and query indexes right now.
+07/02/2024, 03:27 - Sara: Just pushed the Figma components for dark mode!
+07/02/2024, 03:42 - Sam: Can someone test the new API endpoint on localhost:3000?
+07/02/2024, 03:58 - Kabir: <Media omitted>
+07/02/2024, 04:15 - You: LGTM! PR approved.
+07/02/2024, 04:33 - Aryan: Are we meeting at 5pm for architecture review?
+07/02/2024, 04:52 - Rohan: Yes, link is on the calendar invite.
+07/02/2024, 05:12 - Tanya: Don't forget to push your branch before the sync!
+07/02/2024, 05:33 - Dev: Deployed staging build to Vercel. Test it out!
+07/02/2024, 11:35 - Sara: Hey team, daily standup: @Sam what are your blockers?
+07/02/2024, 11:38 - Sam: Working on the database schema and query indexes right now.
+07/02/2024, 11:42 - Kabir: Just pushed the Figma components for dark mode!
+07/02/2024, 11:47 - You: Can someone test the new API endpoint on localhost:3000?
+07/02/2024, 11:53 - Aryan: <Media omitted>
+07/02/2024, 12:00 - Rohan: LGTM! PR approved.
+07/02/2024, 12:08 - Tanya: Are we meeting at 5pm for architecture review?
+07/02/2024, 12:17 - Dev: Yes, link is on the calendar invite.
+07/02/2024, 12:27 - Sara: Don't forget to push your branch before the sync!
+07/02/2024, 12:38 - Sam: Deployed staging build to Vercel. Test it out!
+07/02/2024, 12:50 - Kabir: Hey team, daily standup: @You what are your blockers?
+07/02/2024, 13:03 - You: Working on the database schema and query indexes right now.
+07/02/2024, 13:17 - Aryan: Just pushed the Figma components for dark mode!
+07/02/2024, 13:32 - Rohan: Can someone test the new API endpoint on localhost:3000?
+07/02/2024, 13:48 - Tanya: <Media omitted>
+07/02/2024, 20:05 - Dev: LGTM! PR approved.
+07/02/2024, 20:23 - Sara: Are we meeting at 5pm for architecture review?
+07/02/2024, 20:42 - Sam: Yes, link is on the calendar invite.
+07/02/2024, 21:02 - Kabir: Don't forget to push your branch before the sync!
+07/02/2024, 21:23 - You: Deployed staging build to Vercel. Test it out!
+07/02/2024, 21:25 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+07/02/2024, 21:28 - Rohan: Working on the database schema and query indexes right now.
+07/02/2024, 21:32 - Tanya: Just pushed the Figma components for dark mode!
+07/02/2024, 21:37 - Dev: Can someone test the new API endpoint on localhost:3000?
+07/02/2024, 21:43 - Sara: <Media omitted>
+07/02/2024, 21:50 - Sam: LGTM! PR approved.
+07/02/2024, 21:58 - Kabir: Are we meeting at 5pm for architecture review?
+07/02/2024, 22:07 - You: Yes, link is on the calendar invite.
+07/02/2024, 22:17 - Aryan: Don't forget to push your branch before the sync!
+07/02/2024, 22:28 - Rohan: Deployed staging build to Vercel. Test it out!
+08/02/2024, 04:40 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+08/02/2024, 04:53 - Dev: Working on the database schema and query indexes right now.
+08/02/2024, 05:07 - Sara: Just pushed the Figma components for dark mode!
+08/02/2024, 05:22 - Sam: Can someone test the new API endpoint on localhost:3000?
+08/02/2024, 05:38 - Kabir: <Media omitted>
+08/02/2024, 05:55 - You: LGTM! PR approved.
+08/02/2024, 06:13 - Aryan: Are we meeting at 5pm for architecture review?
+08/02/2024, 06:32 - Rohan: Yes, link is on the calendar invite.
+08/02/2024, 06:52 - Tanya: Don't forget to push your branch before the sync!
+08/02/2024, 07:13 - Dev: Deployed staging build to Vercel. Test it out!
+08/02/2024, 07:15 - Sara: Hey team, daily standup: @Sam what are your blockers?
+08/02/2024, 07:18 - Sam: Working on the database schema and query indexes right now.
+08/02/2024, 07:22 - Kabir: Just pushed the Figma components for dark mode!
+08/02/2024, 07:27 - You: Can someone test the new API endpoint on localhost:3000?
+08/02/2024, 07:33 - Aryan: <Media omitted>
+08/02/2024, 13:40 - Rohan: LGTM! PR approved.
+08/02/2024, 13:48 - Tanya: Are we meeting at 5pm for architecture review?
+08/02/2024, 13:57 - Dev: Yes, link is on the calendar invite.
+08/02/2024, 14:07 - Sara: Don't forget to push your branch before the sync!
+08/02/2024, 14:18 - Sam: Deployed staging build to Vercel. Test it out!
+08/02/2024, 14:30 - Kabir: Hey team, daily standup: @You what are your blockers?
+08/02/2024, 14:43 - You: Working on the database schema and query indexes right now.
+08/02/2024, 14:57 - Aryan: Just pushed the Figma components for dark mode!
+08/02/2024, 15:12 - Rohan: Can someone test the new API endpoint on localhost:3000?
+08/02/2024, 15:28 - Tanya: <Media omitted>
+08/02/2024, 15:45 - Dev: LGTM! PR approved.
+08/02/2024, 16:03 - Sara: Are we meeting at 5pm for architecture review?
+08/02/2024, 16:22 - Sam: Yes, link is on the calendar invite.
+08/02/2024, 16:42 - Kabir: Don't forget to push your branch before the sync!
+08/02/2024, 17:03 - You: Deployed staging build to Vercel. Test it out!
+08/02/2024, 23:05 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+08/02/2024, 23:08 - Rohan: Working on the database schema and query indexes right now.
+08/02/2024, 23:12 - Tanya: Just pushed the Figma components for dark mode!
+08/02/2024, 23:17 - Dev: Can someone test the new API endpoint on localhost:3000?
+08/02/2024, 23:23 - Sara: <Media omitted>
+08/02/2024, 23:30 - Sam: LGTM! PR approved.
+08/02/2024, 23:38 - Kabir: Are we meeting at 5pm for architecture review?
+08/02/2024, 23:47 - You: Yes, link is on the calendar invite.
+08/02/2024, 23:57 - Aryan: Don't forget to push your branch before the sync!
+09/02/2024, 00:08 - Rohan: Deployed staging build to Vercel. Test it out!
+09/02/2024, 00:20 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+09/02/2024, 00:33 - Dev: Working on the database schema and query indexes right now.
+09/02/2024, 00:47 - Sara: Just pushed the Figma components for dark mode!
+09/02/2024, 01:02 - Sam: Can someone test the new API endpoint on localhost:3000?
+09/02/2024, 01:18 - Kabir: <Media omitted>
+09/02/2024, 07:35 - You: LGTM! PR approved.
+09/02/2024, 07:53 - Aryan: Are we meeting at 5pm for architecture review?
+09/02/2024, 08:12 - Rohan: Yes, link is on the calendar invite.
+09/02/2024, 08:32 - Tanya: Don't forget to push your branch before the sync!
+09/02/2024, 08:53 - Dev: Deployed staging build to Vercel. Test it out!
+09/02/2024, 08:55 - Sara: Hey team, daily standup: @Sam what are your blockers?
+09/02/2024, 08:58 - Sam: Working on the database schema and query indexes right now.
+09/02/2024, 09:02 - Kabir: Just pushed the Figma components for dark mode!
+09/02/2024, 09:07 - You: Can someone test the new API endpoint on localhost:3000?
+09/02/2024, 09:13 - Aryan: <Media omitted>
+09/02/2024, 09:20 - Rohan: LGTM! PR approved.
+09/02/2024, 09:28 - Tanya: Are we meeting at 5pm for architecture review?
+09/02/2024, 09:37 - Dev: Yes, link is on the calendar invite.
+09/02/2024, 09:47 - Sara: Don't forget to push your branch before the sync!
+09/02/2024, 09:58 - Sam: Deployed staging build to Vercel. Test it out!
+09/02/2024, 16:10 - Kabir: Hey team, daily standup: @You what are your blockers?
+09/02/2024, 16:23 - You: Working on the database schema and query indexes right now.
+09/02/2024, 16:37 - Aryan: Just pushed the Figma components for dark mode!
+09/02/2024, 16:52 - Rohan: Can someone test the new API endpoint on localhost:3000?
+09/02/2024, 17:08 - Tanya: <Media omitted>
+09/02/2024, 17:25 - Dev: LGTM! PR approved.
+09/02/2024, 17:43 - Sara: Are we meeting at 5pm for architecture review?
+09/02/2024, 18:02 - Sam: Yes, link is on the calendar invite.
+09/02/2024, 18:22 - Kabir: Don't forget to push your branch before the sync!
+09/02/2024, 18:43 - You: Deployed staging build to Vercel. Test it out!
+09/02/2024, 18:45 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+09/02/2024, 18:48 - Rohan: Working on the database schema and query indexes right now.
+09/02/2024, 18:52 - Tanya: Just pushed the Figma components for dark mode!
+09/02/2024, 18:57 - Dev: Can someone test the new API endpoint on localhost:3000?
+09/02/2024, 19:03 - Sara: <Media omitted>
+10/02/2024, 01:10 - Sam: LGTM! PR approved.
+10/02/2024, 01:18 - Kabir: Are we meeting at 5pm for architecture review?
+10/02/2024, 01:27 - You: Yes, link is on the calendar invite.
+10/02/2024, 01:37 - Aryan: Don't forget to push your branch before the sync!
+10/02/2024, 01:48 - Rohan: Deployed staging build to Vercel. Test it out!
+10/02/2024, 02:00 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+10/02/2024, 02:13 - Dev: Working on the database schema and query indexes right now.
+10/02/2024, 02:27 - Sara: Just pushed the Figma components for dark mode!
+10/02/2024, 02:42 - Sam: Can someone test the new API endpoint on localhost:3000?
+10/02/2024, 02:58 - Kabir: <Media omitted>
+10/02/2024, 03:15 - You: LGTM! PR approved.
+10/02/2024, 03:33 - Aryan: Are we meeting at 5pm for architecture review?
+10/02/2024, 03:52 - Rohan: Yes, link is on the calendar invite.
+10/02/2024, 04:12 - Tanya: Don't forget to push your branch before the sync!
+10/02/2024, 04:33 - Dev: Deployed staging build to Vercel. Test it out!
+10/02/2024, 10:35 - Sara: Hey team, daily standup: @Sam what are your blockers?
+10/02/2024, 10:38 - Sam: Working on the database schema and query indexes right now.
+10/02/2024, 10:42 - Kabir: Just pushed the Figma components for dark mode!
+10/02/2024, 10:47 - You: Can someone test the new API endpoint on localhost:3000?
+10/02/2024, 10:53 - Aryan: <Media omitted>
+10/02/2024, 11:00 - Rohan: LGTM! PR approved.
+10/02/2024, 11:08 - Tanya: Are we meeting at 5pm for architecture review?
+10/02/2024, 11:17 - Dev: Yes, link is on the calendar invite.
+10/02/2024, 11:27 - Sara: Don't forget to push your branch before the sync!
+10/02/2024, 11:38 - Sam: Deployed staging build to Vercel. Test it out!
+10/02/2024, 11:50 - Kabir: Hey team, daily standup: @You what are your blockers?
+10/02/2024, 12:03 - You: Working on the database schema and query indexes right now.
+10/02/2024, 12:17 - Aryan: Just pushed the Figma components for dark mode!
+10/02/2024, 12:32 - Rohan: Can someone test the new API endpoint on localhost:3000?
+10/02/2024, 12:48 - Tanya: <Media omitted>
+10/02/2024, 19:05 - Dev: LGTM! PR approved.
+10/02/2024, 19:23 - Sara: Are we meeting at 5pm for architecture review?
+10/02/2024, 19:42 - Sam: Yes, link is on the calendar invite.
+10/02/2024, 20:02 - Kabir: Don't forget to push your branch before the sync!
+10/02/2024, 20:23 - You: Deployed staging build to Vercel. Test it out!
+10/02/2024, 20:25 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+10/02/2024, 20:28 - Rohan: Working on the database schema and query indexes right now.
+10/02/2024, 20:32 - Tanya: Just pushed the Figma components for dark mode!
+10/02/2024, 20:37 - Dev: Can someone test the new API endpoint on localhost:3000?
+10/02/2024, 20:43 - Sara: <Media omitted>
+10/02/2024, 20:50 - Sam: LGTM! PR approved.
+10/02/2024, 20:58 - Kabir: Are we meeting at 5pm for architecture review?
+10/02/2024, 21:07 - You: Yes, link is on the calendar invite.
+10/02/2024, 21:17 - Aryan: Don't forget to push your branch before the sync!
+10/02/2024, 21:28 - Rohan: Deployed staging build to Vercel. Test it out!
+11/02/2024, 03:40 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+11/02/2024, 03:53 - Dev: Working on the database schema and query indexes right now.
+11/02/2024, 04:07 - Sara: Just pushed the Figma components for dark mode!
+11/02/2024, 04:22 - Sam: Can someone test the new API endpoint on localhost:3000?
+11/02/2024, 04:38 - Kabir: <Media omitted>
+11/02/2024, 04:55 - You: LGTM! PR approved.
+11/02/2024, 05:13 - Aryan: Are we meeting at 5pm for architecture review?
+11/02/2024, 05:32 - Rohan: Yes, link is on the calendar invite.
+11/02/2024, 05:52 - Tanya: Don't forget to push your branch before the sync!
+11/02/2024, 06:13 - Dev: Deployed staging build to Vercel. Test it out!
+11/02/2024, 06:15 - Sara: Hey team, daily standup: @Sam what are your blockers?
+11/02/2024, 06:18 - Sam: Working on the database schema and query indexes right now.
+11/02/2024, 06:22 - Kabir: Just pushed the Figma components for dark mode!
+11/02/2024, 06:27 - You: Can someone test the new API endpoint on localhost:3000?
+11/02/2024, 06:33 - Aryan: <Media omitted>
+11/02/2024, 12:40 - Rohan: LGTM! PR approved.
+11/02/2024, 12:48 - Tanya: Are we meeting at 5pm for architecture review?
+11/02/2024, 12:57 - Dev: Yes, link is on the calendar invite.
+11/02/2024, 13:07 - Sara: Don't forget to push your branch before the sync!
+11/02/2024, 13:18 - Sam: Deployed staging build to Vercel. Test it out!
+11/02/2024, 13:30 - Kabir: Hey team, daily standup: @You what are your blockers?
+11/02/2024, 13:43 - You: Working on the database schema and query indexes right now.
+11/02/2024, 13:57 - Aryan: Just pushed the Figma components for dark mode!
+11/02/2024, 14:12 - Rohan: Can someone test the new API endpoint on localhost:3000?
+11/02/2024, 14:28 - Tanya: <Media omitted>
+11/02/2024, 14:45 - Dev: LGTM! PR approved.
+11/02/2024, 15:03 - Sara: Are we meeting at 5pm for architecture review?
+11/02/2024, 15:22 - Sam: Yes, link is on the calendar invite.
+11/02/2024, 15:42 - Kabir: Don't forget to push your branch before the sync!
+11/02/2024, 16:03 - You: Deployed staging build to Vercel. Test it out!
+11/02/2024, 22:05 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+11/02/2024, 22:08 - Rohan: Working on the database schema and query indexes right now.
+11/02/2024, 22:12 - Tanya: Just pushed the Figma components for dark mode!
+11/02/2024, 22:17 - Dev: Can someone test the new API endpoint on localhost:3000?
+11/02/2024, 22:23 - Sara: <Media omitted>
+11/02/2024, 22:30 - Sam: LGTM! PR approved.
+11/02/2024, 22:38 - Kabir: Are we meeting at 5pm for architecture review?
+11/02/2024, 22:47 - You: Yes, link is on the calendar invite.
+11/02/2024, 22:57 - Aryan: Don't forget to push your branch before the sync!
+11/02/2024, 23:08 - Rohan: Deployed staging build to Vercel. Test it out!
+11/02/2024, 23:20 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+11/02/2024, 23:33 - Dev: Working on the database schema and query indexes right now.
+11/02/2024, 23:47 - Sara: Just pushed the Figma components for dark mode!
+12/02/2024, 00:02 - Sam: Can someone test the new API endpoint on localhost:3000?
+12/02/2024, 00:18 - Kabir: <Media omitted>
+12/02/2024, 06:35 - You: LGTM! PR approved.
+12/02/2024, 06:53 - Aryan: Are we meeting at 5pm for architecture review?
+12/02/2024, 07:12 - Rohan: Yes, link is on the calendar invite.
+12/02/2024, 07:32 - Tanya: Don't forget to push your branch before the sync!
+12/02/2024, 07:53 - Dev: Deployed staging build to Vercel. Test it out!
+12/02/2024, 07:55 - Sara: Hey team, daily standup: @Sam what are your blockers?
+12/02/2024, 07:58 - Sam: Working on the database schema and query indexes right now.
+12/02/2024, 08:02 - Kabir: Just pushed the Figma components for dark mode!
+12/02/2024, 08:07 - You: Can someone test the new API endpoint on localhost:3000?
+12/02/2024, 08:13 - Aryan: <Media omitted>
+12/02/2024, 08:20 - Rohan: LGTM! PR approved.
+12/02/2024, 08:28 - Tanya: Are we meeting at 5pm for architecture review?
+12/02/2024, 08:37 - Dev: Yes, link is on the calendar invite.
+12/02/2024, 08:47 - Sara: Don't forget to push your branch before the sync!
+12/02/2024, 08:58 - Sam: Deployed staging build to Vercel. Test it out!
+12/02/2024, 15:10 - Kabir: Hey team, daily standup: @You what are your blockers?
+12/02/2024, 15:23 - You: Working on the database schema and query indexes right now.
+12/02/2024, 15:37 - Aryan: Just pushed the Figma components for dark mode!
+12/02/2024, 15:52 - Rohan: Can someone test the new API endpoint on localhost:3000?
+12/02/2024, 16:08 - Tanya: <Media omitted>
+12/02/2024, 16:25 - Dev: LGTM! PR approved.
+12/02/2024, 16:43 - Sara: Are we meeting at 5pm for architecture review?
+12/02/2024, 17:02 - Sam: Yes, link is on the calendar invite.
+12/02/2024, 17:22 - Kabir: Don't forget to push your branch before the sync!
+12/02/2024, 17:43 - You: Deployed staging build to Vercel. Test it out!
+12/02/2024, 17:45 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+12/02/2024, 17:48 - Rohan: Working on the database schema and query indexes right now.
+12/02/2024, 17:52 - Tanya: Just pushed the Figma components for dark mode!
+12/02/2024, 17:57 - Dev: Can someone test the new API endpoint on localhost:3000?
+12/02/2024, 18:03 - Sara: <Media omitted>
+13/02/2024, 00:10 - Sam: LGTM! PR approved.
+13/02/2024, 00:18 - Kabir: Are we meeting at 5pm for architecture review?
+13/02/2024, 00:27 - You: Yes, link is on the calendar invite.
+13/02/2024, 00:37 - Aryan: Don't forget to push your branch before the sync!
+13/02/2024, 00:48 - Rohan: Deployed staging build to Vercel. Test it out!
+13/02/2024, 01:00 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+13/02/2024, 01:13 - Dev: Working on the database schema and query indexes right now.
+13/02/2024, 01:27 - Sara: Just pushed the Figma components for dark mode!
+13/02/2024, 01:42 - Sam: Can someone test the new API endpoint on localhost:3000?
+13/02/2024, 01:58 - Kabir: <Media omitted>
+13/02/2024, 02:15 - You: LGTM! PR approved.
+13/02/2024, 02:33 - Aryan: Are we meeting at 5pm for architecture review?
+13/02/2024, 02:52 - Rohan: Yes, link is on the calendar invite.
+13/02/2024, 03:12 - Tanya: Don't forget to push your branch before the sync!
+13/02/2024, 03:33 - Dev: Deployed staging build to Vercel. Test it out!
+13/02/2024, 09:35 - Sara: Hey team, daily standup: @Sam what are your blockers?
+13/02/2024, 09:38 - Sam: Working on the database schema and query indexes right now.
+13/02/2024, 09:42 - Kabir: Just pushed the Figma components for dark mode!
+13/02/2024, 09:47 - You: Can someone test the new API endpoint on localhost:3000?
+13/02/2024, 09:53 - Aryan: <Media omitted>
+13/02/2024, 10:00 - Rohan: LGTM! PR approved.
+13/02/2024, 10:08 - Tanya: Are we meeting at 5pm for architecture review?
+13/02/2024, 10:17 - Dev: Yes, link is on the calendar invite.
+13/02/2024, 10:27 - Sara: Don't forget to push your branch before the sync!
+13/02/2024, 10:38 - Sam: Deployed staging build to Vercel. Test it out!
+13/02/2024, 10:50 - Kabir: Hey team, daily standup: @You what are your blockers?
+13/02/2024, 11:03 - You: Working on the database schema and query indexes right now.
+13/02/2024, 11:17 - Aryan: Just pushed the Figma components for dark mode!
+13/02/2024, 11:32 - Rohan: Can someone test the new API endpoint on localhost:3000?
+13/02/2024, 11:48 - Tanya: <Media omitted>
+13/02/2024, 18:05 - Dev: LGTM! PR approved.
+13/02/2024, 18:23 - Sara: Are we meeting at 5pm for architecture review?
+13/02/2024, 18:42 - Sam: Yes, link is on the calendar invite.
+13/02/2024, 19:02 - Kabir: Don't forget to push your branch before the sync!
+13/02/2024, 19:23 - You: Deployed staging build to Vercel. Test it out!
+13/02/2024, 19:25 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+13/02/2024, 19:28 - Rohan: Working on the database schema and query indexes right now.
+13/02/2024, 19:32 - Tanya: Just pushed the Figma components for dark mode!
+13/02/2024, 19:37 - Dev: Can someone test the new API endpoint on localhost:3000?
+13/02/2024, 19:43 - Sara: <Media omitted>
+13/02/2024, 19:50 - Sam: LGTM! PR approved.
+13/02/2024, 19:58 - Kabir: Are we meeting at 5pm for architecture review?
+13/02/2024, 20:07 - You: Yes, link is on the calendar invite.
+13/02/2024, 20:17 - Aryan: Don't forget to push your branch before the sync!
+13/02/2024, 20:28 - Rohan: Deployed staging build to Vercel. Test it out!
+14/02/2024, 02:40 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+14/02/2024, 02:53 - Dev: Working on the database schema and query indexes right now.
+14/02/2024, 03:07 - Sara: Just pushed the Figma components for dark mode!
+14/02/2024, 03:22 - Sam: Can someone test the new API endpoint on localhost:3000?
+14/02/2024, 03:38 - Kabir: <Media omitted>
+14/02/2024, 03:55 - You: LGTM! PR approved.
+14/02/2024, 04:13 - Aryan: Are we meeting at 5pm for architecture review?
+14/02/2024, 04:32 - Rohan: Yes, link is on the calendar invite.
+14/02/2024, 04:52 - Tanya: Don't forget to push your branch before the sync!
+14/02/2024, 05:13 - Dev: Deployed staging build to Vercel. Test it out!
+14/02/2024, 05:15 - Sara: Hey team, daily standup: @Sam what are your blockers?
+14/02/2024, 05:18 - Sam: Working on the database schema and query indexes right now.
+14/02/2024, 05:22 - Kabir: Just pushed the Figma components for dark mode!
+14/02/2024, 05:27 - You: Can someone test the new API endpoint on localhost:3000?
+14/02/2024, 05:33 - Aryan: <Media omitted>
+14/02/2024, 11:40 - Rohan: LGTM! PR approved.
+14/02/2024, 11:48 - Tanya: Are we meeting at 5pm for architecture review?
+14/02/2024, 11:57 - Dev: Yes, link is on the calendar invite.
+14/02/2024, 12:07 - Sara: Don't forget to push your branch before the sync!
+14/02/2024, 12:18 - Sam: Deployed staging build to Vercel. Test it out!
+14/02/2024, 12:30 - Kabir: Hey team, daily standup: @You what are your blockers?
+14/02/2024, 12:43 - You: Working on the database schema and query indexes right now.
+14/02/2024, 12:57 - Aryan: Just pushed the Figma components for dark mode!
+14/02/2024, 13:12 - Rohan: Can someone test the new API endpoint on localhost:3000?
+14/02/2024, 13:28 - Tanya: <Media omitted>
+14/02/2024, 13:45 - Dev: LGTM! PR approved.
+14/02/2024, 14:03 - Sara: Are we meeting at 5pm for architecture review?
+14/02/2024, 14:22 - Sam: Yes, link is on the calendar invite.
+14/02/2024, 14:42 - Kabir: Don't forget to push your branch before the sync!
+14/02/2024, 15:03 - You: Deployed staging build to Vercel. Test it out!
+14/02/2024, 21:05 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+14/02/2024, 21:08 - Rohan: Working on the database schema and query indexes right now.
+14/02/2024, 21:12 - Tanya: Just pushed the Figma components for dark mode!
+14/02/2024, 21:17 - Dev: Can someone test the new API endpoint on localhost:3000?
+14/02/2024, 21:23 - Sara: <Media omitted>
+14/02/2024, 21:30 - Sam: LGTM! PR approved.
+14/02/2024, 21:38 - Kabir: Are we meeting at 5pm for architecture review?
+14/02/2024, 21:47 - You: Yes, link is on the calendar invite.
+14/02/2024, 21:57 - Aryan: Don't forget to push your branch before the sync!
+14/02/2024, 22:08 - Rohan: Deployed staging build to Vercel. Test it out!
+14/02/2024, 22:20 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+14/02/2024, 22:33 - Dev: Working on the database schema and query indexes right now.
+14/02/2024, 22:47 - Sara: Just pushed the Figma components for dark mode!
+14/02/2024, 23:02 - Sam: Can someone test the new API endpoint on localhost:3000?
+14/02/2024, 23:18 - Kabir: <Media omitted>
+15/02/2024, 05:35 - You: LGTM! PR approved.
+15/02/2024, 05:53 - Aryan: Are we meeting at 5pm for architecture review?
+15/02/2024, 06:12 - Rohan: Yes, link is on the calendar invite.
+15/02/2024, 06:32 - Tanya: Don't forget to push your branch before the sync!
+15/02/2024, 06:53 - Dev: Deployed staging build to Vercel. Test it out!
+15/02/2024, 06:55 - Sara: Hey team, daily standup: @Sam what are your blockers?
+15/02/2024, 06:58 - Sam: Working on the database schema and query indexes right now.
+15/02/2024, 07:02 - Kabir: Just pushed the Figma components for dark mode!
+15/02/2024, 07:07 - You: Can someone test the new API endpoint on localhost:3000?
+15/02/2024, 07:13 - Aryan: <Media omitted>
+15/02/2024, 07:20 - Rohan: LGTM! PR approved.
+15/02/2024, 07:28 - Tanya: Are we meeting at 5pm for architecture review?
+15/02/2024, 07:37 - Dev: Yes, link is on the calendar invite.
+15/02/2024, 07:47 - Sara: Don't forget to push your branch before the sync!
+15/02/2024, 07:58 - Sam: Deployed staging build to Vercel. Test it out!
+15/02/2024, 14:10 - Kabir: Hey team, daily standup: @You what are your blockers?
+15/02/2024, 14:23 - You: Working on the database schema and query indexes right now.
+15/02/2024, 14:37 - Aryan: Just pushed the Figma components for dark mode!
+15/02/2024, 14:52 - Rohan: Can someone test the new API endpoint on localhost:3000?
+15/02/2024, 15:08 - Tanya: <Media omitted>
+15/02/2024, 15:25 - Dev: LGTM! PR approved.
+15/02/2024, 15:43 - Sara: Are we meeting at 5pm for architecture review?
+15/02/2024, 16:02 - Sam: Yes, link is on the calendar invite.
+15/02/2024, 16:22 - Kabir: Don't forget to push your branch before the sync!
+15/02/2024, 16:43 - You: Deployed staging build to Vercel. Test it out!
+15/02/2024, 16:45 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+15/02/2024, 16:48 - Rohan: Working on the database schema and query indexes right now.
+15/02/2024, 16:52 - Tanya: Just pushed the Figma components for dark mode!
+15/02/2024, 16:57 - Dev: Can someone test the new API endpoint on localhost:3000?
+15/02/2024, 17:03 - Sara: <Media omitted>
+15/02/2024, 23:10 - Sam: LGTM! PR approved.
+15/02/2024, 23:18 - Kabir: Are we meeting at 5pm for architecture review?
+15/02/2024, 23:27 - You: Yes, link is on the calendar invite.
+15/02/2024, 23:37 - Aryan: Don't forget to push your branch before the sync!
+15/02/2024, 23:48 - Rohan: Deployed staging build to Vercel. Test it out!
+16/02/2024, 00:00 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+16/02/2024, 00:13 - Dev: Working on the database schema and query indexes right now.
+16/02/2024, 00:27 - Sara: Just pushed the Figma components for dark mode!
+16/02/2024, 00:42 - Sam: Can someone test the new API endpoint on localhost:3000?
+16/02/2024, 00:58 - Kabir: <Media omitted>
+16/02/2024, 01:15 - You: LGTM! PR approved.
+16/02/2024, 01:33 - Aryan: Are we meeting at 5pm for architecture review?
+16/02/2024, 01:52 - Rohan: Yes, link is on the calendar invite.
+16/02/2024, 02:12 - Tanya: Don't forget to push your branch before the sync!
+16/02/2024, 02:33 - Dev: Deployed staging build to Vercel. Test it out!
+16/02/2024, 08:35 - Sara: Hey team, daily standup: @Sam what are your blockers?
+16/02/2024, 08:38 - Sam: Working on the database schema and query indexes right now.
+16/02/2024, 08:42 - Kabir: Just pushed the Figma components for dark mode!
+16/02/2024, 08:47 - You: Can someone test the new API endpoint on localhost:3000?
+16/02/2024, 08:53 - Aryan: <Media omitted>
+16/02/2024, 09:00 - Rohan: LGTM! PR approved.
+16/02/2024, 09:08 - Tanya: Are we meeting at 5pm for architecture review?
+16/02/2024, 09:17 - Dev: Yes, link is on the calendar invite.
+16/02/2024, 09:27 - Sara: Don't forget to push your branch before the sync!
+16/02/2024, 09:38 - Sam: Deployed staging build to Vercel. Test it out!
+16/02/2024, 09:50 - Kabir: Hey team, daily standup: @You what are your blockers?
+16/02/2024, 10:03 - You: Working on the database schema and query indexes right now.
+16/02/2024, 10:17 - Aryan: Just pushed the Figma components for dark mode!
+16/02/2024, 10:32 - Rohan: Can someone test the new API endpoint on localhost:3000?
+16/02/2024, 10:48 - Tanya: <Media omitted>
+16/02/2024, 17:05 - Dev: LGTM! PR approved.
+16/02/2024, 17:23 - Sara: Are we meeting at 5pm for architecture review?
+16/02/2024, 17:42 - Sam: Yes, link is on the calendar invite.
+16/02/2024, 18:02 - Kabir: Don't forget to push your branch before the sync!
+16/02/2024, 18:23 - You: Deployed staging build to Vercel. Test it out!
+16/02/2024, 18:25 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+16/02/2024, 18:28 - Rohan: Working on the database schema and query indexes right now.
+16/02/2024, 18:32 - Tanya: Just pushed the Figma components for dark mode!
+16/02/2024, 18:37 - Dev: Can someone test the new API endpoint on localhost:3000?
+16/02/2024, 18:43 - Sara: <Media omitted>
+16/02/2024, 18:50 - Sam: LGTM! PR approved.
+16/02/2024, 18:58 - Kabir: Are we meeting at 5pm for architecture review?
+16/02/2024, 19:07 - You: Yes, link is on the calendar invite.
+16/02/2024, 19:17 - Aryan: Don't forget to push your branch before the sync!
+16/02/2024, 19:28 - Rohan: Deployed staging build to Vercel. Test it out!
+17/02/2024, 01:40 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+17/02/2024, 01:53 - Dev: Working on the database schema and query indexes right now.
+17/02/2024, 02:07 - Sara: Just pushed the Figma components for dark mode!
+17/02/2024, 02:22 - Sam: Can someone test the new API endpoint on localhost:3000?
+17/02/2024, 02:38 - Kabir: <Media omitted>
+17/02/2024, 02:55 - You: LGTM! PR approved.
+17/02/2024, 03:13 - Aryan: Are we meeting at 5pm for architecture review?
+17/02/2024, 03:32 - Rohan: Yes, link is on the calendar invite.
+17/02/2024, 03:52 - Tanya: Don't forget to push your branch before the sync!
+17/02/2024, 04:13 - Dev: Deployed staging build to Vercel. Test it out!
+17/02/2024, 04:15 - Sara: Hey team, daily standup: @Sam what are your blockers?
+17/02/2024, 04:18 - Sam: Working on the database schema and query indexes right now.
+17/02/2024, 04:22 - Kabir: Just pushed the Figma components for dark mode!
+17/02/2024, 04:27 - You: Can someone test the new API endpoint on localhost:3000?
+17/02/2024, 04:33 - Aryan: <Media omitted>
+17/02/2024, 10:40 - Rohan: LGTM! PR approved.
+17/02/2024, 10:48 - Tanya: Are we meeting at 5pm for architecture review?
+17/02/2024, 10:57 - Dev: Yes, link is on the calendar invite.
+17/02/2024, 11:07 - Sara: Don't forget to push your branch before the sync!
+17/02/2024, 11:18 - Sam: Deployed staging build to Vercel. Test it out!
+17/02/2024, 11:30 - Kabir: Hey team, daily standup: @You what are your blockers?
+17/02/2024, 11:43 - You: Working on the database schema and query indexes right now.
+17/02/2024, 11:57 - Aryan: Just pushed the Figma components for dark mode!
+17/02/2024, 12:12 - Rohan: Can someone test the new API endpoint on localhost:3000?
+17/02/2024, 12:28 - Tanya: <Media omitted>
+17/02/2024, 12:45 - Dev: LGTM! PR approved.
+17/02/2024, 13:03 - Sara: Are we meeting at 5pm for architecture review?
+17/02/2024, 13:22 - Sam: Yes, link is on the calendar invite.
+17/02/2024, 13:42 - Kabir: Don't forget to push your branch before the sync!
+17/02/2024, 14:03 - You: Deployed staging build to Vercel. Test it out!
+17/02/2024, 20:05 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+17/02/2024, 20:08 - Rohan: Working on the database schema and query indexes right now.
+17/02/2024, 20:12 - Tanya: Just pushed the Figma components for dark mode!
+17/02/2024, 20:17 - Dev: Can someone test the new API endpoint on localhost:3000?
+17/02/2024, 20:23 - Sara: <Media omitted>
+17/02/2024, 20:30 - Sam: LGTM! PR approved.
+17/02/2024, 20:38 - Kabir: Are we meeting at 5pm for architecture review?
+17/02/2024, 20:47 - You: Yes, link is on the calendar invite.
+17/02/2024, 20:57 - Aryan: Don't forget to push your branch before the sync!
+17/02/2024, 21:08 - Rohan: Deployed staging build to Vercel. Test it out!
+17/02/2024, 21:20 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+17/02/2024, 21:33 - Dev: Working on the database schema and query indexes right now.
+17/02/2024, 21:47 - Sara: Just pushed the Figma components for dark mode!
+17/02/2024, 22:02 - Sam: Can someone test the new API endpoint on localhost:3000?
+17/02/2024, 22:18 - Kabir: <Media omitted>
+18/02/2024, 04:35 - You: LGTM! PR approved.
+18/02/2024, 04:53 - Aryan: Are we meeting at 5pm for architecture review?
+18/02/2024, 05:12 - Rohan: Yes, link is on the calendar invite.
+18/02/2024, 05:32 - Tanya: Don't forget to push your branch before the sync!
+18/02/2024, 05:53 - Dev: Deployed staging build to Vercel. Test it out!
+18/02/2024, 05:55 - Sara: Hey team, daily standup: @Sam what are your blockers?
+18/02/2024, 05:58 - Sam: Working on the database schema and query indexes right now.
+18/02/2024, 06:02 - Kabir: Just pushed the Figma components for dark mode!
+18/02/2024, 06:07 - You: Can someone test the new API endpoint on localhost:3000?
+18/02/2024, 06:13 - Aryan: <Media omitted>
+18/02/2024, 06:20 - Rohan: LGTM! PR approved.
+18/02/2024, 06:28 - Tanya: Are we meeting at 5pm for architecture review?
+18/02/2024, 06:37 - Dev: Yes, link is on the calendar invite.
+18/02/2024, 06:47 - Sara: Don't forget to push your branch before the sync!
+18/02/2024, 06:58 - Sam: Deployed staging build to Vercel. Test it out!
+18/02/2024, 13:10 - Kabir: Hey team, daily standup: @You what are your blockers?
+18/02/2024, 13:23 - You: Working on the database schema and query indexes right now.
+18/02/2024, 13:37 - Aryan: Just pushed the Figma components for dark mode!
+18/02/2024, 13:52 - Rohan: Can someone test the new API endpoint on localhost:3000?
+18/02/2024, 14:08 - Tanya: <Media omitted>
+18/02/2024, 14:25 - Dev: LGTM! PR approved.
+18/02/2024, 14:43 - Sara: Are we meeting at 5pm for architecture review?
+18/02/2024, 15:02 - Sam: Yes, link is on the calendar invite.
+18/02/2024, 15:22 - Kabir: Don't forget to push your branch before the sync!
+18/02/2024, 15:43 - You: Deployed staging build to Vercel. Test it out!
+18/02/2024, 15:45 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+18/02/2024, 15:48 - Rohan: Working on the database schema and query indexes right now.
+18/02/2024, 15:52 - Tanya: Just pushed the Figma components for dark mode!
+18/02/2024, 15:57 - Dev: Can someone test the new API endpoint on localhost:3000?
+18/02/2024, 16:03 - Sara: <Media omitted>
+18/02/2024, 22:10 - Sam: LGTM! PR approved.
+18/02/2024, 22:18 - Kabir: Are we meeting at 5pm for architecture review?
+18/02/2024, 22:27 - You: Yes, link is on the calendar invite.
+18/02/2024, 22:37 - Aryan: Don't forget to push your branch before the sync!
+18/02/2024, 22:48 - Rohan: Deployed staging build to Vercel. Test it out!
+18/02/2024, 23:00 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+18/02/2024, 23:13 - Dev: Working on the database schema and query indexes right now.
+18/02/2024, 23:27 - Sara: Just pushed the Figma components for dark mode!
+18/02/2024, 23:42 - Sam: Can someone test the new API endpoint on localhost:3000?
+18/02/2024, 23:58 - Kabir: <Media omitted>
+19/02/2024, 00:15 - You: LGTM! PR approved.
+19/02/2024, 00:33 - Aryan: Are we meeting at 5pm for architecture review?
+19/02/2024, 00:52 - Rohan: Yes, link is on the calendar invite.
+19/02/2024, 01:12 - Tanya: Don't forget to push your branch before the sync!
+19/02/2024, 01:33 - Dev: Deployed staging build to Vercel. Test it out!
+19/02/2024, 07:35 - Sara: Hey team, daily standup: @Sam what are your blockers?
+19/02/2024, 07:38 - Sam: Working on the database schema and query indexes right now.
+19/02/2024, 07:42 - Kabir: Just pushed the Figma components for dark mode!
+19/02/2024, 07:47 - You: Can someone test the new API endpoint on localhost:3000?
+19/02/2024, 07:53 - Aryan: <Media omitted>
+19/02/2024, 08:00 - Rohan: LGTM! PR approved.
+19/02/2024, 08:08 - Tanya: Are we meeting at 5pm for architecture review?
+19/02/2024, 08:17 - Dev: Yes, link is on the calendar invite.
+19/02/2024, 08:27 - Sara: Don't forget to push your branch before the sync!
+19/02/2024, 08:38 - Sam: Deployed staging build to Vercel. Test it out!
+19/02/2024, 08:50 - Kabir: Hey team, daily standup: @You what are your blockers?
+19/02/2024, 09:03 - You: Working on the database schema and query indexes right now.
+19/02/2024, 09:17 - Aryan: Just pushed the Figma components for dark mode!
+19/02/2024, 09:32 - Rohan: Can someone test the new API endpoint on localhost:3000?
+19/02/2024, 09:48 - Tanya: <Media omitted>
+19/02/2024, 16:05 - Dev: LGTM! PR approved.
+19/02/2024, 16:23 - Sara: Are we meeting at 5pm for architecture review?
+19/02/2024, 16:42 - Sam: Yes, link is on the calendar invite.
+19/02/2024, 17:02 - Kabir: Don't forget to push your branch before the sync!
+19/02/2024, 17:23 - You: Deployed staging build to Vercel. Test it out!
+19/02/2024, 17:25 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+19/02/2024, 17:28 - Rohan: Working on the database schema and query indexes right now.
+19/02/2024, 17:32 - Tanya: Just pushed the Figma components for dark mode!
+19/02/2024, 17:37 - Dev: Can someone test the new API endpoint on localhost:3000?
+19/02/2024, 17:43 - Sara: <Media omitted>
+19/02/2024, 17:50 - Sam: LGTM! PR approved.
+19/02/2024, 17:58 - Kabir: Are we meeting at 5pm for architecture review?
+19/02/2024, 18:07 - You: Yes, link is on the calendar invite.
+19/02/2024, 18:17 - Aryan: Don't forget to push your branch before the sync!
+19/02/2024, 18:28 - Rohan: Deployed staging build to Vercel. Test it out!
+20/02/2024, 00:40 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+20/02/2024, 00:53 - Dev: Working on the database schema and query indexes right now.
+20/02/2024, 01:07 - Sara: Just pushed the Figma components for dark mode!
+20/02/2024, 01:22 - Sam: Can someone test the new API endpoint on localhost:3000?
+20/02/2024, 01:38 - Kabir: <Media omitted>
+20/02/2024, 01:55 - You: LGTM! PR approved.
+20/02/2024, 02:13 - Aryan: Are we meeting at 5pm for architecture review?
+20/02/2024, 02:32 - Rohan: Yes, link is on the calendar invite.
+20/02/2024, 02:52 - Tanya: Don't forget to push your branch before the sync!
+20/02/2024, 03:13 - Dev: Deployed staging build to Vercel. Test it out!
+20/02/2024, 03:15 - Sara: Hey team, daily standup: @Sam what are your blockers?
+20/02/2024, 03:18 - Sam: Working on the database schema and query indexes right now.
+20/02/2024, 03:22 - Kabir: Just pushed the Figma components for dark mode!
+20/02/2024, 03:27 - You: Can someone test the new API endpoint on localhost:3000?
+20/02/2024, 03:33 - Aryan: <Media omitted>
+20/02/2024, 09:40 - Rohan: LGTM! PR approved.
+20/02/2024, 09:48 - Tanya: Are we meeting at 5pm for architecture review?
+20/02/2024, 09:57 - Dev: Yes, link is on the calendar invite.
+20/02/2024, 10:07 - Sara: Don't forget to push your branch before the sync!
+20/02/2024, 10:18 - Sam: Deployed staging build to Vercel. Test it out!
+20/02/2024, 10:30 - Kabir: Hey team, daily standup: @You what are your blockers?
+20/02/2024, 10:43 - You: Working on the database schema and query indexes right now.
+20/02/2024, 10:57 - Aryan: Just pushed the Figma components for dark mode!
+20/02/2024, 11:12 - Rohan: Can someone test the new API endpoint on localhost:3000?
+20/02/2024, 11:28 - Tanya: <Media omitted>
+20/02/2024, 11:45 - Dev: LGTM! PR approved.
+20/02/2024, 12:03 - Sara: Are we meeting at 5pm for architecture review?
+20/02/2024, 12:22 - Sam: Yes, link is on the calendar invite.
+20/02/2024, 12:42 - Kabir: Don't forget to push your branch before the sync!
+20/02/2024, 13:03 - You: Deployed staging build to Vercel. Test it out!
+20/02/2024, 19:05 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+20/02/2024, 19:08 - Rohan: Working on the database schema and query indexes right now.
+20/02/2024, 19:12 - Tanya: Just pushed the Figma components for dark mode!
+20/02/2024, 19:17 - Dev: Can someone test the new API endpoint on localhost:3000?
+20/02/2024, 19:23 - Sara: <Media omitted>
+20/02/2024, 19:30 - Sam: LGTM! PR approved.
+20/02/2024, 19:38 - Kabir: Are we meeting at 5pm for architecture review?
+20/02/2024, 19:47 - You: Yes, link is on the calendar invite.
+20/02/2024, 19:57 - Aryan: Don't forget to push your branch before the sync!
+20/02/2024, 20:08 - Rohan: Deployed staging build to Vercel. Test it out!
+20/02/2024, 20:20 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+20/02/2024, 20:33 - Dev: Working on the database schema and query indexes right now.
+20/02/2024, 20:47 - Sara: Just pushed the Figma components for dark mode!
+20/02/2024, 21:02 - Sam: Can someone test the new API endpoint on localhost:3000?
+20/02/2024, 21:18 - Kabir: <Media omitted>
+21/02/2024, 03:35 - You: LGTM! PR approved.
+21/02/2024, 03:53 - Aryan: Are we meeting at 5pm for architecture review?
+21/02/2024, 04:12 - Rohan: Yes, link is on the calendar invite.
+21/02/2024, 04:32 - Tanya: Don't forget to push your branch before the sync!
+21/02/2024, 04:53 - Dev: Deployed staging build to Vercel. Test it out!
+21/02/2024, 04:55 - Sara: Hey team, daily standup: @Sam what are your blockers?
+21/02/2024, 04:58 - Sam: Working on the database schema and query indexes right now.
+21/02/2024, 05:02 - Kabir: Just pushed the Figma components for dark mode!
+21/02/2024, 05:07 - You: Can someone test the new API endpoint on localhost:3000?
+21/02/2024, 05:13 - Aryan: <Media omitted>
+21/02/2024, 05:20 - Rohan: LGTM! PR approved.
+21/02/2024, 05:28 - Tanya: Are we meeting at 5pm for architecture review?
+21/02/2024, 05:37 - Dev: Yes, link is on the calendar invite.
+21/02/2024, 05:47 - Sara: Don't forget to push your branch before the sync!
+21/02/2024, 05:58 - Sam: Deployed staging build to Vercel. Test it out!
+21/02/2024, 12:10 - Kabir: Hey team, daily standup: @You what are your blockers?
+21/02/2024, 12:23 - You: Working on the database schema and query indexes right now.
+21/02/2024, 12:37 - Aryan: Just pushed the Figma components for dark mode!
+21/02/2024, 12:52 - Rohan: Can someone test the new API endpoint on localhost:3000?
+21/02/2024, 13:08 - Tanya: <Media omitted>
+21/02/2024, 13:25 - Dev: LGTM! PR approved.
+21/02/2024, 13:43 - Sara: Are we meeting at 5pm for architecture review?
+21/02/2024, 14:02 - Sam: Yes, link is on the calendar invite.
+21/02/2024, 14:22 - Kabir: Don't forget to push your branch before the sync!
+21/02/2024, 14:43 - You: Deployed staging build to Vercel. Test it out!
+21/02/2024, 14:45 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+21/02/2024, 14:48 - Rohan: Working on the database schema and query indexes right now.
+21/02/2024, 14:52 - Tanya: Just pushed the Figma components for dark mode!
+21/02/2024, 14:57 - Dev: Can someone test the new API endpoint on localhost:3000?
+21/02/2024, 15:03 - Sara: <Media omitted>
+21/02/2024, 21:10 - Sam: LGTM! PR approved.
+21/02/2024, 21:18 - Kabir: Are we meeting at 5pm for architecture review?
+21/02/2024, 21:27 - You: Yes, link is on the calendar invite.
+21/02/2024, 21:37 - Aryan: Don't forget to push your branch before the sync!
+21/02/2024, 21:48 - Rohan: Deployed staging build to Vercel. Test it out!
+21/02/2024, 22:00 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+21/02/2024, 22:13 - Dev: Working on the database schema and query indexes right now.
+21/02/2024, 22:27 - Sara: Just pushed the Figma components for dark mode!
+21/02/2024, 22:42 - Sam: Can someone test the new API endpoint on localhost:3000?
+21/02/2024, 22:58 - Kabir: <Media omitted>
+21/02/2024, 23:15 - You: LGTM! PR approved.
+21/02/2024, 23:33 - Aryan: Are we meeting at 5pm for architecture review?
+21/02/2024, 23:52 - Rohan: Yes, link is on the calendar invite.
+22/02/2024, 00:12 - Tanya: Don't forget to push your branch before the sync!
+22/02/2024, 00:33 - Dev: Deployed staging build to Vercel. Test it out!
+22/02/2024, 06:35 - Sara: Hey team, daily standup: @Sam what are your blockers?
+22/02/2024, 06:38 - Sam: Working on the database schema and query indexes right now.
+22/02/2024, 06:42 - Kabir: Just pushed the Figma components for dark mode!
+22/02/2024, 06:47 - You: Can someone test the new API endpoint on localhost:3000?
+22/02/2024, 06:53 - Aryan: <Media omitted>
+22/02/2024, 07:00 - Rohan: LGTM! PR approved.
+22/02/2024, 07:08 - Tanya: Are we meeting at 5pm for architecture review?
+22/02/2024, 07:17 - Dev: Yes, link is on the calendar invite.
+22/02/2024, 07:27 - Sara: Don't forget to push your branch before the sync!
+22/02/2024, 07:38 - Sam: Deployed staging build to Vercel. Test it out!
+22/02/2024, 07:50 - Kabir: Hey team, daily standup: @You what are your blockers?
+22/02/2024, 08:03 - You: Working on the database schema and query indexes right now.
+22/02/2024, 08:17 - Aryan: Just pushed the Figma components for dark mode!
+22/02/2024, 08:32 - Rohan: Can someone test the new API endpoint on localhost:3000?
+22/02/2024, 08:48 - Tanya: <Media omitted>
+22/02/2024, 15:05 - Dev: LGTM! PR approved.
+22/02/2024, 15:23 - Sara: Are we meeting at 5pm for architecture review?
+22/02/2024, 15:42 - Sam: Yes, link is on the calendar invite.
+22/02/2024, 16:02 - Kabir: Don't forget to push your branch before the sync!
+22/02/2024, 16:23 - You: Deployed staging build to Vercel. Test it out!
+22/02/2024, 16:25 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+22/02/2024, 16:28 - Rohan: Working on the database schema and query indexes right now.
+22/02/2024, 16:32 - Tanya: Just pushed the Figma components for dark mode!
+22/02/2024, 16:37 - Dev: Can someone test the new API endpoint on localhost:3000?
+22/02/2024, 16:43 - Sara: <Media omitted>
+22/02/2024, 16:50 - Sam: LGTM! PR approved.
+22/02/2024, 16:58 - Kabir: Are we meeting at 5pm for architecture review?
+22/02/2024, 17:07 - You: Yes, link is on the calendar invite.
+22/02/2024, 17:17 - Aryan: Don't forget to push your branch before the sync!
+22/02/2024, 17:28 - Rohan: Deployed staging build to Vercel. Test it out!
+22/02/2024, 23:40 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+22/02/2024, 23:53 - Dev: Working on the database schema and query indexes right now.
+23/02/2024, 00:07 - Sara: Just pushed the Figma components for dark mode!
+23/02/2024, 00:22 - Sam: Can someone test the new API endpoint on localhost:3000?
+23/02/2024, 00:38 - Kabir: <Media omitted>
+23/02/2024, 00:55 - You: LGTM! PR approved.
+23/02/2024, 01:13 - Aryan: Are we meeting at 5pm for architecture review?
+23/02/2024, 01:32 - Rohan: Yes, link is on the calendar invite.
+23/02/2024, 01:52 - Tanya: Don't forget to push your branch before the sync!
+23/02/2024, 02:13 - Dev: Deployed staging build to Vercel. Test it out!
+23/02/2024, 02:15 - Sara: Hey team, daily standup: @Sam what are your blockers?
+23/02/2024, 02:18 - Sam: Working on the database schema and query indexes right now.
+23/02/2024, 02:22 - Kabir: Just pushed the Figma components for dark mode!
+23/02/2024, 02:27 - You: Can someone test the new API endpoint on localhost:3000?
+23/02/2024, 02:33 - Aryan: <Media omitted>
+23/02/2024, 08:40 - Rohan: LGTM! PR approved.
+23/02/2024, 08:48 - Tanya: Are we meeting at 5pm for architecture review?
+23/02/2024, 08:57 - Dev: Yes, link is on the calendar invite.
+23/02/2024, 09:07 - Sara: Don't forget to push your branch before the sync!
+23/02/2024, 09:18 - Sam: Deployed staging build to Vercel. Test it out!
+23/02/2024, 09:30 - Kabir: Hey team, daily standup: @You what are your blockers?
+23/02/2024, 09:43 - You: Working on the database schema and query indexes right now.
+23/02/2024, 09:57 - Aryan: Just pushed the Figma components for dark mode!
+23/02/2024, 10:12 - Rohan: Can someone test the new API endpoint on localhost:3000?
+23/02/2024, 10:28 - Tanya: <Media omitted>
+23/02/2024, 10:45 - Dev: LGTM! PR approved.
+23/02/2024, 11:03 - Sara: Are we meeting at 5pm for architecture review?
+23/02/2024, 11:22 - Sam: Yes, link is on the calendar invite.
+23/02/2024, 11:42 - Kabir: Don't forget to push your branch before the sync!
+23/02/2024, 12:03 - You: Deployed staging build to Vercel. Test it out!
+23/02/2024, 18:05 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+23/02/2024, 18:08 - Rohan: Working on the database schema and query indexes right now.
+23/02/2024, 18:12 - Tanya: Just pushed the Figma components for dark mode!
+23/02/2024, 18:17 - Dev: Can someone test the new API endpoint on localhost:3000?
+23/02/2024, 18:23 - Sara: <Media omitted>
+23/02/2024, 18:30 - Sam: LGTM! PR approved.
+23/02/2024, 18:38 - Kabir: Are we meeting at 5pm for architecture review?
+23/02/2024, 18:47 - You: Yes, link is on the calendar invite.
+23/02/2024, 18:57 - Aryan: Don't forget to push your branch before the sync!
+23/02/2024, 19:08 - Rohan: Deployed staging build to Vercel. Test it out!
+23/02/2024, 19:20 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+23/02/2024, 19:33 - Dev: Working on the database schema and query indexes right now.
+23/02/2024, 19:47 - Sara: Just pushed the Figma components for dark mode!
+23/02/2024, 20:02 - Sam: Can someone test the new API endpoint on localhost:3000?
+23/02/2024, 20:18 - Kabir: <Media omitted>
+24/02/2024, 02:35 - You: LGTM! PR approved.
+24/02/2024, 02:53 - Aryan: Are we meeting at 5pm for architecture review?
+24/02/2024, 03:12 - Rohan: Yes, link is on the calendar invite.
+24/02/2024, 03:32 - Tanya: Don't forget to push your branch before the sync!
+24/02/2024, 03:53 - Dev: Deployed staging build to Vercel. Test it out!
+24/02/2024, 03:55 - Sara: Hey team, daily standup: @Sam what are your blockers?
+24/02/2024, 03:58 - Sam: Working on the database schema and query indexes right now.
+24/02/2024, 04:02 - Kabir: Just pushed the Figma components for dark mode!
+24/02/2024, 04:07 - You: Can someone test the new API endpoint on localhost:3000?
+24/02/2024, 04:13 - Aryan: <Media omitted>
+24/02/2024, 04:20 - Rohan: LGTM! PR approved.
+24/02/2024, 04:28 - Tanya: Are we meeting at 5pm for architecture review?
+24/02/2024, 04:37 - Dev: Yes, link is on the calendar invite.
+24/02/2024, 04:47 - Sara: Don't forget to push your branch before the sync!
+24/02/2024, 04:58 - Sam: Deployed staging build to Vercel. Test it out!
+24/02/2024, 11:10 - Kabir: Hey team, daily standup: @You what are your blockers?
+24/02/2024, 11:23 - You: Working on the database schema and query indexes right now.
+24/02/2024, 11:37 - Aryan: Just pushed the Figma components for dark mode!
+24/02/2024, 11:52 - Rohan: Can someone test the new API endpoint on localhost:3000?
+24/02/2024, 12:08 - Tanya: <Media omitted>
+24/02/2024, 12:25 - Dev: LGTM! PR approved.
+24/02/2024, 12:43 - Sara: Are we meeting at 5pm for architecture review?
+24/02/2024, 13:02 - Sam: Yes, link is on the calendar invite.
+24/02/2024, 13:22 - Kabir: Don't forget to push your branch before the sync!
+24/02/2024, 13:43 - You: Deployed staging build to Vercel. Test it out!
+24/02/2024, 13:45 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+24/02/2024, 13:48 - Rohan: Working on the database schema and query indexes right now.
+24/02/2024, 13:52 - Tanya: Just pushed the Figma components for dark mode!
+24/02/2024, 13:57 - Dev: Can someone test the new API endpoint on localhost:3000?
+24/02/2024, 14:03 - Sara: <Media omitted>
+24/02/2024, 20:10 - Sam: LGTM! PR approved.
+24/02/2024, 20:18 - Kabir: Are we meeting at 5pm for architecture review?
+24/02/2024, 20:27 - You: Yes, link is on the calendar invite.
+24/02/2024, 20:37 - Aryan: Don't forget to push your branch before the sync!
+24/02/2024, 20:48 - Rohan: Deployed staging build to Vercel. Test it out!
+24/02/2024, 21:00 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+24/02/2024, 21:13 - Dev: Working on the database schema and query indexes right now.
+24/02/2024, 21:27 - Sara: Just pushed the Figma components for dark mode!
+24/02/2024, 21:42 - Sam: Can someone test the new API endpoint on localhost:3000?
+24/02/2024, 21:58 - Kabir: <Media omitted>
+24/02/2024, 22:15 - You: LGTM! PR approved.
+24/02/2024, 22:33 - Aryan: Are we meeting at 5pm for architecture review?
+24/02/2024, 22:52 - Rohan: Yes, link is on the calendar invite.
+24/02/2024, 23:12 - Tanya: Don't forget to push your branch before the sync!
+24/02/2024, 23:33 - Dev: Deployed staging build to Vercel. Test it out!
+25/02/2024, 05:35 - Sara: Hey team, daily standup: @Sam what are your blockers?
+25/02/2024, 05:38 - Sam: Working on the database schema and query indexes right now.
+25/02/2024, 05:42 - Kabir: Just pushed the Figma components for dark mode!
+25/02/2024, 05:47 - You: Can someone test the new API endpoint on localhost:3000?
+25/02/2024, 05:53 - Aryan: <Media omitted>
+25/02/2024, 06:00 - Rohan: LGTM! PR approved.
+25/02/2024, 06:08 - Tanya: Are we meeting at 5pm for architecture review?
+25/02/2024, 06:17 - Dev: Yes, link is on the calendar invite.
+25/02/2024, 06:27 - Sara: Don't forget to push your branch before the sync!
+25/02/2024, 06:38 - Sam: Deployed staging build to Vercel. Test it out!
+25/02/2024, 06:50 - Kabir: Hey team, daily standup: @You what are your blockers?
+25/02/2024, 07:03 - You: Working on the database schema and query indexes right now.
+25/02/2024, 07:17 - Aryan: Just pushed the Figma components for dark mode!
+25/02/2024, 07:32 - Rohan: Can someone test the new API endpoint on localhost:3000?
+25/02/2024, 07:48 - Tanya: <Media omitted>
+25/02/2024, 14:05 - Dev: LGTM! PR approved.
+25/02/2024, 14:23 - Sara: Are we meeting at 5pm for architecture review?
+25/02/2024, 14:42 - Sam: Yes, link is on the calendar invite.
+25/02/2024, 15:02 - Kabir: Don't forget to push your branch before the sync!
+25/02/2024, 15:23 - You: Deployed staging build to Vercel. Test it out!
+25/02/2024, 15:25 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+25/02/2024, 15:28 - Rohan: Working on the database schema and query indexes right now.
+25/02/2024, 15:32 - Tanya: Just pushed the Figma components for dark mode!
+25/02/2024, 15:37 - Dev: Can someone test the new API endpoint on localhost:3000?
+25/02/2024, 15:43 - Sara: <Media omitted>
+25/02/2024, 15:50 - Sam: LGTM! PR approved.
+25/02/2024, 15:58 - Kabir: Are we meeting at 5pm for architecture review?
+25/02/2024, 16:07 - You: Yes, link is on the calendar invite.
+25/02/2024, 16:17 - Aryan: Don't forget to push your branch before the sync!
+25/02/2024, 16:28 - Rohan: Deployed staging build to Vercel. Test it out!
+25/02/2024, 22:40 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+25/02/2024, 22:53 - Dev: Working on the database schema and query indexes right now.
+25/02/2024, 23:07 - Sara: Just pushed the Figma components for dark mode!
+25/02/2024, 23:22 - Sam: Can someone test the new API endpoint on localhost:3000?
+25/02/2024, 23:38 - Kabir: <Media omitted>
+25/02/2024, 23:55 - You: LGTM! PR approved.
+26/02/2024, 00:13 - Aryan: Are we meeting at 5pm for architecture review?
+26/02/2024, 00:32 - Rohan: Yes, link is on the calendar invite.
+26/02/2024, 00:52 - Tanya: Don't forget to push your branch before the sync!
+26/02/2024, 01:13 - Dev: Deployed staging build to Vercel. Test it out!
+26/02/2024, 01:15 - Sara: Hey team, daily standup: @Sam what are your blockers?
+26/02/2024, 01:18 - Sam: Working on the database schema and query indexes right now.
+26/02/2024, 01:22 - Kabir: Just pushed the Figma components for dark mode!
+26/02/2024, 01:27 - You: Can someone test the new API endpoint on localhost:3000?
+26/02/2024, 01:33 - Aryan: <Media omitted>
+26/02/2024, 07:40 - Rohan: LGTM! PR approved.
+26/02/2024, 07:48 - Tanya: Are we meeting at 5pm for architecture review?
+26/02/2024, 07:57 - Dev: Yes, link is on the calendar invite.
+26/02/2024, 08:07 - Sara: Don't forget to push your branch before the sync!
+26/02/2024, 08:18 - Sam: Deployed staging build to Vercel. Test it out!
+26/02/2024, 08:30 - Kabir: Hey team, daily standup: @You what are your blockers?
+26/02/2024, 08:43 - You: Working on the database schema and query indexes right now.
+26/02/2024, 08:57 - Aryan: Just pushed the Figma components for dark mode!
+26/02/2024, 09:12 - Rohan: Can someone test the new API endpoint on localhost:3000?
+26/02/2024, 09:28 - Tanya: <Media omitted>
+26/02/2024, 09:45 - Dev: LGTM! PR approved.
+26/02/2024, 10:03 - Sara: Are we meeting at 5pm for architecture review?
+26/02/2024, 10:22 - Sam: Yes, link is on the calendar invite.
+26/02/2024, 10:42 - Kabir: Don't forget to push your branch before the sync!
+26/02/2024, 11:03 - You: Deployed staging build to Vercel. Test it out!
+26/02/2024, 17:05 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+26/02/2024, 17:08 - Rohan: Working on the database schema and query indexes right now.
+26/02/2024, 17:12 - Tanya: Just pushed the Figma components for dark mode!
+26/02/2024, 17:17 - Dev: Can someone test the new API endpoint on localhost:3000?
+26/02/2024, 17:23 - Sara: <Media omitted>
+26/02/2024, 17:30 - Sam: LGTM! PR approved.
+26/02/2024, 17:38 - Kabir: Are we meeting at 5pm for architecture review?
+26/02/2024, 17:47 - You: Yes, link is on the calendar invite.
+26/02/2024, 17:57 - Aryan: Don't forget to push your branch before the sync!
+26/02/2024, 18:08 - Rohan: Deployed staging build to Vercel. Test it out!
+26/02/2024, 18:20 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+26/02/2024, 18:33 - Dev: Working on the database schema and query indexes right now.
+26/02/2024, 18:47 - Sara: Just pushed the Figma components for dark mode!
+26/02/2024, 19:02 - Sam: Can someone test the new API endpoint on localhost:3000?
+26/02/2024, 19:18 - Kabir: <Media omitted>
+27/02/2024, 01:35 - You: LGTM! PR approved.
+27/02/2024, 01:53 - Aryan: Are we meeting at 5pm for architecture review?
+27/02/2024, 02:12 - Rohan: Yes, link is on the calendar invite.
+27/02/2024, 02:32 - Tanya: Don't forget to push your branch before the sync!
+27/02/2024, 02:53 - Dev: Deployed staging build to Vercel. Test it out!
+27/02/2024, 02:55 - Sara: Hey team, daily standup: @Sam what are your blockers?
+27/02/2024, 02:58 - Sam: Working on the database schema and query indexes right now.
+27/02/2024, 03:02 - Kabir: Just pushed the Figma components for dark mode!
+27/02/2024, 03:07 - You: Can someone test the new API endpoint on localhost:3000?
+27/02/2024, 03:13 - Aryan: <Media omitted>
+27/02/2024, 03:20 - Rohan: LGTM! PR approved.
+27/02/2024, 03:28 - Tanya: Are we meeting at 5pm for architecture review?
+27/02/2024, 03:37 - Dev: Yes, link is on the calendar invite.
+27/02/2024, 03:47 - Sara: Don't forget to push your branch before the sync!
+27/02/2024, 03:58 - Sam: Deployed staging build to Vercel. Test it out!
+27/02/2024, 10:10 - Kabir: Hey team, daily standup: @You what are your blockers?
+27/02/2024, 10:23 - You: Working on the database schema and query indexes right now.
+27/02/2024, 10:37 - Aryan: Just pushed the Figma components for dark mode!
+27/02/2024, 10:52 - Rohan: Can someone test the new API endpoint on localhost:3000?
+27/02/2024, 11:08 - Tanya: <Media omitted>
+27/02/2024, 11:25 - Dev: LGTM! PR approved.
+27/02/2024, 11:43 - Sara: Are we meeting at 5pm for architecture review?
+27/02/2024, 12:02 - Sam: Yes, link is on the calendar invite.
+27/02/2024, 12:22 - Kabir: Don't forget to push your branch before the sync!
+27/02/2024, 12:43 - You: Deployed staging build to Vercel. Test it out!
+27/02/2024, 12:45 - Aryan: Hey team, daily standup: @Rohan what are your blockers?
+27/02/2024, 12:48 - Rohan: Working on the database schema and query indexes right now.
+27/02/2024, 12:52 - Tanya: Just pushed the Figma components for dark mode!
+27/02/2024, 12:57 - Dev: Can someone test the new API endpoint on localhost:3000?
+27/02/2024, 13:03 - Sara: <Media omitted>
+27/02/2024, 19:10 - Sam: LGTM! PR approved.
+27/02/2024, 19:18 - Kabir: Are we meeting at 5pm for architecture review?
+27/02/2024, 19:27 - You: Yes, link is on the calendar invite.
+27/02/2024, 19:37 - Aryan: Don't forget to push your branch before the sync!
+27/02/2024, 19:48 - Rohan: Deployed staging build to Vercel. Test it out!
+27/02/2024, 20:00 - Tanya: Hey team, daily standup: @Dev what are your blockers?
+27/02/2024, 20:13 - Dev: Working on the database schema and query indexes right now.
+27/02/2024, 20:27 - Sara: Just pushed the Figma components for dark mode!
+27/02/2024, 20:42 - Sam: Can someone test the new API endpoint on localhost:3000?
+27/02/2024, 20:58 - Kabir: <Media omitted>
+27/02/2024, 21:15 - You: LGTM! PR approved.
+27/02/2024, 21:33 - Aryan: Are we meeting at 5pm for architecture review?
+27/02/2024, 21:52 - Rohan: Yes, link is on the calendar invite.
+27/02/2024, 22:12 - Tanya: Don't forget to push your branch before the sync!
+27/02/2024, 22:33 - Dev: Deployed staging build to Vercel. Test it out!
+28/02/2024, 04:35 - Sara: Hey team, daily standup: @Sam what are your blockers?
+28/02/2024, 04:38 - Sam: Working on the database schema and query indexes right now.
+28/02/2024, 04:42 - Kabir: Just pushed the Figma components for dark mode!
+28/02/2024, 04:47 - You: Can someone test the new API endpoint on localhost:3000?
+28/02/2024, 04:53 - Aryan: <Media omitted>
+28/02/2024, 05:00 - Rohan: LGTM! PR approved.
+28/02/2024, 05:08 - Tanya: Are we meeting at 5pm for architecture review?
+28/02/2024, 05:17 - Dev: Yes, link is on the calendar invite.
+28/02/2024, 05:27 - Sara: Don't forget to push your branch before the sync!
+28/02/2024, 05:38 - Sam: Deployed staging build to Vercel. Test it out!
+28/02/2024, 05:50 - Kabir: Hey team, daily standup: @You what are your blockers?
+28/02/2024, 06:03 - You: Working on the database schema and query indexes right now.
+28/02/2024, 06:17 - Aryan: Just pushed the Figma components for dark mode!
+28/02/2024, 06:32 - Rohan: Can someone test the new API endpoint on localhost:3000?
+28/02/2024, 06:48 - Tanya: <Media omitted>
+28/02/2024, 13:05 - Dev: LGTM! PR approved.
+28/02/2024, 13:23 - Sara: Are we meeting at 5pm for architecture review?
+28/02/2024, 13:42 - Sam: Yes, link is on the calendar invite.
+28/02/2024, 14:02 - Kabir: Don't forget to push your branch before the sync!
+28/02/2024, 14:23 - You: Deployed staging build to Vercel. Test it out!

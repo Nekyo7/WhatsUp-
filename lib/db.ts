@@ -50,10 +50,24 @@ export async function wipeAllData(): Promise<void> {
     await db.translations.clear();
   });
   if (typeof window !== "undefined") {
-    localStorage.removeItem("whatsup_network_ledger");
-    localStorage.removeItem("whatsup_privacy_acknowledged");
-    localStorage.removeItem("whatsup_custom_self_names");
-    localStorage.removeItem("whatsup_target_language");
-    localStorage.removeItem("whatsup_no_persist");
+    // Clear all whatsup_ entries in localStorage
+    const localKeysToRemove: string[] = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith("whatsup_")) {
+        localKeysToRemove.push(key);
+      }
+    }
+    localKeysToRemove.forEach((k) => localStorage.removeItem(k));
+
+    // Clear all whatsup_ entries in sessionStorage
+    const sessionKeysToRemove: string[] = [];
+    for (let i = 0; i < sessionStorage.length; i++) {
+      const key = sessionStorage.key(i);
+      if (key && key.startsWith("whatsup_")) {
+        sessionKeysToRemove.push(key);
+      }
+    }
+    sessionKeysToRemove.forEach((k) => sessionStorage.removeItem(k));
   }
 }

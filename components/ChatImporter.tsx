@@ -3,6 +3,7 @@
 import React, { useState, useRef } from "react";
 import { UploadCloud, Sparkles, FileText, CheckCircle2, AlertCircle, Loader2, Users, Shield, Cpu, UserCheck, ArrowRight, FileArchive, Info, ChevronDown, ChevronUp } from "lucide-react";
 import { parseChatFile, parseWhatsAppZip } from "@/lib/parsers";
+import { parseFilesWithWorkerFallback } from "@/lib/workersClient";
 import { analyzeChat } from "@/lib/analytics";
 import { calculateReplyDebt } from "@/lib/analytics/debt";
 import { db } from "@/lib/db";
@@ -84,20 +85,27 @@ export const ChatImporter: React.FC<ChatImporterProps> = ({ onDataLoaded }) => {
       const parsedList: { chat: Chat; messages: Message[]; report?: ImportReport }[] = [];
       const allParticipants = new Set<string>();
 
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        setFileProgress({ current: i + 1, total: files.length });
-        setProgressStatus(`Parsing ${file.name}...`);
-
-        let parsed;
+      // Prepare payload for worker / fallback parser
+      const filesToParse: { name: string; content?: string; buffer?: ArrayBuffer }[] = [];
+      for (const file of files) {
         if (file.name.toLowerCase().endsWith(".zip")) {
           const buffer = await file.arrayBuffer();
-          parsed = await parseWhatsAppZip(buffer, file.name);
+          filesToParse.push({ name: file.name, buffer });
         } else {
-          const textContent = await file.text();
-          parsed = parseChatFile(textContent, file.name);
+          const content = await file.text();
+          filesToParse.push({ name: file.name, content });
         }
+      }
 
+      const parsedResults = await parseFilesWithWorkerFallback(
+        filesToParse,
+        (current, total, fileName) => {
+          setFileProgress({ current, total });
+          setProgressStatus(`Parsing ${fileName}...`);
+        }
+      );
+
+      for (const parsed of parsedResults) {
         parsed.participants.forEach((p) => allParticipants.add(p));
 
         const chatObj: Chat = {
@@ -152,13 +160,17 @@ export const ChatImporter: React.FC<ChatImporterProps> = ({ onDataLoaded }) => {
       const allMessages: Message[] = [];
 
       const totalChats = stagedParsedChats.length || 1;
+      const validTimestamps = stagedParsedChats
+        .map((c) => new Date(c.chat.lastMessageAt).getTime())
+        .filter((t) => !isNaN(t) && t > 0);
+      const batchRefTime = validTimestamps.length > 0 ? new Date(Math.max(...validTimestamps)) : new Date();
 
       for (let i = 0; i < stagedParsedChats.length; i++) {
         const { chat, messages } = stagedParsedChats[i];
         chat.selfName = selfName;
         allChats.push(chat);
 
-        const analysis = analyzeChat(chat.id, messages, selfName, (i + 1) / totalChats);
+        const analysis = analyzeChat(chat.id, messages, selfName, (i + 1) / totalChats, batchRefTime);
 
         allStats.push(analysis.stats);
         if (analysis.ghost) {
@@ -198,12 +210,27 @@ export const ChatImporter: React.FC<ChatImporterProps> = ({ onDataLoaded }) => {
   };
 
   const handleLoadDemoData = async () => {
+    try {
+      const existingCount = await db.chats.count();
+      if (existingCount > 0) {
+        const confirmed = window.confirm(
+          "Loading the demo dataset will replace your currently imported chats. Do you want to proceed?"
+        );
+        if (!confirmed) return;
+      }
+    } catch {
+      // ignore check error
+    }
+
     setIsLoadingDemo(true);
     setErrorMsg(null);
     try {
-      const result = await loadDemoChatsIntoDB((curr, total, name) => {
-        setProgressStatus(`Loading demo chats (${curr}/${total}): ${name}`);
-      });
+      const result = await loadDemoChatsIntoDB(
+        (curr, total, name) => {
+          setProgressStatus(`Loading demo chats (${curr}/${total}): ${name}`);
+        },
+        { noPersist: isNoPersistMode }
+      );
 
       onDataLoaded({
         chats: result.chats,
