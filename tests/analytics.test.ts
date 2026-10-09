@@ -42,30 +42,35 @@ describe("Analytics Unit Tests", () => {
     expect(result.medianReplyTimeThemSecs).toBe(240);
   });
 
-  it("Test 3: Classifies you_ghosted with boosted score for questions", () => {
+  it("Test 3: Classifies you_ghosted with boosted score for questions, and skips for groups > 8 members", () => {
     const messages: Message[] = [
       { id: "1", chatId: "c1", sender: "You", timestamp: "2024-03-10T10:00:00Z", text: "Hey", isSystem: false, isMedia: false },
       { id: "2", chatId: "c1", sender: "Rohan", timestamp: "2024-03-12T10:00:00Z", text: "Bhai kab aayega?", isSystem: false, isMedia: false },
     ];
 
-    // Reference time is 2024-03-20 (8 days silent from Rohan's question)
-    const ghost = classifyGhostStatus("c1", messages, "You", 0.7, baseTime);
+    // Reference time is 2024-03-20 (8 days silent from Rohan's question > 3 days)
+    const ghost = classifyGhostStatus("c1", messages, "You", 0.7, baseTime, 2);
     expect(ghost).not.toBeNull();
     expect(ghost?.type).toBe("you_ghosted");
     expect(ghost?.score).toBeGreaterThanOrEqual(75);
     expect(ghost?.reason).toContain("direct pending question");
+
+    // For a group with >8 participants, you_ghosted is not applied
+    const groupGhost = classifyGhostStatus("c1", messages, "You", 0.7, baseTime, 12);
+    expect(groupGhost).toBeNull();
   });
 
-  it("Test 4: Classifies they_ghosted, revivable, and fading", () => {
-    // They ghosted
+  it("Test 4: Classifies they_ghosted, revivable (>60d, top 20%), and fading (<25% peak)", () => {
+    // 1. They ghosted: your last message unanswered > 3 days (e.g. 6 days)
     const theyGhostedMsgs: Message[] = [
       { id: "1", chatId: "c2", sender: "You", timestamp: "2024-03-14T10:00:00Z", text: "Can you send the PDF?", isSystem: false, isMedia: false },
     ];
     const resThey = classifyGhostStatus("c2", theyGhostedMsgs, "You", 0.5, baseTime);
     expect(resThey?.type).toBe("they_ghosted");
+    expect(resThey?.daysSilent).toBe(6);
 
-    // Revivable (silent > 60 days for a high volume chat)
-    const revivableMsgs: Message[] = Array.from({ length: 110 }).map((_, i) => ({
+    // 2. Revivable (silent > 60 days for top 20% volume chat: rank percentile >= 0.80)
+    const revivableMsgs: Message[] = Array.from({ length: 90 }).map((_, i) => ({
       id: String(i),
       chatId: "c3",
       sender: i % 2 === 0 ? "You" : "Bestie",
@@ -74,8 +79,27 @@ describe("Analytics Unit Tests", () => {
       isSystem: false,
       isMedia: false,
     }));
-    const resRevivable = classifyGhostStatus("c3", revivableMsgs, "You", 0.95, baseTime);
+    const resRevivable = classifyGhostStatus("c3", revivableMsgs, "You", 0.85, baseTime);
     expect(resRevivable?.type).toBe("revivable");
+    expect(resRevivable?.daysSilent).toBeGreaterThan(60);
+
+    // 3. Fading: 30-day activity dropped below 25% of peak
+    const fadingMsgs: Message[] = [
+      // 40 messages in January 2024 (peak ~9.3 msgs/wk)
+      ...Array.from({ length: 40 }).map((_, i) => ({
+        id: `peak_${i}`,
+        chatId: "c4",
+        sender: i % 2 === 0 ? "You" : "Alex",
+        timestamp: new Date(new Date("2024-01-10T10:00:00Z").getTime() + i * 3600000).toISOString(),
+        text: "Peak active chat message",
+        isSystem: false,
+        isMedia: false,
+      })),
+      // Only 1 message in last 30 days before March 20 (~0.23 msgs/wk < 25% of 9.3)
+      { id: "fading_last", chatId: "c4", sender: "You", timestamp: "2024-03-18T10:00:00Z", text: "hey", isSystem: false, isMedia: false }
+    ];
+    const resFading = classifyGhostStatus("c4", fadingMsgs, "You", 0.5, baseTime);
+    expect(resFading?.type).toBe("fading");
   });
 
   it("Test 5: Calculates Reply Debt score (0-100) and structured breakdown", () => {

@@ -53,6 +53,20 @@ export const ChatImporter: React.FC<ChatImporterProps> = ({ onDataLoaded }) => {
     }
   };
 
+  const [isNoPersistMode, setIsNoPersistMode] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("whatsup_no_persist") === "true";
+    }
+    return false;
+  });
+
+  const toggleNoPersistMode = (checked: boolean) => {
+    setIsNoPersistMode(checked);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("whatsup_no_persist", String(checked));
+    }
+  };
+
   const processUploadedFiles = async (files: File[]) => {
     setIsProcessingFiles(true);
     setErrorMsg(null);
@@ -111,14 +125,16 @@ export const ChatImporter: React.FC<ChatImporterProps> = ({ onDataLoaded }) => {
 
       const replyDebt = calculateReplyDebt(allGhosts, allChats, allPromises);
 
-      // Save to Dexie DB
-      await db.transaction("rw", [db.chats, db.messages, db.stats, db.ghosts, db.promises], async () => {
-        await db.chats.bulkPut(allChats);
-        await db.messages.bulkPut(allMessages);
-        await db.stats.bulkPut(allStats);
-        await db.ghosts.bulkPut(allGhosts);
-        await db.promises.bulkPut(allPromises);
-      });
+      // If not in no-persist mode, write to IndexedDB
+      if (!isNoPersistMode) {
+        await db.transaction("rw", [db.chats, db.messages, db.stats, db.ghosts, db.promises], async () => {
+          await db.chats.bulkPut(allChats);
+          await db.messages.bulkPut(allMessages);
+          await db.stats.bulkPut(allStats);
+          await db.ghosts.bulkPut(allGhosts);
+          await db.promises.bulkPut(allPromises);
+        });
+      }
 
       onDataLoaded({
         chats: allChats,
@@ -140,7 +156,7 @@ export const ChatImporter: React.FC<ChatImporterProps> = ({ onDataLoaded }) => {
     setErrorMsg(null);
     try {
       const result = await loadDemoChatsIntoDB((curr, total, name) => {
-        setProgressStatus(`Loading benchmark dataset (${curr}/${total}): ${name}`);
+        setProgressStatus(`Loading demo chats (${curr}/${total}): ${name}`);
       });
 
       onDataLoaded({
@@ -152,7 +168,7 @@ export const ChatImporter: React.FC<ChatImporterProps> = ({ onDataLoaded }) => {
         isDemo: true,
       });
     } catch (err: any) {
-      setErrorMsg(`Failed to load benchmark data: ${err.message || String(err)}`);
+      setErrorMsg(`Failed to load demo data: ${err.message || String(err)}`);
     } finally {
       setIsLoadingDemo(false);
     }
@@ -213,46 +229,68 @@ export const ChatImporter: React.FC<ChatImporterProps> = ({ onDataLoaded }) => {
             </span>
           </div>
 
-          <div className="pt-3 flex items-center gap-4 text-xs font-mono text-[#6C7694]">
-            <span className="flex items-center gap-1 text-[#30D158]">
-              <Shield className="w-3.5 h-3.5" /> 100% Client-Side Ingestion
-            </span>
-            <span>•</span>
-            <span className="flex items-center gap-1 text-[#64D2FF]">
-              <Cpu className="w-3.5 h-3.5" /> Local IndexedDB
-            </span>
+          {/* Honest Privacy Statement */}
+          <div className="pt-3 flex flex-col items-center gap-1.5 text-xs font-mono text-[#8894B3]">
+            <div className="flex items-center gap-2 text-[#30D158]">
+              <Shield className="w-4 h-4 text-[#30D158]" />
+              <span>Analytics run 100% locally. AI is optional and sends only redacted excerpts, which you see first.</span>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Benchmark Sample Loader Card */}
-      <div className="p-6 rounded-2xl bg-[#0B0D15] border border-[#1A1F30] flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="space-y-1 text-left">
-          <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#FF9F0A]">
-            <Sparkles className="w-3.5 h-3.5" /> Instant Benchmark Dataset
+      {/* No-Persist Mode Toggle & Demo Loader */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {/* No-Persist Mode Card */}
+        <div className="p-5 rounded-2xl bg-[#0B0D15] border border-[#1A1F30] flex items-center justify-between gap-3 text-left">
+          <div className="space-y-1">
+            <div className="text-xs font-mono font-bold text-[#64D2FF] flex items-center gap-2">
+              <Cpu className="w-3.5 h-3.5" /> Don&apos;t save to this browser
+            </div>
+            <p className="text-[11px] text-[#7A85A4]">
+              In-memory mode only. Nothing written to IndexedDB.
+            </p>
           </div>
-          <p className="text-xs text-[#828BA5]">
-            Want to test immediately? Load 9 synthetic benchmark chats across WhatsApp, Telegram, and Discord.
-          </p>
+          <label className="relative inline-flex items-center cursor-pointer flex-shrink-0">
+            <input
+              type="checkbox"
+              checked={isNoPersistMode}
+              onChange={(e) => toggleNoPersistMode(e.target.checked)}
+              className="sr-only peer"
+            />
+            <div className="w-11 h-6 bg-[#161B2E] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#30D158]"></div>
+          </label>
         </div>
 
-        <button
-          onClick={handleLoadDemoData}
-          disabled={isLoadingDemo || isProcessingFiles}
-          className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#161B2E] hover:bg-[#202740] border border-[#2B3554] text-xs font-mono font-bold text-[#64D2FF] hover:text-white transition-all flex items-center justify-center gap-2 flex-shrink-0"
-        >
-          {isLoadingDemo ? (
-            <>
-              <Loader2 className="w-3.5 h-3.5 animate-spin" />
-              <span>Loading Dataset...</span>
-            </>
-          ) : (
-            <>
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Load Benchmark Dataset (1-Click)</span>
-            </>
-          )}
-        </button>
+        {/* Demo Sample Loader Card */}
+        <div className="p-5 rounded-2xl bg-[#0B0D15] border border-[#1A1F30] flex items-center justify-between gap-3 text-left">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#FF9F0A]">
+              <Sparkles className="w-3.5 h-3.5" /> Demo Dataset
+            </div>
+            <p className="text-[11px] text-[#7A85A4]">
+              Load synthetic chats (WhatsApp, Telegram, Discord, Hinglish).
+            </p>
+          </div>
+
+          <button
+            onClick={handleLoadDemoData}
+            disabled={isLoadingDemo || isProcessingFiles}
+            className="px-4 py-2 rounded-xl bg-[#161B2E] hover:bg-[#202740] border border-[#2B3554] text-xs font-mono font-bold text-[#FF9F0A] hover:text-white transition-all flex items-center justify-center gap-2 flex-shrink-0"
+          >
+            {isLoadingDemo ? (
+              <>
+                <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                <span>Loading...</span>
+              </>
+            ) : (
+              <>
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Load Demo Chats</span>
+              </>
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Processing Status Banner */}

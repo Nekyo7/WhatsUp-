@@ -7,18 +7,21 @@ const QUESTION_INDICATORS = [
 ];
 
 /**
- * Classifies a chat's ghost status across 4 distinct lanes:
- * 1. you_ghosted: Last message from them (or unanswered question), pending your response.
- * 2. they_ghosted: Last message from you, unanswered.
- * 3. fading: Last 30-day weekly rate < 35% of peak weekly rate.
- * 4. revivable: Substantial chat volume dormant > 14 days.
+ * Classifies a chat's ghost status across 4 distinct ghost lanes:
+ * 1. revivable: Top 20% chat by volume, silent for over 60 days.
+ * 2. you_ghosted: Their last message(s) unanswered > 3 days. Higher score for direct question & active chats. Excludes groups > 8 members.
+ * 3. they_ghosted: Your last message unanswered > 3 days.
+ * 4. fading: Last-30-day weekly average < 25% of chat's own peak 30-day average.
+ *
+ * (Note: "In-Sync" is an overview status for chats with no ghost flags, not a ghost lane.)
  */
 export function classifyGhostStatus(
   chatId: string,
   messages: Message[],
   selfName: string,
   allChatsVolumeRankPercentile = 0.5,
-  referenceTime: Date = new Date()
+  referenceTime: Date = new Date(),
+  participantCount?: number
 ): GhostEntry | null {
   const validMessages = messages
     .filter((m) => !m.isSystem)
@@ -30,7 +33,6 @@ export function classifyGhostStatus(
   const lastMsgTime = new Date(lastMsg.timestamp);
   const timeDiffMs = referenceTime.getTime() - lastMsgTime.getTime();
   const daysSilent = Math.max(0, Math.floor(timeDiffMs / (1000 * 60 * 60 * 24)));
-  const hoursSilent = Math.max(0, Math.floor(timeDiffMs / (1000 * 60 * 60)));
 
   const isLastFromYou = lastMsg.sender === selfName;
   const isLastFromThem = !isLastFromYou;
@@ -38,34 +40,37 @@ export function classifyGhostStatus(
   const textLower = lastMsg.text.toLowerCase();
   const hasQuestion = QUESTION_INDICATORS.some((q) => textLower.includes(q));
 
-  // 1. Check for REVIVABLE first if dormant > 14 days on a chat with >= 30 msgs
-  if (daysSilent >= 14 && (allChatsVolumeRankPercentile >= 0.7 || validMessages.length >= 30)) {
+  // Determine effective participant count
+  const effectiveParticipantCount =
+    participantCount !== undefined
+      ? participantCount
+      : new Set(validMessages.map((m) => m.sender)).size;
+
+  // 1. REVIVABLE: Top 20% volume chat dormant > 60 days
+  if (daysSilent > 60 && (allChatsVolumeRankPercentile >= 0.80 || validMessages.length >= 80)) {
     return {
       chatId,
       type: "revivable",
-      score: 75,
-      reason: `Formerly close friend (${validMessages.length} msgs) dormant for ${daysSilent} days`,
+      score: 80,
+      reason: `Top-tier chat (top 20% by volume) silent for ${daysSilent} days`,
       daysSilent,
       lastMessageText: lastMsg.text,
       lastMessageTimestamp: lastMsg.timestamp,
     };
   }
 
-  // 2. Check for YOU_GHOSTED (Priority: they messaged last)
-  if (isLastFromThem) {
-    // If silent >= 1 day OR has direct pending question
-    if (daysSilent >= 1 || hasQuestion || hoursSilent >= 12) {
+  // 2. YOU_GHOSTED: Their last message unanswered > 3 days (Skip for large groups > 8 participants)
+  if (isLastFromThem && daysSilent > 3) {
+    if (effectiveParticipantCount <= 8) {
       let score = 50;
       if (hasQuestion) score += 25;
-      if (validMessages.length > 40) score += 15;
+      if (validMessages.length > 40 || allChatsVolumeRankPercentile >= 0.7) score += 15;
       if (daysSilent > 7) score += 10;
       score = Math.min(100, score);
 
       const questionReason = hasQuestion
-        ? "Left with a direct pending question"
-        : daysSilent > 0
-        ? `Unanswered message (${daysSilent}d silent)`
-        : `Awaiting your reply (${hoursSilent}h ago)`;
+        ? `Left with a direct pending question (${daysSilent}d silent)`
+        : `Unanswered message (${daysSilent}d silent)`;
 
       return {
         chatId,
@@ -79,10 +84,10 @@ export function classifyGhostStatus(
     }
   }
 
-  // 3. Check for THEY_GHOSTED (Priority: you messaged last)
-  if (isLastFromYou && (daysSilent >= 1 || hoursSilent >= 24)) {
+  // 3. THEY_GHOSTED: Your last message unanswered > 3 days
+  if (isLastFromYou && daysSilent > 3) {
     let score = 40;
-    if (validMessages.length > 40) score += 20;
+    if (validMessages.length > 40 || allChatsVolumeRankPercentile >= 0.7) score += 20;
     if (daysSilent > 7) score += 15;
     score = Math.min(100, score);
 
@@ -90,22 +95,22 @@ export function classifyGhostStatus(
       chatId,
       type: "they_ghosted",
       score,
-      reason: daysSilent > 0 ? `Your message has been pending for ${daysSilent} days` : `Your message has been pending for ${hoursSilent}h`,
+      reason: `Your message has been unanswered for ${daysSilent} days`,
       daysSilent,
       lastMessageText: lastMsg.text,
       lastMessageTimestamp: lastMsg.timestamp,
     };
   }
 
-  // 4. Check for FADING (messages/week in last 30 days < 35% of peak 30 days)
+  // 4. FADING: Last 30-day weekly average < 25% of chat's own peak 30-day average
   if (validMessages.length >= 15) {
     const { recentRate, peakRate } = calculate30DayActivityRates(validMessages, referenceTime);
-    if (peakRate > 3 && recentRate < peakRate * 0.35) {
+    if (peakRate > 2 && recentRate < peakRate * 0.25) {
       return {
         chatId,
         type: "fading",
         score: 60,
-        reason: `Activity dropped ${Math.round((1 - recentRate / peakRate) * 100)}% from peak (${recentRate.toFixed(1)}/wk vs ${peakRate.toFixed(1)}/wk)`,
+        reason: `Activity dropped below 25% of peak (${recentRate.toFixed(1)}/wk vs ${peakRate.toFixed(1)}/wk peak)`,
         daysSilent,
         lastMessageText: lastMsg.text,
         lastMessageTimestamp: lastMsg.timestamp,
@@ -152,3 +157,4 @@ export function calculate30DayActivityRates(
   const peakRate = (peakMsgsCount / 30) * 7;
   return { recentRate, peakRate: Math.max(peakRate, recentRate) };
 }
+

@@ -43,20 +43,55 @@ export const RedactionPreviewModal: React.FC<RedactionPreviewModalProps> = ({
 
         {/* Informational callout */}
         <div className="p-3.5 rounded-xl bg-[#141A2D] border border-[#253258] text-xs text-[#CCD4EC] space-y-1.5">
-          <div className="flex items-center gap-2 font-bold text-[#64D2FF]">
-            <ShieldAlert className="w-4 h-4" />
-            <span>Best-Effort PII Sanitization Active</span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 font-bold text-[#64D2FF]">
+              <ShieldAlert className="w-4 h-4" />
+              <span>What will be sent</span>
+            </div>
+            <span className="text-[10px] font-mono text-[#FF9F0A] bg-[#2E2008] px-2 py-0.5 rounded-full border border-[#FF9F0A]/30">
+              Redaction is best-effort
+            </span>
           </div>
           <p className="text-[#8E9BBF] leading-relaxed">
-            Before executing <strong>{featureName}</strong>, contact names have been replaced with anonymous tokens (e.g. <em>Person A</em>, <em>Person B</em>) and all detected phone numbers, emails, and URLs have been masked. Only an excerpt (capped at 150 messages) is transmitted.
+            Before executing <strong>{featureName}</strong>, contact names, participant nicknames, phone numbers, emails, UPI IDs, Aadhaar numbers, PAN cards, OTPs, PIN codes, and URLs have been sanitized locally.
           </p>
         </div>
 
         {/* Redaction Stats Badges */}
         <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono">
           <span className="stamp-badge stamp-emerald">
-            {redaction.stats.namesMaskedCount} names masked
+            {redaction.stats.namesMaskedCount} names/nicknames masked
           </span>
+          {redaction.stats.upiMaskedCount > 0 && (
+            <span className="stamp-badge stamp-cyan">
+              {redaction.stats.upiMaskedCount} UPI IDs masked
+            </span>
+          )}
+          {redaction.stats.aadhaarMaskedCount > 0 && (
+            <span className="stamp-badge stamp-amber">
+              {redaction.stats.aadhaarMaskedCount} Aadhaar masked
+            </span>
+          )}
+          {redaction.stats.panMaskedCount > 0 && (
+            <span className="stamp-badge stamp-crimson">
+              {redaction.stats.panMaskedCount} PAN masked
+            </span>
+          )}
+          {redaction.stats.cardsMaskedCount > 0 && (
+            <span className="stamp-badge stamp-crimson">
+              {redaction.stats.cardsMaskedCount} cards masked
+            </span>
+          )}
+          {redaction.stats.otpMaskedCount > 0 && (
+            <span className="stamp-badge stamp-amber">
+              {redaction.stats.otpMaskedCount} OTPs masked
+            </span>
+          )}
+          {redaction.stats.pinCodesMaskedCount > 0 && (
+            <span className="stamp-badge stamp-cyan">
+              {redaction.stats.pinCodesMaskedCount} PIN codes masked
+            </span>
+          )}
           <span className="stamp-badge stamp-cyan">
             {redaction.stats.phonesMaskedCount} phones masked
           </span>

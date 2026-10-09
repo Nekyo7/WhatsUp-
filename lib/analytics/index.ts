@@ -63,7 +63,8 @@ export function analyzeChat(
   const { recentRate, peakRate } = calculate30DayActivityRates(validMessages, referenceTime);
 
   // 7. Ghost classification
-  const ghost = classifyGhostStatus(chatId, messages, selfName, volumePercentile, referenceTime);
+  const sendersSet = new Set(validMessages.map((m) => m.sender));
+  const ghost = classifyGhostStatus(chatId, messages, selfName, volumePercentile, referenceTime, sendersSet.size);
 
   // 8. Promises
   const promises = extractPromises(messages, selfName, referenceTime);
@@ -93,7 +94,6 @@ export function analyzeChat(
   }
 
   // 10. Per-Member breakdown for Group & Multi-participant chats
-  const sendersSet = new Set(validMessages.map((m) => m.sender));
   const memberStats: GroupMemberStat[] = [];
 
   sendersSet.forEach((sender) => {

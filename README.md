@@ -4,9 +4,13 @@
 
 [![Next.js](https://img.shields.io/badge/Next.js-14.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![IndexedDB](https://img.shields.io/badge/Storage-IndexedDB%20(Dexie)-green?style=for-the-badge)](https://dexie.org/)
-[![Privacy](https://img.shields.io/badge/Privacy-100%25%20Local--First-purple?style=for-the-badge)](https://github.com/Nekyo7/WhatsUp-)
-[![Vitest](https://img.shields.io/badge/Tests-23%2F23%20Passed-brightgreen?style=for-the-badge&logo=vitest)](https://vitest.dev/)
+[![Storage](https://img.shields.io/badge/Storage-IndexedDB%20%2F%20In--Memory-green?style=for-the-badge)](https://dexie.org/)
+[![Privacy](https://img.shields.io/badge/Privacy-Local--First%20Analytics-blue?style=for-the-badge)](https://github.com/Nekyo7/WhatsUp-)
+[![Vitest](https://img.shields.io/badge/Tests-39%2F39%20Passed-brightgreen?style=for-the-badge&logo=vitest)](https://vitest.dev/)
+
+---
+
+> **Privacy Guarantee:** Analytics run 100% locally. AI is optional and sends only redacted excerpts, which you see first.
 
 ---
 
@@ -24,7 +28,7 @@ Generic chat summarizers spit out dry summaries without addressing the **guilt a
 
 ---
 
-## ✨ Core Features (100% Real, Dynamic & Slop-Free)
+## ✨ Core Features
 
 ### 1. 🚨 Reply Debt Index (0 - 100 Gauge)
 - Dynamically scores your conversational debt based on:
@@ -34,21 +38,24 @@ Generic chat summarizers spit out dry summaries without addressing the **guilt a
   - Open unfulfilled commitments from the Promise Ledger
 - Itemized collapsible breakdown of each conversation in debt.
 
-### 2. 👻 4-Lane Ghost Radar
-Categorizes every contact into actionable relationship triage lanes:
-- **You Ghosted**: They reached out; you left them on read with an unanswered turn or question.
-- **They Ghosted**: Your message went unanswered.
-- **Fading**: Conversational velocity dropped >65% compared to its historical peak.
-- **Revivable**: Formerly close friend dormant for >14 days.
-- **In-Sync / Health Overview**: Direct visibility into healthy, active relationships with zero debt.
+### 2. 👻 Ghost Radar (4 Triage Lanes + In-Sync Overview)
+Categorizes relationships with exact timestamp heuristics:
+- **You Ghosted**: Their last message(s) unanswered for more than 3 days (weighted higher for direct questions and formerly active chats; skipped for group chats with >8 members).
+- **They Ghosted**: Your last message unanswered for more than 3 days.
+- **Fading**: Last-30-day weekly average below 25% of the chat's own peak 30-day average.
+- **Revivable**: Top 20% chat by volume silent for over 60 days.
+- **In-Sync Overview**: Separate overview of healthy conversations with active reciprocal turns.
+- *Notice:* Ghosted = unanswered. Chat exports have no read receipts.
 
 ### 3. 📝 Promise Ledger & Deadline Tracker
 - Automated detection of commitments in **English and colloquial Hinglish** ("I will finish the deck", "kal bhej dunga", "dekh ke batata hu", "thodi der me bhejta hu").
+- Tense-aware resolution: future verb forms ("dunga", "karunga") resolve due dates to tomorrow; past forms ("bheja tha", "kiya tha") leave due dates null.
+- Filters negative non-commitments ("let me know", "let me see if", "I'll be there").
 - Extracts deadlines relative to message timestamps using **chrono-node**.
-- Tracks **Open**, **Fulfilled**, and **Stale (>14d)** commitments with 1-click status toggles.
+- Tracks **Open**, **Fulfilled**, and **Stale (>14d)** commitments with 1-click status toggles and confidence scores.
 
 ### 4. 👥 People & Group Chat Leaderboard
-- Works seamlessly for **1-on-1 chats and multi-member Group Chats**.
+- Works for **1-on-1 chats and multi-member Group Chats**.
 - Filter by All, 1-on-1, or Group conversations.
 - Computes:
   - **Estimated Talk Time** (clustered by 30-min conversational session gaps)
@@ -95,33 +102,44 @@ Categorizes every contact into actionable relationship triage lanes:
 │  (Sessions, Reply Times, Heatmaps, Ghosts, Promises)   │
 │        │                                               │
 │        ▼                                               │
-│  [IndexedDB (Dexie.js)] ─── Zero Server Storage!       │
+│  [IndexedDB or In-Memory Mode]                         │
 │        │                                               │
 │        ▼                                               │
 │  [Client-Side PII Redactor]                            │
-│  Masks names ("Person A"), emails, phones, URLs        │
+│  Masks names, nicknames, phones, emails, UPI IDs,      │
+│  Aadhaar, PAN, Cards, OTPs, PIN codes, URLs            │
 └────────┬───────────────────────────────────────────────┘
          │ (Only redacted text sent for optional AI)
          ▼
 ┌────────────────────────────────────────────────────────┐
 │                   AI INFERENCE LAYER                   │
 │                                                        │
-│  ├── Google Gemini API (Gemini 1.5/2.5 Flash)          │
-│  ├── Anthropic Claude (Claude 3.5 Haiku)               │
-│  ├── OpenAI API (GPT-4o-mini)                          │
-│  └── Local Real-Time NLP Synthesizer (Zero API Key)   │
+│  ├── Google Gemini API (BYOK or Server Key)            │
+│  ├── Anthropic Claude (BYOK or Server Key)             │
+│  ├── OpenAI-compatible Endpoint (Custom Base URL)      │
+│  └── Extractive Local Fallback (No LLM / Offline)      │
 └────────────────────────────────────────────────────────┘
 ```
 
-1. **Zero Raw Chat Persistence on Server**: 100% of messages and analysis live inside browser IndexedDB.
-2. **Strict Client-Side Redaction**: Before sending text to an AI provider, names are anonymized (`Person A (You)`, `Person B`). Unredaction happens on the client.
+1. **Analytics Run 100% Locally**: Message parsing, turn latencies, talk time, ghost detection, and promise extraction never touch the network.
+2. **Best-Effort Client-Side Redaction**: Before sending text to an AI provider, names/nicknames are anonymized (`Person A (You)`, `Person B`), and sensitive Indian & global identifiers (UPI, Aadhaar, PAN, Cards, OTPs, PIN codes, phones, emails, URLs) are masked. Unredaction happens strictly in the client.
 3. **Transparent Network Ledger**: On-screen badge displays real-time network usage and outbound byte counters.
-4. **Universal Multi-Provider AI + Local Fallback**:
+4. **No-Persist Mode**: "Don't save to this browser" toggle keeps all data in RAM only, bypassing IndexedDB entirely.
+5. **Multi-Provider AI + Extractive Local Fallback**:
    - Google Gemini
    - Anthropic Claude
-   - OpenAI
-   - **Bring Your Own Key (BYOK)** directly in the UI settings
-   - **Local Real-Time NLP Engine**: If no API key is provided, the built-in extractive NLP engine analyzes the actual chat locally!
+   - OpenAI-compatible endpoints (Ollama / Local / OpenAI)
+   - **Bring Your Own Key (BYOK)** directly in browser settings
+   - **Extractive Fallback (No LLM)**: If no API key is provided, the extractive engine extracts key points locally without any third-party requests.
+
+---
+
+## 🛡️ Limitations and Threat Model
+
+- **Redaction Limits**: Redaction is best-effort. Deterministic regexes cover names, emails, phone numbers, URLs, UPI IDs, Aadhaar numbers, PAN cards, card numbers, OTPs, and Indian PIN codes. However, unstructured contextual clues (e.g., "meet me at the blue house behind St. Xavier's") or non-text media cannot be guaranteed sanitized. Always review the "What will be sent" preview payload.
+- **Unencrypted Local Storage**: By default, data stored in IndexedDB is unencrypted on your local machine file system. If using a shared computer, enable **"Don't save to this browser"** mode or click **"Wipe all data"** before closing your session.
+- **Server Keys vs Direct BYOK**: When using a server environment key, redacted excerpts are routed through Next.js API endpoints to reach the AI model provider. No message logs or request bodies are saved on the server. When using direct browser BYOK, requests travel straight from the browser to the model provider.
+- **Extractive Local Mode is Not an LLM**: The built-in offline local fallback is a heuristic rule-based extractor (regex pattern matching for decisions, deadlines, and questions), not a generative neural language model.
 
 ---
 
@@ -132,6 +150,8 @@ Categorizes every contact into actionable relationship triage lanes:
 | **WhatsApp** | `.txt` | Chat Settings ➔ Export Chat ➔ Without Media |
 | **Telegram** | `.json` | Telegram Desktop ➔ Chat Settings ➔ Export Chat History ➔ JSON format |
 | **Discord** | `.json` | Exported channel JSON logs (e.g. DiscordChatExporter) |
+
+---
 
 ---
 

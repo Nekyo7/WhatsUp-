@@ -21,7 +21,7 @@ const LANES: {
   {
     type: "you_ghosted",
     title: "You Ghosted",
-    subtitle: "They reached out; you left them on read",
+    subtitle: "Their message unanswered >3 days",
     badgeClass: "stamp-crimson",
     borderClass: "border-[#FF334B]/30 hover:border-[#FF334B]",
     icon: UserX,
@@ -29,7 +29,7 @@ const LANES: {
   {
     type: "they_ghosted",
     title: "They Ghosted",
-    subtitle: "Your message went unanswered",
+    subtitle: "Your message unanswered >3 days",
     badgeClass: "stamp-amber",
     borderClass: "border-[#FF9F0A]/30 hover:border-[#FF9F0A]",
     icon: Clock,
@@ -37,7 +37,7 @@ const LANES: {
   {
     type: "fading",
     title: "Fading",
-    subtitle: "Activity dropped >65% from its peak",
+    subtitle: "Weekly avg <25% of chat's peak 30-day avg",
     badgeClass: "stamp-cyan",
     borderClass: "border-[#64D2FF]/30 hover:border-[#64D2FF]",
     icon: TrendingDown,
@@ -45,7 +45,7 @@ const LANES: {
   {
     type: "revivable",
     title: "Revivable",
-    subtitle: "Top friend dormant >14 days",
+    subtitle: "Top 20% volume chat silent >60 days",
     badgeClass: "stamp-emerald",
     borderClass: "border-[#30D158]/30 hover:border-[#30D158]",
     icon: Sparkles,
@@ -230,7 +230,7 @@ export const GhostRadar: React.FC<GhostRadarProps> = ({ ghosts, chats, onSelectC
 
       {/* Required persistent footnote */}
       <div className="p-3 rounded-xl bg-[#0A0C14] border border-[#161B2E] text-center text-xs text-[#6C7694] font-mono">
-        💡 <strong className="text-[#8890A6]">Notice:</strong> Ghosted = unanswered turn or pending question. Exported chats do not include read receipts.
+        💡 <strong className="text-[#8890A6]">Notice:</strong> Ghosted = unanswered. Exports have no read receipts.
       </div>
     </div>
   );

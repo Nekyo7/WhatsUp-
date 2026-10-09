@@ -79,20 +79,21 @@ WhatsUP? is a local-first conversational intelligence dashboard that audits expo
 
 - [x] **Universal Chat Parsers**: WhatsApp (.txt), Telegram (.json), Discord (.json).
 - [x] **Local Analytics Engine**: Talk time, median reply time, sessions, 24x7 heatmap.
-- [x] **Ghost Radar**: Real-time multi-lane classification (You Ghosted, They Ghosted, Fading, Revivable, In-Sync overview).
+- [x] **Ghost Radar Metric Standardization (Step 2)**: Precise thresholds for `you_ghosted` (>3d unanswered, question/volume weighted, ≤8 participants limit), `they_ghosted` (>3d unanswered), `fading` (<25% of peak 30d average), `revivable` (>60d silence on top 20% volume chats), separate In-Sync overview, and persistent UI notice.
+- [x] **Hinglish Promise Detection & Tense Disambiguation (Step 3)**: Disambiguates "kal"/"parso" into tomorrow (+24h) or parso (+48h) via future verb tense resolution (`dunga`, `bhejunga`, `karunga`), flags past references (`bheja`, `kiya`, `tha`) as non-due-dates (`dueAt: null`), adds negative filter patterns (`let me know`, `let me see if`, `I'll be there`, questions, forwards/quotes), and outputs confidence scores with 15 labeled tests (38/38 total passing).
+- [x] **PII Redaction Hardening (Step 4)**: Extended client-side sanitization to mask Indian UPI IDs (`name@bank`), 12-digit Aadhaar numbers, PAN cards (`[A-Z]{5}[0-9]{4}[A-Z]{1}`), 13-19 digit card numbers, OTP phrases ("OTP is 123456"), Indian 6-digit PIN codes in address text, participant first names and nicknames, with full round-trip unredaction and explicit "Redaction is best-effort" preview requirements (39/39 tests passing).
+- [x] **Privacy, CSP & No-Persist Mode (Step 5)**: Replaced all marketing overclaims with honest privacy guarantees ("Analytics run 100% locally. AI is optional and sends only redacted excerpts, which you see first."), added restrictive Content-Security-Policy headers in `next.config.mjs`, built "Don't save to this browser" in-memory mode, rendered all AI outputs as safe plain text, and added the Limitations & Threat Model documentation.
 - [x] **Promise Ledger**: Automated commitment extraction with deadline parsing and smart status detection.
-- [x] **Multi-Provider AI Backend**: Google Gemini + Anthropic Claude + OpenAI + Local NLP Synthesizer.
+- [x] **Multi-Provider AI Backend**: Google Gemini + Anthropic Claude + OpenAI-compatible + Local NLP Synthesizer.
 - [x] **BYOK (Bring Your Own Key) Interface**: Setting custom API keys directly in the browser UI.
 - [x] **Group Chat Analytics**: Member talk shares, participant rosters, group decisions.
-- [x] **Client-Side PII Redaction & Reverse Unredaction**: Zero PII leakage to third-party endpoints.
 - [x] **Guilt Wrapped '26**: Dynamic end-of-year style recap cards with shareable summaries.
-- [x] **Documentation & Repository Polish**: Clean code structure, comprehensive README, test suites (23/23 passing).
+- [x] **Documentation & Repository Polish**: Clean code structure, comprehensive README, test suites (39/39 passing).
 - [x] **Production Build Validation**: Next.js 14 production build verified and ready for Vercel/Node.js deployment.
 
 ---
 
 ## 6. Verification Status
 
-- **Unit Tests**: 23/23 tests passing across 4 test suites (`parsers.test.ts`, `analytics.test.ts`, `redact.test.ts`, `groupAndLocalAi.test.ts`).
-- **Production Build**: `npm run build` runs cleanly with zero TypeScript errors or webpack issues.
-- **Tested Real Chat**: Verified with real 968-message WhatsApp export (`Chats/Udit/Udit/chat.txt`) — extracts 7 commitments, member talk times, active turn latencies, and real-time AI summaries.
+- **Unit Tests**: 39/39 tests passing across 5 test suites (`parsers.test.ts`, `analytics.test.ts`, `promisesHinglish.test.ts`, `redact.test.ts`, `groupAndLocalAi.test.ts`).
+- **Production Build & Type Check**: `npx tsc --noEmit` and `npx vitest run` pass cleanly.
